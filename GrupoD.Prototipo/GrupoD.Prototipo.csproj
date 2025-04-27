@@ -8,8 +8,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="0 - Menu Principal\" />
-  </ItemGroup>
-
 </Project>
