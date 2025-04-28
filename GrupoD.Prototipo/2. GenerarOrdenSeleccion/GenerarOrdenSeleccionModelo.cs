@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GrupoD.Prototipo._2___GenerarOrdenSeleccion
+namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
 {
-    class GenerarOrdenDeSeleccionModel
+    class GenerarOrdenSeleccionModelo
     {
-
     }
 }
