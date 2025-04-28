@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
 {
-    public partial class Form1: Form
+    public partial class GenerarOrdenDeSeleccionForm: Form
     {
-        public Form1()
+        public GenerarOrdenDeSeleccionForm()
         {
             InitializeComponent();
         }
