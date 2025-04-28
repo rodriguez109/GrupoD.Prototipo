@@ -1,4 +1,4 @@
-﻿namespace GrupoD.Prototipo._0___Menu_Principal
+﻿namespace GrupoD.Prototipo._0._Menu_Principal
 {
     partial class Form1
     {

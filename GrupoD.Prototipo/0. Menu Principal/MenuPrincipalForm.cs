@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GrupoD.Prototipo._0___Menu_Principal
+namespace GrupoD.Prototipo._0._Menu_Principal
 {
     public partial class Form1: Form
     {
