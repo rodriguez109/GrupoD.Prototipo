@@ -283,9 +283,41 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
         //}
 
         private void GenerarOrdenSeleccionBTN_Click(object sender, EventArgs e)
-        { 
+        {
+            // Verificar si hay órdenes agregadas
+            if (!modelo.OrdenesAgregadas.Any())
+            {
+                MessageBox.Show("No hay ordenes de preparacion pendientes para crear una orden de selección", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            // Definir número correlativo de orden
+            int nuevoNumeroOrdenSeleccion = modelo.OrdenesDeSeleccion.Count + 1;
+
+            // Crear nueva orden de selección con las órdenes agregadas
+            var nuevaOrdenSeleccion = new OrdenesDeSeleccion(
+                nuevoNumeroOrdenSeleccion,
+                modelo.OrdenesAgregadas.ToList(),
+                DateTime.Now,
+                "Pendiente"
+            );
+
+            // Agregar la nueva orden a la lista
+            modelo.OrdenesDeSeleccion.Add(nuevaOrdenSeleccion);
+
+            // Eliminar las órdenes agregadas de la lista de disponibles
+            modelo.OrdenesPreparacionDisponibles.RemoveAll(o => modelo.OrdenesAgregadas.Any(ag => ag.NumeroOrden == o.NumeroOrden));
+
+            // Limpiar listas después de generar la orden
+            modelo.OrdenesAgregadas.Clear();
+            OrdenesPreparacionPendientesSeleccionadasLST.Items.Clear();
+
+            // Recargar la lista de órdenes disponibles
+            ActualizarListaOrdenDePreparacion();
+
+            MessageBox.Show($"Orden de selección número {nuevoNumeroOrdenSeleccion} generada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
 
 
         // DEFINICION DE METODOS AUXILIARES  ------------------------------------------------------------------------------------------------------------

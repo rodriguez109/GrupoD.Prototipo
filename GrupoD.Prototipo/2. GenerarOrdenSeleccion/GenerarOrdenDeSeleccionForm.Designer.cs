@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            IDOrdenSeleccionTXT = new TextBox();
             groupBox1 = new GroupBox();
             FechaEntregaDTP = new DateTimePicker();
             ReiniciarBusquedaBTN = new Button();
@@ -59,26 +57,11 @@
             QuitarOrdenesSeleccionadasBTN = new Button();
             GenerarOrdenSeleccionBTN = new Button();
             CancelarOrdenSeleccionBTN = new Button();
+            label1 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(25, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(126, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Orden de Selección N°";
-            // 
-            // IDOrdenSeleccionTXT
-            // 
-            IDOrdenSeleccionTXT.Location = new Point(157, 6);
-            IDOrdenSeleccionTXT.Name = "IDOrdenSeleccionTXT";
-            IDOrdenSeleccionTXT.Size = new Size(100, 23);
-            IDOrdenSeleccionTXT.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -318,6 +301,15 @@
             CancelarOrdenSeleccionBTN.UseVisualStyleBackColor = true;
             CancelarOrdenSeleccionBTN.Click += CancelarOrdenSeleccionBTN_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(25, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(109, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Orden de Selección";
+            // 
             // GenerarOrdenDeSeleccionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -328,7 +320,6 @@
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(IDOrdenSeleccionTXT);
             Controls.Add(label1);
             Name = "GenerarOrdenDeSeleccionForm";
             Text = "Generar orden de selección";
@@ -342,9 +333,6 @@
         }
 
         #endregion
-
-        private Label label1;
-        private TextBox IDOrdenSeleccionTXT;
         private GroupBox groupBox1;
         private Label label3;
         private Label label2;
@@ -374,5 +362,6 @@
         private ColumnHeader columnHeader8;
         private ColumnHeader columnHeader9;
         private ColumnHeader columnHeader10;
+        private Label label1;
     }
 }

@@ -41,8 +41,6 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
 
             OrdenesAgregadas = new List<OrdenesDePreparacion>(); // Inicializar la nueva lista
             OrdenesDeSeleccion = new List<OrdenesDeSeleccion>();  // Lista de órdenes de selección
-
-
         }
 
         //validar todo

@@ -23,7 +23,6 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
             FechaGeneracion = fechaGeneracion;
             EstadoOrdenDeSeleccion = estadoOrden;
         }
-
     }
 
 }
