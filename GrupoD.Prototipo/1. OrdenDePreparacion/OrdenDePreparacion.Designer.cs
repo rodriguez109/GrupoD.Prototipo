@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label2 = new Label();
+            numeroClienteLBL = new Label();
             numeroClienteTXT = new TextBox();
             razonSocialClienteTXT = new TextBox();
             label3 = new Label();
@@ -63,14 +63,14 @@
             quitarProductoBTN = new Button();
             SuspendLayout();
             // 
-            // label2
+            // numeroClienteLBL
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(13, 6);
-            label2.Name = "label2";
-            label2.Size = new Size(113, 20);
-            label2.TabIndex = 1;
-            label2.Text = "Número Cliente";
+            numeroClienteLBL.AutoSize = true;
+            numeroClienteLBL.Location = new Point(13, 6);
+            numeroClienteLBL.Name = "numeroClienteLBL";
+            numeroClienteLBL.Size = new Size(113, 20);
+            numeroClienteLBL.TabIndex = 1;
+            numeroClienteLBL.Text = "Número Cliente";
             // 
             // numeroClienteTXT
             // 
@@ -351,7 +351,7 @@
             Controls.Add(razonSocialClienteTXT);
             Controls.Add(label3);
             Controls.Add(numeroClienteTXT);
-            Controls.Add(label2);
+            Controls.Add(numeroClienteLBL);
             Name = "OrdenDePreparacion";
             Text = "OrdenDePreparacion";
             ResumeLayout(false);
@@ -359,7 +359,7 @@
         }
 
         #endregion
-        private Label label2;
+        private Label numeroClienteLBL;
         private TextBox numeroClienteTXT;
         private TextBox razonSocialClienteTXT;
         private Label label3;
