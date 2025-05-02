@@ -1,6 +1,6 @@
 ﻿namespace GrupoD.Prototipo._0._Menu_Principal
 {
-    partial class Form1
+    partial class MenuForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,118 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            GenerarOPMenuBTN = new Button();
+            GenerarOSMenuBTN = new Button();
+            PrepararProductoMenuBTN = new Button();
+            EmpaquetarMenuBTN = new Button();
+            GenerarOEMenuBTN = new Button();
+            GenerarDocMenuBTN = new Button();
+            ConfirmarDesMenuBTN = new Button();
+            label1 = new Label();
+            SuspendLayout();
+            // 
+            // GenerarOPMenuBTN
+            // 
+            GenerarOPMenuBTN.Location = new Point(103, 104);
+            GenerarOPMenuBTN.Name = "GenerarOPMenuBTN";
+            GenerarOPMenuBTN.Size = new Size(357, 45);
+            GenerarOPMenuBTN.TabIndex = 0;
+            GenerarOPMenuBTN.Text = "Generar orden de preparacion";
+            GenerarOPMenuBTN.UseVisualStyleBackColor = true;
+            // 
+            // GenerarOSMenuBTN
+            // 
+            GenerarOSMenuBTN.Location = new Point(103, 169);
+            GenerarOSMenuBTN.Name = "GenerarOSMenuBTN";
+            GenerarOSMenuBTN.Size = new Size(357, 45);
+            GenerarOSMenuBTN.TabIndex = 1;
+            GenerarOSMenuBTN.Text = "Generar orden de selección";
+            GenerarOSMenuBTN.UseVisualStyleBackColor = true;
+            GenerarOSMenuBTN.Click += GenerarOSMenuBTN_Click;
+            // 
+            // PrepararProductoMenuBTN
+            // 
+            PrepararProductoMenuBTN.Location = new Point(103, 239);
+            PrepararProductoMenuBTN.Name = "PrepararProductoMenuBTN";
+            PrepararProductoMenuBTN.Size = new Size(357, 45);
+            PrepararProductoMenuBTN.TabIndex = 2;
+            PrepararProductoMenuBTN.Text = "Preparar los productos";
+            PrepararProductoMenuBTN.UseVisualStyleBackColor = true;
+            // 
+            // EmpaquetarMenuBTN
+            // 
+            EmpaquetarMenuBTN.Location = new Point(103, 310);
+            EmpaquetarMenuBTN.Name = "EmpaquetarMenuBTN";
+            EmpaquetarMenuBTN.Size = new Size(357, 45);
+            EmpaquetarMenuBTN.TabIndex = 3;
+            EmpaquetarMenuBTN.Text = "Empaquetar los productos";
+            EmpaquetarMenuBTN.UseVisualStyleBackColor = true;
+            // 
+            // GenerarOEMenuBTN
+            // 
+            GenerarOEMenuBTN.Location = new Point(103, 381);
+            GenerarOEMenuBTN.Name = "GenerarOEMenuBTN";
+            GenerarOEMenuBTN.Size = new Size(357, 45);
+            GenerarOEMenuBTN.TabIndex = 4;
+            GenerarOEMenuBTN.Text = "Generar orden de entrega";
+            GenerarOEMenuBTN.UseVisualStyleBackColor = true;
+            // 
+            // GenerarDocMenuBTN
+            // 
+            GenerarDocMenuBTN.Location = new Point(103, 448);
+            GenerarDocMenuBTN.Name = "GenerarDocMenuBTN";
+            GenerarDocMenuBTN.Size = new Size(357, 45);
+            GenerarDocMenuBTN.TabIndex = 5;
+            GenerarDocMenuBTN.Text = "Generar documentación/remito";
+            GenerarDocMenuBTN.UseVisualStyleBackColor = true;
+            // 
+            // ConfirmarDesMenuBTN
+            // 
+            ConfirmarDesMenuBTN.Location = new Point(103, 516);
+            ConfirmarDesMenuBTN.Name = "ConfirmarDesMenuBTN";
+            ConfirmarDesMenuBTN.Size = new Size(357, 45);
+            ConfirmarDesMenuBTN.TabIndex = 6;
+            ConfirmarDesMenuBTN.Text = "Confirmar despacho";
+            ConfirmarDesMenuBTN.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(250, 46);
+            label1.Name = "label1";
+            label1.Size = new Size(70, 15);
+            label1.TabIndex = 7;
+            label1.Text = "Menu Inicio";
+            // 
+            // MenuForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(559, 632);
+            Controls.Add(label1);
+            Controls.Add(ConfirmarDesMenuBTN);
+            Controls.Add(GenerarDocMenuBTN);
+            Controls.Add(GenerarOEMenuBTN);
+            Controls.Add(EmpaquetarMenuBTN);
+            Controls.Add(PrepararProductoMenuBTN);
+            Controls.Add(GenerarOSMenuBTN);
+            Controls.Add(GenerarOPMenuBTN);
+            Name = "MenuForm";
+            Text = "Menu";
+            Load += MenuForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Button GenerarOPMenuBTN;
+        private Button GenerarOSMenuBTN;
+        private Button PrepararProductoMenuBTN;
+        private Button EmpaquetarMenuBTN;
+        private Button GenerarOEMenuBTN;
+        private Button GenerarDocMenuBTN;
+        private Button ConfirmarDesMenuBTN;
+        private Label label1;
     }
 }
