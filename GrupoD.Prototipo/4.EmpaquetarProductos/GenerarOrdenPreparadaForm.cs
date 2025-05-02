@@ -51,5 +51,10 @@ namespace GrupoD.Prototipo._4.EmpaquetarProductos
         {
 
         }
+
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

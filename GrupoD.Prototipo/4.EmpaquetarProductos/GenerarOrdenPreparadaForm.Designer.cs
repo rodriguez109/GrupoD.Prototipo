@@ -54,9 +54,9 @@ namespace GrupoD.Prototipo._4.EmpaquetarProductos
             label1.AutoSize = true;
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(176, 20);
+            label1.Size = new Size(149, 20);
             label1.TabIndex = 1;
-            label1.Text = "Órdenes por empaquetar";
+            label1.Text = "Órdenes empaquetar";
             label1.Click += label1_Click;
             // 
             // button1
@@ -114,6 +114,7 @@ namespace GrupoD.Prototipo._4.EmpaquetarProductos
             listView2.TabIndex = 9;
             listView2.UseCompatibleStateImageBehavior = false;
             listView2.View = View.Details;
+            listView2.SelectedIndexChanged += listView2_SelectedIndexChanged;
             // 
             // numOrde
             // 
