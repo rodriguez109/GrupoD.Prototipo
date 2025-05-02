@@ -1,0 +1,398 @@
+﻿namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
+{
+    partial class OrdenDePreparacion
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            label2 = new Label();
+            numeroClienteTXT = new TextBox();
+            razonSocialClienteTXT = new TextBox();
+            label3 = new Label();
+            buscarProductosBTN = new Button();
+            limpiarFiltrosBTN = new Button();
+            depositoPorClienteLBL = new Label();
+            productosClienteLST = new ListView();
+            skuProductoCLM = new ColumnHeader();
+            nombreProductoCLM = new ColumnHeader();
+            cantidadProductoCLM = new ColumnHeader();
+            posicionProductoCLM = new ColumnHeader();
+            productoSeleccionadoLBL = new Label();
+            productoSeleccionadoTXT = new TextBox();
+            cantidadDisponibleTXT = new TextBox();
+            cantidadDisponibleLBL = new Label();
+            cantidadSeleccionadaTXT = new TextBox();
+            cantidadSeleccionadaLBL = new Label();
+            agregarProductoBTN = new Button();
+            opLBL = new Label();
+            ordenPreparacionLST = new ListView();
+            nombreProductoLBL = new ColumnHeader();
+            cantidadSeleccionadaCLM = new ColumnHeader();
+            posicionCLM = new ColumnHeader();
+            fechaRetirarLBL = new Label();
+            fechaRetirarTXT = new TextBox();
+            prioridadLBL = new Label();
+            prioridadCMB = new ComboBox();
+            cuilTransportistaLBL = new Label();
+            cancelarBTN = new Button();
+            generarOPBTN = new Button();
+            cuilTransportistaTXT = new TextBox();
+            quitarProductoBTN = new Button();
+            SuspendLayout();
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(13, 6);
+            label2.Name = "label2";
+            label2.Size = new Size(113, 20);
+            label2.TabIndex = 1;
+            label2.Text = "Número Cliente";
+            // 
+            // numeroClienteTXT
+            // 
+            numeroClienteTXT.Location = new Point(13, 29);
+            numeroClienteTXT.Name = "numeroClienteTXT";
+            numeroClienteTXT.Size = new Size(321, 27);
+            numeroClienteTXT.TabIndex = 2;
+            // 
+            // razonSocialClienteTXT
+            // 
+            razonSocialClienteTXT.Location = new Point(408, 29);
+            razonSocialClienteTXT.Name = "razonSocialClienteTXT";
+            razonSocialClienteTXT.Size = new Size(329, 27);
+            razonSocialClienteTXT.TabIndex = 4;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(408, 6);
+            label3.Name = "label3";
+            label3.Size = new Size(144, 20);
+            label3.TabIndex = 3;
+            label3.Text = "Razón Social Cliente";
+            // 
+            // buscarProductosBTN
+            // 
+            buscarProductosBTN.Location = new Point(459, 62);
+            buscarProductosBTN.Name = "buscarProductosBTN";
+            buscarProductosBTN.Size = new Size(136, 29);
+            buscarProductosBTN.TabIndex = 5;
+            buscarProductosBTN.Text = "Buscar Productos";
+            buscarProductosBTN.UseVisualStyleBackColor = true;
+            // 
+            // limpiarFiltrosBTN
+            // 
+            limpiarFiltrosBTN.Location = new Point(601, 62);
+            limpiarFiltrosBTN.Name = "limpiarFiltrosBTN";
+            limpiarFiltrosBTN.Size = new Size(136, 29);
+            limpiarFiltrosBTN.TabIndex = 6;
+            limpiarFiltrosBTN.Text = "Limpiar Filtros";
+            limpiarFiltrosBTN.UseVisualStyleBackColor = true;
+            // 
+            // depositoPorClienteLBL
+            // 
+            depositoPorClienteLBL.AutoSize = true;
+            depositoPorClienteLBL.Location = new Point(13, 107);
+            depositoPorClienteLBL.Name = "depositoPorClienteLBL";
+            depositoPorClienteLBL.Size = new Size(233, 20);
+            depositoPorClienteLBL.TabIndex = 7;
+            depositoPorClienteLBL.Text = "Productos en depósito por cliente";
+            // 
+            // productosClienteLST
+            // 
+            productosClienteLST.Columns.AddRange(new ColumnHeader[] { skuProductoCLM, nombreProductoCLM, cantidadProductoCLM, posicionProductoCLM });
+            productosClienteLST.FullRowSelect = true;
+            productosClienteLST.Location = new Point(13, 137);
+            productosClienteLST.Name = "productosClienteLST";
+            productosClienteLST.Size = new Size(441, 197);
+            productosClienteLST.TabIndex = 11;
+            productosClienteLST.UseCompatibleStateImageBehavior = false;
+            productosClienteLST.View = View.Details;
+            // 
+            // skuProductoCLM
+            // 
+            skuProductoCLM.Text = "SKU Producto";
+            skuProductoCLM.Width = 120;
+            // 
+            // nombreProductoCLM
+            // 
+            nombreProductoCLM.Text = "Nombre Producto";
+            nombreProductoCLM.Width = 150;
+            // 
+            // cantidadProductoCLM
+            // 
+            cantidadProductoCLM.Text = "Cantidad";
+            cantidadProductoCLM.Width = 80;
+            // 
+            // posicionProductoCLM
+            // 
+            posicionProductoCLM.Text = "Posición";
+            posicionProductoCLM.Width = 100;
+            // 
+            // productoSeleccionadoLBL
+            // 
+            productoSeleccionadoLBL.AutoSize = true;
+            productoSeleccionadoLBL.Location = new Point(491, 137);
+            productoSeleccionadoLBL.Name = "productoSeleccionadoLBL";
+            productoSeleccionadoLBL.Size = new Size(162, 20);
+            productoSeleccionadoLBL.TabIndex = 12;
+            productoSeleccionadoLBL.Text = "Producto Seleccionado";
+            // 
+            // productoSeleccionadoTXT
+            // 
+            productoSeleccionadoTXT.Location = new Point(491, 160);
+            productoSeleccionadoTXT.Name = "productoSeleccionadoTXT";
+            productoSeleccionadoTXT.Size = new Size(246, 27);
+            productoSeleccionadoTXT.TabIndex = 13;
+            // 
+            // cantidadDisponibleTXT
+            // 
+            cantidadDisponibleTXT.Location = new Point(491, 222);
+            cantidadDisponibleTXT.Name = "cantidadDisponibleTXT";
+            cantidadDisponibleTXT.Size = new Size(246, 27);
+            cantidadDisponibleTXT.TabIndex = 15;
+            // 
+            // cantidadDisponibleLBL
+            // 
+            cantidadDisponibleLBL.AutoSize = true;
+            cantidadDisponibleLBL.Location = new Point(491, 199);
+            cantidadDisponibleLBL.Name = "cantidadDisponibleLBL";
+            cantidadDisponibleLBL.Size = new Size(145, 20);
+            cantidadDisponibleLBL.TabIndex = 14;
+            cantidadDisponibleLBL.Text = "Cantidad Disponible";
+            // 
+            // cantidadSeleccionadaTXT
+            // 
+            cantidadSeleccionadaTXT.Location = new Point(491, 284);
+            cantidadSeleccionadaTXT.Name = "cantidadSeleccionadaTXT";
+            cantidadSeleccionadaTXT.Size = new Size(246, 27);
+            cantidadSeleccionadaTXT.TabIndex = 17;
+            // 
+            // cantidadSeleccionadaLBL
+            // 
+            cantidadSeleccionadaLBL.AutoSize = true;
+            cantidadSeleccionadaLBL.Location = new Point(491, 261);
+            cantidadSeleccionadaLBL.Name = "cantidadSeleccionadaLBL";
+            cantidadSeleccionadaLBL.Size = new Size(161, 20);
+            cantidadSeleccionadaLBL.TabIndex = 16;
+            cantidadSeleccionadaLBL.Text = "Cantidad Seleccionada";
+            // 
+            // agregarProductoBTN
+            // 
+            agregarProductoBTN.Location = new Point(491, 335);
+            agregarProductoBTN.Name = "agregarProductoBTN";
+            agregarProductoBTN.Size = new Size(246, 29);
+            agregarProductoBTN.TabIndex = 18;
+            agregarProductoBTN.Text = "Agregar Producto a la Orden";
+            agregarProductoBTN.UseVisualStyleBackColor = true;
+            // 
+            // opLBL
+            // 
+            opLBL.AutoSize = true;
+            opLBL.Location = new Point(13, 379);
+            opLBL.Name = "opLBL";
+            opLBL.Size = new Size(154, 20);
+            opLBL.TabIndex = 19;
+            opLBL.Text = "Orden de Preparación";
+            // 
+            // ordenPreparacionLST
+            // 
+            ordenPreparacionLST.Columns.AddRange(new ColumnHeader[] { nombreProductoLBL, cantidadSeleccionadaCLM, posicionCLM });
+            ordenPreparacionLST.FullRowSelect = true;
+            ordenPreparacionLST.Location = new Point(13, 420);
+            ordenPreparacionLST.Name = "ordenPreparacionLST";
+            ordenPreparacionLST.Size = new Size(441, 161);
+            ordenPreparacionLST.TabIndex = 23;
+            ordenPreparacionLST.UseCompatibleStateImageBehavior = false;
+            ordenPreparacionLST.View = View.Details;
+            // 
+            // nombreProductoLBL
+            // 
+            nombreProductoLBL.Text = "Nombre Producto";
+            nombreProductoLBL.Width = 150;
+            // 
+            // cantidadSeleccionadaCLM
+            // 
+            cantidadSeleccionadaCLM.Text = "Cantidad Seleccionada";
+            cantidadSeleccionadaCLM.Width = 170;
+            // 
+            // posicionCLM
+            // 
+            posicionCLM.Text = "Posición";
+            posicionCLM.Width = 100;
+            // 
+            // fechaRetirarLBL
+            // 
+            fechaRetirarLBL.AutoSize = true;
+            fechaRetirarLBL.Location = new Point(491, 420);
+            fechaRetirarLBL.Name = "fechaRetirarLBL";
+            fechaRetirarLBL.Size = new Size(107, 20);
+            fechaRetirarLBL.TabIndex = 26;
+            fechaRetirarLBL.Text = "Fecha a Retirar";
+            // 
+            // fechaRetirarTXT
+            // 
+            fechaRetirarTXT.Location = new Point(491, 443);
+            fechaRetirarTXT.Name = "fechaRetirarTXT";
+            fechaRetirarTXT.Size = new Size(246, 27);
+            fechaRetirarTXT.TabIndex = 27;
+            // 
+            // prioridadLBL
+            // 
+            prioridadLBL.AutoSize = true;
+            prioridadLBL.Location = new Point(491, 481);
+            prioridadLBL.Name = "prioridadLBL";
+            prioridadLBL.Size = new Size(70, 20);
+            prioridadLBL.TabIndex = 30;
+            prioridadLBL.Text = "Prioridad";
+            // 
+            // prioridadCMB
+            // 
+            prioridadCMB.FormattingEnabled = true;
+            prioridadCMB.Location = new Point(491, 504);
+            prioridadCMB.Name = "prioridadCMB";
+            prioridadCMB.Size = new Size(246, 28);
+            prioridadCMB.TabIndex = 31;
+            // 
+            // cuilTransportistaLBL
+            // 
+            cuilTransportistaLBL.AutoSize = true;
+            cuilTransportistaLBL.Location = new Point(491, 554);
+            cuilTransportistaLBL.Name = "cuilTransportistaLBL";
+            cuilTransportistaLBL.Size = new Size(128, 20);
+            cuilTransportistaLBL.TabIndex = 32;
+            cuilTransportistaLBL.Text = "CUIL Transportista";
+            // 
+            // cancelarBTN
+            // 
+            cancelarBTN.Location = new Point(615, 658);
+            cancelarBTN.Name = "cancelarBTN";
+            cancelarBTN.Size = new Size(122, 29);
+            cancelarBTN.TabIndex = 36;
+            cancelarBTN.Text = "Cancelar";
+            cancelarBTN.UseVisualStyleBackColor = true;
+            // 
+            // generarOPBTN
+            // 
+            generarOPBTN.Location = new Point(375, 635);
+            generarOPBTN.Name = "generarOPBTN";
+            generarOPBTN.Size = new Size(223, 52);
+            generarOPBTN.TabIndex = 37;
+            generarOPBTN.Text = "Generar Orden de Preparación";
+            generarOPBTN.UseVisualStyleBackColor = true;
+            // 
+            // cuilTransportistaTXT
+            // 
+            cuilTransportistaTXT.Location = new Point(491, 577);
+            cuilTransportistaTXT.Name = "cuilTransportistaTXT";
+            cuilTransportistaTXT.Size = new Size(246, 27);
+            cuilTransportistaTXT.TabIndex = 38;
+            // 
+            // quitarProductoBTN
+            // 
+            quitarProductoBTN.Location = new Point(324, 349);
+            quitarProductoBTN.Name = "quitarProductoBTN";
+            quitarProductoBTN.Size = new Size(130, 29);
+            quitarProductoBTN.TabIndex = 39;
+            quitarProductoBTN.Text = "Quitar Producto";
+            quitarProductoBTN.UseVisualStyleBackColor = true;
+            // 
+            // OrdenDePreparacion
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(781, 712);
+            Controls.Add(quitarProductoBTN);
+            Controls.Add(cuilTransportistaTXT);
+            Controls.Add(generarOPBTN);
+            Controls.Add(cancelarBTN);
+            Controls.Add(cuilTransportistaLBL);
+            Controls.Add(prioridadCMB);
+            Controls.Add(prioridadLBL);
+            Controls.Add(fechaRetirarTXT);
+            Controls.Add(fechaRetirarLBL);
+            Controls.Add(ordenPreparacionLST);
+            Controls.Add(opLBL);
+            Controls.Add(agregarProductoBTN);
+            Controls.Add(cantidadSeleccionadaTXT);
+            Controls.Add(cantidadSeleccionadaLBL);
+            Controls.Add(cantidadDisponibleTXT);
+            Controls.Add(cantidadDisponibleLBL);
+            Controls.Add(productoSeleccionadoTXT);
+            Controls.Add(productoSeleccionadoLBL);
+            Controls.Add(productosClienteLST);
+            Controls.Add(depositoPorClienteLBL);
+            Controls.Add(limpiarFiltrosBTN);
+            Controls.Add(buscarProductosBTN);
+            Controls.Add(razonSocialClienteTXT);
+            Controls.Add(label3);
+            Controls.Add(numeroClienteTXT);
+            Controls.Add(label2);
+            Name = "OrdenDePreparacion";
+            Text = "OrdenDePreparacion";
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+        private Label label2;
+        private TextBox numeroClienteTXT;
+        private TextBox razonSocialClienteTXT;
+        private Label label3;
+        private Button buscarProductosBTN;
+        private Button limpiarFiltrosBTN;
+        private Label depositoPorClienteLBL;
+        private ListView productosClienteLST;
+        private Label productoSeleccionadoLBL;
+        private TextBox productoSeleccionadoTXT;
+        private TextBox cantidadDisponibleTXT;
+        private Label cantidadDisponibleLBL;
+        private TextBox cantidadSeleccionadaTXT;
+        private Label cantidadSeleccionadaLBL;
+        private Button agregarProductoBTN;
+        private Label opLBL;
+        private Label label12;
+        private ListView ordenPreparacionLST;
+        private Label label14;
+        private Label fechaRetirarLBL;
+        private TextBox fechaRetirarTXT;
+        private Label prioridadLBL;
+        private ComboBox prioridadCMB;
+        private Label cuilTransportistaLBL;
+        private Button cancelarBTN;
+        private Button generarOPBTN;
+        private ColumnHeader skuProductoCLM;
+        private ColumnHeader nombreProductoCLM;
+        private ColumnHeader cantidadProductoCLM;
+        private ColumnHeader posicionProductoCLM;
+        private ColumnHeader nombreProductoLBL;
+        private ColumnHeader cantidadSeleccionadaCLM;
+        private ColumnHeader posicionCLM;
+        private TextBox cuilTransportistaTXT;
+        private Button quitarProductoBTN;
+    }
+}
