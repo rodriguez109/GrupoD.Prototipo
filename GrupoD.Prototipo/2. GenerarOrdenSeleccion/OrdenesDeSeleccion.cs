@@ -9,7 +9,6 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
     class OrdenesDeSeleccion
     {
         // Atributos
-        public int IDOrdenSeleccion { get; set; }
         public int NumeroOrdenSeleccion { get; set; }
         public List<OrdenesDePreparacion> OrdenesPreparacion { get; set; }
         public DateTime FechaGeneracion { get; set; }
