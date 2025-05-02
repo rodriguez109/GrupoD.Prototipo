@@ -105,11 +105,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(250, 46);
+            label1.Location = new Point(228, 53);
             label1.Name = "label1";
-            label1.Size = new Size(70, 15);
+            label1.Size = new Size(118, 15);
             label1.TabIndex = 7;
-            label1.Text = "Menu Inicio";
+            label1.Text = "Menu Inicio Empresa";
             // 
             // MenuForm
             // 
@@ -125,7 +125,7 @@
             Controls.Add(GenerarOSMenuBTN);
             Controls.Add(GenerarOPMenuBTN);
             Name = "MenuForm";
-            Text = "Menu";
+            Text = "Menu Empresa";
             Load += MenuForm_Load;
             ResumeLayout(false);
             PerformLayout();
