@@ -1,3 +1,4 @@
+using GrupoD.Prototipo._0._Menu_Principal;
 using GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion;
 
 namespace GrupoD.Prototipo
@@ -13,8 +14,8 @@ namespace GrupoD.Prototipo
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            //Application.Run(new Form1());
-            Application.Run(new GenerarOrdenDeSeleccionForm());
+            Application.Run(new MenuForm());
+            //Application.Run(new GenerarOrdenDeSeleccionForm()); // esto era para probar funcionamiento
         }
     }
 }

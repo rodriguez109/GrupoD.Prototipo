@@ -8,5 +8,21 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
 {
     class OrdenesDePreparacion
     {
+        // Atributos
+        public int NumeroOrden { get; set; }
+        public string NombreCliente { get; set; }
+        public DateTime FechaEntrega { get; set; }
+        public string Transportista { get; set; }
+        public string Prioridad { get; set; }
+
+        // Constructor
+        public OrdenesDePreparacion(int numeroOrden, string nombreCliente, DateTime fechaEntrega, string transportista, string prioridad)
+        {
+            NumeroOrden = numeroOrden;
+            NombreCliente = nombreCliente;
+            FechaEntrega = fechaEntrega;
+            Transportista = transportista;
+            Prioridad = prioridad;
+        }
     }
 }
