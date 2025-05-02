@@ -128,7 +128,7 @@
             productosClienteLST.FullRowSelect = true;
             productosClienteLST.Location = new Point(13, 137);
             productosClienteLST.Name = "productosClienteLST";
-            productosClienteLST.Size = new Size(441, 197);
+            productosClienteLST.Size = new Size(441, 192);
             productosClienteLST.TabIndex = 11;
             productosClienteLST.UseCompatibleStateImageBehavior = false;
             productosClienteLST.View = View.Details;
@@ -314,7 +314,7 @@
             // 
             // quitarProductoBTN
             // 
-            quitarProductoBTN.Location = new Point(324, 349);
+            quitarProductoBTN.Location = new Point(324, 335);
             quitarProductoBTN.Name = "quitarProductoBTN";
             quitarProductoBTN.Size = new Size(130, 29);
             quitarProductoBTN.TabIndex = 39;

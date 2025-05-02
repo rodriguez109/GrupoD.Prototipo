@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrupoD.Prototipo._2._GenerarOrdenSeleccion;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,11 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
         {
             InitializeComponent();
         }
+
+        //El formulario tiene una referencia al modelo
+        private OrdenDePreparacionModelo modelo;
+        private List<OrdenesDePreparacion> OrdenesPreparacionDisponibles = new List<OrdenesDePreparacion>();
+        private List<OrdenesDePreparacion> OrdenesAgregadas = new List<OrdenesDePreparacion>();
 
         private void OrdenDePreparacion_Load(object sender, EventArgs e)
         {
