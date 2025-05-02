@@ -63,7 +63,7 @@
             // 
             // columnHeader1
             // 
-            columnHeader1.Text = "Fecha de Entrega";
+            columnHeader1.Text = "Fecha de Entrega ff";
             columnHeader1.Width = 150;
             // 
             // columnHeader2
