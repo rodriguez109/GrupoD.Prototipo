@@ -82,7 +82,10 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
             {
                 MessageBox.Show("Por favor, ingrese al menos un criterio de búsqueda.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                // Reutilizar método para recargar la lista completa
+                // Limpiar los filtros ingresados
+                BorrarFiltros();
+
+                // Recargar la lista completa
                 ActualizarListaOrdenDePreparacion();
                 return;
             }
@@ -111,6 +114,9 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
                 else
                 {
                     MessageBox.Show("El número de orden debe ser un número entero válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    // Limpiar filtros después del error
+                    BorrarFiltros();
                     return;
                 }
             }
@@ -134,7 +140,10 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
             {
                 MessageBox.Show("No se encontraron órdenes de preparación que coincidan con los criterios de búsqueda.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Si no hay resultados, recargar la lista completa en lugar de dejarla vacía
+                // Limpiar filtros después del mensaje de error
+                BorrarFiltros();
+
+                // Si no hay resultados, recargar la lista completa
                 ActualizarListaOrdenDePreparacion();
                 return;
             }
