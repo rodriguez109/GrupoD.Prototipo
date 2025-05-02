@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            IDOrdenSeleccionTXT = new TextBox();
             groupBox1 = new GroupBox();
             FechaEntregaDTP = new DateTimePicker();
             ReiniciarBusquedaBTN = new Button();
@@ -59,26 +57,11 @@
             QuitarOrdenesSeleccionadasBTN = new Button();
             GenerarOrdenSeleccionBTN = new Button();
             CancelarOrdenSeleccionBTN = new Button();
+            label1 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(25, 21);
-            label1.Name = "label1";
-            label1.Size = new Size(126, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Orden de Selección N°";
-            // 
-            // IDOrdenSeleccionTXT
-            // 
-            IDOrdenSeleccionTXT.Location = new Point(157, 18);
-            IDOrdenSeleccionTXT.Name = "IDOrdenSeleccionTXT";
-            IDOrdenSeleccionTXT.Size = new Size(100, 23);
-            IDOrdenSeleccionTXT.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -92,9 +75,9 @@
             groupBox1.Controls.Add(NombreClienteTXT);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
-            groupBox1.Location = new Point(25, 47);
+            groupBox1.Location = new Point(25, 39);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1169, 118);
+            groupBox1.Size = new Size(1169, 126);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Filtrar por:";
@@ -108,21 +91,23 @@
             // 
             // ReiniciarBusquedaBTN
             // 
-            ReiniciarBusquedaBTN.Location = new Point(928, 71);
+            ReiniciarBusquedaBTN.Location = new Point(928, 79);
             ReiniciarBusquedaBTN.Name = "ReiniciarBusquedaBTN";
-            ReiniciarBusquedaBTN.Size = new Size(176, 23);
+            ReiniciarBusquedaBTN.Size = new Size(176, 41);
             ReiniciarBusquedaBTN.TabIndex = 7;
             ReiniciarBusquedaBTN.Text = "Reiniciar busqueda";
             ReiniciarBusquedaBTN.UseVisualStyleBackColor = true;
+            ReiniciarBusquedaBTN.Click += ReiniciarBusquedaBTN_Click;
             // 
             // BuscarOrdenesPendientesBTN
             // 
-            BuscarOrdenesPendientesBTN.Location = new Point(928, 28);
+            BuscarOrdenesPendientesBTN.Location = new Point(928, 13);
             BuscarOrdenesPendientesBTN.Name = "BuscarOrdenesPendientesBTN";
-            BuscarOrdenesPendientesBTN.Size = new Size(176, 23);
+            BuscarOrdenesPendientesBTN.Size = new Size(176, 56);
             BuscarOrdenesPendientesBTN.TabIndex = 3;
-            BuscarOrdenesPendientesBTN.Text = "Buscar ordenes pendientes";
+            BuscarOrdenesPendientesBTN.Text = "Buscar ordenes de preparación pendientes";
             BuscarOrdenesPendientesBTN.UseVisualStyleBackColor = true;
+            BuscarOrdenesPendientesBTN.Click += BuscarOrdenesPendientesBTN_Click;
             // 
             // PrioridadCMB
             // 
@@ -190,6 +175,7 @@
             AgregarOrdenesSeleccionadasBTN.TabIndex = 6;
             AgregarOrdenesSeleccionadasBTN.Text = "Agregar las ordenes seleccionadas";
             AgregarOrdenesSeleccionadasBTN.UseVisualStyleBackColor = true;
+            AgregarOrdenesSeleccionadasBTN.Click += AgregarOrdenesSeleccionadasBTN_Click;
             // 
             // groupBox2
             // 
@@ -293,6 +279,7 @@
             QuitarOrdenesSeleccionadasBTN.TabIndex = 6;
             QuitarOrdenesSeleccionadasBTN.Text = "Quitar las ordenes seleccionadas";
             QuitarOrdenesSeleccionadasBTN.UseVisualStyleBackColor = true;
+            QuitarOrdenesSeleccionadasBTN.Click += QuitarOrdenesSeleccionadasBTN_Click;
             // 
             // GenerarOrdenSeleccionBTN
             // 
@@ -302,6 +289,7 @@
             GenerarOrdenSeleccionBTN.TabIndex = 12;
             GenerarOrdenSeleccionBTN.Text = "Generar orden de seleccion";
             GenerarOrdenSeleccionBTN.UseVisualStyleBackColor = true;
+            GenerarOrdenSeleccionBTN.Click += GenerarOrdenSeleccionBTN_Click;
             // 
             // CancelarOrdenSeleccionBTN
             // 
@@ -311,6 +299,16 @@
             CancelarOrdenSeleccionBTN.TabIndex = 13;
             CancelarOrdenSeleccionBTN.Text = "Cancelar";
             CancelarOrdenSeleccionBTN.UseVisualStyleBackColor = true;
+            CancelarOrdenSeleccionBTN.Click += CancelarOrdenSeleccionBTN_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(25, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(109, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Orden de Selección";
             // 
             // GenerarOrdenDeSeleccionForm
             // 
@@ -322,10 +320,10 @@
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(IDOrdenSeleccionTXT);
             Controls.Add(label1);
             Name = "GenerarOrdenDeSeleccionForm";
             Text = "Generar orden de selección";
+            Load += GenerarOrdenDeSeleccionForm_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -335,9 +333,6 @@
         }
 
         #endregion
-
-        private Label label1;
-        private TextBox IDOrdenSeleccionTXT;
         private GroupBox groupBox1;
         private Label label3;
         private Label label2;
@@ -367,5 +362,6 @@
         private ColumnHeader columnHeader8;
         private ColumnHeader columnHeader9;
         private ColumnHeader columnHeader10;
+        private Label label1;
     }
 }
