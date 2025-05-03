@@ -12,7 +12,7 @@ namespace GrupoD.Prototipo
 {
     public class OrdenEntrega
     {
-        public string Codigo { get; set; }
+        public int Codigo { get; set; }
         public string Cliente { get; set; }
         public string FechaEntrega { get; set; }
         public string Transportista { get; set; }
@@ -28,8 +28,8 @@ namespace GrupoD.Prototipo
         {
             var ordenes = new List<OrdenEntrega>
         {
-            new OrdenEntrega { Codigo = "ORD011", Cliente = "Juan Pérez", FechaEntrega = "03/05/2025", Transportista = "TransLogix" },
-            new OrdenEntrega { Codigo = "ORD02", Cliente = "María Gómez", FechaEntrega = "04/05/2025", Transportista = "EnvíaYA" }
+            new OrdenEntrega { Codigo = 1, Cliente = "Juan Pérez", FechaEntrega = "03/05/2025", Transportista = "TransLogix" },
+            new OrdenEntrega { Codigo = 2, Cliente = "María Gómez", FechaEntrega = "04/05/2025", Transportista = "EnvíaYA" }
         };
 
             listView1LST.Items.Clear();
@@ -43,7 +43,10 @@ namespace GrupoD.Prototipo
                 listView1LST.Items.Add(item);
             }
         }
-        
+        private void GenerarOrdendeEntrega_Load(object sender, EventArgs e)
+        {
+            CargarListaOrdenes();
+        }
 
         private void buttonBTN_Click(object sender, EventArgs e)
         {
@@ -60,9 +63,6 @@ namespace GrupoD.Prototipo
             // Lógica opcional al cambiar selección
         }
 
-        private void GenerarOrdendeEntrega_Load(object sender, EventArgs e)
-        {
-            CargarListaOrdenes();
-        }
+        
     }
 }
