@@ -5,43 +5,40 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Prototipo.PrepararProductos.PrepararProductos;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GrupoD.Prototipo._4._Empaquetar_Productos
 {
-    public partial class GenerarOrdenPreparadaForm : Form
+    public partial class EmpaquetarProductosForm : Form
     {
-        private List<OrdenPreparacion> listaOrdenesPreparacion;
-
-        public GenerarOrdenPreparadaForm()
+        public EmpaquetarProductosForm()
         {
             InitializeComponent();
+        }
+
+        private EmpaquetarProductosForm modelo;
+        private List<OrdenPreparacion> OrdenesPreparacionDisponibles = new List<OrdenPreparacion>();
+
+        //private List<OrdenPreparacion> listaOrdenesPreparacion;
+
+        //public GenerarOrdenPreparadaForm()
+        //{
+        //    InitializeComponent();
 
             // Simular carga de datos desde NuevaOrdenModelo
-            listaOrdenesPreparacion = new List<OrdenPreparacion>
-            {
-            //new OrdenPreparacion { NumeroOrden = 1, SKUProducto = "A123", NombreProducto = "Art1", CantidadProducto = 10 },
-            //new OrdenPreparacion { NumeroOrden = 2, SKUProducto = "A124", NombreProducto = "Art2", CantidadProducto = 4 },
-            };
+            //listaOrdenesPreparacion = new List<OrdenPreparacion>
+            //{
+            ////new OrdenPreparacion { NumeroOrden = 1, SKUProducto = "A123", NombreProducto = "Art1", CantidadProducto = 10 },
+            ////new OrdenPreparacion { NumeroOrden = 2, SKUProducto = "A124", NombreProducto = "Art2", CantidadProducto = 4 },
+            //};
 
             //comboOrdenSeleccion.DataSource = listaOrdenes;
             //comboOrdenSeleccion.DisplayMember = "ToString";
             //comboOrdenSeleccion.SelectedIndexChanged += comboordenseleccion_SelectedIndexChanged;
-
-            //ConfigurarListView();
-        }
-
-        //private void ConfigurarListView()
-        //{
-        //    listView2.View = View.Details;
-        //    listView2.Columns.Clear();
-        //    listView2.Columns.Add("Ubicación", 100);
-        //    listView2.Columns.Add("SKU Producto", 120);
-        //    listView2.Columns.Add("Cantidad", 80);
-        //}
 
 
 
