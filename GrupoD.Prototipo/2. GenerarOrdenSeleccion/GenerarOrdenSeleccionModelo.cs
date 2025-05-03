@@ -1,4 +1,4 @@
-﻿using GrupoD.Prototipo.CDU4._OrdenEnPreparacion;
+﻿using GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion;
 using System;
 using System.Collections.Generic;
 using System.Linq;

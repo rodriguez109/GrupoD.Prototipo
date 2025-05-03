@@ -8,13 +8,13 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
 {
     class OrdenesEnPreparacion
     {
-        // Atributos
+        // Atributos.
         public int NumeroOrden { get; set; }
         public string SKUProducto { get; set; }
         public string NombreProducto { get; set; }
         public int CantidadProducto { get; set; }
 
-        // Constructor
+        // Constructor.
         public OrdenesEnPreparacion(int numeroOrden, string skuProducto, string nombreProducto, int cantidadProducto)
         {
             NumeroOrden = numeroOrden;
