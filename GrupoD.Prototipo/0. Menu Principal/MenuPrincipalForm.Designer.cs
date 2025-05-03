@@ -92,11 +92,7 @@ namespace GrupoD.Prototipo._0._Menu_Principal
             GenerarOEMenuBTN.Text = "Generar orden de entrega";
             GenerarOEMenuBTN.UseVisualStyleBackColor = true;
             GenerarOEMenuBTN.Click += GenerarOEMenuBTN_Click;
-            private void GenerarOEMenuBTN_Click(object sender, EventArgs e)
-        {
-            var ventana = new GenerarOrdendeEntregaForm();
-            ventana.Show(); 
-        }
+
         // 
         // GenerarDocMenuBTN
         // 

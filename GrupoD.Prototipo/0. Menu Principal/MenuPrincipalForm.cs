@@ -1,4 +1,5 @@
-﻿using GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion;
+﻿using GrupoD.Prototipo._5._Generar_Orden_de_Entrega;
+using GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,10 +29,16 @@ namespace GrupoD.Prototipo._0._Menu_Principal
             GenerarOrdenDeSeleccionForm generarOrdenDeSeleccionForm = new GenerarOrdenDeSeleccionForm();
             generarOrdenDeSeleccionForm.Show();
         }
+        
+        private void GenerarOEMenuBTN_Click(object sender, EventArgs e)
+        {
+            var ventana = new GenerarOrdendeEntregaForm();
+            ventana.Show();
+        }
+
 
         private void GenerarOPMenuBTN_Click(object sender, EventArgs e)
         {
-//>>>>>>> c9680d6050ca24c1528df9bb3c468796010f5fc2
 
         }
     }
