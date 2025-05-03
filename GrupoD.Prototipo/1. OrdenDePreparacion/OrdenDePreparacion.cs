@@ -31,7 +31,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
         private void OrdenDePreparacion_Load(object sender, EventArgs e)
         {
-            modelo2 = new OrdenDePreparacionModelo();
+            modelo = new OrdenDePreparacionModelo();
             // Aquí puedes inicializar el modelo o cargar datos si es necesario
 
             //Habilitar las partes superiores del formulario

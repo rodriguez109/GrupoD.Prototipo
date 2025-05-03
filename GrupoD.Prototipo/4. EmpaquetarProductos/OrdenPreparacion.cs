@@ -14,14 +14,6 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
         // Atributos.
         public int NumeroOrden { get; set; }
         public List<Producto> Productos { get; set; } = new List<Producto>();
-        
-
-        // Constructor.
-        public OrdenPreparacion(int numeroOrden)
-        {
-            NumeroOrden = numeroOrden;
-        }
-
         public override string ToString()
         {
             return $"{NumeroOrden}";
