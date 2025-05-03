@@ -28,6 +28,11 @@ namespace GrupoD.Prototipo._0._Menu_Principal
             GenerarOrdenDeSeleccionForm generarOrdenDeSeleccionForm = new GenerarOrdenDeSeleccionForm();
             generarOrdenDeSeleccionForm.Show();
         }
+
+        private void GenerarOPMenuBTN_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
