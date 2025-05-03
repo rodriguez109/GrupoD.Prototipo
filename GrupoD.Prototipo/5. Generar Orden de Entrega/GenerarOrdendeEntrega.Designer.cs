@@ -57,7 +57,7 @@
             // 
             // columnHeader2
             // 
-            columnHeader2.Text = "Cliente";
+            columnHeader2.Text = "Razón Social Cliente";
             columnHeader2.Width = 200;
             // 
             // Fecha
