@@ -47,6 +47,7 @@
             GenerarOPMenuBTN.TabIndex = 0;
             GenerarOPMenuBTN.Text = "Generar orden de preparacion";
             GenerarOPMenuBTN.UseVisualStyleBackColor = true;
+            GenerarOPMenuBTN.Click += GenerarOPMenuBTN_Click;
             // 
             // GenerarOSMenuBTN
             // 

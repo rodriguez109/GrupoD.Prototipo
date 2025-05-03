@@ -1,21 +1,20 @@
-﻿using GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion;
+﻿//using GrupoD.Prototipo.CDU4._EmpaquetarProductos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
+namespace GrupoD.Prototipo._4._EmpaquetarProductos
 {
-    class GenerarOrdenSeleccionModelo
+    class EmpaquetarProductosModelo
     {
-        public List<OrdenesDePreparacion> OrdenesPreparacionDisponibles { get; set; }
-        public List<OrdenesDeSeleccion> OrdenesDeSeleccion { get; set; }  // Agregar esta propiedad
-        public List<OrdenesDePreparacion> OrdenesAgregadas { get; set; } // Lista de órdenes ya agregadas
+        public List<OrdenesEnPreparacion> OrdenesEnPreparacionDisponibles { get; set; }
+        //public List<OrdenesDeSeleccion> OrdenesDeSeleccion { get; set; }  // Agregar esta propiedad
 
-        public GenerarOrdenSeleccionModelo()
+        public EmpaquetarProductosModelo()
         {
-            OrdenesPreparacionDisponibles = new List<OrdenesDePreparacion>
+            OrdenesEnPreparacionDisponibles = new List<OrdenesEnPreparacion>
             {
             new OrdenesDePreparacion(1, "DecoHogar S.A.", DateTime.Today.AddDays(0), "Transporte Sur", "Alta"),
             new OrdenesDePreparacion(2, "MaxiLuz Iluminación SRL", DateTime.Today.AddDays(1), "Express Cargo", "Media"),
@@ -37,20 +36,11 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
             new OrdenesDePreparacion(18, "DecorArte SRL", DateTime.Today.AddDays(17), "Express Cargo", "Media"),
             new OrdenesDePreparacion(19, "EasyTech Distribuciones S.A.", DateTime.Today.AddDays(18), "Transporte Sur", "Alta"),
             new OrdenesDePreparacion(20, "FerreMarket SRL", DateTime.Today.AddDays(19), "Logística Norte", "Baja"),
-            };
+            };  
 
             OrdenesAgregadas = new List<OrdenesDePreparacion>(); // Inicializar la nueva lista
             OrdenesDeSeleccion = new List<OrdenesDeSeleccion>();  // Lista de órdenes de selección
         }
-
-        //validar todo
-        //1) el apellido no puede estar vacio
-        //2) el apellido no puede tener mas de X caracteres
-        //3) tratamiento no valido
-        // ya existe una persona con mismo numero de dni y tipo
-        // hacer lo que haiga que hacer para guardar la informacion
-
-        // aca van las listas con datos inventados
-
     }
 }
+
