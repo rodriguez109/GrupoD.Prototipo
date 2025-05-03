@@ -33,6 +33,7 @@ namespace GrupoD.Prototipo._4._Empaquetar_Productos
 
             //ConfigurarListView();
         }
+        public OrdenPreparacion() { }
 
         //private void ConfigurarListView()
         //{
