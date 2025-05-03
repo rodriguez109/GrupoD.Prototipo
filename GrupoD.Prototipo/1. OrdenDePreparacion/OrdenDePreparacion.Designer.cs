@@ -209,6 +209,7 @@
             agregarProductoBTN.TabIndex = 18;
             agregarProductoBTN.Text = "Agregar Producto a la Orden";
             agregarProductoBTN.UseVisualStyleBackColor = true;
+            agregarProductoBTN.Click += agregarProductoBTN_Click;
             // 
             // opLBL
             // 
@@ -316,7 +317,9 @@
             // 
             // fechaRetirarDTP
             // 
+            fechaRetirarDTP.Format = DateTimePickerFormat.Short;
             fechaRetirarDTP.Location = new Point(491, 443);
+            fechaRetirarDTP.MinDate = new DateTime(2025, 5, 3, 0, 0, 0, 0);
             fechaRetirarDTP.Name = "fechaRetirarDTP";
             fechaRetirarDTP.Size = new Size(250, 27);
             fechaRetirarDTP.TabIndex = 40;
