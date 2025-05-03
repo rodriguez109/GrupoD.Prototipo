@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GrupoD.Prototipo._1._OrdenDePreparacion
-{
-    internal class ProductosPorCliente
-    {
+//namespace GrupoD.Prototipo._1._OrdenDePreparacion
+//{
+   // internal class ProductosPorCliente
+    //{
         //Atributos
         //int SKUProducto { get; set; }
         //string NombreProducto { get; set; }
@@ -23,7 +23,7 @@ namespace GrupoD.Prototipo._1._OrdenDePreparacion
             //Cantidad = cantidad;
             //Posicion = posicion;
         //}
-        public string NumeroCliente { get; set; }
-        public List<Producto> Productos { get; set; }
-    }
-}
+       // public string NumeroCliente { get; set; }
+       // public List<Producto> Productos { get; set; }
+    //}
+//}

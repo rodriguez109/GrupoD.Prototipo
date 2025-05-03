@@ -8,12 +8,13 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 {
     internal class OrdenDePreparacionClase
     {
-        public string? NumeroOrdenPreparacion { get; set; }
+        public int? NumeroOrdenPreparacion { get; set; }
         
         public string NombreProducto { get; set; }
 
         public string CantidadProducto { get; set; }
 
+        public string Posicion { get; set; }
         public DateTime FechaRetirar { get; set; }
       
         public string Prioridad { get; set; }

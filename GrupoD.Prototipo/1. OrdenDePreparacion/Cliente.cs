@@ -11,7 +11,9 @@ namespace GrupoD.Prototipo._1._OrdenDePreparacion
         //Atributos
         public int NumeroCliente { get; set; }
 
-        public string RazonSocialCliente { get; set; }  
+        public string RazonSocialCliente { get; set; }
+
+        public List<Producto> Productos { get; set; } = new List<Producto>();
 
         public Cliente(int numeroCliente, string razonSocialCliente)
         {

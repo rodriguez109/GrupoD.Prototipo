@@ -12,13 +12,15 @@ namespace GrupoD.Prototipo._1._OrdenDePreparacion
         public int SKUProducto { get; set; }
         public string NombreProducto { get; set; }
         public int Cantidad { get; set; }
-        public int Posicion { get; set; }
-        public Producto(int skuProducto, string nombreProducto, int cantidad, int posicion)
+        public string Posicion { get; set; }
+        public int NumeroCliente { get; set; }
+        public Producto(int skuProducto, string nombreProducto, int cantidad, string posicion, int numeroCliente)
         {
             SKUProducto = skuProducto;
             NombreProducto = nombreProducto;
             Cantidad = cantidad;
             Posicion = posicion;
+            NumeroCliente = numeroCliente;
         }
 
 
