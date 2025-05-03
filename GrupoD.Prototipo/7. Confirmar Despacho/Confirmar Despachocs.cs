@@ -26,5 +26,10 @@ namespace GrupoD.Prototipo._7._Confirmar_Despacho
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

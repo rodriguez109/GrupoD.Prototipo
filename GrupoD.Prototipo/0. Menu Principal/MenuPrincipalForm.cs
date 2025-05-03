@@ -1,5 +1,8 @@
 ﻿using GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion;
+using GrupoD.Prototipo;
+
 //using GrupoD.Prototipo._4._Empaquetar_Productos;
+//>>>>>>> b5605ac3bedbd13f710e58fc45e73dac3f630a1d
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,6 +32,14 @@ namespace GrupoD.Prototipo._0._Menu_Principal
             GenerarOrdenDeSeleccionForm generarOrdenDeSeleccionForm = new GenerarOrdenDeSeleccionForm();
             generarOrdenDeSeleccionForm.Show();
         }
+//<<<<<<< HEAD
+        private void GenerarOEMenuBTN_Click(object sender, EventArgs e)
+        {
+            GenerarOrdendeEntrega generarOrdenDeEntregaaForm = new GenerarOrdendeEntrega();
+            generarOrdenDeEntregaaForm.Show();
+        }
+//=======
+//=======
 
         private void EmpaquetarProductosMenuBTN_Click(object sender, EventArgs e)
         {
@@ -36,8 +47,10 @@ namespace GrupoD.Prototipo._0._Menu_Principal
             //    generarOrdenPreparadaForm.Show();
         }
 
+//>>>>>>> b5605ac3bedbd13f710e58fc45e73dac3f630a1d
         private void GenerarOPMenuBTN_Click(object sender, EventArgs e)
         {
+//>>>>>>> c9680d6050ca24c1528df9bb3c468796010f5fc2
 
         }
     }

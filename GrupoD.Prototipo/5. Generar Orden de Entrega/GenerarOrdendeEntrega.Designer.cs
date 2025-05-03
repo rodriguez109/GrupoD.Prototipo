@@ -2,15 +2,8 @@
 {
     partial class GenerarOrdendeEntrega
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,26 +15,16 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        /// 
-        private void GenerarOrdendeEntrega_Load(object sender, EventArgs e)
-        {
-            MessageBox.Show("Formulario cargado correctamente.");
-        }
-
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
             listView1LST = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
-            buttonBTN = new Button();
-            button2BTN = new Button();
             Fecha = new ColumnHeader();
             Transportista = new ColumnHeader();
+            buttonBTN = new Button();
+            button2BTN = new Button();
             SuspendLayout();
             // 
             // groupBox1
@@ -77,24 +60,6 @@
             columnHeader2.Text = "Cliente";
             columnHeader2.Width = 200;
             // 
-            // buttonBTN
-            // 
-            buttonBTN.Location = new Point(420, 390);
-            buttonBTN.Name = "buttonBTN";
-            buttonBTN.Size = new Size(232, 29);
-            buttonBTN.TabIndex = 2;
-            buttonBTN.Text = "Confirmar Orden de Entrega";
-            buttonBTN.UseVisualStyleBackColor = true;
-            // 
-            // button2BTN
-            // 
-            button2BTN.Location = new Point(674, 390);
-            button2BTN.Name = "button2BTN";
-            button2BTN.Size = new Size(101, 29);
-            button2BTN.TabIndex = 3;
-            button2BTN.Text = "Cancelar";
-            button2BTN.UseVisualStyleBackColor = true;
-            // 
             // Fecha
             // 
             Fecha.Text = "Fecha de Entrega";
@@ -104,6 +69,25 @@
             // 
             Transportista.Text = "Transportista";
             Transportista.Width = 150;
+            // 
+            // buttonBTN
+            // 
+            buttonBTN.Location = new Point(420, 390);
+            buttonBTN.Name = "buttonBTN";
+            buttonBTN.Size = new Size(232, 29);
+            buttonBTN.TabIndex = 2;
+            buttonBTN.Text = "Confirmar Orden de Entrega";
+            buttonBTN.UseVisualStyleBackColor = true;
+            buttonBTN.Click += new EventHandler(this.buttonBTN_Click);
+            // 
+            // button2BTN
+            // 
+            button2BTN.Location = new Point(674, 390);
+            button2BTN.Name = "button2BTN";
+            button2BTN.Size = new Size(101, 29);
+            button2BTN.TabIndex = 3;
+            button2BTN.Text = "Cancelar";
+            button2BTN.UseVisualStyleBackColor = true;
             // 
             // GenerarOrdendeEntrega
             // 
@@ -126,9 +110,9 @@
         private ListView listView1LST;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
-        private Button buttonBTN;
-        private Button button2BTN;
         private ColumnHeader Fecha;
         private ColumnHeader Transportista;
+        private Button buttonBTN;
+        private Button button2BTN;
     }
 }

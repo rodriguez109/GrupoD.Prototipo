@@ -8,23 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
+namespace GrupoD.Prototipo._4._EmpaquetarProductos
 {
-    public partial class OrdenPrep : Form
+    public partial class GenerarOrdenPreparada2Form : Form
     {
-        public OrdenPrep()
+        public GenerarOrdenPreparada2Form()
         {
             InitializeComponent();
         }
 
-        private void OrdenPrep_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
     }
 }
+
+
+//

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//using GrupoD.Prototipo._4._OrdenPreparacion;
+using GrupoD.Prototipo._4._Empaquetar_Productos;
+//using GrupoD.Prototipo._1._OrdenDePreparacion;
 
 namespace GrupoD.Prototipo._4._EmpaquetarProductos
 {
@@ -10,22 +13,18 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
     {
         // Atributos.
         public int NumeroOrden { get; set; }
-        public string SKUProducto { get; set; }
-        public string NombreProducto { get; set; }
-        public int CantidadProducto { get; set; }
+        public List<Producto> Productos { get; set; } = new List<Producto>();
+        
 
         // Constructor.
-        public OrdenPreparacion(int numeroOrden, string skuProducto, string nombreProducto, int cantidadProducto)
+        public OrdenPreparacion(int numeroOrden)
         {
             NumeroOrden = numeroOrden;
-            SKUProducto = skuProducto;
-            NombreProducto = nombreProducto;
-            CantidadProducto = cantidadProducto;
         }
 
         public override string ToString()
         {
-            return $"{NumeroOrden} - {SKUProducto} - {NombreProducto} - {CantidadProducto}";
+            return $"{NumeroOrden}";
         }
     }
 }

@@ -89,6 +89,7 @@
             GenerarOEMenuBTN.TabIndex = 4;
             GenerarOEMenuBTN.Text = "Generar orden de entrega";
             GenerarOEMenuBTN.UseVisualStyleBackColor = true;
+            GenerarOEMenuBTN.Click += GenerarOEMenuBTN_Click;
             // 
             // GenerarDocMenuBTN
             // 
