@@ -1,4 +1,4 @@
-﻿//using GrupoD.Prototipo.CDU4._EmpaquetarProductos;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +9,12 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
 {
     class EmpaquetarProductosModelo
     {
-        public List<OrdenesEnPreparacion> OrdenesEnPreparacionDisponibles { get; set; }
+        public List<OrdenPreparacion> OrdenesEnPreparacionDisponibles { get; set; }
         //public List<OrdenesDeSeleccion> OrdenesDeSeleccion { get; set; }  // Agregar esta propiedad
 
         public EmpaquetarProductosModelo()
         {
-            OrdenesEnPreparacionDisponibles = new List<OrdenesEnPreparacion>
+            OrdenesEnPreparacionDisponibles = new List<OrdenPreparacion>
             {
             
                 

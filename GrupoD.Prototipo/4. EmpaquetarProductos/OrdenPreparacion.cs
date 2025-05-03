@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GrupoD.Prototipo._4._EmpaquetarProductos
 {
-    class OrdenesEnPreparacion
+    class OrdenPreparacion
     {
         // Atributos.
         public int NumeroOrden { get; set; }
@@ -15,12 +15,17 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
         public int CantidadProducto { get; set; }
 
         // Constructor.
-        public OrdenesEnPreparacion(int numeroOrden, string skuProducto, string nombreProducto, int cantidadProducto)
+        public OrdenPreparacion(int numeroOrden, string skuProducto, string nombreProducto, int cantidadProducto)
         {
             NumeroOrden = numeroOrden;
             SKUProducto = skuProducto;
             NombreProducto = nombreProducto;
             CantidadProducto = cantidadProducto;
+        }
+
+        public override string ToString()
+        {
+            return $"{NumeroOrden} - {SKUProducto} - {NombreProducto} - {CantidadProducto}";
         }
     }
 }
