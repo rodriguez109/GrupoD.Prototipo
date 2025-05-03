@@ -23,8 +23,8 @@ namespace GrupoD.Prototipo._4._Empaquetar_Productos
             // Simular carga de datos desde NuevaOrdenModelo
             listaOrdenesPreparacion = new List<OrdenPreparacion>
             {
-            new OrdenPreparacion { NumeroOrden = 1, SKUProducto = "A123", NombreProducto = "Art1", CantidadProducto = 10 },
-            new OrdenPreparacion { NumeroOrden = 2, SKUProducto = "A124", NombreProducto = "Art2", CantidadProducto = 4 },
+            //new OrdenPreparacion { NumeroOrden = 1, SKUProducto = "A123", NombreProducto = "Art1", CantidadProducto = 10 },
+            //new OrdenPreparacion { NumeroOrden = 2, SKUProducto = "A124", NombreProducto = "Art2", CantidadProducto = 4 },
             };
 
             //comboOrdenSeleccion.DataSource = listaOrdenes;
