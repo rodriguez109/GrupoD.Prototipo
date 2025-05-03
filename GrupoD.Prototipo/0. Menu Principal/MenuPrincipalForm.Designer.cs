@@ -1,4 +1,6 @@
-﻿namespace GrupoD.Prototipo._0._Menu_Principal
+﻿using GrupoD.Prototipo._5._Generar_Orden_de_Entrega;
+
+namespace GrupoD.Prototipo._0._Menu_Principal
 {
     partial class MenuForm
     {
@@ -90,10 +92,15 @@
             GenerarOEMenuBTN.Text = "Generar orden de entrega";
             GenerarOEMenuBTN.UseVisualStyleBackColor = true;
             GenerarOEMenuBTN.Click += GenerarOEMenuBTN_Click;
-            // 
-            // GenerarDocMenuBTN
-            // 
-            GenerarDocMenuBTN.Location = new Point(118, 597);
+            private void GenerarOEMenuBTN_Click(object sender, EventArgs e)
+        {
+            var ventana = new GenerarOrdendeEntregaForm();
+            ventana.Show(); 
+        }
+        // 
+        // GenerarDocMenuBTN
+        // 
+        GenerarDocMenuBTN.Location = new Point(118, 597);
             GenerarDocMenuBTN.Margin = new Padding(3, 4, 3, 4);
             GenerarDocMenuBTN.Name = "GenerarDocMenuBTN";
             GenerarDocMenuBTN.Size = new Size(408, 60);

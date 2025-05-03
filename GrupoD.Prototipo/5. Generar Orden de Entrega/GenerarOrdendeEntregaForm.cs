@@ -19,6 +19,7 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
 
         private void label1_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Orden de entrega confirmada con éxito", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
     }
