@@ -1,4 +1,5 @@
 ﻿using GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion;
+using GrupoD.Prototipo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,13 @@ namespace GrupoD.Prototipo._0._Menu_Principal
         {
             GenerarOrdenDeSeleccionForm generarOrdenDeSeleccionForm = new GenerarOrdenDeSeleccionForm();
             generarOrdenDeSeleccionForm.Show();
+        }
+
+        private void GenerarOEMenuBTN_Click(object sender, EventArgs e)
+        {
+            GenerarOrdendeEntrega generarOrdenDeEntregaForm = new GenerarOrdendeEntrega();
+            generarOrdenDeEntregaForm.Show();
+
         }
     }
 }
