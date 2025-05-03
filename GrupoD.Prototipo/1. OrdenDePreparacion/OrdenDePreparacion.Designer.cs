@@ -53,7 +53,6 @@
             cantidadSeleccionadaCLM = new ColumnHeader();
             posicionCLM = new ColumnHeader();
             fechaRetirarLBL = new Label();
-            fechaRetirarTXT = new TextBox();
             prioridadLBL = new Label();
             prioridadCMB = new ComboBox();
             cuilTransportistaLBL = new Label();
@@ -61,6 +60,7 @@
             generarOPBTN = new Button();
             cuilTransportistaTXT = new TextBox();
             quitarProductoBTN = new Button();
+            fechaRetirarDTP = new DateTimePicker();
             SuspendLayout();
             // 
             // numeroClienteLBL
@@ -254,13 +254,6 @@
             fechaRetirarLBL.TabIndex = 26;
             fechaRetirarLBL.Text = "Fecha a Retirar";
             // 
-            // fechaRetirarTXT
-            // 
-            fechaRetirarTXT.Location = new Point(491, 443);
-            fechaRetirarTXT.Name = "fechaRetirarTXT";
-            fechaRetirarTXT.Size = new Size(246, 27);
-            fechaRetirarTXT.TabIndex = 27;
-            // 
             // prioridadLBL
             // 
             prioridadLBL.AutoSize = true;
@@ -321,11 +314,19 @@
             quitarProductoBTN.Text = "Quitar Producto";
             quitarProductoBTN.UseVisualStyleBackColor = true;
             // 
+            // fechaRetirarDTP
+            // 
+            fechaRetirarDTP.Location = new Point(491, 443);
+            fechaRetirarDTP.Name = "fechaRetirarDTP";
+            fechaRetirarDTP.Size = new Size(250, 27);
+            fechaRetirarDTP.TabIndex = 40;
+            // 
             // OrdenDePreparacion
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(781, 712);
+            Controls.Add(fechaRetirarDTP);
             Controls.Add(quitarProductoBTN);
             Controls.Add(cuilTransportistaTXT);
             Controls.Add(generarOPBTN);
@@ -333,7 +334,6 @@
             Controls.Add(cuilTransportistaLBL);
             Controls.Add(prioridadCMB);
             Controls.Add(prioridadLBL);
-            Controls.Add(fechaRetirarTXT);
             Controls.Add(fechaRetirarLBL);
             Controls.Add(ordenPreparacionLST);
             Controls.Add(opLBL);
@@ -379,7 +379,6 @@
         private ListView ordenPreparacionLST;
         private Label label14;
         private Label fechaRetirarLBL;
-        private TextBox fechaRetirarTXT;
         private Label prioridadLBL;
         private ComboBox prioridadCMB;
         private Label cuilTransportistaLBL;
@@ -394,5 +393,6 @@
         private ColumnHeader posicionCLM;
         private TextBox cuilTransportistaTXT;
         private Button quitarProductoBTN;
+        private DateTimePicker fechaRetirarDTP;
     }
 }

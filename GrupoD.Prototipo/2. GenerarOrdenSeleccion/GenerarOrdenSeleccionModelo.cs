@@ -36,7 +36,7 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
             new OrdenesDePreparacion(17, "FullOffice S.A.", DateTime.Today.AddDays(16), "Rápido S.A.", "Alta"),
             new OrdenesDePreparacion(18, "DecorArte SRL", DateTime.Today.AddDays(17), "Express Cargo", "Media"),
             new OrdenesDePreparacion(19, "EasyTech Distribuciones S.A.", DateTime.Today.AddDays(18), "Transporte Sur", "Alta"),
-            new OrdenesDePreparacion(20, "FerreMarket SRL", DateTime.Today.AddDays(19), "Logística Norte", "Baja")
+            new OrdenesDePreparacion(20, "FerreMarket SRL", DateTime.Today.AddDays(19), "Logística Norte", "Baja"),
             };
 
             OrdenesAgregadas = new List<OrdenesDePreparacion>(); // Inicializar la nueva lista
