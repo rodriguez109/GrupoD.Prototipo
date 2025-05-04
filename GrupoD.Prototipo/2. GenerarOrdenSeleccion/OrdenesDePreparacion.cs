@@ -12,11 +12,11 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
         public int NumeroOrden { get; set; }
         public string NombreCliente { get; set; }
         public DateTime FechaEntrega { get; set; }
-        public string Transportista { get; set; }
+        public int Transportista { get; set; }
         public string Prioridad { get; set; }
 
         // Constructor
-        public OrdenesDePreparacion(int numeroOrden, string nombreCliente, DateTime fechaEntrega, string transportista, string prioridad)
+        public OrdenesDePreparacion(int numeroOrden, string nombreCliente, DateTime fechaEntrega, int transportista, string prioridad)
         {
             NumeroOrden = numeroOrden;
             NombreCliente = nombreCliente;

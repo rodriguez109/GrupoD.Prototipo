@@ -154,7 +154,7 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
                 var item = new ListViewItem(orden.NumeroOrden.ToString());
                 item.SubItems.Add(orden.NombreCliente);
                 item.SubItems.Add(orden.FechaEntrega.ToShortDateString());
-                item.SubItems.Add(orden.Transportista);
+                item.SubItems.Add(orden.Transportista.ToString());
                 item.SubItems.Add(orden.Prioridad);
                 OrdenesPreparacionPendientesLST.Items.Add(item);
             }
@@ -213,7 +213,7 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
                 var item = new ListViewItem(orden.NumeroOrden.ToString());
                 item.SubItems.Add(orden.NombreCliente);
                 item.SubItems.Add(orden.FechaEntrega.ToShortDateString());
-                item.SubItems.Add(orden.Transportista);
+                item.SubItems.Add(orden.Transportista.ToString());
                 item.SubItems.Add(orden.Prioridad);
 
                 OrdenesPreparacionPendientesSeleccionadasLST.Items.Add(item);
@@ -353,7 +353,7 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
                 var item = new ListViewItem(orden.NumeroOrden.ToString());
                 item.SubItems.Add(orden.NombreCliente);
                 item.SubItems.Add(orden.FechaEntrega.ToShortDateString());
-                item.SubItems.Add(orden.Transportista);
+                item.SubItems.Add(orden.Transportista.ToString());
                 item.SubItems.Add(orden.Prioridad);
                 OrdenesPreparacionPendientesLST.Items.Add(item);
             }
