@@ -269,11 +269,20 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
                 nuevaOrden.Add(orden);
             }
+            
 
             // Incrementar el número de orden para la próxima vez
             numeroOrden++;
 
             MessageBox.Show($"Orden de Preparación Nº {numeroOrden - 1} generada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //Limpia los controles
+            numeroClienteTXT.Clear();
+            razonSocialClienteTXT.Clear();
+            productosClienteLST.Items.Clear();
+            ordenPreparacionLST.Items.Clear();
+            cantidadSeleccionadaTXT.Clear();
+            cuilTransportistaTXT.Clear();
         }
 
         
