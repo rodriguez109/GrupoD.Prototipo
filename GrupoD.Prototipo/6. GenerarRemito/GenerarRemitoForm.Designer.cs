@@ -40,26 +40,29 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(21, 33);
+            label1.Location = new Point(18, 25);
             label1.Name = "label1";
-            label1.Size = new Size(128, 20);
+            label1.Size = new Size(102, 15);
             label1.TabIndex = 0;
             label1.Text = "CUIL Transportista";
             // 
             // CuilTransportistaTXT
             // 
-            CuilTransportistaTXT.Location = new Point(12, 56);
+            CuilTransportistaTXT.Location = new Point(10, 42);
+            CuilTransportistaTXT.Margin = new Padding(3, 2, 3, 2);
             CuilTransportistaTXT.Name = "CuilTransportistaTXT";
-            CuilTransportistaTXT.Size = new Size(384, 27);
+            CuilTransportistaTXT.Size = new Size(336, 23);
             CuilTransportistaTXT.TabIndex = 1;
             CuilTransportistaTXT.TextChanged += CuilTransportistaTXT_TextChanged;
             // 
             // OrdenesDeEntregaLST
             // 
+            OrdenesDeEntregaLST.CheckBoxes = true;
             OrdenesDeEntregaLST.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
-            OrdenesDeEntregaLST.Location = new Point(12, 112);
+            OrdenesDeEntregaLST.Location = new Point(10, 84);
+            OrdenesDeEntregaLST.Margin = new Padding(3, 2, 3, 2);
             OrdenesDeEntregaLST.Name = "OrdenesDeEntregaLST";
-            OrdenesDeEntregaLST.Size = new Size(758, 229);
+            OrdenesDeEntregaLST.Size = new Size(664, 173);
             OrdenesDeEntregaLST.TabIndex = 2;
             OrdenesDeEntregaLST.UseCompatibleStateImageBehavior = false;
             OrdenesDeEntregaLST.View = View.Details;
@@ -71,9 +74,10 @@
             // 
             // AgregarAlRemitoBTN
             // 
-            AgregarAlRemitoBTN.Location = new Point(399, 366);
+            AgregarAlRemitoBTN.Location = new Point(349, 274);
+            AgregarAlRemitoBTN.Margin = new Padding(3, 2, 3, 2);
             AgregarAlRemitoBTN.Name = "AgregarAlRemitoBTN";
-            AgregarAlRemitoBTN.Size = new Size(157, 29);
+            AgregarAlRemitoBTN.Size = new Size(137, 22);
             AgregarAlRemitoBTN.TabIndex = 3;
             AgregarAlRemitoBTN.Text = "Agregar al remito";
             AgregarAlRemitoBTN.UseVisualStyleBackColor = true;
@@ -81,9 +85,10 @@
             // 
             // CancelarBTN
             // 
-            CancelarBTN.Location = new Point(576, 366);
+            CancelarBTN.Location = new Point(504, 274);
+            CancelarBTN.Margin = new Padding(3, 2, 3, 2);
             CancelarBTN.Name = "CancelarBTN";
-            CancelarBTN.Size = new Size(155, 29);
+            CancelarBTN.Size = new Size(136, 22);
             CancelarBTN.TabIndex = 4;
             CancelarBTN.Text = "Cancelar";
             CancelarBTN.UseVisualStyleBackColor = true;
@@ -91,9 +96,10 @@
             // 
             // BuscarOrdenesBTN
             // 
-            BuscarOrdenesBTN.Location = new Point(447, 54);
+            BuscarOrdenesBTN.Location = new Point(391, 40);
+            BuscarOrdenesBTN.Margin = new Padding(3, 2, 3, 2);
             BuscarOrdenesBTN.Name = "BuscarOrdenesBTN";
-            BuscarOrdenesBTN.Size = new Size(152, 29);
+            BuscarOrdenesBTN.Size = new Size(133, 22);
             BuscarOrdenesBTN.TabIndex = 5;
             BuscarOrdenesBTN.Text = "Buscar órdenes";
             BuscarOrdenesBTN.UseVisualStyleBackColor = true;
@@ -101,15 +107,16 @@
             // 
             // GenerarRemitoForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(781, 417);
+            ClientSize = new Size(683, 313);
             Controls.Add(BuscarOrdenesBTN);
             Controls.Add(CancelarBTN);
             Controls.Add(AgregarAlRemitoBTN);
             Controls.Add(OrdenesDeEntregaLST);
             Controls.Add(CuilTransportistaTXT);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "GenerarRemitoForm";
             Text = "GenerarRemitoForm";
             Load += GenerarRemitoForm_Load;
