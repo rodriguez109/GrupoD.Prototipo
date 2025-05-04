@@ -1,4 +1,4 @@
-﻿namespace GrupoD.Prototipo
+﻿namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
 {
     partial class GenerarOrdendeEntrega
     {
