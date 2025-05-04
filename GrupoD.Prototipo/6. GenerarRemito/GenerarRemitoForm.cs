@@ -28,6 +28,12 @@ namespace GrupoD.Prototipo._6._GenerarRemito
         {
             string cuil = CuilTransportistaTXT.Text.Trim();
 
+            if (string.IsNullOrEmpty(cuil))
+            {
+                MessageBox.Show("Debe ingresar un número de CUIL para poder continuar.", "CUIL inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (!EsCUILValido(cuil))
             {
                 MessageBox.Show("El CUIL debe tener 11 dígitos numéricos.", "CUIL inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -39,7 +45,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
 
             if (ordenes.Count == 0)
             {
-                MessageBox.Show("No se encontraron órdenes para este CUIL.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No se encontraron órdenes de entrega para este CUIL.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -52,11 +58,12 @@ namespace GrupoD.Prototipo._6._GenerarRemito
             }
         }
 
+
         private void AgregarAlRemitoBTN_Click(object sender, EventArgs e)
         {
             if (OrdenesDeEntregaLST.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Seleccioná al menos una orden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe seleccionar al menos una orden de entrega para continuar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -66,7 +73,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
             {
                 OrdenDeEntrega orden = (OrdenDeEntrega)item.Tag;
                 codigosAgregados.Add(orden.NumeroOrden);
-                // Podés usar la orden como quieras
+
             }
 
             string ordenesTexto = string.Join(", ", codigosAgregados);
@@ -84,6 +91,9 @@ namespace GrupoD.Prototipo._6._GenerarRemito
             this.Close();
         }
 
-        
+        private void CuilTransportistaTXT_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

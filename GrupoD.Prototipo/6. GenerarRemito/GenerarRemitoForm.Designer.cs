@@ -52,10 +52,10 @@
             CuilTransportistaTXT.Name = "CuilTransportistaTXT";
             CuilTransportistaTXT.Size = new Size(384, 27);
             CuilTransportistaTXT.TabIndex = 1;
+            CuilTransportistaTXT.TextChanged += CuilTransportistaTXT_TextChanged;
             // 
             // OrdenesDeEntregaLST
             // 
-            OrdenesDeEntregaLST.CheckBoxes = true;
             OrdenesDeEntregaLST.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
             OrdenesDeEntregaLST.Location = new Point(12, 112);
             OrdenesDeEntregaLST.Name = "OrdenesDeEntregaLST";
