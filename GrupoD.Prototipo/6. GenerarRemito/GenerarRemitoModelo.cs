@@ -16,6 +16,14 @@ namespace GrupoD.Prototipo._6._GenerarRemito
         new OrdenDeEntrega("3", "20242093527"),
         new OrdenDeEntrega("4", "27242093534"),
         new OrdenDeEntrega("5", "27242093534"),
+        new OrdenDeEntrega("6", "20242093543"),
+        new OrdenDeEntrega("7", "20242093543"),
+        new OrdenDeEntrega("8", "20242093543"),
+        new OrdenDeEntrega("9", "27242093552"),
+        new OrdenDeEntrega("9", "20242093560"),
+        new OrdenDeEntrega("9", "27242093577"),
+
+
 
         };
 

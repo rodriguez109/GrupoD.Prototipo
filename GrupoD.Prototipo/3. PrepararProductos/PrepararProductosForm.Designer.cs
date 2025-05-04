@@ -31,7 +31,7 @@
             label1 = new Label();
             comboOrdenSeleccion = new ComboBox();
             lViewOrdenSeleccion = new ListView();
-            ubicacionCol = new ColumnHeader();
+            posicionCol = new ColumnHeader();
             productoCol = new ColumnHeader();
             cantidadCol = new ColumnHeader();
             btnSeleccion = new Button();
@@ -57,7 +57,7 @@
             // 
             // lViewOrdenSeleccion
             // 
-            lViewOrdenSeleccion.Columns.AddRange(new ColumnHeader[] { ubicacionCol, productoCol, cantidadCol });
+            lViewOrdenSeleccion.Columns.AddRange(new ColumnHeader[] { posicionCol, productoCol, cantidadCol });
             lViewOrdenSeleccion.FullRowSelect = true;
             lViewOrdenSeleccion.Location = new Point(12, 72);
             lViewOrdenSeleccion.Name = "lViewOrdenSeleccion";
@@ -66,10 +66,10 @@
             lViewOrdenSeleccion.UseCompatibleStateImageBehavior = false;
             lViewOrdenSeleccion.View = View.Details;
             // 
-            // ubicacionCol
+            // posicionCol
             // 
-            ubicacionCol.Text = "Ubicación";
-            ubicacionCol.Width = 180;
+            posicionCol.Text = "Posición";
+            posicionCol.Width = 180;
             // 
             // productoCol
             // 
@@ -89,7 +89,6 @@
             btnSeleccion.TabIndex = 3;
             btnSeleccion.Text = "Confirmar órden de selección";
             btnSeleccion.UseVisualStyleBackColor = true;
-            btnSeleccion.Click += btnSeleccion_Click;
             // 
             // btnCancelar
             // 
@@ -99,7 +98,6 @@
             btnCancelar.TabIndex = 4;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
-            btnCancelar.Click += btnCancelar_Click;
             // 
             // PrepararProductosForm
             // 
@@ -113,6 +111,7 @@
             Controls.Add(label1);
             Name = "PrepararProductosForm";
             Text = "Preparar Productos";
+            Load += PrepararProductosForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -124,7 +123,7 @@
         private ListView lViewOrdenSeleccion;
         private Button btnSeleccion;
         private Button btnCancelar;
-        private ColumnHeader ubicacionCol;
+        private ColumnHeader posicionCol;
         private ColumnHeader productoCol;
         private ColumnHeader cantidadCol;
     }

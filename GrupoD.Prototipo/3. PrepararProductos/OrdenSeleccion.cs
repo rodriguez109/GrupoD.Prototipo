@@ -4,17 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Prototipo.PrepararProductos.PrepararProductos
-{
-    public class OrdenSeleccion
+    namespace Prototipo.PrepararProductos.PrepararProductos
     {
-        public string Ubicacion {  get; set; }
-        public string SKUProducto { get; set; }
-        public int Cantidad { get; set; }
-
-        public override string ToString()
+        public class OrdenSeleccion
         {
-            return $"{Ubicacion} | {SKUProducto} | {Cantidad}";
+            public string NombreOrden { get; set; }
+            public List<ProductoOrdenado> Productos { get; set; }
+        }
+
+        public class ProductoOrdenado
+        {
+            public string Ubicacion { get; set; }
+            public string SKUProducto { get; set; }
+            public int Cantidad { get; set; }
         }
     }
-}
+
+
