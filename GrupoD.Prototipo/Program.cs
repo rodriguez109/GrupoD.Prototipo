@@ -14,8 +14,8 @@ namespace GrupoD.Prototipo
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            //Application.Run(new MenuForm());
-            Application.Run(new GenerarOrdenDeSeleccionForm()); // esto era para probar funcionamiento
+            Application.Run(new MenuForm());
+            //Application.Run(new GenerarOrdenDeSeleccionForm()); // esto era para probar funcionamiento
         }
     }
 }
