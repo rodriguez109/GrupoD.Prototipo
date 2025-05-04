@@ -1,4 +1,5 @@
 using GrupoD.Prototipo._0._Menu_Principal;
+using GrupoD.Prototipo._6._GenerarRemito;
 
 namespace GrupoD.Prototipo
 {

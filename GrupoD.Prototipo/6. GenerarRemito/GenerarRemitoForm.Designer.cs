@@ -55,6 +55,7 @@
             // 
             // OrdenesDeEntregaLST
             // 
+            OrdenesDeEntregaLST.CheckBoxes = true;
             OrdenesDeEntregaLST.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
             OrdenesDeEntregaLST.Location = new Point(12, 112);
             OrdenesDeEntregaLST.Name = "OrdenesDeEntregaLST";
@@ -76,6 +77,7 @@
             AgregarAlRemitoBTN.TabIndex = 3;
             AgregarAlRemitoBTN.Text = "Agregar al remito";
             AgregarAlRemitoBTN.UseVisualStyleBackColor = true;
+            AgregarAlRemitoBTN.Click += AgregarAlRemitoBTN_Click;
             // 
             // CancelarBTN
             // 
@@ -85,6 +87,7 @@
             CancelarBTN.TabIndex = 4;
             CancelarBTN.Text = "Cancelar";
             CancelarBTN.UseVisualStyleBackColor = true;
+            CancelarBTN.Click += CancelarBTN_Click;
             // 
             // BuscarOrdenesBTN
             // 
