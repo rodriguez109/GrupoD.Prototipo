@@ -61,7 +61,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
 
         private void AgregarAlRemitoBTN_Click(object sender, EventArgs e)
         {
-            if (OrdenesDeEntregaLST.SelectedItems.Count == 0)
+            if (OrdenesDeEntregaLST.CheckedItems.Count == 0)
             {
                 MessageBox.Show("Debe seleccionar al menos una orden de entrega para continuar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -69,7 +69,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
 
             var codigosAgregados = new List<string>();
 
-            foreach (ListViewItem item in OrdenesDeEntregaLST.SelectedItems)
+            foreach (ListViewItem item in OrdenesDeEntregaLST.CheckedItems)
             {
                 OrdenDeEntrega orden = (OrdenDeEntrega)item.Tag;
                 codigosAgregados.Add(orden.NumeroOrden);
