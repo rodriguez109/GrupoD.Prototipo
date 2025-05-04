@@ -216,7 +216,7 @@
             // 
             // columnHeader4
             // 
-            columnHeader4.Text = "DNI Transportista";
+            columnHeader4.Text = "CUIL Transportista";
             columnHeader4.Width = 180;
             // 
             // columnHeader5
@@ -263,7 +263,7 @@
             // 
             // columnHeader9
             // 
-            columnHeader9.Text = "DNI Transportista";
+            columnHeader9.Text = "CUIL Transportista";
             columnHeader9.Width = 180;
             // 
             // columnHeader10
