@@ -95,7 +95,7 @@
             BuscarOrdenesBTN.Name = "BuscarOrdenesBTN";
             BuscarOrdenesBTN.Size = new Size(152, 29);
             BuscarOrdenesBTN.TabIndex = 5;
-            BuscarOrdenesBTN.Text = "Buscar Ordenes";
+            BuscarOrdenesBTN.Text = "Buscar órdenes";
             BuscarOrdenesBTN.UseVisualStyleBackColor = true;
             BuscarOrdenesBTN.Click += BuscarOrdenesBTN_Click;
             // 

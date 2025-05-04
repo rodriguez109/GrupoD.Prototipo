@@ -118,7 +118,7 @@ namespace GrupoD.Prototipo._0._Menu_Principal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(639, 843);
+            ClientSize = new Size(639, 709);
             Controls.Add(label1);
             Controls.Add(GenerarDocMenuBTN);
             Controls.Add(GenerarOEMenuBTN);
