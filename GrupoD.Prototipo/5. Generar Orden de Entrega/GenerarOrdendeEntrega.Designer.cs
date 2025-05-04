@@ -31,7 +31,7 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(listView1LST);
-            groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            groupBox1.Font = new Font("Segoe UI", 9F);
             groupBox1.ForeColor = SystemColors.ActiveCaptionText;
             groupBox1.Location = new Point(18, 12);
             groupBox1.Name = "groupBox1";
@@ -43,6 +43,7 @@
             // listView1LST
             // 
             listView1LST.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, Fecha, Transportista });
+            listView1LST.FullRowSelect = true;
             listView1LST.Location = new Point(10, 25);
             listView1LST.Name = "listView1LST";
             listView1LST.Size = new Size(735, 310);

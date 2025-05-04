@@ -59,7 +59,6 @@ partial class EmpaquetarProductosForm
         // listViewProductos
         // 
         listViewProductos.Columns.AddRange(new ColumnHeader[] { skuProductoCLM, nombreProductoCLM, cantidadProductoCLM });
-        listViewProductos.FullRowSelect = true;
         listViewProductos.HideSelection = true;
         listViewProductos.Location = new Point(14, 75);
         listViewProductos.Name = "listViewProductos";
