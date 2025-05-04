@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GrupoD.Prototipo._1._OrdenDePreparacion
 {
-    internal class Producto
+    public class Producto
     {
         //Atributos
         public int SKUProducto { get; set; }
@@ -27,4 +27,5 @@ namespace GrupoD.Prototipo._1._OrdenDePreparacion
 
 
     }
+
 }

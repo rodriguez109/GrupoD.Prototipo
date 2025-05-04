@@ -32,7 +32,6 @@
             numeroClienteTXT = new TextBox();
             razonSocialClienteTXT = new TextBox();
             label3 = new Label();
-            buscarProductosBTN = new Button();
             limpiarFiltrosBTN = new Button();
             depositoPorClienteLBL = new Label();
             productosClienteLST = new ListView();
@@ -41,8 +40,6 @@
             cantidadProductoCLM = new ColumnHeader();
             posicionProductoCLM = new ColumnHeader();
             productoSeleccionadoLBL = new Label();
-            productoSeleccionadoTXT = new TextBox();
-            cantidadDisponibleTXT = new TextBox();
             cantidadDisponibleLBL = new Label();
             cantidadSeleccionadaTXT = new TextBox();
             cantidadSeleccionadaLBL = new Label();
@@ -61,6 +58,9 @@
             cuilTransportistaTXT = new TextBox();
             quitarProductoBTN = new Button();
             fechaRetirarDTP = new DateTimePicker();
+            productoSeleccionadoLABEL = new Label();
+            cantidadDisponibleLABEL = new Label();
+            buscarProductosBTN = new Button();
             SuspendLayout();
             // 
             // numeroClienteLBL
@@ -95,15 +95,6 @@
             label3.TabIndex = 3;
             label3.Text = "Razón Social Cliente";
             // 
-            // buscarProductosBTN
-            // 
-            buscarProductosBTN.Location = new Point(459, 62);
-            buscarProductosBTN.Name = "buscarProductosBTN";
-            buscarProductosBTN.Size = new Size(136, 29);
-            buscarProductosBTN.TabIndex = 5;
-            buscarProductosBTN.Text = "Buscar Productos";
-            buscarProductosBTN.UseVisualStyleBackColor = true;
-            // 
             // limpiarFiltrosBTN
             // 
             limpiarFiltrosBTN.Location = new Point(601, 62);
@@ -112,6 +103,7 @@
             limpiarFiltrosBTN.TabIndex = 6;
             limpiarFiltrosBTN.Text = "Limpiar Filtros";
             limpiarFiltrosBTN.UseVisualStyleBackColor = true;
+            limpiarFiltrosBTN.Click += limpiarFiltrosBTN_Click;
             // 
             // depositoPorClienteLBL
             // 
@@ -132,6 +124,7 @@
             productosClienteLST.TabIndex = 11;
             productosClienteLST.UseCompatibleStateImageBehavior = false;
             productosClienteLST.View = View.Details;
+            productosClienteLST.SelectedIndexChanged += productosClienteLST_SelectedIndexChanged;
             // 
             // skuProductoCLM
             // 
@@ -161,20 +154,6 @@
             productoSeleccionadoLBL.Size = new Size(162, 20);
             productoSeleccionadoLBL.TabIndex = 12;
             productoSeleccionadoLBL.Text = "Producto Seleccionado";
-            // 
-            // productoSeleccionadoTXT
-            // 
-            productoSeleccionadoTXT.Location = new Point(491, 160);
-            productoSeleccionadoTXT.Name = "productoSeleccionadoTXT";
-            productoSeleccionadoTXT.Size = new Size(246, 27);
-            productoSeleccionadoTXT.TabIndex = 13;
-            // 
-            // cantidadDisponibleTXT
-            // 
-            cantidadDisponibleTXT.Location = new Point(491, 222);
-            cantidadDisponibleTXT.Name = "cantidadDisponibleTXT";
-            cantidadDisponibleTXT.Size = new Size(246, 27);
-            cantidadDisponibleTXT.TabIndex = 15;
             // 
             // cantidadDisponibleLBL
             // 
@@ -266,6 +245,7 @@
             // 
             // prioridadCMB
             // 
+            prioridadCMB.DropDownStyle = ComboBoxStyle.DropDownList;
             prioridadCMB.FormattingEnabled = true;
             prioridadCMB.Location = new Point(491, 504);
             prioridadCMB.Name = "prioridadCMB";
@@ -289,6 +269,7 @@
             cancelarBTN.TabIndex = 36;
             cancelarBTN.Text = "Cancelar";
             cancelarBTN.UseVisualStyleBackColor = true;
+            cancelarBTN.Click += cancelarBTN_Click;
             // 
             // generarOPBTN
             // 
@@ -298,6 +279,7 @@
             generarOPBTN.TabIndex = 37;
             generarOPBTN.Text = "Generar Orden de Preparación";
             generarOPBTN.UseVisualStyleBackColor = true;
+            generarOPBTN.Click += generarOPBTN_Click;
             // 
             // cuilTransportistaTXT
             // 
@@ -308,12 +290,13 @@
             // 
             // quitarProductoBTN
             // 
-            quitarProductoBTN.Location = new Point(324, 335);
+            quitarProductoBTN.Location = new Point(12, 587);
             quitarProductoBTN.Name = "quitarProductoBTN";
             quitarProductoBTN.Size = new Size(130, 29);
             quitarProductoBTN.TabIndex = 39;
             quitarProductoBTN.Text = "Quitar Producto";
             quitarProductoBTN.UseVisualStyleBackColor = true;
+            quitarProductoBTN.Click += quitarProductoBTN_Click;
             // 
             // fechaRetirarDTP
             // 
@@ -324,11 +307,42 @@
             fechaRetirarDTP.Size = new Size(250, 27);
             fechaRetirarDTP.TabIndex = 40;
             // 
+            // productoSeleccionadoLABEL
+            // 
+            productoSeleccionadoLABEL.AutoSize = true;
+            productoSeleccionadoLABEL.Location = new Point(491, 168);
+            productoSeleccionadoLABEL.Name = "productoSeleccionadoLABEL";
+            productoSeleccionadoLABEL.Size = new Size(50, 20);
+            productoSeleccionadoLABEL.TabIndex = 41;
+            productoSeleccionadoLABEL.Text = "label1";
+            // 
+            // cantidadDisponibleLABEL
+            // 
+            cantidadDisponibleLABEL.AutoSize = true;
+            cantidadDisponibleLABEL.Location = new Point(491, 230);
+            cantidadDisponibleLABEL.Name = "cantidadDisponibleLABEL";
+            cantidadDisponibleLABEL.Size = new Size(50, 20);
+            cantidadDisponibleLABEL.TabIndex = 42;
+            cantidadDisponibleLABEL.Text = "label2";
+            // 
+            // buscarProductosBTN
+            // 
+            buscarProductosBTN.Location = new Point(444, 62);
+            buscarProductosBTN.Name = "buscarProductosBTN";
+            buscarProductosBTN.Size = new Size(141, 29);
+            buscarProductosBTN.TabIndex = 43;
+            buscarProductosBTN.Text = "Buscar Productos";
+            buscarProductosBTN.UseVisualStyleBackColor = true;
+            buscarProductosBTN.Click += buscarProductosBTN_Click;
+            // 
             // OrdenDePreparacion
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(781, 712);
+            Controls.Add(buscarProductosBTN);
+            Controls.Add(cantidadDisponibleLABEL);
+            Controls.Add(productoSeleccionadoLABEL);
             Controls.Add(fechaRetirarDTP);
             Controls.Add(quitarProductoBTN);
             Controls.Add(cuilTransportistaTXT);
@@ -343,14 +357,11 @@
             Controls.Add(agregarProductoBTN);
             Controls.Add(cantidadSeleccionadaTXT);
             Controls.Add(cantidadSeleccionadaLBL);
-            Controls.Add(cantidadDisponibleTXT);
             Controls.Add(cantidadDisponibleLBL);
-            Controls.Add(productoSeleccionadoTXT);
             Controls.Add(productoSeleccionadoLBL);
             Controls.Add(productosClienteLST);
             Controls.Add(depositoPorClienteLBL);
             Controls.Add(limpiarFiltrosBTN);
-            Controls.Add(buscarProductosBTN);
             Controls.Add(razonSocialClienteTXT);
             Controls.Add(label3);
             Controls.Add(numeroClienteTXT);
@@ -366,13 +377,10 @@
         private TextBox numeroClienteTXT;
         private TextBox razonSocialClienteTXT;
         private Label label3;
-        private Button buscarProductosBTN;
         private Button limpiarFiltrosBTN;
         private Label depositoPorClienteLBL;
         private ListView productosClienteLST;
         private Label productoSeleccionadoLBL;
-        private TextBox productoSeleccionadoTXT;
-        private TextBox cantidadDisponibleTXT;
         private Label cantidadDisponibleLBL;
         private TextBox cantidadSeleccionadaTXT;
         private Label cantidadSeleccionadaLBL;
@@ -397,5 +405,9 @@
         private TextBox cuilTransportistaTXT;
         private Button quitarProductoBTN;
         private DateTimePicker fechaRetirarDTP;
+        private Label productoSeleccionadoLABEL;
+        private Label cantidadDisponibleLABEL;
+        private Button buscarProductosBTN;
+
     }
 }

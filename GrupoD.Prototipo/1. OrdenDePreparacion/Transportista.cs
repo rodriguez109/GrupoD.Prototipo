@@ -9,10 +9,10 @@ namespace GrupoD.Prototipo._1._OrdenDePreparacion
     internal class Transportista
     {
         //Atributos
-        public int CUILTransportista { get; set; }
+        public long CUILTransportista { get; set; }
         public string NombreTransportista { get; set; }
 
-        public Transportista(int cUILTransportista, string nombreTransportista)
+        public Transportista(long cUILTransportista, string nombreTransportista)
         {
             CUILTransportista = cUILTransportista;
             NombreTransportista = nombreTransportista;
