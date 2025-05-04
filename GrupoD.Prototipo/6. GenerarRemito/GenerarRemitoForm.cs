@@ -78,6 +78,9 @@ namespace GrupoD.Prototipo._6._GenerarRemito
 
             string ordenesTexto = string.Join(", ", codigosAgregados);
             MessageBox.Show($"Órdenes agregadas al remito con éxito.\nSe agregaron las siguientes órdenes: {ordenesTexto}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            OrdenesDeEntregaLST.Items.Clear();
+            CuilTransportistaTXT.Text = "";
         }
 
 
