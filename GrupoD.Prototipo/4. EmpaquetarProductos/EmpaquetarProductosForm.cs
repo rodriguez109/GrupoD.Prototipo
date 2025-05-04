@@ -9,21 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using GrupoD.Prototipo._4._Empaquetar_Productos;
 
-//namespace GrupoD.Prototipo._4._EmpaquetarProductos;
-//public partial class EmpaquetarProductosForm : Form
-//{
-//    public EmpaquetarProductosForm()
-//    {
-//        InitializeComponent();
-//    }
-
-//    private void label1_Click(object sender, EventArgs e)
-//    {
-
-//    }
-//}
-
-
 namespace GrupoD.Prototipo._4._EmpaquetarProductos;
 public partial class EmpaquetarProductosForm : Form
 {
