@@ -1,6 +1,4 @@
-﻿using GrupoD.Prototipo._5._Generar_Orden_de_Entrega;
-
-namespace GrupoD.Prototipo._0._Menu_Principal
+﻿namespace GrupoD.Prototipo._0._Menu_Principal
 {
     partial class MenuForm
     {

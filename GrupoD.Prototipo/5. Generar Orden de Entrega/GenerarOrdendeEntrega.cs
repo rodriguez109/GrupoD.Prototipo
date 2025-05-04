@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace GrupoD.Prototipo
+namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
 {
     public partial class GenerarOrdendeEntrega : Form
     {
