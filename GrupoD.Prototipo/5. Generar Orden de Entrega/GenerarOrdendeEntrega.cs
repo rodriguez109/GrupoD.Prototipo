@@ -6,91 +6,90 @@ namespace GrupoD.Prototipo
 {
     public partial class GenerarOrdendeEntrega : Form
     {
+        private List<OrdenEntrega> ordenes;
+
         public GenerarOrdendeEntrega()
         {
             InitializeComponent();
-            this.Load += GenerarOrdendeEntrega_Load;
             buttonBTN.Click += buttonBTN_Click;
-            button2BTN.Click += button2BTN_Click; // <-- para cerrar con Cancelar
+            button2BTN.Click += button2BTN_Click;
         }
 
         private void GenerarOrdendeEntrega_Load(object sender, EventArgs e)
         {
-            // Lista de datos de ejemplo
-            var datosEjemplo = new List<string[]>
+            // Datos completos de 20 órdenes
+            ordenes = new List<OrdenEntrega>
             {
-                new string[] { "2025-05-10", "Cliente S.A.", "1001", "20304050601" },
-                new string[] { "2025-05-11", "Distribuciones Norte", "1002", "20405060702" },
-                new string[] { "2025-05-12", "Comercial Oeste", "1003", "20506070803" },
-                new string[] { "2025-05-13", "Proveedor Sur", "1004", "20607080904" }
+                new OrdenEntrega(1, "DecoHogar S.A.", new DateTime(2025, 5, 3), 20242093500),
+                new OrdenEntrega(2, "MaxiLuz Iluminación SRL", new DateTime(2025, 5, 4), 27242093513),
+                new OrdenEntrega(3, "MundoFOX S.A.", new DateTime(2025, 5, 5), 20242093527),
+                new OrdenEntrega(4, "FullColor Pinturerías SRL", new DateTime(2025, 5, 6), 27242093534),
+                new OrdenEntrega(5, "Hogar Urbano S.A.", new DateTime(2025, 5, 7), 20242093543),
+                new OrdenEntrega(6, "Todo Obra Ferretería SRL", new DateTime(2025, 5, 8), 27242093552),
+                new OrdenEntrega(7, "Casa Nova Equipamientos S.A.", new DateTime(2025, 5, 9), 20242093560),
+                new OrdenEntrega(8, "OfiMarket SRL", new DateTime(2025, 5, 10), 27242093577),
+                new OrdenEntrega(9, "Red Tools S.A.", new DateTime(2025, 5, 11), 20242093586),
+                new OrdenEntrega(10, "MegaMuebles SRL", new DateTime(2025, 5, 12), 27242093593),
+                new OrdenEntrega(11, "ElectroCity S.A.", new DateTime(2025, 5, 13), 20242093608),
+                new OrdenEntrega(12, "PlastiSur SRL", new DateTime(2025, 5, 14), 27242093615),
+                new OrdenEntrega(13, "Tecnoshop S.A.", new DateTime(2025, 5, 15), 20242093624),
+                new OrdenEntrega(14, "Urban Market SRL", new DateTime(2025, 5, 16), 27242093631),
+                new OrdenEntrega(15, "DecoCentro S.A.", new DateTime(2025, 5, 17), 20242093640),
+                new OrdenEntrega(16, "Centro Herramientas SRL", new DateTime(2025, 5, 18), 27242093658),
+                new OrdenEntrega(17, "FullOffice S.A.", new DateTime(2025, 5, 19), 20242093667),
+                new OrdenEntrega(18, "DecorArte SRL", new DateTime(2025, 5, 20), 27242093674),
+                new OrdenEntrega(19, "EasyTech Distribuciones S.A.", new DateTime(2025, 5, 21), 20242093683),
+                new OrdenEntrega(20, "FerreMarket SRL", new DateTime(2025, 5, 22), 27242093690)
             };
 
-            // Carga al ListView
+            // Cargar datos en el ListView
             listView1LST.Items.Clear();
-            foreach (var fila in datosEjemplo)
+            foreach (var orden in ordenes)
             {
-                ListViewItem item = new ListViewItem(fila);
+                ListViewItem item = new ListViewItem(orden.NumeroOrden.ToString());
+                item.SubItems.Add(orden.Cliente);
+                item.SubItems.Add(orden.FechaEntrega.ToString("dd/MM/yyyy"));
+                item.SubItems.Add(orden.CUIL.ToString());
                 listView1LST.Items.Add(item);
             }
         }
 
         private void buttonBTN_Click(object sender, EventArgs e)
         {
-            if (listView1LST.SelectedItems.Count == 0)
+            if (listView1LST.SelectedItems.Count > 0)
             {
-                MessageBox.Show("Debe seleccionar al menos una orden.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                MessageBox.Show("La orden seleccionada ha sido confirmada.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-            foreach (ListViewItem item in listView1LST.SelectedItems)
+            else
             {
-                string fechaStr = item.SubItems[0].Text;
-                string cliente = item.SubItems[1].Text;
-                string codigoStr = item.SubItems[2].Text;
-                string cuilStr = item.SubItems[3].Text;
-
-                if (!DateTime.TryParse(fechaStr, out _))
-                {
-                    MessageBox.Show($"La fecha '{fechaStr}' no es válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(cliente))
-                {
-                    MessageBox.Show("La razón social del cliente no puede estar vacía.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                if (!int.TryParse(codigoStr, out _))
-                {
-                    MessageBox.Show($"El código de orden '{codigoStr}' debe ser numérico.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                if (!long.TryParse(cuilStr, out _))
-                {
-                    MessageBox.Show($"El CUIL del transportista '{cuilStr}' debe ser numérico.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                MessageBox.Show("Debe seleccionar al menos una orden para continuar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-            MessageBox.Show("Todas las órdenes seleccionadas han sido confirmadas correctamente.",
-                            "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void button2BTN_Click(object sender, EventArgs e)
         {
-            this.Close(); // Cierra el formulario
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-            // Evento opcional
+            this.Close();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Evento opcional
+            // Evento disponible si lo necesitás usar después
+        }
+    }
+
+    public class OrdenEntrega
+    {
+        public int NumeroOrden { get; set; }
+        public string Cliente { get; set; }
+        public DateTime FechaEntrega { get; set; }
+        public long CUIL { get; set; }
+
+        public OrdenEntrega(int numero, string cliente, DateTime fecha, long cuil)
+        {
+            NumeroOrden = numero;
+            Cliente = cliente;
+            FechaEntrega = fecha;
+            CUIL = cuil;
         }
     }
 }
