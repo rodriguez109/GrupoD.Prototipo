@@ -1,9 +1,28 @@
-﻿namespace GrupoD.Prototipo._4._Empaquetar_Productos;
+﻿//namespace GrupoD.Prototipo._4._Empaquetar_Productos;
 
-internal class Producto
+//internal class Producto
+//{
+//    // Atributos
+//    public string SKUProducto { get; set; }
+//    public string NombreProducto { get; set; }
+//    public int CantidadProducto { get; set; }
+//}
+
+namespace GrupoD.Prototipo._4._Empaquetar_Productos
 {
-    // Atributos
-    public string SKUProducto { get; set; }
-    public string NombreProducto { get; set; }
-    public int CantidadProducto { get; set; }
+    internal class Producto
+    {
+        // Atributos
+        public int SKUProducto { get; set; }
+        public string NombreProducto { get; set; }
+        public int CantidadProducto { get; set; }
+
+        // Constructor
+        public Producto(int skuProducto, string nombreProducto, int cantidadProducto)
+        {
+            SKUProducto = skuProducto;
+            NombreProducto = nombreProducto;
+            CantidadProducto = cantidadProducto;
+        }
+    }
 }
