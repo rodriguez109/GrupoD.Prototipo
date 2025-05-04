@@ -12,6 +12,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
 {
     public partial class GenerarRemitoForm : Form
     {
+        private GenerarRemitoModelo modelo;
         public GenerarRemitoForm()
         {
             InitializeComponent();
@@ -19,17 +20,26 @@ namespace GrupoD.Prototipo._6._GenerarRemito
 
         private void GenerarRemitoForm_Load(object sender, EventArgs e)
         {
+            modelo = new GenerarRemitoModelo();
+            foreach (var OrdenDeEntrega in modelo OrdenesDeEntrega )
+            {
+                OrdenesDeEntregaLST.Items.Add();
+
+            }
+            
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void BuscarOrdenesBTN_Click(object sender, EventArgs e)
         {
+            var cuilTransportista = CuilTransportistaTXT.Text.Trim();
 
-        }
+            var OrdenDeEntrega = new OrdenEntrega
+            {
 
-        private void label2_Click(object sender, EventArgs e)
-        {
 
+
+            };
         }
     }
 }
