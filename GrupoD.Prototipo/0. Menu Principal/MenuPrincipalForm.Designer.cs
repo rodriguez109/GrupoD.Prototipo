@@ -41,9 +41,10 @@ namespace GrupoD.Prototipo._0._Menu_Principal
             // 
             // GenerarOPMenuBTN
             // 
-            GenerarOPMenuBTN.Location = new Point(103, 104);
+            GenerarOPMenuBTN.Location = new Point(118, 139);
+            GenerarOPMenuBTN.Margin = new Padding(3, 4, 3, 4);
             GenerarOPMenuBTN.Name = "GenerarOPMenuBTN";
-            GenerarOPMenuBTN.Size = new Size(357, 45);
+            GenerarOPMenuBTN.Size = new Size(408, 60);
             GenerarOPMenuBTN.TabIndex = 0;
             GenerarOPMenuBTN.Text = "Generar orden de preparacion";
             GenerarOPMenuBTN.UseVisualStyleBackColor = true;
@@ -51,9 +52,10 @@ namespace GrupoD.Prototipo._0._Menu_Principal
             // 
             // GenerarOSMenuBTN
             // 
-            GenerarOSMenuBTN.Location = new Point(103, 169);
+            GenerarOSMenuBTN.Location = new Point(118, 225);
+            GenerarOSMenuBTN.Margin = new Padding(3, 4, 3, 4);
             GenerarOSMenuBTN.Name = "GenerarOSMenuBTN";
-            GenerarOSMenuBTN.Size = new Size(357, 45);
+            GenerarOSMenuBTN.Size = new Size(408, 60);
             GenerarOSMenuBTN.TabIndex = 1;
             GenerarOSMenuBTN.Text = "Generar orden de selección";
             GenerarOSMenuBTN.UseVisualStyleBackColor = true;
@@ -61,9 +63,10 @@ namespace GrupoD.Prototipo._0._Menu_Principal
             // 
             // PrepararProductoMenuBTN
             // 
-            PrepararProductoMenuBTN.Location = new Point(103, 239);
+            PrepararProductoMenuBTN.Location = new Point(118, 319);
+            PrepararProductoMenuBTN.Margin = new Padding(3, 4, 3, 4);
             PrepararProductoMenuBTN.Name = "PrepararProductoMenuBTN";
-            PrepararProductoMenuBTN.Size = new Size(357, 45);
+            PrepararProductoMenuBTN.Size = new Size(408, 60);
             PrepararProductoMenuBTN.TabIndex = 2;
             PrepararProductoMenuBTN.Text = "Preparar los productos";
             PrepararProductoMenuBTN.UseVisualStyleBackColor = true;
@@ -71,9 +74,10 @@ namespace GrupoD.Prototipo._0._Menu_Principal
             // 
             // EmpaquetarMenuBTN
             // 
-            EmpaquetarMenuBTN.Location = new Point(103, 310);
+            EmpaquetarMenuBTN.Location = new Point(118, 413);
+            EmpaquetarMenuBTN.Margin = new Padding(3, 4, 3, 4);
             EmpaquetarMenuBTN.Name = "EmpaquetarMenuBTN";
-            EmpaquetarMenuBTN.Size = new Size(357, 45);
+            EmpaquetarMenuBTN.Size = new Size(408, 60);
             EmpaquetarMenuBTN.TabIndex = 3;
             EmpaquetarMenuBTN.Text = "Empaquetar los productos";
             EmpaquetarMenuBTN.UseVisualStyleBackColor = true;
@@ -81,9 +85,10 @@ namespace GrupoD.Prototipo._0._Menu_Principal
             // 
             // GenerarOEMenuBTN
             // 
-            GenerarOEMenuBTN.Location = new Point(103, 381);
+            GenerarOEMenuBTN.Location = new Point(118, 508);
+            GenerarOEMenuBTN.Margin = new Padding(3, 4, 3, 4);
             GenerarOEMenuBTN.Name = "GenerarOEMenuBTN";
-            GenerarOEMenuBTN.Size = new Size(357, 45);
+            GenerarOEMenuBTN.Size = new Size(408, 60);
             GenerarOEMenuBTN.TabIndex = 4;
             GenerarOEMenuBTN.Text = "Generar orden de entrega";
             GenerarOEMenuBTN.UseVisualStyleBackColor = true;
@@ -91,28 +96,29 @@ namespace GrupoD.Prototipo._0._Menu_Principal
             // 
             // GenerarDocMenuBTN
             // 
-            GenerarDocMenuBTN.Location = new Point(103, 448);
+            GenerarDocMenuBTN.Location = new Point(118, 597);
+            GenerarDocMenuBTN.Margin = new Padding(3, 4, 3, 4);
             GenerarDocMenuBTN.Name = "GenerarDocMenuBTN";
-            GenerarDocMenuBTN.Size = new Size(357, 45);
+            GenerarDocMenuBTN.Size = new Size(408, 60);
             GenerarDocMenuBTN.TabIndex = 5;
-            GenerarDocMenuBTN.Text = "Generar documentación/remito";
+            GenerarDocMenuBTN.Text = "Generar remito";
             GenerarDocMenuBTN.UseVisualStyleBackColor = true;
             GenerarDocMenuBTN.Click += GenerarDocMenuBTN_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(228, 53);
+            label1.Location = new Point(261, 71);
             label1.Name = "label1";
-            label1.Size = new Size(118, 15);
+            label1.Size = new Size(147, 20);
             label1.TabIndex = 7;
             label1.Text = "Menu Inicio Empresa";
             // 
             // MenuForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(559, 632);
+            ClientSize = new Size(639, 843);
             Controls.Add(label1);
             Controls.Add(GenerarDocMenuBTN);
             Controls.Add(GenerarOEMenuBTN);
@@ -120,6 +126,7 @@ namespace GrupoD.Prototipo._0._Menu_Principal
             Controls.Add(PrepararProductoMenuBTN);
             Controls.Add(GenerarOSMenuBTN);
             Controls.Add(GenerarOPMenuBTN);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "MenuForm";
             Text = "Menu Empresa";
             Load += MenuForm_Load;
