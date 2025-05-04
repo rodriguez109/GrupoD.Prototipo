@@ -8,9 +8,18 @@ namespace GrupoD.Prototipo
 {
     public class OrdenEntrega
     {
-        public int Codigo { get; set; }
+        public int NumeroOrden { get; set; }
         public string Cliente { get; set; }
-        public string FechaEntrega { get; set; }
-        public string Transportista { get; set; }
+        public DateTime FechaEntrega { get; set; }
+        public long CUIL { get; set; }
+
+        public OrdenEntrega(int numero, string cliente, DateTime fecha, long cuil)
+        {
+            NumeroOrden = numero;
+            Cliente = cliente;
+            FechaEntrega = fecha;
+            CUIL = cuil;
+        }
     }
+
 }

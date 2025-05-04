@@ -59,6 +59,7 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
             if (listView1LST.SelectedItems.Count > 0)
             {
                 MessageBox.Show("La orden seleccionada ha sido confirmada.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             else
             {
@@ -74,22 +75,6 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Evento disponible si lo necesitás usar después
-        }
-    }
-
-    public class OrdenEntrega
-    {
-        public int NumeroOrden { get; set; }
-        public string Cliente { get; set; }
-        public DateTime FechaEntrega { get; set; }
-        public long CUIL { get; set; }
-
-        public OrdenEntrega(int numero, string cliente, DateTime fecha, long cuil)
-        {
-            NumeroOrden = numero;
-            Cliente = cliente;
-            FechaEntrega = fecha;
-            CUIL = cuil;
         }
     }
 }
