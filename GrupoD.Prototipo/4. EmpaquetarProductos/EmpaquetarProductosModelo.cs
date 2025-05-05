@@ -10,9 +10,9 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
         {
             var productosEjemplo = new List<Producto>
                 {
-                    new Producto(1, "Laptop", 2),
-                    new Producto(2, "Mouse óptico", 5),
-                    new Producto(3, "Teclado mecánico", 3)
+                    new Producto(1, "Mesa ratona de madera", 2),
+                    new Producto(2, "Lámpara colgante LED", 5),
+                    new Producto(3, "Smart TV 43 pulgadas", 1)
                 };
 
             OrdenesEnPreparacionDisponibles = new List<OrdenPreparacion>
@@ -29,8 +29,8 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
                         EstadoOrden = "En Preparacion",
                         Productos = new List<Producto>
                         {
-                            new Producto(4, "Monitor LED", 1),
-                            new Producto(5, "SSD", 2)
+                            new Producto(4, "Pintura látex interior 20L", 1),
+                            new Producto(5, "Silla de comedor moderna", 1)
                         }
                     }
                 };
