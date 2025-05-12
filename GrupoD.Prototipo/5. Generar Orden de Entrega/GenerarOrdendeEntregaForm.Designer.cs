@@ -1,6 +1,6 @@
 ﻿namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
 {
-    partial class GenerarOrdendeEntrega
+    partial class GenerarOrdendeEntregaForm
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -38,7 +38,7 @@
             groupBox1.Size = new Size(760, 350);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Órdenes Preparadas hacia Despacho";
+            groupBox1.Text = "Ordenes Preparadas hacia Despacho";
             // 
             // listView1LST
             // 
@@ -55,12 +55,12 @@
             // columnHeader1
             // 
             columnHeader1.Text = "Número de Orden";
-            columnHeader1.Width = 170;
+            columnHeader1.Width = 150;
             // 
             // columnHeader2
             // 
             columnHeader2.Text = "Razón Social Cliente";
-            columnHeader2.Width = 200;
+            columnHeader2.Width = 220;
             // 
             // Fecha
             // 
