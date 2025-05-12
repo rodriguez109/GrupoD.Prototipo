@@ -111,7 +111,6 @@
             Controls.Add(label1);
             Name = "PrepararProductosForm";
             Text = "Preparar Productos";
-            Load += PrepararProductosForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

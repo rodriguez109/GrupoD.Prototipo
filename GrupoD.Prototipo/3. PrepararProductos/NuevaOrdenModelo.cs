@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 
 namespace Prototipo.PrepararProductos.PrepararProductos
 {
-    public class NuevaOrdenModelo
+    public class ProductoOrdenado
     {
-        private int Ubicacion {  get; set; }
-        private string SkuProducto { get; set; }
-        private int Cantidad { get; set; }
-
+        public string Ubicacion { get; set; }
+        public string SKUProducto { get; set; }
+        public int Cantidad { get; set; }
     }
+
+    // Archivo: Models/OrdenSeleccion.cs
+    public class OrdenSeleccion
+    {
+        public string NombreOrden { get; set; }
+        public List<ProductoOrdenado> Productos { get; set; }
+    }
+
 }

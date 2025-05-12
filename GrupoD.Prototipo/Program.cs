@@ -1,5 +1,7 @@
 using GrupoD.Prototipo._0._Menu_Principal;
 using GrupoD.Prototipo._6._GenerarRemito;
+using Prototipo.PrepararProductos;
+using System.Windows.Forms;
 
 namespace GrupoD.Prototipo
 {
