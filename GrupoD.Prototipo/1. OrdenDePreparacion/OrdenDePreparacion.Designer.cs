@@ -38,7 +38,6 @@
             skuProductoCLM = new ColumnHeader();
             nombreProductoCLM = new ColumnHeader();
             cantidadProductoCLM = new ColumnHeader();
-            posicionProductoCLM = new ColumnHeader();
             productoSeleccionadoLBL = new Label();
             cantidadDisponibleLBL = new Label();
             cantidadSeleccionadaTXT = new TextBox();
@@ -46,9 +45,9 @@
             agregarProductoBTN = new Button();
             opLBL = new Label();
             ordenPreparacionLST = new ListView();
+            skuProductoLBL = new ColumnHeader();
             nombreProductoLBL = new ColumnHeader();
             cantidadSeleccionadaCLM = new ColumnHeader();
-            posicionCLM = new ColumnHeader();
             fechaRetirarLBL = new Label();
             prioridadLBL = new Label();
             prioridadCMB = new ComboBox();
@@ -61,6 +60,7 @@
             productoSeleccionadoLABEL = new Label();
             cantidadDisponibleLABEL = new Label();
             buscarProductosBTN = new Button();
+            palletCBX = new CheckBox();
             SuspendLayout();
             // 
             // numeroClienteLBL
@@ -116,7 +116,7 @@
             // 
             // productosClienteLST
             // 
-            productosClienteLST.Columns.AddRange(new ColumnHeader[] { skuProductoCLM, nombreProductoCLM, cantidadProductoCLM, posicionProductoCLM });
+            productosClienteLST.Columns.AddRange(new ColumnHeader[] { skuProductoCLM, nombreProductoCLM, cantidadProductoCLM });
             productosClienteLST.FullRowSelect = true;
             productosClienteLST.Location = new Point(13, 137);
             productosClienteLST.Name = "productosClienteLST";
@@ -140,11 +140,6 @@
             // 
             cantidadProductoCLM.Text = "Cantidad";
             cantidadProductoCLM.Width = 80;
-            // 
-            // posicionProductoCLM
-            // 
-            posicionProductoCLM.Text = "Posición";
-            posicionProductoCLM.Width = 100;
             // 
             // productoSeleccionadoLBL
             // 
@@ -201,14 +196,19 @@
             // 
             // ordenPreparacionLST
             // 
-            ordenPreparacionLST.Columns.AddRange(new ColumnHeader[] { nombreProductoLBL, cantidadSeleccionadaCLM, posicionCLM });
+            ordenPreparacionLST.Columns.AddRange(new ColumnHeader[] { skuProductoLBL, nombreProductoLBL, cantidadSeleccionadaCLM });
             ordenPreparacionLST.FullRowSelect = true;
             ordenPreparacionLST.Location = new Point(13, 420);
             ordenPreparacionLST.Name = "ordenPreparacionLST";
-            ordenPreparacionLST.Size = new Size(441, 161);
+            ordenPreparacionLST.Size = new Size(472, 161);
             ordenPreparacionLST.TabIndex = 23;
             ordenPreparacionLST.UseCompatibleStateImageBehavior = false;
             ordenPreparacionLST.View = View.Details;
+            // 
+            // skuProductoLBL
+            // 
+            skuProductoLBL.Text = "SKU Producto";
+            skuProductoLBL.Width = 150;
             // 
             // nombreProductoLBL
             // 
@@ -218,17 +218,12 @@
             // cantidadSeleccionadaCLM
             // 
             cantidadSeleccionadaCLM.Text = "Cantidad Seleccionada";
-            cantidadSeleccionadaCLM.Width = 170;
-            // 
-            // posicionCLM
-            // 
-            posicionCLM.Text = "Posición";
-            posicionCLM.Width = 100;
+            cantidadSeleccionadaCLM.Width = 205;
             // 
             // fechaRetirarLBL
             // 
             fechaRetirarLBL.AutoSize = true;
-            fechaRetirarLBL.Location = new Point(491, 420);
+            fechaRetirarLBL.Location = new Point(598, 420);
             fechaRetirarLBL.Name = "fechaRetirarLBL";
             fechaRetirarLBL.Size = new Size(107, 20);
             fechaRetirarLBL.TabIndex = 26;
@@ -301,10 +296,10 @@
             // fechaRetirarDTP
             // 
             fechaRetirarDTP.Format = DateTimePickerFormat.Short;
-            fechaRetirarDTP.Location = new Point(491, 443);
+            fechaRetirarDTP.Location = new Point(601, 443);
             fechaRetirarDTP.MinDate = new DateTime(2025, 5, 3, 0, 0, 0, 0);
             fechaRetirarDTP.Name = "fechaRetirarDTP";
-            fechaRetirarDTP.Size = new Size(250, 27);
+            fechaRetirarDTP.Size = new Size(140, 27);
             fechaRetirarDTP.TabIndex = 40;
             // 
             // productoSeleccionadoLABEL
@@ -335,11 +330,22 @@
             buscarProductosBTN.UseVisualStyleBackColor = true;
             buscarProductosBTN.Click += buscarProductosBTN_Click;
             // 
+            // palletCBX
+            // 
+            palletCBX.AutoSize = true;
+            palletCBX.Location = new Point(494, 433);
+            palletCBX.Name = "palletCBX";
+            palletCBX.Size = new Size(67, 24);
+            palletCBX.TabIndex = 44;
+            palletCBX.Text = "Pallet";
+            palletCBX.UseVisualStyleBackColor = true;
+            // 
             // OrdenDePreparacion
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(781, 712);
+            Controls.Add(palletCBX);
             Controls.Add(buscarProductosBTN);
             Controls.Add(cantidadDisponibleLABEL);
             Controls.Add(productoSeleccionadoLABEL);
@@ -398,16 +404,15 @@
         private ColumnHeader skuProductoCLM;
         private ColumnHeader nombreProductoCLM;
         private ColumnHeader cantidadProductoCLM;
-        private ColumnHeader posicionProductoCLM;
         private ColumnHeader nombreProductoLBL;
         private ColumnHeader cantidadSeleccionadaCLM;
-        private ColumnHeader posicionCLM;
         private TextBox cuilTransportistaTXT;
         private Button quitarProductoBTN;
         private DateTimePicker fechaRetirarDTP;
         private Label productoSeleccionadoLABEL;
         private Label cantidadDisponibleLABEL;
         private Button buscarProductosBTN;
-
+        private CheckBox palletCBX;
+        private ColumnHeader skuProductoLBL;
     }
 }

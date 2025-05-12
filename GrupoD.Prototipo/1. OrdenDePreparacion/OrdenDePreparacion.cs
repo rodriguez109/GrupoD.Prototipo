@@ -99,7 +99,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 var item = new ListViewItem(producto.SKUProducto.ToString());
                 item.SubItems.Add(producto.NombreProducto);
                 item.SubItems.Add(producto.Cantidad.ToString());
-                item.SubItems.Add(producto.Posicion);
+
 
                 productosClienteLST.Items.Add(item);
             }
@@ -200,14 +200,24 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 return;
             }
 
-            // Obtener otros valores del producto
-            string nombreProducto = productoSeleccionadoLABEL.Text;
-            string posicionProducto = productosClienteLST.SelectedItems[0].SubItems[3].Text; // Posición del producto
+            //// Obtener otros valores del producto
+            //string nombreProducto = productoSeleccionadoLABEL.Text;
 
-            // Crear un nuevo ítem para el ListView de la Orden de Preparación
-            ListViewItem nuevoItem = new ListViewItem(nombreProducto);
-            nuevoItem.SubItems.Add(cantidadSeleccionadaTXT.Text); // Cantidad seleccionada
-            nuevoItem.SubItems.Add(posicionProducto);
+
+            //// Crear un nuevo ítem para el ListView de la Orden de Preparación
+            //ListViewItem nuevoItem = new ListViewItem(nombreProducto);
+            //nuevoItem.SubItems.Add(cantidadSeleccionadaTXT.Text); // Cantidad seleccionada
+
+            // Obtener los valores correctos en el orden adecuado
+            string skuProducto = productosClienteLST.SelectedItems[0].SubItems[0].Text; // SKU del producto
+            string nombreProducto = productoSeleccionadoLABEL.Text; // Nombre del producto
+            string cantidadSeleccionadaTexto = cantidadSeleccionadaTXT.Text; // Cantidad seleccionada
+
+            // Crear un nuevo ítem para el ListView con las columnas correctamente ordenadas
+            ListViewItem nuevoItem = new ListViewItem(skuProducto); // Primera columna: SKU Producto
+            nuevoItem.SubItems.Add(nombreProducto); // Segunda columna: Nombre Producto
+            nuevoItem.SubItems.Add(cantidadSeleccionadaTexto); // Tercera columna: Cantidad Seleccionada
+
 
             // Agregar el producto al ListView de la Orden de Preparación
             ordenPreparacionLST.Items.Add(nuevoItem);
@@ -243,25 +253,37 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             string cuilTransportista = cuilTransportistaTXT.Text;
 
           
-            //if (long.TryParse(cuilTransportista, out long cUILTransportista))
-            //{
-            //    // Conversion exitosa, podés usar "numero"
-            //}
-            //else
-            //{
-            //    // El string no era un número válido
-            //}
+           
 
             List<OrdenDePreparacionClase> nuevaOrden = new List<OrdenDePreparacionClase>();
 
             foreach (ListViewItem item in ordenPreparacionLST.Items)
             {
-                OrdenDePreparacionClase orden = new OrdenDePreparacionClase
+                // Obtener valores desde el ListView
+                string nombreProducto = item.SubItems[1].Text;
+                string cantidadTexto = item.SubItems[2].Text;
+                string skuTexto = item.SubItems[0].Text;
+
+                // Validar cantidad seleccionada
+                if (!int.TryParse(cantidadTexto, out int cantidadSeleccionada) || cantidadSeleccionada <= 0)
+                {
+                    MessageBox.Show($"La cantidad del producto '{nombreProducto}' no es válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!int.TryParse(skuTexto, out int skuProducto))
+                {
+                    MessageBox.Show($"El SKU del producto '{nombreProducto}' no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                    OrdenDePreparacionClase orden = new OrdenDePreparacionClase
                 {
                     NumeroOrdenPreparacion = numeroOrden, // Número autonumérico
-                    NombreProducto = item.SubItems[0].Text,
-                    CantidadProducto = item.SubItems[1].Text,
-                    Posicion = item.SubItems[2].Text,
+                    NombreProducto = item.SubItems[1].Text,
+                    CantidadProducto = item.SubItems[2].Text,
+
+                    SKUProducto = int.Parse(item.SubItems[0].Text), // SKU del producto
+
                     FechaRetirar = fechaRetiro, // Obtiene la fecha correctamente
                     Prioridad = prioridadSeleccionada, // Obtiene la prioridad desde el ComboBox
                     CUILTransportista = cuilTransportista // Obtiene el CUIL desde el TextBox

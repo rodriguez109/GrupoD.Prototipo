@@ -33,7 +33,7 @@ namespace GrupoD.Prototipo
 
             new Cliente(1, "Distribuidora San Martín S.A."),
 
-            new Cliente(2, "Transporte del Sur SRL."),
+            new Cliente(2, "Transporte del Sur SRL"),
 
             new Cliente(3, "Almacén La Cumbre S.A."),
 

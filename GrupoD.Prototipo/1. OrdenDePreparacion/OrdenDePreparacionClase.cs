@@ -9,7 +9,8 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
     internal class OrdenDePreparacionClase
     {
         public int? NumeroOrdenPreparacion { get; set; }
-        
+
+        public int SKUProducto { get; set; }
         public string NombreProducto { get; set; }
 
         public string CantidadProducto { get; set; }
