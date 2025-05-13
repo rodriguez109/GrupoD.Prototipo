@@ -12,8 +12,6 @@ namespace Prototipo.PrepararProductos.PrepararProductos
         public string SKUProducto { get; set; }
         public int Cantidad { get; set; }
     }
-
-    // Archivo: Models/OrdenSeleccion.cs
     public class OrdenSeleccion
     {
         public string NombreOrden { get; set; }
