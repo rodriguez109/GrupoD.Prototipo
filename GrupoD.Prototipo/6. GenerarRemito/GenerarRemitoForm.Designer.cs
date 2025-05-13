@@ -85,7 +85,7 @@
             // 
             // CancelarBTN
             // 
-            CancelarBTN.Location = new Point(614, 841);
+            CancelarBTN.Location = new Point(573, 760);
             CancelarBTN.Name = "CancelarBTN";
             CancelarBTN.Size = new Size(155, 29);
             CancelarBTN.TabIndex = 4;
@@ -107,7 +107,7 @@
             // 
             OrdenesAgregadasLST.Columns.AddRange(new ColumnHeader[] { columnHeader2 });
             OrdenesAgregadasLST.FullRowSelect = true;
-            OrdenesAgregadasLST.Location = new Point(11, 457);
+            OrdenesAgregadasLST.Location = new Point(11, 418);
             OrdenesAgregadasLST.Name = "OrdenesAgregadasLST";
             OrdenesAgregadasLST.Size = new Size(758, 263);
             OrdenesAgregadasLST.TabIndex = 6;
@@ -121,7 +121,7 @@
             // 
             // QuitarDelRemitoBTN
             // 
-            QuitarDelRemitoBTN.Location = new Point(571, 739);
+            QuitarDelRemitoBTN.Location = new Point(571, 699);
             QuitarDelRemitoBTN.Name = "QuitarDelRemitoBTN";
             QuitarDelRemitoBTN.Size = new Size(157, 29);
             QuitarDelRemitoBTN.TabIndex = 7;
@@ -131,7 +131,7 @@
             // 
             // GenerarRemitoBTN
             // 
-            GenerarRemitoBTN.Location = new Point(423, 841);
+            GenerarRemitoBTN.Location = new Point(391, 760);
             GenerarRemitoBTN.Name = "GenerarRemitoBTN";
             GenerarRemitoBTN.Size = new Size(176, 29);
             GenerarRemitoBTN.TabIndex = 8;
@@ -143,7 +143,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(826, 887);
+            ClientSize = new Size(789, 809);
             Controls.Add(GenerarRemitoBTN);
             Controls.Add(QuitarDelRemitoBTN);
             Controls.Add(OrdenesAgregadasLST);
