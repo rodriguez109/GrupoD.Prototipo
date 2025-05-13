@@ -11,11 +11,7 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
         public GenerarOrdendeEntregaForm()
         {
             InitializeComponent();
-            buttonBTN.Click -= buttonBTN_Click;
-            buttonBTN.Click += buttonBTN_Click;
-
-            button2BTN.Click -= button2BTN_Click;
-            button2BTN.Click += button2BTN_Click;
+            
         }
 
         private void GenerarOrdendeEntrega_Load(object sender, EventArgs e)
