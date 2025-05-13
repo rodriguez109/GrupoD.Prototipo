@@ -11,7 +11,10 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
         public GenerarOrdendeEntregaForm()
         {
             InitializeComponent();
+            buttonBTN.Click -= buttonBTN_Click;
             buttonBTN.Click += buttonBTN_Click;
+
+            button2BTN.Click -= button2BTN_Click;
             button2BTN.Click += button2BTN_Click;
         }
 
@@ -33,7 +36,7 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
 
         private void buttonBTN_Click(object sender, EventArgs e)
         {
-            if (listView1LST.SelectedItems.Count > 0)
+            if (listView1LST.SelectedItems.Count >= 1)
             {
                 MessageBox.Show("La orden seleccionada ha sido confirmada.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
