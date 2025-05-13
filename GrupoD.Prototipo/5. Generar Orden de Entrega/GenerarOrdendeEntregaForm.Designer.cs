@@ -69,7 +69,7 @@
             // 
             // Transportista
             // 
-            Transportista.Text = "CUIL Transportista";
+            Transportista.Text = "Cuil Transportista";
             Transportista.Width = 200;
             // 
             // buttonBTN
@@ -90,8 +90,9 @@
             button2BTN.TabIndex = 3;
             button2BTN.Text = "Cancelar";
             button2BTN.UseVisualStyleBackColor = true;
+            button2BTN.Click += button2BTN_Click;
             // 
-            // GenerarOrdendeEntrega
+            // GenerarOrdendeEntregaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -99,7 +100,7 @@
             Controls.Add(button2BTN);
             Controls.Add(buttonBTN);
             Controls.Add(groupBox1);
-            Name = "GenerarOrdendeEntrega";
+            Name = "GenerarOrdendeEntregaForm";
             Text = "Generar Orden de Entrega";
             Load += GenerarOrdendeEntrega_Load;
             groupBox1.ResumeLayout(false);
