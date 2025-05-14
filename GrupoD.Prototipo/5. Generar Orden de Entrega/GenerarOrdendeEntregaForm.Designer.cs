@@ -19,13 +19,13 @@
         {
             groupBox1 = new GroupBox();
             listView1LST = new ListView();
+            columnHeader0 = new ColumnHeader();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
-            Fecha = new ColumnHeader();
-            Transportista = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
             buttonBTN = new Button();
             button2BTN = new Button();
-            columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -43,7 +43,7 @@
             // 
             // listView1LST
             // 
-            listView1LST.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, Fecha, Transportista, columnHeader3 });
+            listView1LST.Columns.AddRange(new ColumnHeader[] { columnHeader0, columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
             listView1LST.FullRowSelect = true;
             listView1LST.Location = new Point(10, 25);
             listView1LST.Name = "listView1LST";
@@ -53,25 +53,25 @@
             listView1LST.View = View.Details;
             listView1LST.SelectedIndexChanged += listView1_SelectedIndexChanged;
             // 
+            // columnHeader0
+            // 
+            columnHeader0.Text = "Fecha de Entrega";
+            columnHeader0.Width = 150;
+            // 
             // columnHeader1
             // 
-            columnHeader1.Text = "Fecha de Entrega";
-            columnHeader1.Width = 150;
+            columnHeader1.Text = "ID orden empaquetada";
+            columnHeader1.Width = 200;
             // 
             // columnHeader2
             // 
-            columnHeader2.Text = "ID orden empaquetada";
-            columnHeader2.Width = 200;
+            columnHeader2.Text = "Cliente Razón Social";
+            columnHeader2.Width = 235;
             // 
-            // Fecha
+            // columnHeader3
             // 
-            Fecha.Text = "Cliente Razón Social";
-            Fecha.Width = 235;
-            // 
-            // Transportista
-            // 
-            Transportista.Text = "Transportista Razón Social";
-            Transportista.Width = 230;
+            columnHeader3.Text = "Transportista Razón Social";
+            columnHeader3.Width = 230;
             // 
             // buttonBTN
             // 
@@ -93,10 +93,10 @@
             button2BTN.UseVisualStyleBackColor = true;
             button2BTN.Click += button2BTN_Click;
             // 
-            // columnHeader3
+            // columnHeader4
             // 
-            columnHeader3.Text = "Transportista Cuil";
-            columnHeader3.Width = 220;
+            columnHeader4.Text = "Transportista Cuil";
+            columnHeader4.Width = 220;
             // 
             // GenerarOrdendeEntregaForm
             // 
@@ -117,12 +117,12 @@
 
         private GroupBox groupBox1;
         private ListView listView1LST;
+        private ColumnHeader columnHeader0;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
-        private ColumnHeader Fecha;
-        private ColumnHeader Transportista;
+        private ColumnHeader columnHeader3;
         private Button buttonBTN;
         private Button button2BTN;
-        private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
     }
 }

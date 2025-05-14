@@ -40,10 +40,10 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
                 return;
             }
 
-            var item = listView1LST.SelectedItems[0];
+            var item = listView1LST.SelectedItems[1];
 
             // Razón Social Cliente
-            string razonSocial = item.SubItems[1].Text.Trim();
+            string razonSocial = item.SubItems[2].Text.Trim();
             if (string.IsNullOrEmpty(razonSocial))
             {
                 MessageBox.Show("La razón social no puede estar vacía.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -55,8 +55,9 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
                 return;
             }
 
+
             // Fecha
-            string fechaTexto = item.SubItems[2].Text.Trim();
+            string fechaTexto = item.SubItems[0].Text.Trim();
             if (!DateTime.TryParseExact(fechaTexto, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
             {
                 MessageBox.Show("La fecha no tiene el formato válido (dd/MM/yyyy).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -64,7 +65,7 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
             }
 
             // CUIL
-            string cuilTexto = item.SubItems[3].Text.Trim();
+            string cuilTexto = item.SubItems[4].Text.Trim();
             if (!long.TryParse(cuilTexto, out _) || cuilTexto.Length != 11)
             {
                 MessageBox.Show("El CUIL debe ser un número de 11 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
