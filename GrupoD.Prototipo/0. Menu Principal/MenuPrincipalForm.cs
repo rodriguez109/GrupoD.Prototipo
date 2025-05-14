@@ -24,8 +24,8 @@ public partial class MenuForm : Form
 
     private void GenerarOEMenuBTN_Click(object sender, EventArgs e)
     {
-        var ventana = new GenerarOrdendeEntrega();
-        ventana.Show();
+        var generarOrdendeEntregaForm = new GenerarOrdendeEntregaForm();
+        generarOrdendeEntregaForm.Show();
     }
 
 

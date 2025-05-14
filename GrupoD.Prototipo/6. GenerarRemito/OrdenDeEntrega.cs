@@ -11,12 +11,12 @@ namespace GrupoD.Prototipo._6._GenerarRemito
         
         
             public string NumeroOrden { get; set; }
-            public string CUILTransportista { get; set; }
+            public string DNITransportista { get; set; }
 
-            public OrdenDeEntrega(string numeroOrden, string cuilTransportista)
+            public OrdenDeEntrega(string numeroOrden, string dniTransportista)
             {
                 NumeroOrden = numeroOrden;
-                CUILTransportista = cuilTransportista;
+                DNITransportista = dniTransportista;
             }
 
             public override string ToString()

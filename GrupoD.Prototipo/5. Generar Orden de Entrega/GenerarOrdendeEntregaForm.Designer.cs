@@ -1,6 +1,6 @@
 ﻿namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
 {
-    partial class GenerarOrdendeEntrega
+    partial class GenerarOrdendeEntregaForm
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -19,12 +19,13 @@
         {
             groupBox1 = new GroupBox();
             listView1LST = new ListView();
+            columnHeader0 = new ColumnHeader();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
-            Fecha = new ColumnHeader();
-            Transportista = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
             buttonBTN = new Button();
             button2BTN = new Button();
+            columnHeader4 = new ColumnHeader();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -35,46 +36,46 @@
             groupBox1.ForeColor = SystemColors.ActiveCaptionText;
             groupBox1.Location = new Point(18, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(760, 350);
+            groupBox1.Size = new Size(1074, 470);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Órdenes Preparadas hacia Despacho";
+            groupBox1.Text = "Ordenes Preparadas hacia Despacho";
             // 
             // listView1LST
             // 
-            listView1LST.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, Fecha, Transportista });
+            listView1LST.Columns.AddRange(new ColumnHeader[] { columnHeader0, columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
             listView1LST.FullRowSelect = true;
             listView1LST.Location = new Point(10, 25);
             listView1LST.Name = "listView1LST";
-            listView1LST.Size = new Size(735, 310);
+            listView1LST.Size = new Size(1044, 426);
             listView1LST.TabIndex = 1;
             listView1LST.UseCompatibleStateImageBehavior = false;
             listView1LST.View = View.Details;
             listView1LST.SelectedIndexChanged += listView1_SelectedIndexChanged;
             // 
+            // columnHeader0
+            // 
+            columnHeader0.Text = "Fecha de Entrega";
+            columnHeader0.Width = 150;
+            // 
             // columnHeader1
             // 
-            columnHeader1.Text = "Número de Orden";
-            columnHeader1.Width = 170;
+            columnHeader1.Text = "ID orden empaquetada";
+            columnHeader1.Width = 200;
             // 
             // columnHeader2
             // 
-            columnHeader2.Text = "Razón Social Cliente";
-            columnHeader2.Width = 200;
+            columnHeader2.Text = "Cliente Razón Social";
+            columnHeader2.Width = 235;
             // 
-            // Fecha
+            // columnHeader3
             // 
-            Fecha.Text = "Fecha de Entrega";
-            Fecha.Width = 150;
-            // 
-            // Transportista
-            // 
-            Transportista.Text = "CUIL Transportista";
-            Transportista.Width = 200;
+            columnHeader3.Text = "Transportista Razón Social";
+            columnHeader3.Width = 230;
             // 
             // buttonBTN
             // 
-            buttonBTN.Location = new Point(420, 380);
+            buttonBTN.Location = new Point(729, 508);
             buttonBTN.Name = "buttonBTN";
             buttonBTN.Size = new Size(232, 29);
             buttonBTN.TabIndex = 2;
@@ -84,22 +85,28 @@
             // 
             // button2BTN
             // 
-            button2BTN.Location = new Point(674, 380);
+            button2BTN.Location = new Point(991, 508);
             button2BTN.Name = "button2BTN";
             button2BTN.Size = new Size(101, 29);
             button2BTN.TabIndex = 3;
             button2BTN.Text = "Cancelar";
             button2BTN.UseVisualStyleBackColor = true;
+            button2BTN.Click += button2BTN_Click;
             // 
-            // GenerarOrdendeEntrega
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Transportista Cuil";
+            columnHeader4.Width = 220;
+            // 
+            // GenerarOrdendeEntregaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 430);
+            ClientSize = new Size(1114, 554);
             Controls.Add(button2BTN);
             Controls.Add(buttonBTN);
             Controls.Add(groupBox1);
-            Name = "GenerarOrdendeEntrega";
+            Name = "GenerarOrdendeEntregaForm";
             Text = "Generar Orden de Entrega";
             Load += GenerarOrdendeEntrega_Load;
             groupBox1.ResumeLayout(false);
@@ -110,11 +117,12 @@
 
         private GroupBox groupBox1;
         private ListView listView1LST;
+        private ColumnHeader columnHeader0;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
-        private ColumnHeader Fecha;
-        private ColumnHeader Transportista;
+        private ColumnHeader columnHeader3;
         private Button buttonBTN;
         private Button button2BTN;
+        private ColumnHeader columnHeader4;
     }
 }
