@@ -29,43 +29,47 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            CuilTransportistaTXT = new TextBox();
+            DniTransportistaTXT = new TextBox();
             OrdenesDeEntregaLST = new ListView();
             columnHeader1 = new ColumnHeader();
             AgregarAlRemitoBTN = new Button();
             CancelarBTN = new Button();
             BuscarOrdenesBTN = new Button();
+            OrdenesAgregadasLST = new ListView();
+            columnHeader2 = new ColumnHeader();
+            QuitarDelRemitoBTN = new Button();
+            GenerarRemitoBTN = new Button();
+            label2 = new Label();
+            label3 = new Label();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(18, 25);
+            label1.Location = new Point(21, 33);
             label1.Name = "label1";
-            label1.Size = new Size(102, 15);
+            label1.Size = new Size(124, 20);
             label1.TabIndex = 0;
-            label1.Text = "CUIL Transportista";
+            label1.Text = "DNI Transportista";
             // 
-            // CuilTransportistaTXT
+            // DniTransportistaTXT
             // 
-            CuilTransportistaTXT.Location = new Point(10, 42);
-            CuilTransportistaTXT.Margin = new Padding(3, 2, 3, 2);
-            CuilTransportistaTXT.Name = "CuilTransportistaTXT";
-            CuilTransportistaTXT.Size = new Size(336, 23);
-            CuilTransportistaTXT.TabIndex = 1;
-            CuilTransportistaTXT.TextChanged += CuilTransportistaTXT_TextChanged;
+            DniTransportistaTXT.Location = new Point(11, 56);
+            DniTransportistaTXT.Name = "DniTransportistaTXT";
+            DniTransportistaTXT.Size = new Size(383, 27);
+            DniTransportistaTXT.TabIndex = 1;
             // 
             // OrdenesDeEntregaLST
             // 
-            OrdenesDeEntregaLST.CheckBoxes = true;
             OrdenesDeEntregaLST.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
-            OrdenesDeEntregaLST.Location = new Point(10, 84);
-            OrdenesDeEntregaLST.Margin = new Padding(3, 2, 3, 2);
+            OrdenesDeEntregaLST.FullRowSelect = true;
+            OrdenesDeEntregaLST.Location = new Point(11, 148);
             OrdenesDeEntregaLST.Name = "OrdenesDeEntregaLST";
-            OrdenesDeEntregaLST.Size = new Size(664, 173);
+            OrdenesDeEntregaLST.Size = new Size(758, 229);
             OrdenesDeEntregaLST.TabIndex = 2;
             OrdenesDeEntregaLST.UseCompatibleStateImageBehavior = false;
             OrdenesDeEntregaLST.View = View.Details;
+            OrdenesDeEntregaLST.SelectedIndexChanged += OrdenesDeEntregaLST_SelectedIndexChanged;
             // 
             // columnHeader1
             // 
@@ -74,10 +78,9 @@
             // 
             // AgregarAlRemitoBTN
             // 
-            AgregarAlRemitoBTN.Location = new Point(349, 274);
-            AgregarAlRemitoBTN.Margin = new Padding(3, 2, 3, 2);
+            AgregarAlRemitoBTN.Location = new Point(571, 383);
             AgregarAlRemitoBTN.Name = "AgregarAlRemitoBTN";
-            AgregarAlRemitoBTN.Size = new Size(137, 22);
+            AgregarAlRemitoBTN.Size = new Size(157, 29);
             AgregarAlRemitoBTN.TabIndex = 3;
             AgregarAlRemitoBTN.Text = "Agregar al remito";
             AgregarAlRemitoBTN.UseVisualStyleBackColor = true;
@@ -85,10 +88,9 @@
             // 
             // CancelarBTN
             // 
-            CancelarBTN.Location = new Point(504, 274);
-            CancelarBTN.Margin = new Padding(3, 2, 3, 2);
+            CancelarBTN.Location = new Point(575, 768);
             CancelarBTN.Name = "CancelarBTN";
-            CancelarBTN.Size = new Size(136, 22);
+            CancelarBTN.Size = new Size(155, 29);
             CancelarBTN.TabIndex = 4;
             CancelarBTN.Text = "Cancelar";
             CancelarBTN.UseVisualStyleBackColor = true;
@@ -96,27 +98,84 @@
             // 
             // BuscarOrdenesBTN
             // 
-            BuscarOrdenesBTN.Location = new Point(391, 40);
-            BuscarOrdenesBTN.Margin = new Padding(3, 2, 3, 2);
+            BuscarOrdenesBTN.Location = new Point(447, 53);
             BuscarOrdenesBTN.Name = "BuscarOrdenesBTN";
-            BuscarOrdenesBTN.Size = new Size(133, 22);
+            BuscarOrdenesBTN.Size = new Size(152, 29);
             BuscarOrdenesBTN.TabIndex = 5;
             BuscarOrdenesBTN.Text = "Buscar órdenes";
             BuscarOrdenesBTN.UseVisualStyleBackColor = true;
             BuscarOrdenesBTN.Click += BuscarOrdenesBTN_Click;
             // 
+            // OrdenesAgregadasLST
+            // 
+            OrdenesAgregadasLST.Columns.AddRange(new ColumnHeader[] { columnHeader2 });
+            OrdenesAgregadasLST.FullRowSelect = true;
+            OrdenesAgregadasLST.Location = new Point(11, 447);
+            OrdenesAgregadasLST.Name = "OrdenesAgregadasLST";
+            OrdenesAgregadasLST.Size = new Size(758, 263);
+            OrdenesAgregadasLST.TabIndex = 6;
+            OrdenesAgregadasLST.UseCompatibleStateImageBehavior = false;
+            OrdenesAgregadasLST.View = View.Details;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "Nro Orden de entrega";
+            columnHeader2.Width = 200;
+            // 
+            // QuitarDelRemitoBTN
+            // 
+            QuitarDelRemitoBTN.Location = new Point(573, 716);
+            QuitarDelRemitoBTN.Name = "QuitarDelRemitoBTN";
+            QuitarDelRemitoBTN.Size = new Size(157, 29);
+            QuitarDelRemitoBTN.TabIndex = 7;
+            QuitarDelRemitoBTN.Text = "Quitar del remito";
+            QuitarDelRemitoBTN.UseVisualStyleBackColor = true;
+            QuitarDelRemitoBTN.Click += QuitarDelRemitoBTN_Click;
+            // 
+            // GenerarRemitoBTN
+            // 
+            GenerarRemitoBTN.Location = new Point(393, 768);
+            GenerarRemitoBTN.Name = "GenerarRemitoBTN";
+            GenerarRemitoBTN.Size = new Size(176, 29);
+            GenerarRemitoBTN.TabIndex = 8;
+            GenerarRemitoBTN.Text = "Generar remito";
+            GenerarRemitoBTN.UseVisualStyleBackColor = true;
+            GenerarRemitoBTN.Click += GenerarRemitoBTN_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 125);
+            label2.Name = "label2";
+            label2.Size = new Size(140, 20);
+            label2.TabIndex = 9;
+            label2.Text = "Ordenes de entrega";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(12, 424);
+            label3.Name = "label3";
+            label3.Size = new Size(236, 20);
+            label3.TabIndex = 10;
+            label3.Text = "Ordenes de entrega seleccionadas";
+            // 
             // GenerarRemitoForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(683, 313);
+            ClientSize = new Size(789, 812);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(GenerarRemitoBTN);
+            Controls.Add(QuitarDelRemitoBTN);
+            Controls.Add(OrdenesAgregadasLST);
             Controls.Add(BuscarOrdenesBTN);
             Controls.Add(CancelarBTN);
             Controls.Add(AgregarAlRemitoBTN);
             Controls.Add(OrdenesDeEntregaLST);
-            Controls.Add(CuilTransportistaTXT);
+            Controls.Add(DniTransportistaTXT);
             Controls.Add(label1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "GenerarRemitoForm";
             Text = "GenerarRemitoForm";
             Load += GenerarRemitoForm_Load;
@@ -127,11 +186,17 @@
         #endregion
 
         private Label label1;
-        private TextBox CuilTransportistaTXT;
+        private TextBox DniTransportistaTXT;
         private ListView OrdenesDeEntregaLST;
         private ColumnHeader columnHeader1;
         private Button AgregarAlRemitoBTN;
         private Button CancelarBTN;
         private Button BuscarOrdenesBTN;
+        private ListView OrdenesAgregadasLST;
+        private Button QuitarDelRemitoBTN;
+        private Button GenerarRemitoBTN;
+        private ColumnHeader columnHeader2;
+        private Label label2;
+        private Label label3;
     }
 }
