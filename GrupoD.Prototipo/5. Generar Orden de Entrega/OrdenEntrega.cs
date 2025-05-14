@@ -13,12 +13,12 @@ namespace GrupoD.Prototipo
         public OrdenEntrega() { }
 
       
-        public OrdenEntrega(DateTime fecha, int numero, string cliente, string transportista, long cuil)
+        public OrdenEntrega(DateTime fecha, int numero, string cliente, string transportista, long cuit)
         {
             NumeroOrden = numero;
             Cliente = cliente;
             FechaEntrega = fecha;
-            CUIL = cuil;
+            CUIT = cuit;
             Transportista = transportista;
         }
 
@@ -26,7 +26,7 @@ namespace GrupoD.Prototipo
         public DateTime FechaEntrega { get; set; }
         public int NumeroOrden { get; set; }
         public string Cliente { get; set; }
-        public long CUIL { get; set; }
+        public long CUIT { get; set; }
         public string Transportista { get; set; }
     }
 }
