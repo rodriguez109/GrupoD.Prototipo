@@ -39,6 +39,8 @@
             columnHeader2 = new ColumnHeader();
             QuitarDelRemitoBTN = new Button();
             GenerarRemitoBTN = new Button();
+            label2 = new Label();
+            label3 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -61,12 +63,13 @@
             // 
             OrdenesDeEntregaLST.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
             OrdenesDeEntregaLST.FullRowSelect = true;
-            OrdenesDeEntregaLST.Location = new Point(11, 112);
+            OrdenesDeEntregaLST.Location = new Point(11, 148);
             OrdenesDeEntregaLST.Name = "OrdenesDeEntregaLST";
             OrdenesDeEntregaLST.Size = new Size(758, 229);
             OrdenesDeEntregaLST.TabIndex = 2;
             OrdenesDeEntregaLST.UseCompatibleStateImageBehavior = false;
             OrdenesDeEntregaLST.View = View.Details;
+            OrdenesDeEntregaLST.SelectedIndexChanged += OrdenesDeEntregaLST_SelectedIndexChanged;
             // 
             // columnHeader1
             // 
@@ -75,7 +78,7 @@
             // 
             // AgregarAlRemitoBTN
             // 
-            AgregarAlRemitoBTN.Location = new Point(571, 356);
+            AgregarAlRemitoBTN.Location = new Point(571, 383);
             AgregarAlRemitoBTN.Name = "AgregarAlRemitoBTN";
             AgregarAlRemitoBTN.Size = new Size(157, 29);
             AgregarAlRemitoBTN.TabIndex = 3;
@@ -85,7 +88,7 @@
             // 
             // CancelarBTN
             // 
-            CancelarBTN.Location = new Point(573, 760);
+            CancelarBTN.Location = new Point(575, 768);
             CancelarBTN.Name = "CancelarBTN";
             CancelarBTN.Size = new Size(155, 29);
             CancelarBTN.TabIndex = 4;
@@ -107,7 +110,7 @@
             // 
             OrdenesAgregadasLST.Columns.AddRange(new ColumnHeader[] { columnHeader2 });
             OrdenesAgregadasLST.FullRowSelect = true;
-            OrdenesAgregadasLST.Location = new Point(11, 418);
+            OrdenesAgregadasLST.Location = new Point(11, 447);
             OrdenesAgregadasLST.Name = "OrdenesAgregadasLST";
             OrdenesAgregadasLST.Size = new Size(758, 263);
             OrdenesAgregadasLST.TabIndex = 6;
@@ -121,7 +124,7 @@
             // 
             // QuitarDelRemitoBTN
             // 
-            QuitarDelRemitoBTN.Location = new Point(571, 699);
+            QuitarDelRemitoBTN.Location = new Point(573, 716);
             QuitarDelRemitoBTN.Name = "QuitarDelRemitoBTN";
             QuitarDelRemitoBTN.Size = new Size(157, 29);
             QuitarDelRemitoBTN.TabIndex = 7;
@@ -131,7 +134,7 @@
             // 
             // GenerarRemitoBTN
             // 
-            GenerarRemitoBTN.Location = new Point(391, 760);
+            GenerarRemitoBTN.Location = new Point(393, 768);
             GenerarRemitoBTN.Name = "GenerarRemitoBTN";
             GenerarRemitoBTN.Size = new Size(176, 29);
             GenerarRemitoBTN.TabIndex = 8;
@@ -139,11 +142,31 @@
             GenerarRemitoBTN.UseVisualStyleBackColor = true;
             GenerarRemitoBTN.Click += GenerarRemitoBTN_Click;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 125);
+            label2.Name = "label2";
+            label2.Size = new Size(140, 20);
+            label2.TabIndex = 9;
+            label2.Text = "Ordenes de entrega";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(12, 424);
+            label3.Name = "label3";
+            label3.Size = new Size(236, 20);
+            label3.TabIndex = 10;
+            label3.Text = "Ordenes de entrega seleccionadas";
+            // 
             // GenerarRemitoForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(789, 809);
+            ClientSize = new Size(789, 812);
+            Controls.Add(label3);
+            Controls.Add(label2);
             Controls.Add(GenerarRemitoBTN);
             Controls.Add(QuitarDelRemitoBTN);
             Controls.Add(OrdenesAgregadasLST);
@@ -173,5 +196,7 @@
         private Button QuitarDelRemitoBTN;
         private Button GenerarRemitoBTN;
         private ColumnHeader columnHeader2;
+        private Label label2;
+        private Label label3;
     }
 }

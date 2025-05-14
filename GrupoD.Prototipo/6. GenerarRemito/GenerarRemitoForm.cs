@@ -130,7 +130,10 @@ namespace GrupoD.Prototipo._6._GenerarRemito
             this.Close();
         }
 
-       
+        private void OrdenesDeEntregaLST_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
