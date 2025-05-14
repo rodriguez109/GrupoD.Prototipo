@@ -23,9 +23,11 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
             listView1LST.Items.Clear();
             foreach (var orden in modelo.Ordenes)
             {
-                ListViewItem item = new ListViewItem(orden.NumeroOrden.ToString());
+
+                ListViewItem item = new ListViewItem(orden.FechaEntrega.ToString("dd/MM/yyyy"));
+                item.SubItems.Add(orden.NumeroOrden.ToString());
                 item.SubItems.Add(orden.Cliente);
-                item.SubItems.Add(orden.FechaEntrega.ToString("dd/MM/yyyy"));
+                item.SubItems.Add(orden.Transportista);
                 item.SubItems.Add(orden.CUIT.ToString());
                 listView1LST.Items.Add(item);
             }
@@ -34,21 +36,26 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
         // incluyo Validaciones de datos en campo Columnas
         private void buttonBTN_Click(object sender, EventArgs e)
         {
-            
-
-           
-
-
 
             // Fecha
-            string fechaTexto = item.SubItems[0].Text.Trim();
-            if (!DateTime.TryParseExact(fechaTexto, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
+            if (listView1LST.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar al menos una orden para continuar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var item = listView1LST.SelectedItems[0];
+            string fechaEntrega = item.SubItems[0].Text.Trim();
+
+            if (!DateTime.TryParseExact(fechaEntrega, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
             {
                 MessageBox.Show("La fecha no tiene el formato válido (dd/MM/yyyy).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             //numero de Orden
-            var item = listView1LST.SelectedItems[1];
+            string numeroOrden = item.SubItems[1].Text.Trim();
+
             if (listView1LST.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Debe seleccionar al menos una orden para continuar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
