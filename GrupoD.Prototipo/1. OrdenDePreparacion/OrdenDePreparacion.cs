@@ -21,6 +21,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
         {
             InitializeComponent();
             this.Load += new EventHandler(OrdenDePreparacion_Load);
+            ConfigurarAutoCompletar();
         }
 
         //El formulario tiene una referencia al modelo
@@ -177,6 +178,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             }
         }
 
+        private int clienteFijo = -1; //Variable para almacenar el cliente seleccionado 
        
         private void agregarProductoBTN_Click(object sender, EventArgs e)
         {
@@ -200,13 +202,26 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 return;
             }
 
-            //// Obtener otros valores del producto
-            //string nombreProducto = productoSeleccionadoLABEL.Text;
+            if (!int.TryParse(numeroClienteTXT.Text, out int numeroCliente))
+            {
+                MessageBox.Show("El número de cliente debe ser un valor numérico válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            // Bloquear cambio de cliente después de agregar productos
+            if (ordenPreparacionLST.Items.Count > 0)
+            {
+                if (clienteFijo != numeroCliente)
+                {
+                    MessageBox.Show("No puede agregar productos de un cliente diferente a la orden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            else
+            {
+                clienteFijo = numeroCliente; // Fijar el cliente en la primera adición
+            }
 
-            //// Crear un nuevo ítem para el ListView de la Orden de Preparación
-            //ListViewItem nuevoItem = new ListViewItem(nombreProducto);
-            //nuevoItem.SubItems.Add(cantidadSeleccionadaTXT.Text); // Cantidad seleccionada
 
             // Obtener los valores correctos en el orden adecuado
             string skuProducto = productosClienteLST.SelectedItems[0].SubItems[0].Text; // SKU del producto
@@ -248,12 +263,21 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 return;
             }
 
+            // Convertir númeroCliente a int
+            if (!int.TryParse(numeroClienteTXT.Text, out int numeroCliente))
+            {
+                MessageBox.Show("El número de cliente debe ser un valor numérico válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             DateTime fechaRetiro = fechaRetirarDTP.Value; // Obtener fecha como DateTime
             string prioridadSeleccionada = prioridadCMB.Text;
             string cuilTransportista = cuilTransportistaTXT.Text;
 
-          
-           
+            string razonSocialCliente = razonSocialClienteTXT.Text;
+
+
+
 
             List<OrdenDePreparacionClase> nuevaOrden = new List<OrdenDePreparacionClase>();
 
@@ -279,6 +303,8 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                     OrdenDePreparacionClase orden = new OrdenDePreparacionClase
                 {
                     NumeroOrdenPreparacion = numeroOrden, // Número autonumérico
+                    NumeroCliente = numeroCliente, // Número de cliente
+                    RazonSocialCliente = razonSocialCliente, // Razón social del cliente
                     NombreProducto = item.SubItems[1].Text,
                     CantidadProducto = item.SubItems[2].Text,
 
@@ -356,14 +382,35 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             this.Close();
         }
 
- 
+
+        //Razón social: búsqueda por primeras letras
+
+        private void ConfigurarAutoCompletar()
+        {
+            AutoCompleteStringCollection listaAutocompletar = new AutoCompleteStringCollection();
+
+            // Agregar todas las razones sociales de los clientes a la lista de autocompletar
+            foreach (var cliente in OrdenDePreparacionModelo.ListaCliente)
+            {
+                listaAutocompletar.Add(cliente.RazonSocialCliente);
+            }
+
+            // Configurar el campo de texto con la lista de autocompletar
+            razonSocialClienteTXT.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            razonSocialClienteTXT.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            razonSocialClienteTXT.AutoCompleteCustomSource = listaAutocompletar;
+        }
 
 
 
 
 
 
-        
+
+
+
+
+
 
 
     }
