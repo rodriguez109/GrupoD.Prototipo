@@ -124,7 +124,6 @@
             productosClienteLST.TabIndex = 11;
             productosClienteLST.UseCompatibleStateImageBehavior = false;
             productosClienteLST.View = View.Details;
-            productosClienteLST.SelectedIndexChanged += productosClienteLST_SelectedIndexChanged;
             // 
             // skuProductoCLM
             // 

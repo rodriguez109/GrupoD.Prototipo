@@ -22,5 +22,9 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
         public string CUILTransportista { get; set; }
 
+        public int NumeroCliente { get; set; }
+
+        public string RazonSocialCliente { get; set; }
+
     }
 }

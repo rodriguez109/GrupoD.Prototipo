@@ -27,8 +27,8 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
         private OrdenDePreparacionModelo modelo;
         //private List<OrdenesDePreparacion> OrdenesPreparacionDisponibles = new List<OrdenesDePreparacion>();
         //private List<OrdenesDePreparacion> OrdenesAgregadas = new List<OrdenesDePreparacion>();
-        private List<Cliente> listaClientes = new List<Cliente>();
-        private List<Producto> productos = new List<Producto>();
+        //private List<Cliente> listaClientes = new List<Cliente>();
+        //private List<Producto> productos = new List<Producto>();
 
         private void OrdenDePreparacion_Load(object sender, EventArgs e)
         {
