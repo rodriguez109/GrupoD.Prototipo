@@ -1,5 +1,4 @@
-﻿using GrupoD.Prototipo;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,25 +8,18 @@ namespace GrupoD.Prototipo
 {
     public class OrdenEntrega
     {
-       
-        public OrdenEntrega() { }
+        public int NumeroOrden { get; set; }
+        public string Cliente { get; set; }
+        public DateTime FechaEntrega { get; set; }
+        public long CUIL { get; set; }
 
-      
-        public OrdenEntrega(DateTime fecha, int numero, string cliente, string transportista, long cuit)
+        public OrdenEntrega(int numero, string cliente, DateTime fecha, long cuil)
         {
             NumeroOrden = numero;
             Cliente = cliente;
             FechaEntrega = fecha;
-            CUIT = cuit;
-            Transportista = transportista;
+            CUIL = cuil;
         }
-
-       
-        public DateTime FechaEntrega { get; set; }
-        public int NumeroOrden { get; set; }
-        public string Cliente { get; set; }
-        public long CUIT { get; set; }
-        public string Transportista { get; set; }
     }
-}
 
+}

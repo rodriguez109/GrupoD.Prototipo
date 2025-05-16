@@ -23,9 +23,9 @@
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
             buttonBTN = new Button();
             button2BTN = new Button();
-            columnHeader4 = new ColumnHeader();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,27 +55,32 @@
             // 
             // columnHeader0
             // 
-            columnHeader0.Text = "Fecha de Entrega";
+            columnHeader0.Text = "Numero de Orden";
             columnHeader0.Width = 150;
             // 
             // columnHeader1
             // 
-            columnHeader1.Text = "ID orden empaquetada";
+            columnHeader1.Text = "Razón Social Cliente";
             columnHeader1.Width = 200;
             // 
             // columnHeader2
             // 
-            columnHeader2.Text = "Cliente Razón Social";
+            columnHeader2.Text = "Fecha de Entrega";
             columnHeader2.Width = 235;
             // 
             // columnHeader3
             // 
-            columnHeader3.Text = "Transportista Razón Social";
+            columnHeader3.Text = "DNI transportista";
             columnHeader3.Width = 230;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Razón SocialTransportista";
+            columnHeader4.Width = 220;
             // 
             // buttonBTN
             // 
-            buttonBTN.Location = new Point(729, 508);
+            buttonBTN.Location = new Point(718, 488);
             buttonBTN.Name = "buttonBTN";
             buttonBTN.Size = new Size(232, 29);
             buttonBTN.TabIndex = 2;
@@ -85,18 +90,13 @@
             // 
             // button2BTN
             // 
-            button2BTN.Location = new Point(991, 508);
+            button2BTN.Location = new Point(971, 488);
             button2BTN.Name = "button2BTN";
             button2BTN.Size = new Size(101, 29);
             button2BTN.TabIndex = 3;
             button2BTN.Text = "Cancelar";
             button2BTN.UseVisualStyleBackColor = true;
             button2BTN.Click += button2BTN_Click;
-            // 
-            // columnHeader4
-            // 
-            columnHeader4.Text = "Transportista Cuil";
-            columnHeader4.Width = 220;
             // 
             // GenerarOrdendeEntregaForm
             // 
