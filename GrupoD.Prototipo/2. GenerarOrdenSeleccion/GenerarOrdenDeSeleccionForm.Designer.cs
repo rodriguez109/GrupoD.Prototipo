@@ -41,6 +41,7 @@
             label2 = new Label();
             AgregarOrdenesSeleccionadasBTN = new Button();
             groupBox2 = new GroupBox();
+            AgregarTodoBTN = new Button();
             OrdenesPreparacionPendientesLST = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
@@ -48,6 +49,7 @@
             columnHeader4 = new ColumnHeader();
             columnHeader5 = new ColumnHeader();
             groupBox3 = new GroupBox();
+            QuitarTodoBTN = new Button();
             OrdenesPreparacionPendientesSeleccionadasLST = new ListView();
             columnHeader6 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
@@ -169,9 +171,9 @@
             // 
             // AgregarOrdenesSeleccionadasBTN
             // 
-            AgregarOrdenesSeleccionadasBTN.Location = new Point(445, 163);
+            AgregarOrdenesSeleccionadasBTN.Location = new Point(257, 163);
             AgregarOrdenesSeleccionadasBTN.Name = "AgregarOrdenesSeleccionadasBTN";
-            AgregarOrdenesSeleccionadasBTN.Size = new Size(278, 23);
+            AgregarOrdenesSeleccionadasBTN.Size = new Size(302, 23);
             AgregarOrdenesSeleccionadasBTN.TabIndex = 6;
             AgregarOrdenesSeleccionadasBTN.Text = "Agregar las ordenes seleccionadas";
             AgregarOrdenesSeleccionadasBTN.UseVisualStyleBackColor = true;
@@ -179,6 +181,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(AgregarTodoBTN);
             groupBox2.Controls.Add(OrdenesPreparacionPendientesLST);
             groupBox2.Controls.Add(AgregarOrdenesSeleccionadasBTN);
             groupBox2.Location = new Point(25, 171);
@@ -187,6 +190,16 @@
             groupBox2.TabIndex = 10;
             groupBox2.TabStop = false;
             groupBox2.Text = "Lista de Órdenes de Preparación Pendientes:";
+            // 
+            // AgregarTodoBTN
+            // 
+            AgregarTodoBTN.Location = new Point(631, 163);
+            AgregarTodoBTN.Name = "AgregarTodoBTN";
+            AgregarTodoBTN.Size = new Size(302, 23);
+            AgregarTodoBTN.TabIndex = 9;
+            AgregarTodoBTN.Text = "Agregar todas las ordenes";
+            AgregarTodoBTN.UseVisualStyleBackColor = true;
+            AgregarTodoBTN.Click += AgregarTodoBTN_Click;
             // 
             // OrdenesPreparacionPendientesLST
             // 
@@ -226,6 +239,7 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(QuitarTodoBTN);
             groupBox3.Controls.Add(OrdenesPreparacionPendientesSeleccionadasLST);
             groupBox3.Controls.Add(QuitarOrdenesSeleccionadasBTN);
             groupBox3.Location = new Point(25, 377);
@@ -234,6 +248,16 @@
             groupBox3.TabIndex = 11;
             groupBox3.TabStop = false;
             groupBox3.Text = "Detalle de Ordenes a Seleccionar:";
+            // 
+            // QuitarTodoBTN
+            // 
+            QuitarTodoBTN.Location = new Point(631, 163);
+            QuitarTodoBTN.Name = "QuitarTodoBTN";
+            QuitarTodoBTN.Size = new Size(302, 23);
+            QuitarTodoBTN.TabIndex = 15;
+            QuitarTodoBTN.Text = "Quitar todas las ordenes";
+            QuitarTodoBTN.UseVisualStyleBackColor = true;
+            QuitarTodoBTN.Click += QuitarTodoBTN_Click;
             // 
             // OrdenesPreparacionPendientesSeleccionadasLST
             // 
@@ -273,9 +297,9 @@
             // 
             // QuitarOrdenesSeleccionadasBTN
             // 
-            QuitarOrdenesSeleccionadasBTN.Location = new Point(445, 163);
+            QuitarOrdenesSeleccionadasBTN.Location = new Point(257, 163);
             QuitarOrdenesSeleccionadasBTN.Name = "QuitarOrdenesSeleccionadasBTN";
-            QuitarOrdenesSeleccionadasBTN.Size = new Size(278, 23);
+            QuitarOrdenesSeleccionadasBTN.Size = new Size(302, 23);
             QuitarOrdenesSeleccionadasBTN.TabIndex = 6;
             QuitarOrdenesSeleccionadasBTN.Text = "Quitar las ordenes seleccionadas";
             QuitarOrdenesSeleccionadasBTN.UseVisualStyleBackColor = true;
@@ -295,7 +319,7 @@
             // 
             CancelarOrdenSeleccionBTN.Location = new Point(656, 595);
             CancelarOrdenSeleccionBTN.Name = "CancelarOrdenSeleccionBTN";
-            CancelarOrdenSeleccionBTN.Size = new Size(278, 23);
+            CancelarOrdenSeleccionBTN.Size = new Size(302, 23);
             CancelarOrdenSeleccionBTN.TabIndex = 13;
             CancelarOrdenSeleccionBTN.Text = "Cancelar";
             CancelarOrdenSeleccionBTN.UseVisualStyleBackColor = true;
@@ -363,5 +387,7 @@
         private ColumnHeader columnHeader9;
         private ColumnHeader columnHeader10;
         private Label label1;
+        private Button AgregarTodoBTN;
+        private Button QuitarTodoBTN;
     }
 }

@@ -44,14 +44,5 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
             OrdenesDeSeleccion = new List<OrdenesDeSeleccion>();  // Lista de órdenes de selección
         }
 
-        //validar todo
-        //1) el apellido no puede estar vacio
-        //2) el apellido no puede tener mas de X caracteres
-        //3) tratamiento no valido
-        // ya existe una persona con mismo numero de dni y tipo
-        // hacer lo que haiga que hacer para guardar la informacion
-
-        // aca van las listas con datos inventados
-
     }
 }

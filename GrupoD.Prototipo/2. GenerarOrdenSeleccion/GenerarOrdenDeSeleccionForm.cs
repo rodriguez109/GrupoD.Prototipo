@@ -258,66 +258,139 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
             MessageBox.Show("Orden de preparación pendiente removida del listado de órdenes a seleccionar", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-
-        //private void GenerarOrdenSeleccionBTN_Click(object sender, EventArgs e)
-        //{
-        // Verificar si hay elementos en la lista OrdenesPreparacionPendientesSeleccionadasLST
-
-        //if (OrdenesPreparacionPendientesSeleccionadasLST.Items.Count == 0)
-        //{
-        //MessageBox.Show("No hay órdenes de preparación pendientes.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //return;
-        //}
-
-        // Agregar las órdenes de preparación a la orden de selección
-
-        // Eliminar las órdenes de preparación que se han agregado a la orden de selección de la lista OrdenesPreparacionPendientesLST
-
-        // Le pido al modelo que cree una nueva orden de seleccion con esas ordenes de preparacion seleccionadas
-
-        // Vaciar la lista OrdenesPreparacionPendientesSeleccionadasLST
-
-        // Mostrar mensaje de confirmación
-
-        //}
-
         private void GenerarOrdenSeleccionBTN_Click(object sender, EventArgs e)
         {
-            // Verificar si hay órdenes agregadas
-            if (!modelo.OrdenesAgregadas.Any())
+            // Verificar si hay órdenes seleccionadas en la lista
+            if (OrdenesPreparacionPendientesSeleccionadasLST.Items.Count == 0)
             {
-                MessageBox.Show("No hay ordenes de preparacion pendientes para crear una orden de selección", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No hay órdenes de preparación seleccionadas para generar una orden de selección.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // Definir número correlativo de orden
             int nuevoNumeroOrdenSeleccion = modelo.OrdenesDeSeleccion.Count + 1;
 
-            // Crear nueva orden de selección con las órdenes agregadas
+            // Lista para almacenar las órdenes seleccionadas
+            List<OrdenesDePreparacion> ordenesSeleccionadas = new List<OrdenesDePreparacion>();
+
+            // Obtener las órdenes directamente desde la lista de seleccionadas
+            foreach (ListViewItem item in OrdenesPreparacionPendientesSeleccionadasLST.Items)
+            {
+                int numeroOrden = int.Parse(item.Text);
+
+                var orden = modelo.OrdenesPreparacionDisponibles
+                    .FirstOrDefault(o => o.NumeroOrden == numeroOrden);
+
+                if (orden != null)
+                {
+                    ordenesSeleccionadas.Add(orden);
+                }
+            }
+
+            // Crear nueva orden de selección con todas las órdenes seleccionadas
             var nuevaOrdenSeleccion = new OrdenesDeSeleccion(
                 nuevoNumeroOrdenSeleccion,
-                modelo.OrdenesAgregadas.ToList(),
+                ordenesSeleccionadas,
                 DateTime.Now,
                 "Pendiente"
             );
 
-            // Agregar la nueva orden a la lista
+            // Agregar la nueva orden de selección a la lista
             modelo.OrdenesDeSeleccion.Add(nuevaOrdenSeleccion);
 
-            // Eliminar las órdenes agregadas de la lista de disponibles
-            modelo.OrdenesPreparacionDisponibles.RemoveAll(o => modelo.OrdenesAgregadas.Any(ag => ag.NumeroOrden == o.NumeroOrden));
+            // Eliminar las órdenes seleccionadas de la lista de disponibles
+            modelo.OrdenesPreparacionDisponibles.RemoveAll(o => ordenesSeleccionadas.Any(sel => sel.NumeroOrden == o.NumeroOrden));
 
-            // Limpiar listas después de generar la orden
-            modelo.OrdenesAgregadas.Clear();
+            // Limpiar la lista de órdenes seleccionadas
             OrdenesPreparacionPendientesSeleccionadasLST.Items.Clear();
 
-            // Recargar la lista de órdenes disponibles
+            // Actualizar la lista de órdenes disponibles
             ActualizarListaOrdenDePreparacion();
 
+            // Mensaje de éxito
             MessageBox.Show($"Orden de selección número {nuevoNumeroOrdenSeleccion} generada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void AgregarTodoBTN_Click(object sender, EventArgs e)
+        {
+            // Verificar si el usuario aplicó algún filtro antes de presionar "Buscar"
+            if (string.IsNullOrWhiteSpace(NombreClienteTXT.Text.Trim()) &&
+                string.IsNullOrWhiteSpace(NumeroOrdenPreparacionTXT.Text.Trim()) &&
+                PrioridadCMB.SelectedIndex == -1 &&
+                FechaEntregaDTP.CustomFormat == " ")
+            {
+                MessageBox.Show("Debe aplicar al menos un filtro y realizar la búsqueda antes de agregar todas las órdenes.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            // Verificar si la lista de órdenes filtradas tiene elementos
+            if (OrdenesPreparacionPendientesLST.Items.Count == 0)
+            {
+                MessageBox.Show("No hay órdenes filtradas para agregar. Por favor, aplique un filtro antes de continuar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Lista para almacenar las órdenes que serán agregadas
+            List<OrdenesDePreparacion> ordenesParaAgregar = new List<OrdenesDePreparacion>();
+
+            // Recorrer la lista de órdenes pendientes y agregar solo las filtradas
+            foreach (ListViewItem item in OrdenesPreparacionPendientesLST.Items)
+            {
+                int numeroOrden = int.Parse(item.Text);
+
+                var orden = modelo.OrdenesPreparacionDisponibles
+                    .FirstOrDefault(o => o.NumeroOrden == numeroOrden);
+
+                if (orden != null && !modelo.OrdenesAgregadas.Any(a => a.NumeroOrden == orden.NumeroOrden))
+                {
+                    ordenesParaAgregar.Add(orden);
+                    modelo.OrdenesAgregadas.Add(orden); // Marcar como agregada
+                }
+            }
+
+            // Si no se pudo agregar ninguna orden, mostrar mensaje de error
+            if (!ordenesParaAgregar.Any())
+            {
+                MessageBox.Show("Las órdenes ya fueron agregadas previamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Agregar las órdenes filtradas al listado de órdenes seleccionadas
+            foreach (var orden in ordenesParaAgregar)
+            {
+                var item = new ListViewItem(orden.NumeroOrden.ToString());
+                item.SubItems.Add(orden.NombreCliente);
+                item.SubItems.Add(orden.FechaEntrega.ToShortDateString());
+                item.SubItems.Add(orden.Transportista.ToString());
+                item.SubItems.Add(orden.Prioridad);
+                OrdenesPreparacionPendientesSeleccionadasLST.Items.Add(item);
+            }
+
+            // Refrescar la lista de pendientes sin los elementos agregados
+            ActualizarListaOrdenDePreparacion();
+
+            // Mostrar mensaje de éxito
+            MessageBox.Show("Todas las órdenes filtradas han sido agregadas correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void QuitarTodoBTN_Click(object sender, EventArgs e)
+        {
+            // Verificar si hay órdenes agregadas
+            if (!modelo.OrdenesAgregadas.Any())
+            {
+                MessageBox.Show("No hay órdenes agregadas para quitar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Remover todas las órdenes agregadas
+            modelo.OrdenesAgregadas.Clear();
+            OrdenesPreparacionPendientesSeleccionadasLST.Items.Clear();
+
+            // Refrescar la lista de órdenes pendientes
+            ActualizarListaOrdenDePreparacion();
+
+            MessageBox.Show("Todas las órdenes agregadas han sido removidas correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
         // DEFINICION DE METODOS AUXILIARES  ------------------------------------------------------------------------------------------------------------
 
@@ -349,7 +422,6 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
             }
         }
 
-
         private void BorrarFiltros()
         {
             // Limpiar los campos de búsqueda
@@ -362,24 +434,5 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
             FechaEntregaDTP.CustomFormat = " "; // Sin fecha inicial
         }
 
-
-
-
-
-        //aca es donde vienen las validaciones (validamos los datos minimos para pasarle los datos al modelo -- esto es por evento click
-
-        //validar lo minimo necesario para pasarle los datos al modelo
-        //tomar los valores de los controles y realizar validaciones minimas
-
-        //var fechanacimiento = textbox XXX
-
-        //para poder hacer esto construir un objeto X
-
-        //Pasar al modelo quien realiza el resto de las validaciones y devuelve mensaje de error si hace falta
-
-        //aca van todos los if else
-        //try parse y return como por ejemplo 1) el numero de dni no es un numero / facha de nacimiento no es fecha valida / el telefono no es un numero
-
-        //por ejemplo evento borrar debe decir "No hay ninguna persona para borrar"
     }
 }
