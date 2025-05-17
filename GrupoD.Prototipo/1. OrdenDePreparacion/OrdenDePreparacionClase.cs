@@ -10,10 +10,10 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
     {
         public int? NumeroOrdenPreparacion { get; set; }
 
-        public int SKUProducto { get; set; }
-        public string NombreProducto { get; set; }
+        public int SKUProducto { get; set; } //SKUProductoSeleccionado  
+        public string NombreProducto { get; set; } //NombreProductoSeleccionado
 
-        public string CantidadProducto { get; set; }
+        public string CantidadProducto { get; set; } //int CantidadSeleccionada
 
         public string Posicion { get; set; }
         public DateTime FechaRetirar { get; set; }

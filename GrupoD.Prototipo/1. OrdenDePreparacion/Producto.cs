@@ -11,7 +11,7 @@ namespace GrupoD.Prototipo._1._OrdenDePreparacion
         //Atributos
         public int SKUProducto { get; set; }
         public string NombreProducto { get; set; }
-        public int Cantidad { get; set; }
+        public int Cantidad { get; set; } //CantidadProducto
         public string Posicion { get; set; }
         public int NumeroCliente { get; set; }
         public Producto(int skuProducto, string nombreProducto, int cantidad, string posicion, int numeroCliente)

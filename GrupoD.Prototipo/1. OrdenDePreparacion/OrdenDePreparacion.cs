@@ -195,6 +195,13 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 return;
             }
 
+            // Verificar que la cantidad seleccionada sea mayor a cero
+            if (cantidadSeleccionada <= 0)
+            {
+                MessageBox.Show("La cantidad debe ser mayor a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             // Verificar que la cantidad seleccionada no sea mayor a la disponible
             if (cantidadSeleccionada > cantidadDisponible)
             {
