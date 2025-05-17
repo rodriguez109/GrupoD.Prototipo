@@ -21,7 +21,29 @@ namespace GrupoD.Prototipo._6._GenerarRemito
     new OrdenDeEntrega("8", "31242093"),  // Repetido
     new OrdenDeEntrega("9", "36242093"),
     new OrdenDeEntrega("10", "37242093"),
-    new OrdenDeEntrega("11", "37242093")  // Repetido
+    new OrdenDeEntrega("11", "37242093"), // Repetido
+    new OrdenDeEntrega("12", "37242093"),  // Repetido
+    new OrdenDeEntrega("13", "38242093"),
+    new OrdenDeEntrega("14", "39242093"),
+    new OrdenDeEntrega("14", "40242093"),
+    new OrdenDeEntrega("15", "41242093"),
+    new OrdenDeEntrega("16", "42242093"),
+    new OrdenDeEntrega("17", "43242093"),
+    new OrdenDeEntrega("18", "44242093"),
+    new OrdenDeEntrega("19", "45242093"),
+    new OrdenDeEntrega("20", "46242093"), // repetido
+    new OrdenDeEntrega("21", "46242093"),
+
+
+
+
+
+
+
+
+
+
+
 };
 
 
