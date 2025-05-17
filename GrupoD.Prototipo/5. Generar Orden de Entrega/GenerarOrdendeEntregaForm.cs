@@ -23,9 +23,9 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
             foreach (var orden in modelo.Ordenes)
             {
                 ListViewItem item = new ListViewItem(orden.NumeroOrden.ToString());
-                item.SubItems.Add(orden.Cliente);
+                item.SubItems.Add(orden.NombreCliente);
                 item.SubItems.Add(orden.FechaEntrega.ToString("dd/MM/yyyy"));
-                item.SubItems.Add(orden.CUIL.ToString());
+                item.SubItems.Add(orden.DniTransportista.ToString());
                 listView1LST.Items.Add(item);
             }
         }
