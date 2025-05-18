@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GrupoD.Prototipo
 {
-    public class OrdenEntrega
+    public class OrdenDeEntregaPendiente
     {
         public int NumeroOrden { get; set; }
         public string NombreCliente { get; set; }
@@ -15,8 +15,9 @@ namespace GrupoD.Prototipo
         public long DniTransportista { get; set; }
         public string NombreTransportista { get; set; }
 
-
-        public OrdenEntrega(int numeroOrden, string nombreCliente, DateTime fechaEntrega, long dniTransportista, string nombreTransportista)
+        
+       
+        public OrdenDeEntregaPendiente(int numeroOrden, string nombreCliente, DateTime fechaEntrega, long dniTransportista, string nombreTransportista)
         {
             NumeroOrden = numeroOrden;
             NombreCliente = nombreCliente;
@@ -27,3 +28,4 @@ namespace GrupoD.Prototipo
     }
 
 }
+

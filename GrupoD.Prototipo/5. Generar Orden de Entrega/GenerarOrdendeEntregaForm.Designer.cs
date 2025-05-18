@@ -23,9 +23,9 @@
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
             buttonBTN = new Button();
             button2BTN = new Button();
-            columnHeader4 = new ColumnHeader();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -73,6 +73,11 @@
             columnHeader3.Text = "DNI transportista";
             columnHeader3.Width = 230;
             // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Razón Social Transportista";
+            columnHeader4.Width = 230;
+            // 
             // buttonBTN
             // 
             buttonBTN.Location = new Point(727, 488);
@@ -93,11 +98,6 @@
             button2BTN.UseVisualStyleBackColor = true;
             button2BTN.Click += button2BTN_Click;
             // 
-            // columnHeader4
-            // 
-            columnHeader4.Text = "Razón Social Transportista";
-            columnHeader4.Width = 230;
-            // 
             // GenerarOrdendeEntregaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -108,7 +108,7 @@
             Controls.Add(groupBox1);
             Name = "GenerarOrdendeEntregaForm";
             Text = "Generar Orden de Entrega";
-            Load += GenerarOrdendeEntrega_Load;
+            Load += GenerarOrdendeEntregaForm_Load_1;
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);
         }
