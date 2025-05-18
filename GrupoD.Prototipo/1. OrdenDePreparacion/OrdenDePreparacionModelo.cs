@@ -81,25 +81,25 @@ namespace GrupoD.Prototipo
 
         {
 
-            new Transportista(20123456783, "Juan Pérez"),
+            new Transportista(12345678, "Juan Pérez"),
 
-            new Transportista(27876543215, "María Gómez"),
+            new Transportista(23456789, "María Gómez"),
 
-            new Transportista(23456789017, "Carlos Rodríguez"),
+            new Transportista(34567890, "Carlos Rodríguez"),
 
-            new Transportista(30234567899, "Laura Fernández"),
+            new Transportista(34567891, "Laura Fernández"),
 
-            new Transportista(24987654321, "Diego Sánchez"),
+            new Transportista(34567892, "Diego Sánchez"),
 
-            new Transportista(22654321984, "Ana López"),
+            new Transportista(34567893, "Ana López"),
 
-            new Transportista(21345678906, "Pedro Martínez"),
+            new Transportista(34567894, "Pedro Martínez"),
 
-            new Transportista(26109876542, "Sofía Torres"),
+            new Transportista(34567895, "Sofía Torres"),
 
-            new Transportista(28567890128, "Roberto Vargas"),
+            new Transportista(34567896, "Roberto Vargas"),
 
-            new Transportista(29765432100, "Elena Ramírez")
+            new Transportista(34567897, "Elena Ramírez")
 
         };
 

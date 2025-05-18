@@ -22,6 +22,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             InitializeComponent();
             this.Load += new EventHandler(OrdenDePreparacion_Load);
             ConfigurarAutoCompletar();
+            ConfigurarAutoCompletarDNITransportista();
         }
 
         //El formulario tiene una referencia al modelo
@@ -209,7 +210,40 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 return;
             }
 
-            if (!int.TryParse(numeroClienteTXT.Text, out int numeroCliente))
+            //if (!int.TryParse(numeroClienteTXT.Text, out int numeroCliente))
+            //{
+            //    MessageBox.Show("El número de cliente debe ser un valor numérico válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
+
+            int numeroCliente = 0;
+            if (string.IsNullOrWhiteSpace(numeroClienteTXT.Text))
+            {
+                // Si no se ingresó un número de cliente, se busca por razón social.
+                if (!string.IsNullOrWhiteSpace(razonSocialClienteTXT.Text))
+                {
+                    string razonSocial = razonSocialClienteTXT.Text.Trim();
+                    var clienteEncontrado = OrdenDePreparacionModelo.ListaCliente
+                        .FirstOrDefault(c => c.RazonSocialCliente.Equals(razonSocial, StringComparison.OrdinalIgnoreCase));
+                    if (clienteEncontrado != null)
+                    {
+                        numeroCliente = clienteEncontrado.NumeroCliente;
+                        // Opcional: actualizar el TextBox para reflejar el número obtenido.
+                        numeroClienteTXT.Text = numeroCliente.ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró un cliente con la razón social ingresada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese un número de cliente o una razón social válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            else if (!int.TryParse(numeroClienteTXT.Text, out numeroCliente))
             {
                 MessageBox.Show("El número de cliente debe ser un valor numérico válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -264,9 +298,9 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 return;
             }
 
-            if (string.IsNullOrEmpty(cuilTransportistaTXT.Text) || cuilTransportistaTXT.Text.Length != 11)
+            if (string.IsNullOrEmpty(dniTransportistaTXT.Text) || dniTransportistaTXT.Text.Length != 8)
             {
-                MessageBox.Show("Ingrese un CUIL válido de 11 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ingrese un DNI válido de 8 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -279,7 +313,8 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
             DateTime fechaRetiro = fechaRetirarDTP.Value; // Obtener fecha como DateTime
             string prioridadSeleccionada = prioridadCMB.Text;
-            string cuilTransportista = cuilTransportistaTXT.Text;
+            //string cuilTransportista = cuilTransportistaTXT.Text;
+            int dniTransportista = int.Parse(dniTransportistaTXT.Text); // Convertir a int
 
             string razonSocialCliente = razonSocialClienteTXT.Text;
 
@@ -319,8 +354,10 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
                     FechaRetirar = fechaRetiro, // Obtiene la fecha correctamente
                     Prioridad = prioridadSeleccionada, // Obtiene la prioridad desde el ComboBox
-                    CUILTransportista = cuilTransportista // Obtiene el CUIL desde el TextBox
-                };
+                    /*CUILTransportista = cuilTransportista*/ // Obtiene el CUIL desde el TextBox
+                    //DNITransportista = int.Parse(dniTransportista)
+                    DNITransportista = dniTransportista // Obtiene el DNI desde el TextBox
+                    };
 
                 nuevaOrden.Add(orden);
             }
@@ -337,7 +374,8 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             productosClienteLST.Items.Clear();
             ordenPreparacionLST.Items.Clear();
             cantidadSeleccionadaTXT.Clear();
-            cuilTransportistaTXT.Clear();
+            dniTransportistaTXT.Clear();
+
         }
 
         
@@ -409,6 +447,23 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
         }
 
 
+        //DNI Transportista: búsqueda por primeros números
+        private void ConfigurarAutoCompletarDNITransportista()
+        {
+            // Se crea la colección de cadenas para el autocompletado
+            AutoCompleteStringCollection listaAutocompletar = new AutoCompleteStringCollection();
+
+            // Agregar todos los DNIs (convertidos a string) de los transportistas
+            foreach (var transportista in OrdenDePreparacionModelo.ListaTransportistas)
+            {
+                listaAutocompletar.Add(transportista.DNITransportista.ToString());
+            }
+
+            // Configurar el TextBox para usar el autocompletado con la lista personalizada
+            dniTransportistaTXT.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            dniTransportistaTXT.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            dniTransportistaTXT.AutoCompleteCustomSource = listaAutocompletar;
+        }
 
 
 

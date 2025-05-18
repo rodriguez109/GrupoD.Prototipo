@@ -51,10 +51,10 @@
             fechaRetirarLBL = new Label();
             prioridadLBL = new Label();
             prioridadCMB = new ComboBox();
-            cuilTransportistaLBL = new Label();
+            dniTransportistaLBL = new Label();
             cancelarBTN = new Button();
             generarOPBTN = new Button();
-            cuilTransportistaTXT = new TextBox();
+            dniTransportistaTXT = new TextBox();
             quitarProductoBTN = new Button();
             fechaRetirarDTP = new DateTimePicker();
             productoSeleccionadoLABEL = new Label();
@@ -246,14 +246,14 @@
             prioridadCMB.Size = new Size(246, 28);
             prioridadCMB.TabIndex = 31;
             // 
-            // cuilTransportistaLBL
+            // dniTransportistaLBL
             // 
-            cuilTransportistaLBL.AutoSize = true;
-            cuilTransportistaLBL.Location = new Point(491, 554);
-            cuilTransportistaLBL.Name = "cuilTransportistaLBL";
-            cuilTransportistaLBL.Size = new Size(128, 20);
-            cuilTransportistaLBL.TabIndex = 32;
-            cuilTransportistaLBL.Text = "CUIL Transportista";
+            dniTransportistaLBL.AutoSize = true;
+            dniTransportistaLBL.Location = new Point(491, 554);
+            dniTransportistaLBL.Name = "dniTransportistaLBL";
+            dniTransportistaLBL.Size = new Size(124, 20);
+            dniTransportistaLBL.TabIndex = 32;
+            dniTransportistaLBL.Text = "DNI Transportista";
             // 
             // cancelarBTN
             // 
@@ -275,12 +275,12 @@
             generarOPBTN.UseVisualStyleBackColor = true;
             generarOPBTN.Click += generarOPBTN_Click;
             // 
-            // cuilTransportistaTXT
+            // dniTransportistaTXT
             // 
-            cuilTransportistaTXT.Location = new Point(491, 577);
-            cuilTransportistaTXT.Name = "cuilTransportistaTXT";
-            cuilTransportistaTXT.Size = new Size(246, 27);
-            cuilTransportistaTXT.TabIndex = 38;
+            dniTransportistaTXT.Location = new Point(491, 577);
+            dniTransportistaTXT.Name = "dniTransportistaTXT";
+            dniTransportistaTXT.Size = new Size(246, 27);
+            dniTransportistaTXT.TabIndex = 38;
             // 
             // quitarProductoBTN
             // 
@@ -351,10 +351,10 @@
             Controls.Add(productoSeleccionadoLABEL);
             Controls.Add(fechaRetirarDTP);
             Controls.Add(quitarProductoBTN);
-            Controls.Add(cuilTransportistaTXT);
+            Controls.Add(dniTransportistaTXT);
             Controls.Add(generarOPBTN);
             Controls.Add(cancelarBTN);
-            Controls.Add(cuilTransportistaLBL);
+            Controls.Add(dniTransportistaLBL);
             Controls.Add(prioridadCMB);
             Controls.Add(prioridadLBL);
             Controls.Add(fechaRetirarLBL);
@@ -398,7 +398,7 @@
         private Label fechaRetirarLBL;
         private Label prioridadLBL;
         private ComboBox prioridadCMB;
-        private Label cuilTransportistaLBL;
+        private Label dniTransportistaLBL;
         private Button cancelarBTN;
         private Button generarOPBTN;
         private ColumnHeader skuProductoCLM;
@@ -406,7 +406,7 @@
         private ColumnHeader cantidadProductoCLM;
         private ColumnHeader nombreProductoLBL;
         private ColumnHeader cantidadSeleccionadaCLM;
-        private TextBox cuilTransportistaTXT;
+        private TextBox dniTransportistaTXT;
         private Button quitarProductoBTN;
         private DateTimePicker fechaRetirarDTP;
         private Label productoSeleccionadoLABEL;

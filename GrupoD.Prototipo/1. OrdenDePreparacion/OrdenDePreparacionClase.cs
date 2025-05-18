@@ -20,7 +20,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
       
         public string Prioridad { get; set; }
 
-        public string CUILTransportista { get; set; }
+        public int DNITransportista { get; set; }
 
         public int NumeroCliente { get; set; }
 
