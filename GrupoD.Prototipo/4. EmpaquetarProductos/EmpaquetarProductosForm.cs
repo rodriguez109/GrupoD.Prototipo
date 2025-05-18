@@ -32,7 +32,7 @@ public partial class EmpaquetarProductosForm : Form
     private void MostrarProximaOrden() //EXP
     {
         // Buscar próxima orden "En Preparacion"
-        ordenActual = modelo.OrdenesEnPreparacionDisponibles.FirstOrDefault(o => o.EstadoOrden == "En Preparacion");
+        ordenActual = modelo.OrdenesEnPreparacionDisponibles.FirstOrDefault(o => o.EstadoOrdenPreparacion == "En Preparacion");
 
         if (ordenActual == null)
         {
@@ -43,7 +43,7 @@ public partial class EmpaquetarProductosForm : Form
             return;
         }
 
-        labelNumeroOrden.Text = $"Orden #{ordenActual.NumeroOrden}";
+        labelNumeroOrden.Text = $"Orden #{ordenActual.NumeroOrdenPreparacion}";
 
         CargarProductosEnListView(ordenActual.Productos);
     }
@@ -56,7 +56,7 @@ public partial class EmpaquetarProductosForm : Form
         {
             var item = new ListViewItem(producto.SKUProducto.ToString());
             item.SubItems.Add(producto.NombreProducto);
-            item.SubItems.Add(producto.CantidadProducto.ToString());
+            item.SubItems.Add(producto.CantidadSeleccionada.ToString());
 
             listViewProductos.Items.Add(item);
         }
@@ -76,8 +76,8 @@ public partial class EmpaquetarProductosForm : Form
     {
         if (ordenActual != null)
         {
-            ordenActual.EstadoOrden = "Preparada";
-            MessageBox.Show("La orden fue marcada como empaquetada.");
+            ordenActual.EstadoOrdenPreparacion = "Preparada";
+            MessageBox.Show("La orden fue marcada como 'Preparada'.");
             MostrarProximaOrden();
             //this.Close();
         }

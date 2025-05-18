@@ -19,14 +19,14 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
                 {
                     new OrdenPreparacion
                     {
-                        NumeroOrden = 1,
-                        EstadoOrden = "En Preparacion",
+                        NumeroOrdenPreparacion = 1,
+                        EstadoOrdenPreparacion = "En Preparacion",
                         Productos = productosEjemplo
                     },
                     new OrdenPreparacion
                     {
-                        NumeroOrden = 2,
-                        EstadoOrden = "En Preparacion",
+                        NumeroOrdenPreparacion = 2,
+                        EstadoOrdenPreparacion = "En Preparacion",
                         Productos = new List<Producto>
                         {
                             new Producto(4, "Pintura látex interior 20L", 1),

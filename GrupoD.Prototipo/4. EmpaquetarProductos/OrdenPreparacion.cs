@@ -10,8 +10,10 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
     class OrdenPreparacion
     {
         // Atributos.
-        public int NumeroOrden { get; set; }
-        public string EstadoOrden { get; set; }
+        public int NumeroOrdenPreparacion { get; set; }
+        public string EstadoOrdenPreparacion { get; set; }
+
+        //agregar Prioridad
         public List<Producto> Productos { get; set; } = new List<Producto>();
     }
 }

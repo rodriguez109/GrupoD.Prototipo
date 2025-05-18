@@ -5,14 +5,14 @@
         // Atributos
         public int SKUProducto { get; set; }
         public string NombreProducto { get; set; }
-        public int CantidadProducto { get; set; }
+        public int CantidadSeleccionada { get; set; }
 
         // Constructor
-        public Producto(int skuProducto, string nombreProducto, int cantidadProducto)
+        public Producto(int skuProducto, string nombreProducto, int cantidadSeleccionada)
         {
             SKUProducto = skuProducto;
             NombreProducto = nombreProducto;
-            CantidadProducto = cantidadProducto;
+            CantidadSeleccionada = cantidadSeleccionada; // CantidadSeleccionada o CantidadProducto????
         }
     }
 }
