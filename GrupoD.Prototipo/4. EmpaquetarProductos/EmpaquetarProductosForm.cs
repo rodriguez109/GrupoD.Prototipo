@@ -18,23 +18,27 @@ public partial class EmpaquetarProductosForm : Form
 
     public EmpaquetarProductosForm()
     {
-        InitializeComponent();
+        InitializeComponent(); //Inicializa componentes.
 
-        modelo = new EmpaquetarProductosModelo();
+        modelo = new EmpaquetarProductosModelo(); // Crea un nuevo modelo de datos.
 
         ordenEmpaquetadaBTN.Click += ordenEmpaquetadaBTN_Click;
-        cancelarBTN.Click += cancelarBTN_Click;
+        cancelarBTN.Click += cancelarBTN_Click; //Asocia los botones con sus respectivos eventos.
 
-        MostrarProximaOrden();
+        MostrarProximaOrden(); //Llama a MostrarProximaOrden() para cargar la primera orden disponible.
 
     }
 
-    private void MostrarProximaOrden() //EXP
+    private void MostrarProximaOrden() //MOSTRAR PROX ORDEN DISPONIBLE
     {
-        // Buscar próxima orden "En Preparacion"
+        //Busca la primera orden en estado "En Preparación".
+
+        //modelo.OrdenesEnPreparacionDisponibles: es una lista de órdenes cargada desde el modelo.
+        //.FirstOrDefault(...): busca la primera orden que tenga el estado "En Preparacion".Si no hay, devuelve null.
+
         ordenActual = modelo.OrdenesEnPreparacionDisponibles.FirstOrDefault(o => o.EstadoOrdenPreparacion == "En Preparacion");
 
-        if (ordenActual == null)
+        if (ordenActual == null) //Si no hay ninguna, avisa al usuario y cierra el formulario.
         {
             MessageBox.Show("No hay más órdenes pendientes.");
             listViewProductos.Items.Clear();
@@ -42,17 +46,17 @@ public partial class EmpaquetarProductosForm : Form
             this.Close();
             return;
         }
-
+        //Si hay una, muestra el número de orden y carga sus productos en un ListView.
         labelNumeroOrden.Text = $"Orden #{ordenActual.NumeroOrdenPreparacion}";
 
-        CargarProductosEnListView(ordenActual.Productos);
+        CargarProductosEnListView(ordenActual.Productos); //Llama al método que carga los productos de esa orden en la interfaz
     }
 
     private void CargarProductosEnListView(List<Producto> productos) //EXP
     {
-        listViewProductos.Items.Clear();
+        listViewProductos.Items.Clear(); //Limpia la lista de productos.
 
-        foreach (var producto in productos)
+        foreach (var producto in productos) //Muestra los productos de la orden: SKU, nombre y cantidad seleccionada.
         {
             var item = new ListViewItem(producto.SKUProducto.ToString());
             item.SubItems.Add(producto.NombreProducto);

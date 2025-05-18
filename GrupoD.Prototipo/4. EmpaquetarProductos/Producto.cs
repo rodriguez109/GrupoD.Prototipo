@@ -12,7 +12,7 @@
         {
             SKUProducto = skuProducto;
             NombreProducto = nombreProducto;
-            CantidadSeleccionada = cantidadSeleccionada; // CantidadSeleccionada o CantidadProducto????
+            CantidadSeleccionada = cantidadSeleccionada; // CantidadSeleccionada o CantidadProducto??? OrdenSeleccionada
         }
     }
 }
