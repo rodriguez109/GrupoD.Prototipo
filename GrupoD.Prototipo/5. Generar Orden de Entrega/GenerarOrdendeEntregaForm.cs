@@ -22,11 +22,11 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
             listView1LST.View = View.Details;
             listView1LST.FullRowSelect = true;
             listView1LST.Columns.Clear();
-            listView1LST.Columns.Add("Número de Orden", 120);
-            listView1LST.Columns.Add("Cliente", 150);
-            listView1LST.Columns.Add("Fecha Entrega", 120);
-            listView1LST.Columns.Add("DNI Transportista", 130);
-            listView1LST.Columns.Add("Transportista", 150);
+            listView1LST.Columns.Add("Número de Orden", 150);
+            listView1LST.Columns.Add("Razón Social Cliente", 230);
+            listView1LST.Columns.Add("Fecha Entrega", 200);
+            listView1LST.Columns.Add("DNI Transportista", 230);
+            listView1LST.Columns.Add("Razón Social Transportista", 230);
 
             // Cargar datos
             CargarOrdenesEnListView();
