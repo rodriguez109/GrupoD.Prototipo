@@ -15,7 +15,7 @@ namespace Prototipo.PrepararProductos
     public interface IPrepararProductosView
     {
         void MostrarOrdenes(List<OrdenSeleccion> ordenes);
-        void MostrarProductosEnListView(List<ProductoOrdenado> productos);
+        void MostrarProductosEnListView(List<OrdenDeSeleccion> productos);
         void MostrarMensaje(string mensaje, string titulo);
         void MostrarAdvertencia(string mensaje, string titulo);
         OrdenSeleccion ObtenerOrdenSeleccionada();
@@ -46,7 +46,7 @@ namespace Prototipo.PrepararProductos
             return comboOrdenSeleccion.SelectedItem as OrdenSeleccion;
         }
 
-        public void MostrarProductosEnListView(List<ProductoOrdenado> productos)
+        public void MostrarProductosEnListView(List<OrdenDeSeleccion> productos)
         {
             lViewOrdenSeleccion.Items.Clear();
             foreach (var prod in productos)
