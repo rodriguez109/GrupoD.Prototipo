@@ -8,7 +8,7 @@ namespace Prototipo.PrepararProductos.PrepararProductos
 {
     public class OrdenDeSeleccion
     {
-        public string Ubicacion { get; set; }
+        public string Posicion { get; set; }
         public string SKUProducto { get; set; }
         public int Cantidad { get; set; }
     }
