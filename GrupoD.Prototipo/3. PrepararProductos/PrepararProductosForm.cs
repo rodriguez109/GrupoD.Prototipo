@@ -51,7 +51,7 @@ namespace Prototipo.PrepararProductos
             lViewOrdenSeleccion.Items.Clear();
             foreach (var prod in productos)
             {
-                var item = new ListViewItem(prod.Ubicacion);
+                var item = new ListViewItem(prod.Posicion);
                 item.SubItems.Add(prod.SKUProducto);
                 item.SubItems.Add(prod.Cantidad.ToString());
                 lViewOrdenSeleccion.Items.Add(item);
