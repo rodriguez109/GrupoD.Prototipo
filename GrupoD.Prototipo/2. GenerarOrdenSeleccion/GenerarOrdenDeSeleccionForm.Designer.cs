@@ -229,7 +229,7 @@
             // 
             // columnHeader4
             // 
-            columnHeader4.Text = "CUIL Transportista";
+            columnHeader4.Text = "DNI Transportista";
             columnHeader4.Width = 180;
             // 
             // columnHeader5
