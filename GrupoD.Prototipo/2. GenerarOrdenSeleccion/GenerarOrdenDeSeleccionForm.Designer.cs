@@ -165,9 +165,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(85, 28);
             label2.Name = "label2";
-            label2.Size = new Size(105, 15);
+            label2.Size = new Size(129, 15);
             label2.TabIndex = 0;
-            label2.Text = "Nombre de cliente";
+            label2.Text = "Razon social del cliente";
             // 
             // AgregarOrdenesSeleccionadasBTN
             // 
