@@ -38,24 +38,26 @@ namespace GrupoD.Prototipo.Almacenes
         //SOLO EN Program: ClienteAlmacen.GuardarDatos();
 
         //SOLO EN MODELO:
-//        Class NuevaPersonaModelo
-//        {
-//            Public List<Persona> Personas
-//            {
-//                Get
-//            {
-//                    var personas = new List<Persona>();
-//                    foreach (var personaEntidad in PersonaAlmacen Personas)
-//{
-//                        personas.Add(new Persona)
-//{
-//                            Apellido = personaEntidad.Apellido,
-//Documento = personaEntidad.Documento,
-//(…)
-//}
-//                    }
-//                }
-//            }
-//        }
+        //        Class NuevaPersonaModelo
+        //        {
+        //            Public List<Persona> Personas
+        //            {
+        //                Get
+        //            {
+        //                    var personas = new List<Persona>();
+        //                    foreach (var personaEntidad in PersonaAlmacen Personas)
+        //{
+        //                        personas.Add(new Persona)
+        //{
+        //                            Apellido = personaEntidad.Apellido,
+        //Documento = personaEntidad.Documento,
+        //(…)
+        //}
+        //                    }
+        //                }
+        //            }
+        //        }
+
+        //MODELO -- NumeroOrdenPreparacion = OrdenDePreparacionEntidad.Numero ES ASI????
     }
 }
