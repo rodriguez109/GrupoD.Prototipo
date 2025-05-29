@@ -49,7 +49,8 @@ public partial class EmpaquetarProductosForm : Form
         //Si hay una, muestra el número de orden y carga sus productos en un ListView.
         labelNumeroOrden.Text = $"Orden #{ordenActual.NumeroOrdenPreparacion}";
 
-        CargarProductosEnListView(ordenActual.Productos); //Llama al método que carga los productos de esa orden en la interfaz
+        CargarProductosEnListView(ordenActual.Productos); //Llama al método que CARGA los productos de esa orden en la interfaz (form)
+        //CARGA la LISTA DE PRODUCTOS al LIST VIEW, a la pantalla.
     }
 
     private void CargarProductosEnListView(List<Producto> productos) //EXP
