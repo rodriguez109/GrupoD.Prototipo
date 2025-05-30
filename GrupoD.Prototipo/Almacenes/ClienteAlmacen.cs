@@ -8,7 +8,7 @@ namespace GrupoD.Prototipo.Almacenes
 {
     internal static class ClienteAlmacen
     {
-        //cambiar nombre a internal static class
+        //cambiar nombre a internal static class siempre
         private static List <ClienteEntidad> clientes = new List<ClienteEntidad> ();
         public static IReadOnlyList<ClienteEntidad> Clientes = clientes.AsReadOnly();
         public static void AgregarCliente(ClienteEntidad cliente)
