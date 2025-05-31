@@ -13,6 +13,15 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
         public List<OrdenesDeSeleccion> OrdenesDeSeleccion { get; set; }  // Agregar esta propiedad
         public List<OrdenesDePreparacion> OrdenesAgregadas { get; set; } // Lista de órdenes ya agregadas
 
+
+        //Aca deberia:
+
+        //Obtener las órdenes de preparación pendientes desde el almacenamiento
+
+        //Seleccionar las OP Pendientes y generar una nueva OS a partir de ellas, con estado "Pendiente"
+
+        //Guarda los cambios
+
         public GenerarOrdenSeleccionModelo()
         {
             OrdenesPreparacionDisponibles = new List<OrdenesDePreparacion>
