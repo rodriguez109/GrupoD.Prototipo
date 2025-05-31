@@ -1,32 +1,24 @@
-﻿using GrupoD.Prototipo._1._OrdenDePreparacion;
-using GrupoD.Prototipo._2._GenerarOrdenSeleccion;
-
+﻿using GrupoD.Prototipo._2._GenerarOrdenSeleccion;
+using GrupoD.Prototipo.Almacenes;
 using System;
 
 using System.Collections.Generic;
 
-namespace GrupoD.Prototipo
-
+namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 {
-
     internal class OrdenDePreparacionModelo
-
     {
-
         // Propiedades públicas para almacenar datos
 
         public List<Cliente> Clientes { get; set; }
 
         public List<Producto> Productos { get; set; }
 
-        public List<OrdenesDePreparacion> OrdenesDePreparaciones { get; set; }
-
         public List<Transportista> Transportistas { get; set; }
 
+
         // Declaración correcta de listas estáticas
-
         public static List<Cliente> ListaCliente = new List<Cliente>
-
         {
 
             new Cliente(10, "Exportadora del Litoral S.A."),
@@ -104,16 +96,28 @@ namespace GrupoD.Prototipo
         };
 
         // Constructor de la clase
-
         public OrdenDePreparacionModelo()
-
         {
+            //Clientes = ClienteAlmacen.Clientes.Select(c => new Cliente(c.Numero,c.RazonSocial)).ToList();
 
-            Clientes = new List<Cliente>(ListaCliente);
+            Clientes = new List<Cliente>();
+            foreach(var clienteEntidad in ClienteAlmacen.Clientes)
+            {
+                var cliente = new Cliente(clienteEntidad.Numero, clienteEntidad.RazonSocial);
+                Clientes.Add(cliente);
+            }
+
+
 
             Productos = new List<Producto>(ListaProductos);
 
             Transportistas = new List<Transportista>(ListaTransportistas);
+
+        }
+
+
+        public void AgregarNuevaOrden(List<OrdenDePreparacionClase> nuevaOrden)
+        {
 
         }
 

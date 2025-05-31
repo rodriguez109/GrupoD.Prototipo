@@ -1,5 +1,4 @@
-﻿using GrupoD.Prototipo._1._OrdenDePreparacion;
-using GrupoD.Prototipo._2._GenerarOrdenSeleccion;
+﻿using GrupoD.Prototipo._2._GenerarOrdenSeleccion;
 using GrupoD.Prototipo._4._EmpaquetarProductos;
 using System;
 using System.Collections.Generic;
@@ -378,6 +377,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             cantidadSeleccionadaTXT.Clear();
             dniTransportistaTXT.Clear();
 
+            modelo.AgregarNuevaOrden(nuevaOrden);
         }
 
         
