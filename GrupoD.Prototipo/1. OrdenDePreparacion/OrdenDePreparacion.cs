@@ -297,11 +297,21 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 return;
             }
 
-            if (string.IsNullOrEmpty(dniTransportistaTXT.Text) || dniTransportistaTXT.Text.Length != 8)
+            int dniTransportista = 0;
+
+            if (string.IsNullOrEmpty(dniTransportistaTXT.Text) || dniTransportistaTXT.Text.Length != 8 || !int.TryParse(dniTransportistaTXT.Text, out dniTransportista))
             {
                 MessageBox.Show("Ingrese un DNI válido de 8 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            // Validar el DNI del transportista con la lista de transportistas
+            if (!ValidarDNITransportista(dniTransportista))
+            {
+                MessageBox.Show("Transportista no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
 
             // Convertir númeroCliente a int
             if (!int.TryParse(numeroClienteTXT.Text, out int numeroCliente))
@@ -313,7 +323,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             DateTime fechaRetiro = fechaRetirarDTP.Value; // Obtener fecha como DateTime
             string prioridadSeleccionada = prioridadCMB.Text;
             //string cuilTransportista = cuilTransportistaTXT.Text;
-            int dniTransportista = int.Parse(dniTransportistaTXT.Text); // Convertir a int
+            /*int dniTransportista = int.Parse(dniTransportistaTXT.Text);*/ // Convertir a int
 
             string razonSocialCliente = razonSocialClienteTXT.Text;
 
@@ -471,6 +481,11 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             dniTransportistaTXT.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             dniTransportistaTXT.AutoCompleteSource = AutoCompleteSource.CustomSource;
             dniTransportistaTXT.AutoCompleteCustomSource = listaAutocompletar;
+        }
+
+        private bool ValidarDNITransportista(int dni)
+        {
+            return OrdenDePreparacionModelo.ListaTransportistas.Any(t => t.DNITransportista == dni);
         }
 
 
