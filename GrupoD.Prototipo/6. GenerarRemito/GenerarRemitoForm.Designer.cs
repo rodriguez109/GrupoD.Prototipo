@@ -30,7 +30,7 @@
         {
             label1 = new Label();
             DniTransportistaTXT = new TextBox();
-            OrdenesDeEntregaLST = new ListView();
+            OrdenesDeSeleccionLST = new ListView();
             columnHeader1 = new ColumnHeader();
             AgregarAlRemitoBTN = new Button();
             CancelarBTN = new Button();
@@ -59,17 +59,17 @@
             DniTransportistaTXT.Size = new Size(383, 27);
             DniTransportistaTXT.TabIndex = 1;
             // 
-            // OrdenesDeEntregaLST
+            // OrdenesDeSeleccionLST
             // 
-            OrdenesDeEntregaLST.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
-            OrdenesDeEntregaLST.FullRowSelect = true;
-            OrdenesDeEntregaLST.Location = new Point(11, 148);
-            OrdenesDeEntregaLST.Name = "OrdenesDeEntregaLST";
-            OrdenesDeEntregaLST.Size = new Size(758, 229);
-            OrdenesDeEntregaLST.TabIndex = 2;
-            OrdenesDeEntregaLST.UseCompatibleStateImageBehavior = false;
-            OrdenesDeEntregaLST.View = View.Details;
-            OrdenesDeEntregaLST.SelectedIndexChanged += OrdenesDeEntregaLST_SelectedIndexChanged;
+            OrdenesDeSeleccionLST.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
+            OrdenesDeSeleccionLST.FullRowSelect = true;
+            OrdenesDeSeleccionLST.Location = new Point(11, 148);
+            OrdenesDeSeleccionLST.Name = "OrdenesDeSeleccionLST";
+            OrdenesDeSeleccionLST.Size = new Size(758, 229);
+            OrdenesDeSeleccionLST.TabIndex = 2;
+            OrdenesDeSeleccionLST.UseCompatibleStateImageBehavior = false;
+            OrdenesDeSeleccionLST.View = View.Details;
+           
             // 
             // columnHeader1
             // 
@@ -116,10 +116,11 @@
             OrdenesAgregadasLST.TabIndex = 6;
             OrdenesAgregadasLST.UseCompatibleStateImageBehavior = false;
             OrdenesAgregadasLST.View = View.Details;
+            
             // 
             // columnHeader2
             // 
-            columnHeader2.Text = "Nro Orden de entrega";
+            columnHeader2.Text = "Nro de Orden";
             columnHeader2.Width = 200;
             // 
             // QuitarDelRemitoBTN
@@ -147,18 +148,18 @@
             label2.AutoSize = true;
             label2.Location = new Point(12, 125);
             label2.Name = "label2";
-            label2.Size = new Size(140, 20);
+            label2.Size = new Size(150, 20);
             label2.TabIndex = 9;
-            label2.Text = "Ordenes de entrega";
+            label2.Text = "Ordenes de selección";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Location = new Point(12, 424);
             label3.Name = "label3";
-            label3.Size = new Size(236, 20);
+            label3.Size = new Size(138, 20);
             label3.TabIndex = 10;
-            label3.Text = "Ordenes de entrega seleccionadas";
+            label3.Text = "Ordenes agregadas";
             // 
             // GenerarRemitoForm
             // 
@@ -173,7 +174,7 @@
             Controls.Add(BuscarOrdenesBTN);
             Controls.Add(CancelarBTN);
             Controls.Add(AgregarAlRemitoBTN);
-            Controls.Add(OrdenesDeEntregaLST);
+            Controls.Add(OrdenesDeSeleccionLST);
             Controls.Add(DniTransportistaTXT);
             Controls.Add(label1);
             Name = "GenerarRemitoForm";
@@ -187,7 +188,7 @@
 
         private Label label1;
         private TextBox DniTransportistaTXT;
-        private ListView OrdenesDeEntregaLST;
+        private ListView OrdenesDeSeleccionLST;
         private ColumnHeader columnHeader1;
         private Button AgregarAlRemitoBTN;
         private Button CancelarBTN;
