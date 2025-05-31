@@ -393,6 +393,12 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 return;
             }
 
+            if (numeroCliente <= 0)
+            {
+                MessageBox.Show("Número de cliente inválido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             string razonSocialTexto = razonSocialClienteTXT.Text;
 
             // Usamos el método BuscarCliente del modelo
