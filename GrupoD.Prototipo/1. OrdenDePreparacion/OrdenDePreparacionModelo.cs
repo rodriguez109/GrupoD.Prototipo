@@ -118,54 +118,41 @@ namespace GrupoD.Prototipo
         }
 
     }
+    //class OrdenDePreparacionModelo
+    //    {
+    //        public List<OrdenDePreparacion> OrdenDePreparacion ES ESTO O SERÍA OTRA LIST?
+    //        {
+    //          get
+    //          {
+    //              var ordenesdepreparacion = new List<OrdenDePreparacion>();
+    //              foreach (var OrdenDePreparacionEntidad in OrdenDePreparacionAlmacen ordenesdepreparacion)
+    //              {
+    //                  ordenesdepreparacion.Add(new OrdenDePreparacion)
+    //                  { ACÁ ES CON LOS ATRIBUTOS DE LA CLASE OrdenDePreparacionClase?
+    //                      NumeroOrdenPreparacion = OrdenDePreparacionEntidad.Numero,
+    //                      SKUProducto = no está en la entidad
+    //                      NombreProducto = no está en la entidad
+    //                      CantidadProducto = no está en la entidad
+    //                      FechaRetirar = OrdenDePreparacionEntidad.FechaRetirar
+    //                      Prioridad = OrdenDePreparacionEntidad.PrioridadEnum (?)
+    //                      DNITransportista = OrdenDePreparacionEntidad.DNITransportista0
+    //                      NumeroCliente = OrdenDePreparacionEntidad.NumeroCliente
+    //                      Pallet = OrdenDePreparacionEntidad.Pallet,
+    //                      RazonSocialCliente = no está en la entidad
+    //                      No está en la clase: CodigoDeposito, List<ProductosPorOrden> Detalle, EstadoOrdenDePreparacionEnum Estado
+    //                  }
+    //              }
+    //          }
+    //          return OrdenesDePreparacion
+    //      }
+    //    }    
+
+
+    //                      
 
 }
 
 
 
-//    Producto = new List<Productos>
-//{
-//    new Productos(1, "Laptop", 10, "12-45-78", 1),
-//    new Productos(2, "Mouse óptico", 50, "33-66-99", 1),
-//    new Productos(3, "Teclado mecánico", 25, "07-31-56", 5),
-//    new Productos(4, "Monitor LED 24''", 15, "89-23-45", 2),
-//    new Productos(5, "Impresora láser", 8, "62-44-11", 3),
-//    new Productos(6, "Silla ergonómica", 5, "18-27-36", 4),
-//    new Productos(7, "Disco duro SSD 1TB", 30, "54-67-82", 6),
-//    new Productos(8, "Auriculares inalámbricos", 40, "22-39-71", 7),
-//    new Productos(9, "Tablet 10''", 20, "93-12-56", 8),
-//    new Productos(10, "Cámara web HD", 12, "05-88-64", 9),
-//};
 
 
-
-
-//ProductosPorCliente = new List<ProductosPorCliente>
-//{
-//new ProductosPorCliente (1001, "Cemento Portland", 50, 78-45-14),
-//new ProductosPorCliente (1002, "Ladrillo Hueco", 120, 03-29-67),
-//new ProductosPorCliente (1003, "Pintura Blanca 20L", 30, 92-11-08),
-//new ProductosPorCliente (1004, "Cable Eléctrico 2mm", 200, 16-87-43),
-//new ProductosPorCliente (1005, "Caño PVC 110mm", 80, 54-06-33),
-//new ProductosPorCliente (1006, "Cerámico Beige 45x45", 100, 21-58-74),
-//new ProductosPorCliente (1007, "Yeso en Bolsa 25kg", 45, 39-91-27),
-//new ProductosPorCliente (1008, "Aislante Térmico Rollo", 60, 08-67-18),
-//new ProductosPorCliente (1009, "Madera Pino 2x4", 70, 46-22-51),
-//new ProductosPorCliente (1010, "Clavos 3 pulgadas", 150, 70-13-60)),
-
-//Debería agregar cliente asociado?
-
-
-
-
-// };
-
-//public List<Cliente> listaClientes = new List<Cliente>
-//{ 
-//  new Cliente
-
-//}
-
-
-//}
-//}

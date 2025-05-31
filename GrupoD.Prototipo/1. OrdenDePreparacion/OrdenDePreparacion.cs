@@ -356,7 +356,9 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                     Prioridad = prioridadSeleccionada, // Obtiene la prioridad desde el ComboBox
                     /*CUILTransportista = cuilTransportista*/ // Obtiene el CUIL desde el TextBox
                     //DNITransportista = int.Parse(dniTransportista)
+                    Pallet = palletCBX.Checked, //Pallet si o no
                     DNITransportista = dniTransportista // Obtiene el DNI desde el TextBox
+
                     };
 
                 nuevaOrden.Add(orden);
