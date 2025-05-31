@@ -69,11 +69,10 @@
             OrdenesDeSeleccionLST.TabIndex = 2;
             OrdenesDeSeleccionLST.UseCompatibleStateImageBehavior = false;
             OrdenesDeSeleccionLST.View = View.Details;
-           
             // 
             // columnHeader1
             // 
-            columnHeader1.Text = "Nro Orden de entrega";
+            columnHeader1.Text = "Nro Orden de selección";
             columnHeader1.Width = 200;
             // 
             // AgregarAlRemitoBTN
@@ -116,11 +115,10 @@
             OrdenesAgregadasLST.TabIndex = 6;
             OrdenesAgregadasLST.UseCompatibleStateImageBehavior = false;
             OrdenesAgregadasLST.View = View.Details;
-            
             // 
             // columnHeader2
             // 
-            columnHeader2.Text = "Nro de Orden";
+            columnHeader2.Text = "Nro Orden de selección";
             columnHeader2.Width = 200;
             // 
             // QuitarDelRemitoBTN
