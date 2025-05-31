@@ -14,6 +14,8 @@ namespace GrupoD.Prototipo.Almacenes
         public EstadoOrdenDeSeleccionEnum EstadoOrdenDeSeleccion { get; set; }
         public List<int> OrdenesPreparacion { get; set; }
 
+
+        //ESTA PARTE CONSULTAR CON EL PROFE SI O SI!!!
         public OrdenDeSeleccionEntidad(int numero, DateTime fechaGeneracion, PrioridadEnum prioridad)
         {
             Numero = numero;
