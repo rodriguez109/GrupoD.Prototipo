@@ -12,7 +12,7 @@ namespace GrupoD.Prototipo.Almacenes
         public DateTime FechaGeneracion { get; set; }
         public PrioridadEnum Prioridad { get; set; } //-------------va?
         public EstadoOrdenDeSeleccionEnum EstadoOrdenDeSeleccion { get; set; }
-        public List<int> OrdenesPreparacion { get; set; }
+        public List<int> OrdenesPreparacion { get; }
 
 
         //ESTA PARTE CONSULTAR CON EL PROFE SI O SI!!!
