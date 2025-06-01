@@ -36,14 +36,22 @@ namespace GrupoD.Prototipo._6._GenerarRemito
                 return;
             }
 
-            if (!EsDNIValido(dni))
+            if (!int.TryParse(dni, out _))
             {
-                MessageBox.Show("El DNI debe tener exactamente 8 dígitos numéricos.", "DNI inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                MessageBox.Show("Debe ingresar solo números", "DNI inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+                   
+            }
+
+            if (dni.Length != 8)
+            {
+                MessageBox.Show("El DNI debe tener de 8 dígitos", "DNI inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             var ordenes = modelo.ObtenerOrdenesPorDNI(dni);
-            OrdenesDeSeleccionLST.Items.Clear();
+            OrdenesDePreparacionLST.Items.Clear();
 
             if (ordenes.Count == 0)
             {
@@ -54,32 +62,32 @@ namespace GrupoD.Prototipo._6._GenerarRemito
                 foreach (var orden in ordenes)
                 {
                     bool yaAgregada = OrdenesAgregadasLST.Items.Cast<ListViewItem>()
-                        .Any(i => ((OrdenDeSeleccion)i.Tag).NumeroOrden == orden.NumeroOrden);
+                        .Any(i => ((OrdenPreparacion)i.Tag).NumeroOrden == orden.NumeroOrden);
                     if (yaAgregada)
                         continue;
 
                     var item = new ListViewItem(orden.NumeroOrden);
                     item.Tag = orden;
-                    OrdenesDeSeleccionLST.Items.Add(item);
+                    OrdenesDePreparacionLST.Items.Add(item);
                 }
             }
         }
 
         private void AgregarAlRemitoBTN_Click(object sender, EventArgs e)
         {
-            if (OrdenesDeSeleccionLST.SelectedItems.Count == 0)  // Verificar si no hay ítems seleccionados
+            if (OrdenesDePreparacionLST.SelectedItems.Count == 0)  // Verificar si no hay ítems seleccionados
             {
                 MessageBox.Show("Debe seleccionar al menos una orden de entrega para agregar al remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            foreach (ListViewItem item in OrdenesDeSeleccionLST.SelectedItems)
+            foreach (ListViewItem item in OrdenesDePreparacionLST.SelectedItems)
             {
-                OrdenDeSeleccion orden = (OrdenDeSeleccion)item.Tag;
+                OrdenPreparacion orden = (OrdenPreparacion)item.Tag;
                 var nuevoItem = new ListViewItem(orden.NumeroOrden);
                 nuevoItem.Tag = orden;
                 OrdenesAgregadasLST.Items.Add(nuevoItem);
-                OrdenesDeSeleccionLST.Items.Remove(item);  // Eliminar de la lista de entrega
+                OrdenesDePreparacionLST.Items.Remove(item);  // Eliminar de la lista de entrega
             }
         }
 
@@ -93,10 +101,10 @@ namespace GrupoD.Prototipo._6._GenerarRemito
 
             foreach (ListViewItem item in OrdenesAgregadasLST.SelectedItems)
             {
-                OrdenDeSeleccion orden = (OrdenDeSeleccion)item.Tag;
+                OrdenPreparacion orden = (OrdenPreparacion)item.Tag;
                 var nuevoItem = new ListViewItem(orden.NumeroOrden);
                 nuevoItem.Tag = orden;
-                OrdenesDeSeleccionLST.Items.Add(nuevoItem);  // Mover ítems de vuelta a la lista de entrega
+                OrdenesDePreparacionLST.Items.Add(nuevoItem);  // Mover ítems de vuelta a la lista de entrega
                 OrdenesAgregadasLST.Items.Remove(item);  // Eliminar de la lista agregada
             }
         }
@@ -110,7 +118,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
             }
 
             List<string> ordenes = OrdenesAgregadasLST.Items.Cast<ListViewItem>()
-                .Select(i => ((OrdenDeSeleccion)i.Tag).NumeroOrden)
+                .Select(i => ((OrdenPreparacion)i.Tag).NumeroOrden)
                 .ToList();
 
             string ordenesTexto = string.Join(", ", ordenes);
@@ -120,10 +128,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
             OrdenesAgregadasLST.Items.Clear();
         }
 
-        private bool EsDNIValido(string dni)
-        {
-            return dni.Length == 8 && long.TryParse(dni, out _);
-        }
+        
 
         private void CancelarBTN_Click(object sender, EventArgs e)
         {

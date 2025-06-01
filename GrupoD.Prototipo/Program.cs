@@ -17,10 +17,11 @@ namespace GrupoD.Prototipo
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MenuForm());
 
             //Leer datos desde almacenes (TODOS)
-            OrdenDeSeleccionAlmacen.Leer();
+            //OrdenDeSeleccionAlmacen.Leer(); Si hago el metodo estatico en el almacen, no debo hacer esto
+
+            Application.Run(new MenuForm());
 
             //Grabar datos desde almacenes (TODOS)
             OrdenDeSeleccionAlmacen.Grabar();

@@ -10,8 +10,8 @@ namespace GrupoD.Prototipo.Almacenes
     {
         public int Numero { get; set; }
         public bool Pallet { get; set; }
-        public string CodigoDeposito { get; set; }   
-        public List<ProductosPorOrden> Detalle { get; set; }
+        public string CodigoAlmacen { get; set; }   //DEBERÍA SER CodigoDeposito?
+        public List<ProductosPorOrden> Detalle { get; }
         public DateTime FechaRetirar { get; set; }
         public PrioridadEnum Prioridad { get; set; }
         public int NumeroCliente { get; set; }
@@ -19,10 +19,10 @@ namespace GrupoD.Prototipo.Almacenes
         public int DNITransportista { get; set; }
         public EstadoOrdenDePreparacionEnum Estado { get; set; }
 
-        public OrdenDePreparacionEntidad(int numero, string codigoDeposito, DateTime fechaRetirar, PrioridadEnum prioridad, int numeroCliente, int dniTransportista, bool pallet)
+        public OrdenDePreparacionEntidad(int numero, string codigoAlmacen, DateTime fechaRetirar, PrioridadEnum prioridad, int numeroCliente, int dniTransportista, bool pallet)
         {
             Numero = numero;
-            CodigoDeposito = codigoDeposito;
+            CodigoAlmacen = codigoAlmacen;
             FechaRetirar = fechaRetirar;
             Prioridad = prioridad;
             NumeroCliente = numeroCliente;
