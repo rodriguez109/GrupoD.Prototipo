@@ -36,9 +36,17 @@ namespace GrupoD.Prototipo._6._GenerarRemito
                 return;
             }
 
-            if (!EsDNIValido(dni))
+            if (!int.TryParse(dni, out _))
             {
-                MessageBox.Show("El DNI debe tener exactamente 8 dígitos numéricos.", "DNI inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                MessageBox.Show("Debe ingresar solo números", "DNI inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+                   
+            }
+
+            if (dni.Length != 8)
+            {
+                MessageBox.Show("El DNI debe tener de 8 dígitos", "DNI inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -120,10 +128,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
             OrdenesAgregadasLST.Items.Clear();
         }
 
-        private bool EsDNIValido(string dni)
-        {
-            return dni.Length == 8 && long.TryParse(dni, out _);
-        }
+        
 
         private void CancelarBTN_Click(object sender, EventArgs e)
         {
