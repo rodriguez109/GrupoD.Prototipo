@@ -209,12 +209,6 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 return;
             }
 
-            //if (!int.TryParse(numeroClienteTXT.Text, out int numeroCliente))
-            //{
-            //    MessageBox.Show("El número de cliente debe ser un valor numérico válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-
             int numeroCliente = 0;
             if (string.IsNullOrWhiteSpace(numeroClienteTXT.Text))
             {
@@ -390,34 +384,49 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             modelo.AgregarNuevaOrden(nuevaOrden);
         }
 
-        
+
 
         private void buscarProductosBTN_Click(object sender, EventArgs e)
         {
             int numeroCliente = 0;
+            string razonSocialTexto = razonSocialClienteTXT.Text.Trim();
 
-            // Se intenta obtener el número de cliente si es que el usuario ingresó el dato
-            if (!string.IsNullOrEmpty(numeroClienteTXT.Text) && !int.TryParse(numeroClienteTXT.Text, out numeroCliente))
+            // Validar número de cliente solo si se ingresó
+            if (!string.IsNullOrEmpty(numeroClienteTXT.Text))
             {
-                MessageBox.Show("Número de cliente inválido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (!int.TryParse(numeroClienteTXT.Text, out numeroCliente))
+                {
+                    MessageBox.Show("Número de cliente inválido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (numeroCliente <= 0)
+                {
+                    MessageBox.Show("Número de cliente inválido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
+            // Validar que al menos haya ingresado un número de cliente o una razón social
+            if (numeroCliente == 0 && string.IsNullOrEmpty(razonSocialTexto))
+            {
+                MessageBox.Show("Debe ingresar un número de cliente o una razón social.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (numeroCliente <= 0)
-            {
-                MessageBox.Show("Número de cliente inválido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            string razonSocialTexto = razonSocialClienteTXT.Text;
-
-            // Usamos el método BuscarCliente del modelo
-            // Nota: si el número de cliente es 0, se buscará por razón social
+            // Buscar cliente con el método correcto
             Cliente clienteEncontrado = BuscarCliente(numeroCliente, razonSocialTexto);
 
             if (clienteEncontrado != null)
             {
-                // Suponiendo que tienes un método para cargar los productos basado en el número de cliente
+                // Si el usuario ingresó ambos datos, verificar que coincidan
+                if (numeroCliente > 0 && !string.IsNullOrEmpty(razonSocialTexto) &&
+                    !clienteEncontrado.RazonSocialCliente.Equals(razonSocialTexto, StringComparison.OrdinalIgnoreCase))
+                {
+                    MessageBox.Show("El número de cliente ingresado no coincide con la razón social.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Si la validación es correcta, cargar los productos
                 CargarProductosCliente(clienteEncontrado.NumeroCliente);
             }
             else
@@ -425,6 +434,9 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 MessageBox.Show("Cliente no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+
+
 
         private void quitarProductoBTN_Click(object sender, EventArgs e)
         {
