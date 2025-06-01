@@ -24,6 +24,8 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
         public int NumeroCliente { get; set; }
 
+        public bool Pallet { get; set; } 
+
         public string RazonSocialCliente { get; set; }
 
     }
