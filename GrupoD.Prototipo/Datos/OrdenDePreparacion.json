@@ -66,7 +66,7 @@
       "Prioridad": "Alta",
       "NumeroCliente": 7703,
       "DNITransportista": 41876543,
-      "Estado": "Procesando"
+      "Estado": "Pendiente"
     },
     {
       "Numero": 104,
@@ -110,7 +110,7 @@
       "Prioridad": "Alta",
       "NumeroCliente": 9905,
       "DNITransportista": 42789012,
-      "Estado": "Confirmada"
+      "Estado": "Pendiente"
     },
     {
       "Numero": 106,
@@ -154,7 +154,7 @@
       "Prioridad": "Alta",
       "NumeroCliente": 11007,
       "DNITransportista": 45782345,
-      "Estado": "Procesando"
+      "Estado": "Pendiente"
     },
     {
       "Numero": 108,
@@ -198,7 +198,7 @@
       "Prioridad": "Alta",
       "NumeroCliente": 13009,
       "DNITransportista": 48765432,
-      "Estado": "Confirmada"
+      "Estado": "Pendiente"
     },
     {
       "Numero": 110,
