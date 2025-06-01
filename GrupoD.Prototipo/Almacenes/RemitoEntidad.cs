@@ -11,7 +11,7 @@ namespace GrupoD.Prototipo.Almacenes
         public int Numero { get; set; }
         public int DNITransportista { get; set; }
         public DateTime FechaEmision { get; set; }
-        public List<int> OrdenesPreparacion { get; set; }
+        public List<int> OrdenesPreparacion { get; }
 
         public RemitoEntidad(int numero, int dniTransportista, DateTime fechaEmision)
         {
