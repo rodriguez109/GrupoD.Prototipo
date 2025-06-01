@@ -3,6 +3,7 @@ using GrupoD.Prototipo.Almacenes;
 using System;
 
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 {
@@ -108,17 +109,29 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             }
 
 
+            //FALTAN ALMACENES DE PRODUCTO Y TRANSPORTISTA
+            //Productos = new List<Producto>(ListaProductos);
+            //foreach(var productoEntidad in ProductoAlmacen.Productos)
+            //{
+            //    var producto = new Producto(productoEntidad.SKU, productoEntidad.Nombre, productoEntidad.Cantidad, productoEntidad.Posiciones, productoEntidad.NumeroCliente);
+            //    Productos.Add(producto);
 
-            Productos = new List<Producto>(ListaProductos);
 
-            Transportistas = new List<Transportista>(ListaTransportistas);
+            //}
 
+            //Transportistas = new List<Transportista>(ListaTransportistas);
+            //foreach(var transportistaEntidad in TransportistaAlmacen.Transportistas)
+            //{
+            //    var transportista = new Transportista(transportistaEntidad.DNI, transportistaEntidad.Nombre);
+            //    Transportistas.Add(transportista);
+
+            //}
         }
 
 
         public void AgregarNuevaOrden(List<OrdenDePreparacionClase> nuevaOrden)
         {
-
+            //modelo.AgregarNuevaOrden(nuevaOrden);
         }
 
     }

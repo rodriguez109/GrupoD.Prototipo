@@ -1,4 +1,230 @@
 {
+
+  {
+    "Numero": 101,
+    "Pallet": true,
+    "CodigoAlmacen": "DEP-001",
+    "Detalle": [
+      {
+        "SKU": 12345,
+        "NombreProducto": "Caja de tornillos",
+        "Cantidad": 50
+      },
+      {
+        "SKU": 67890,
+        "NombreProducto": "Tubos PVC",
+        "Cantidad": 20
+      }
+    ],
+    "FechaRetirar": "2025-06-05T10:00:00",
+    "Prioridad": "Alta",
+    "NumeroCliente": 5501,
+    "DNITransportista": 35876982,
+    "Estado": "Pendiente"
+  }
+
+  [
+    {
+      "Numero": 102,
+      "Pallet": false,
+      "CodigoAlmacen": "DEP-002",
+      "Detalle": [
+        {
+          "SKU": 98765,
+          "NombreProducto": "Láminas de acero",
+          "Cantidad": 15
+        },
+        {
+          "SKU": 54321,
+          "NombreProducto": "Cables eléctricos",
+          "Cantidad": 30
+        }
+      ],
+      "FechaRetirar": "2025-06-06T09:30:00",
+      "Prioridad": "Media",
+      "NumeroCliente": 6602,
+      "DNITransportista": 40123456,
+      "Estado": "Pendiente"
+    },
+    {
+      "Numero": 103,
+      "Pallet": true,
+      "CodigoAlmacen": "DEP-003",
+      "Detalle": [
+        {
+          "SKU": 11223,
+          "NombreProducto": "Resina sintética",
+          "Cantidad": 40
+        },
+        {
+          "SKU": 33445,
+          "NombreProducto": "Tornillos industriales",
+          "Cantidad": 25
+        }
+      ],
+      "FechaRetirar": "2025-06-07T15:00:00",
+      "Prioridad": "Alta",
+      "NumeroCliente": 7703,
+      "DNITransportista": 41876543,
+      "Estado": "Procesando"
+    },
+    {
+      "Numero": 104,
+      "Pallet": false,
+      "CodigoAlmacen": "DEP-004",
+      "Detalle": [
+        {
+          "SKU": 22567,
+          "NombreProducto": "Mangueras hidráulicas",
+          "Cantidad": 10
+        },
+        {
+          "SKU": 77889,
+          "NombreProducto": "Líquido refrigerante",
+          "Cantidad": 5
+        }
+      ],
+      "FechaRetirar": "2025-06-08T11:45:00",
+      "Prioridad": "Baja",
+      "NumeroCliente": 8804,
+      "DNITransportista": 37981234,
+      "Estado": "Pendiente"
+    },
+    {
+      "Numero": 105,
+      "Pallet": true,
+      "CodigoAlmacen": "DEP-005",
+      "Detalle": [
+        {
+          "SKU": 99876,
+          "NombreProducto": "Filtros de aire",
+          "Cantidad": 20
+        },
+        {
+          "SKU": 66544,
+          "NombreProducto": "Rodamientos",
+          "Cantidad": 15
+        }
+      ],
+      "FechaRetirar": "2025-06-09T08:30:00",
+      "Prioridad": "Alta",
+      "NumeroCliente": 9905,
+      "DNITransportista": 42789012,
+      "Estado": "Confirmada"
+    },
+    {
+      "Numero": 106,
+      "Pallet": false,
+      "CodigoAlmacen": "DEP-006",
+      "Detalle": [
+        {
+          "SKU": 11331,
+          "NombreProducto": "Herramientas neumáticas",
+          "Cantidad": 10
+        },
+        {
+          "SKU": 88776,
+          "NombreProducto": "Selladores químicos",
+          "Cantidad": 8
+        }
+      ],
+      "FechaRetirar": "2025-06-10T14:00:00",
+      "Prioridad": "Media",
+      "NumeroCliente": 10006,
+      "DNITransportista": 43901234,
+      "Estado": "Pendiente"
+    },
+    {
+      "Numero": 107,
+      "Pallet": true,
+      "CodigoAlmacen": "DEP-007",
+      "Detalle": [
+        {
+          "SKU": 22468,
+          "NombreProducto": "Tubos de acero",
+          "Cantidad": 50
+        },
+        {
+          "SKU": 77654,
+          "NombreProducto": "Almohadillas de goma",
+          "Cantidad": 30
+        }
+      ],
+      "FechaRetirar": "2025-06-11T16:00:00",
+      "Prioridad": "Alta",
+      "NumeroCliente": 11007,
+      "DNITransportista": 45782345,
+      "Estado": "Procesando"
+    },
+    {
+      "Numero": 108,
+      "Pallet": false,
+      "CodigoAlmacen": "DEP-008",
+      "Detalle": [
+        {
+          "SKU": 99888,
+          "NombreProducto": "Valvulas de presión",
+          "Cantidad": 12
+        },
+        {
+          "SKU": 66789,
+          "NombreProducto": "Cableado industrial",
+          "Cantidad": 20
+        }
+      ],
+      "FechaRetirar": "2025-06-12T10:15:00",
+      "Prioridad": "Baja",
+      "NumeroCliente": 12008,
+      "DNITransportista": 46980123,
+      "Estado": "Pendiente"
+    },
+    {
+      "Numero": 109,
+      "Pallet": true,
+      "CodigoAlmacen": "DEP-009",
+      "Detalle": [
+        {
+          "SKU": 88999,
+          "NombreProducto": "Piezas metálicas",
+          "Cantidad": 30
+        },
+        {
+          "SKU": 77888,
+          "NombreProducto": "Lubricante sintético",
+          "Cantidad": 50
+        }
+      ],
+      "FechaRetirar": "2025-06-13T13:45:00",
+      "Prioridad": "Alta",
+      "NumeroCliente": 13009,
+      "DNITransportista": 48765432,
+      "Estado": "Confirmada"
+    },
+    {
+      "Numero": 110,
+      "Pallet": false,
+      "CodigoAlmacen": "DEP-010",
+      "Detalle": [
+        {
+          "SKU": 33559,
+          "NombreProducto": "Cinta adhesiva industrial",
+          "Cantidad": 25
+        },
+        {
+          "SKU": 99223,
+          "NombreProducto": "Discos de corte",
+          "Cantidad": 40
+        }
+      ],
+      "FechaRetirar": "2025-06-14T09:00:00",
+      "Prioridad": "Media",
+      "NumeroCliente": 14010,
+      "DNITransportista": 49871234,
+      "Estado": "Pendiente"
+    }
+  ]
+
+
   "exclude": [
     "**/bin",
     "**/bower_components",
