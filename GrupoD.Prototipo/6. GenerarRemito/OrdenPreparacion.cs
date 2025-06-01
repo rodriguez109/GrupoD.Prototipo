@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace GrupoD.Prototipo._6._GenerarRemito
 {
-    internal class OrdenDeSeleccion
+    internal class OrdenPreparacion
     {
         
         
             public string NumeroOrden { get; set; }
             public string DNITransportista { get; set; }
 
-            public OrdenDeSeleccion(string numeroOrden, string dniTransportista)
+            public OrdenPreparacion(string numeroOrden, string dniTransportista)
             {
                 NumeroOrden = numeroOrden;
                 DNITransportista = dniTransportista;
