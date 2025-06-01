@@ -1,45 +1,52 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using static System.Resources.ResXFileRef;
+using static System.Windows.Forms.DataFormats;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace GrupoD.Prototipo.Almacenes
 {
     internal static class ProductoAlmacen
     {
-        //Tengo una lista privada que yo puedo modificar (ProductoAlmacen)
         private static List<ProductoEntidad> productos = new List<ProductoEntidad>();
+        //Es una lista privada donde se guardan todos los productos que cargues. Solo la clase ProductoAlmacen puede modificarla directamente.
 
-        //Muestro una lista publica con todos los productos para que el resto del sistema consulte ReadOnly
         public static IReadOnlyCollection<ProductoEntidad> Productos => productos.AsReadOnly();
-
-        //Metodo para grabar los datos al archivo:
-        //Aca pasamos la lista de Productos a formato JSON (la transformamos a un string con los datos de todos los Productos)
+        // versión pública de la lista, pero solo de lectura.
+        // Sirve para que otras partes del sistema puedan consultar los productos, pero no puedan modificarlos.
+        
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(productos);
-            File.WriteAllText(@"Datos\Productos.json", datos); //Esta parte lo termina de escribir
+            File.WriteAllText(@"Datos\Productos.json", datos);
         }
+        //Guarda la lista de productos en un archivo JSON.
+        //Convierte la lista productos en un texto con formato JSON(Serialize).
+        //Guarda ese texto en Datos\Productos.json.
 
-        //Metodo para leer los datos del archivo:
-        public static void Leer()
+        
+        public static void Leer() //Lee el archivo Productos.json y recupera la lista de productos.
         {
-            if (!File.Exists(@"Datos\Productos.json")) //Si el archivo no existe, no hay mucho mas que hacer
+            // Si el archivo NO existe, sale del método.
+            //Si existe, lo lee, lo convierte desde JSON a lista(Deserialize) y lo carga en productos.
+            if (!File.Exists(@"Datos\Productos.json")) 
             {
                 return;
             }
 
-            var datos = File.ReadAllText(@"Datos\Productos.json"); //Esta parte lo termina de leer
-
+            var datos = File.ReadAllText(@"Datos\Productos.json"); 
             productos = JsonSerializer.Deserialize<List<ProductoEntidad>>(datos)!;
 
         }
         public static void Agregar(ProductoEntidad producto)
         {
-            productos.Add(producto);
-            Grabar();
+            productos.Add(producto); //Agrega un producto a la lista.
+            Grabar(); //Luego llama a Grabar() para guardar la lista actualizada.
         }
     }
 }
