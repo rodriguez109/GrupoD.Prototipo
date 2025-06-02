@@ -35,16 +35,5 @@ namespace GrupoD.Prototipo.Almacenes
             remitos.Add(remito); // Agrega el nuevo remito a la lista
             Grabar(); // Graba los cambios al archivo
         }
-
-       
-
-
-
-
     }
-
-
-
-
-
 }
