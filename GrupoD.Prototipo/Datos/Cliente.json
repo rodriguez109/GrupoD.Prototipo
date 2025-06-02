@@ -1,82 +1,102 @@
 [
   {
     "numero_cliente": 1,
-    "razon_social": "DecoHogar S.A."
+    "razon_social": "DecoHogar S.A.",
+    "cuit": "30-71543218-4"
   },
   {
     "numero_cliente": 2,
-    "razon_social": "MaxiLuz Iluminación SRL"
+    "razon_social": "MaxiLuz Iluminación SRL",
+    "cuit": "30-68451239-7"
   },
   {
     "numero_cliente": 3,
-    "razon_social": "MundoFOX S.A."
+    "razon_social": "MundoFOX S.A.",
+    "cuit": "30-70984325-9"
   },
   {
     "numero_cliente": 4,
-    "razon_social": "FullColor Pinturerías SRL"
+    "razon_social": "FullColor Pinturerías SRL",
+    "cuit": "30-69587412-3"
   },
   {
     "numero_cliente": 5,
-    "razon_social": "Hogar Urbano S.A."
+    "razon_social": "Hogar Urbano S.A.",
+    "cuit": "30-68745913-1"
   },
   {
     "numero_cliente": 6,
-    "razon_social": "Todo Obra Ferretería SRL"
+    "razon_social": "Todo Obra Ferretería SRL",
+    "cuit": "30-69874521-5"
   },
   {
     "numero_cliente": 7,
-    "razon_social": "Casa Nova Equipamientos S.A."
+    "razon_social": "Casa Nova Equipamientos S.A.",
+    "cuit": "30-67542139-0"
   },
   {
     "numero_cliente": 8,
-    "razon_social": "OfiMarket SRL"
+    "razon_social": "OfiMarket SRL",
+    "cuit": "30-69874125-6"
   },
   {
     "numero_cliente": 9,
-    "razon_social": "Red Tools S.A."
+    "razon_social": "Red Tools S.A.",
+    "cuit": "30-68421397-3"
   },
   {
     "numero_cliente": 10,
-    "razon_social": "MegaMuebles SRL"
+    "razon_social": "MegaMuebles SRL",
+    "cuit": "30-69324781-8"
   },
   {
     "numero_cliente": 11,
-    "razon_social": "ElectroCity S.A."
+    "razon_social": "ElectroCity S.A.",
+    "cuit": "30-68591347-2"
   },
   {
     "numero_cliente": 12,
-    "razon_social": "PlastiSur SRL"
+    "razon_social": "PlastiSur SRL",
+    "cuit": "30-69654123-4"
   },
   {
     "numero_cliente": 13,
-    "razon_social": "Tecnoshop S.A."
+    "razon_social": "Tecnoshop S.A.",
+    "cuit": "30-69784512-9"
   },
   {
     "numero_cliente": 14,
-    "razon_social": "Urban Market SRL"
+    "razon_social": "Urban Market SRL",
+    "cuit": "30-68874129-5"
   },
   {
     "numero_cliente": 15,
-    "razon_social": "DecoCentro S.A."
+    "razon_social": "DecoCentro S.A.",
+    "cuit": "30-69321478-1"
   },
   {
     "numero_cliente": 16,
-    "razon_social": "Centro Herramientas SRL"
+    "razon_social": "Centro Herramientas SRL",
+    "cuit": "30-68975431-6"
   },
   {
     "numero_cliente": 17,
-    "razon_social": "FullOffice S.A."
+    "razon_social": "FullOffice S.A.",
+    "cuit": "30-69542138-2"
   },
   {
     "numero_cliente": 18,
-    "razon_social": "DecorArte SRL"
+    "razon_social": "DecorArte SRL",
+    "cuit": "30-69874523-0"
   },
   {
     "numero_cliente": 19,
-    "razon_social": "EasyTech Distribuciones S.A."
+    "razon_social": "EasyTech Distribuciones S.A.",
+    "cuit": "30-69214578-4"
   },
   {
     "numero_cliente": 20,
-    "razon_social": "FerreMarket SRL"
+    "razon_social": "FerreMarket SRL",
+    "cuit": "30-68475129-9"
   }
 ]
