@@ -83,22 +83,23 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
             int nuevoIdOrdenSeleccion = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.Max(o => o.Numero) + 1;
 
             // Creao una instancia de OrdenDeSeleccionEnt
-            var nuevaOrdenSeleccion = new OrdenDeSeleccionEntidad
-            {
-                Numero = nuevoIdOrdenSeleccion,
-                FechaGeneracion = DateTime.Now,
-                OrdenesPreparacion = OPseleccionadas.Select(op => new OrdenDePreparacionEntidad
-                {
-                    Numero = op.NumeroOrden,
-                    FechaRetirar = op.FechaEntrega,
-                    Prioridad = (PrioridadEnum)Enum.Parse(typeof(PrioridadEnum), op.Prioridad),
-                    //nombre o id cliente (nombre no tiene la entidad OP)
-                }).Select(opEnt => opEnt.Numero).ToList(), // Convertir a lista de IDs
-                EstadoOrdenDeSeleccion = EstadoOrdenDeSeleccionEnum.Pendiente,
-            };
+            var nuevaOrdenSeLeccion = new OrdenDeSeleccionEntidad(
+                numero: nuevoIdOrdenSeleccion,
+                fechaGeneracion: DateTime.Now,
+                ordenesPreparacion: OPseleccionadas
+                    .Select(op => new OrdenDePreparacionEntidad
+                    {
+                        Numero = op.NumeroOrden,
+                        FechaRetirar = op.FechaEntrega,
+                        Prioridad = (PrioridadEnum)Enum.Parse(typeof(PrioridadEnum), op.Prioridad),
+                    })
+                    .Select(opEnt => opEnt.Numero)
+                    .ToList(),
+                estado: EstadoOrdenDeSeleccionEnum.Pendiente   
+            );
 
             // Agregar la nueva orden a la lista de Ordenes de Seleccion
-            OrdenDeSeleccionAlmacen.Agregar(nuevaOrdenSeleccion);
+            OrdenDeSeleccionAlmacen.Agregar(nuevaOrdenSeLeccion);
 
             // Grabar la lista actualizada en el archivo JSON
             OrdenDeSeleccionAlmacen.Grabar(); //TODO: Grabar deberia estar en el almacen?

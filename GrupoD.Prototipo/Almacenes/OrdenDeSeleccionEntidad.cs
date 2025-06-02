@@ -8,20 +8,20 @@ namespace GrupoD.Prototipo.Almacenes
 {
     class OrdenDeSeleccionEntidad
     {
-        public int Numero { get; set; }
-        public DateTime FechaGeneracion { get; set; }
-        public PrioridadEnum Prioridad { get; set; } 
-        public EstadoOrdenDeSeleccionEnum EstadoOrdenDeSeleccion { get; set; }
-        public List<int> OrdenesPreparacion { get; set; }
+        public int Numero { get; }
+        public DateTime FechaGeneracion { get; }
+        public EstadoOrdenDeSeleccionEnum EstadoOrdenDeSeleccion { get; }
+        public List<int> OrdenesPreparacion { get; }
 
-
-        //public OrdenDeSeleccionEntidad(int numero, DateTime fechaGeneracion, PrioridadEnum prioridad)
-        //{
-        //    Numero = numero;
-        //    FechaGeneracion = fechaGeneracion;
-        //    Prioridad = prioridad;
-        //    EstadoOrdenDeSeleccion = EstadoOrdenDeSeleccionEnum.Pendiente;
-        //    OrdenesPreparacion = new List<int>();
-        //}
+        public OrdenDeSeleccionEntidad(
+            int numero,
+            DateTime fechaGeneracion,
+            List<int> ordenesPreparacion, EstadoOrdenDeSeleccionEnum estado)
+        {
+            Numero = numero;
+            FechaGeneracion = fechaGeneracion;
+            EstadoOrdenDeSeleccion = EstadoOrdenDeSeleccionEnum.Pendiente;
+            OrdenesPreparacion = ordenesPreparacion ?? new List<int>();
+        }
     }
 }

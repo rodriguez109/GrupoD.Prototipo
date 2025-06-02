@@ -23,8 +23,8 @@
   {
     "Numero": 4,
     "FechaGeneracion": "2025-06-04T09:00:00",
-    "Prioridad": 3,
-    "EstadoOrdenDeSeleccion": 1,
+    "Prioridad": 2,
+    "EstadoOrdenDeSeleccion": 0,
     "OrdenesPreparacion": [ 7, 14 ]
   },
   {
