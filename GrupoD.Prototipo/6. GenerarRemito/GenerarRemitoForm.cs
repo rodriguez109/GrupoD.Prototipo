@@ -55,7 +55,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
 
             if (ordenes.Count == 0)
             {
-                MessageBox.Show("No se encontraron órdenes de entrega para este DNI.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No se encontraron órdenes de preparación para este DNI.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
