@@ -11,7 +11,7 @@ namespace GrupoD.Prototipo.Almacenes
         public int SKU { get; set; }
         public string Nombre { get; set; }
         public int Cantidad { get; set; }
-        public List<PosicionesPorProducto> Posiciones { get; set; }
+        public List<PosicionesPorProducto> Posiciones { get; }
         public int NumeroCliente { get; set; }
 
         public ProductoEntidad(int sku, string nombre, int cantidad, int numeroCliente)

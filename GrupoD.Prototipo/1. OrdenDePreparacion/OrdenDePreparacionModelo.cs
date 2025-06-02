@@ -99,7 +99,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
         // Constructor de la clase
         public OrdenDePreparacionModelo()
         {
-            //Clientes = ClienteAlmacen.Clientes.Select(c => new Cliente(c.Numero,c.RazonSocial)).ToList();
+            Clientes = ClienteAlmacen.Clientes.Select(c => new Cliente(c.Numero,c.RazonSocial)).ToList();
 
             Clientes = new List<Cliente>();
             foreach(var clienteEntidad in ClienteAlmacen.Clientes)
