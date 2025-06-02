@@ -274,117 +274,209 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
 
        
-        private int numeroOrden = 1; // Variable autonumérica para las órdenes
+        private static int numeroOrden = 0; // Variable autonumérica para las órdenes
+        private static int GenerarNumeroOrden()
+        {
+            return ++numeroOrden;
+        }
+
+        //private void generarOPBTN_Click(object sender, EventArgs e)
+        //{
+
+        //    if (ordenPreparacionLST.Items.Count == 0)
+        //    {
+        //        MessageBox.Show("Debe agregar productos a la Orden de Preparación antes de generarla.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        return;
+        //    }
+
+        //    if (string.IsNullOrEmpty(prioridadCMB.Text))
+        //    {
+        //        MessageBox.Show("Seleccione una prioridad para la orden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        return;
+        //    }
+
+        //    int dniTransportista = 0;
+
+        //    if (string.IsNullOrEmpty(dniTransportistaTXT.Text) || dniTransportistaTXT.Text.Length != 8 || !int.TryParse(dniTransportistaTXT.Text, out dniTransportista))
+        //    {
+        //        MessageBox.Show("Ingrese un DNI válido de 8 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        return;
+        //    }
+
+        //    // Validar el DNI del transportista con la lista de transportistas
+        //    if (!ValidarDNITransportista(dniTransportista))
+        //    {
+        //        MessageBox.Show("Transportista no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        return;
+        //    }
+
+
+        //    // Convertir númeroCliente a int
+        //    if (!int.TryParse(numeroClienteTXT.Text, out int numeroCliente))
+        //    {
+        //        MessageBox.Show("El número de cliente debe ser un valor numérico válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        return;
+        //    }
+
+        //    DateTime fechaRetiro = fechaRetirarDTP.Value; // Obtener fecha como DateTime
+        //    string prioridadSeleccionada = prioridadCMB.Text;
+        //    //string cuilTransportista = cuilTransportistaTXT.Text;
+        //    /*int dniTransportista = int.Parse(dniTransportistaTXT.Text);*/ // Convertir a int
+
+        //    string razonSocialCliente = razonSocialClienteTXT.Text;
+
+
+
+
+        //    List<OrdenDePreparacionClase> nuevaOrden = new List<OrdenDePreparacionClase>();
+
+        //    foreach (ListViewItem item in ordenPreparacionLST.Items)
+        //    {
+        //        // Obtener valores desde el ListView
+        //        string nombreProducto = item.SubItems[1].Text;
+        //        string cantidadTexto = item.SubItems[2].Text;
+        //        string skuTexto = item.SubItems[0].Text;
+
+        //        // Validar cantidad seleccionada
+        //        if (!int.TryParse(cantidadTexto, out int cantidadSeleccionada) || cantidadSeleccionada <= 0)
+        //        {
+        //            MessageBox.Show($"La cantidad del producto '{nombreProducto}' no es válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //            return;
+        //        }
+
+        //        if (!int.TryParse(skuTexto, out int skuProducto))
+        //        {
+        //            MessageBox.Show($"El SKU del producto '{nombreProducto}' no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //            return;
+        //        }
+        //            OrdenDePreparacionClase orden = new OrdenDePreparacionClase
+        //        {
+        //            NumeroOrdenPreparacion = numeroOrden, // Número autonumérico
+        //            NumeroCliente = numeroCliente, // Número de cliente
+        //            RazonSocialCliente = razonSocialCliente, // Razón social del cliente
+        //            NombreProducto = item.SubItems[1].Text,
+        //            CantidadProducto = item.SubItems[2].Text,
+
+        //            SKUProducto = int.Parse(item.SubItems[0].Text), // SKU del producto
+
+        //            FechaRetirar = fechaRetiro, // Obtiene la fecha correctamente
+        //            Prioridad = prioridadSeleccionada, // Obtiene la prioridad desde el ComboBox
+        //            /*CUILTransportista = cuilTransportista*/ // Obtiene el CUIL desde el TextBox
+        //            //DNITransportista = int.Parse(dniTransportista)
+        //            Pallet = palletCBX.Checked, //Pallet si o no
+        //            DNITransportista = dniTransportista // Obtiene el DNI desde el TextBox
+
+        //            };
+
+        //        nuevaOrden.Add(orden);
+        //    }
+
+
+        //    // Incrementar el número de orden para la próxima vez
+        //    numeroOrden++;
+
+        //    MessageBox.Show($"Orden de Preparación Nº {numeroOrden - 1} generada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        //    //Limpia los controles
+        //    numeroClienteTXT.Clear();
+        //    razonSocialClienteTXT.Clear();
+        //    productosClienteLST.Items.Clear();
+        //    ordenPreparacionLST.Items.Clear();
+        //    cantidadSeleccionadaTXT.Clear();
+        //    dniTransportistaTXT.Clear();
+
+        //    modelo.AgregarNuevaOrden(nuevaOrden);
+        //}
 
         private void generarOPBTN_Click(object sender, EventArgs e)
         {
-
-            if (ordenPreparacionLST.Items.Count == 0)
+            try
             {
-                MessageBox.Show("Debe agregar productos a la Orden de Preparación antes de generarla.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(prioridadCMB.Text))
-            {
-                MessageBox.Show("Seleccione una prioridad para la orden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            int dniTransportista = 0;
-
-            if (string.IsNullOrEmpty(dniTransportistaTXT.Text) || dniTransportistaTXT.Text.Length != 8 || !int.TryParse(dniTransportistaTXT.Text, out dniTransportista))
-            {
-                MessageBox.Show("Ingrese un DNI válido de 8 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Validar el DNI del transportista con la lista de transportistas
-            if (!ValidarDNITransportista(dniTransportista))
-            {
-                MessageBox.Show("Transportista no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-
-            // Convertir númeroCliente a int
-            if (!int.TryParse(numeroClienteTXT.Text, out int numeroCliente))
-            {
-                MessageBox.Show("El número de cliente debe ser un valor numérico válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            DateTime fechaRetiro = fechaRetirarDTP.Value; // Obtener fecha como DateTime
-            string prioridadSeleccionada = prioridadCMB.Text;
-            //string cuilTransportista = cuilTransportistaTXT.Text;
-            /*int dniTransportista = int.Parse(dniTransportistaTXT.Text);*/ // Convertir a int
-
-            string razonSocialCliente = razonSocialClienteTXT.Text;
-
-
-
-
-            List<OrdenDePreparacionClase> nuevaOrden = new List<OrdenDePreparacionClase>();
-
-            foreach (ListViewItem item in ordenPreparacionLST.Items)
-            {
-                // Obtener valores desde el ListView
-                string nombreProducto = item.SubItems[1].Text;
-                string cantidadTexto = item.SubItems[2].Text;
-                string skuTexto = item.SubItems[0].Text;
-
-                // Validar cantidad seleccionada
-                if (!int.TryParse(cantidadTexto, out int cantidadSeleccionada) || cantidadSeleccionada <= 0)
+                // Validar que se hayan agregado productos a la orden
+                if (ordenPreparacionLST.Items.Count == 0)
                 {
-                    MessageBox.Show($"La cantidad del producto '{nombreProducto}' no es válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Debe agregar productos a la Orden de Preparación antes de generarla.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                if (!int.TryParse(skuTexto, out int skuProducto))
+
+                // Validar y convertir DNI del transportista
+                if (string.IsNullOrEmpty(dniTransportistaTXT.Text) || dniTransportistaTXT.Text.Length != 8 ||
+                    !int.TryParse(dniTransportistaTXT.Text, out int dniTransportista))
                 {
-                    MessageBox.Show($"El SKU del producto '{nombreProducto}' no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Ingrese un DNI válido de 8 dígitos.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                    OrdenDePreparacionClase orden = new OrdenDePreparacionClase
+                // Usar la validación del modelo
+                if (!modelo.ValidarDNITransportista(dniTransportista))
                 {
-                    NumeroOrdenPreparacion = numeroOrden, // Número autonumérico
-                    NumeroCliente = numeroCliente, // Número de cliente
-                    RazonSocialCliente = razonSocialCliente, // Razón social del cliente
-                    NombreProducto = item.SubItems[1].Text,
-                    CantidadProducto = item.SubItems[2].Text,
+                    MessageBox.Show("Transportista no encontrado.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                    SKUProducto = int.Parse(item.SubItems[0].Text), // SKU del producto
+                // Validar y convertir el número de cliente
+                if (!int.TryParse(numeroClienteTXT.Text, out int numeroCliente))
+                {
+                    MessageBox.Show("El número de cliente debe ser un valor numérico válido.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                    FechaRetirar = fechaRetiro, // Obtiene la fecha correctamente
-                    Prioridad = prioridadSeleccionada, // Obtiene la prioridad desde el ComboBox
-                    /*CUILTransportista = cuilTransportista*/ // Obtiene el CUIL desde el TextBox
-                    //DNITransportista = int.Parse(dniTransportista)
-                    Pallet = palletCBX.Checked, //Pallet si o no
-                    DNITransportista = dniTransportista // Obtiene el DNI desde el TextBox
+                // Obtener datos adicionales de la UI
+                DateTime fechaRetirar = fechaRetirarDTP.Value;
+                string prioridadSeleccionada = prioridadCMB.Text;
+                string razonSocialCliente = razonSocialClienteTXT.Text;
+                bool pallet = palletCBX.Checked;
 
-                    };
+                // Bloquear cambio de cliente si ya se han agregado productos
+                if (ordenPreparacionLST.Items.Count > 0)
+                {
+                    if (clienteFijo != numeroCliente)
+                    {
+                        MessageBox.Show("No puede agregar productos de un cliente diferente a la orden.",
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+                else
+                {
+                    clienteFijo = numeroCliente; // Fijar el cliente en la primera adición
+                }
 
-                nuevaOrden.Add(orden);
+                // Llamar al método del modelo para crear la orden
+                List<OrdenDePreparacionClase> nuevaOrden = modelo.CrearOrdenesDesdeItems(
+                    ordenPreparacionLST.Items.Cast<ListViewItem>(),
+                    numeroCliente,
+                    razonSocialCliente,
+                    fechaRetirar,
+                    prioridadSeleccionada,
+                    dniTransportista,
+                    pallet
+                );
+
+                MessageBox.Show($"Orden de Preparación Nº {nuevaOrden.First().NumeroOrdenPreparacion} generada correctamente.",
+                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Limpiar controles
+                numeroClienteTXT.Clear();
+                razonSocialClienteTXT.Clear();
+                productosClienteLST.Items.Clear();
+                ordenPreparacionLST.Items.Clear();
+                cantidadSeleccionadaTXT.Clear();
+                dniTransportistaTXT.Clear();
+
+                // Agregar la orden al almacén (llamando al método definido en el modelo)
+                modelo.AgregarNuevaOrden(nuevaOrden);
             }
-            
-
-            // Incrementar el número de orden para la próxima vez
-            numeroOrden++;
-
-            MessageBox.Show($"Orden de Preparación Nº {numeroOrden - 1} generada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //Limpia los controles
-            numeroClienteTXT.Clear();
-            razonSocialClienteTXT.Clear();
-            productosClienteLST.Items.Clear();
-            ordenPreparacionLST.Items.Clear();
-            cantidadSeleccionadaTXT.Clear();
-            dniTransportistaTXT.Clear();
-
-            modelo.AgregarNuevaOrden(nuevaOrden);
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar la orden: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
-
-
 
         private void buscarProductosBTN_Click(object sender, EventArgs e)
         {
