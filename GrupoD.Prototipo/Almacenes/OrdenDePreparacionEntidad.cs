@@ -19,17 +19,17 @@ namespace GrupoD.Prototipo.Almacenes
         public int DNITransportista { get; set; }
         public EstadoOrdenDePreparacionEnum Estado { get; set; }
 
-        public OrdenDePreparacionEntidad(int numero, string codigoDeposito, DateTime fechaRetirar, PrioridadEnum prioridad, int numeroCliente, int dniTransportista, bool pallet)
-        {
-            Numero = numero;
-            CodigoDeposito = codigoDeposito;
-            FechaRetirar = fechaRetirar;
-            Prioridad = prioridad;
-            NumeroCliente = numeroCliente;
-            DNITransportista = dniTransportista;
-            Detalle = new List<ProductosPorOrden>();
-            Estado = EstadoOrdenDePreparacionEnum.Pendiente;
-            Pallet = pallet;    
-        }
+        //public OrdenDePreparacionEntidad(int numero, string codigoDeposito, DateTime fechaRetirar, PrioridadEnum prioridad, int numeroCliente, int dniTransportista, bool pallet)
+        //{
+        //    Numero = numero;
+        //    CodigoDeposito = codigoDeposito;
+        //    FechaRetirar = fechaRetirar;
+        //    Prioridad = prioridad;
+        //    NumeroCliente = numeroCliente;
+        //    DNITransportista = dniTransportista;
+        //    Detalle = new List<ProductosPorOrden>();
+        //    Estado = EstadoOrdenDePreparacionEnum.Pendiente;
+        //    Pallet = pallet;    
+        //}
     }
 }
