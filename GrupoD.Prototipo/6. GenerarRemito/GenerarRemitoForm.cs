@@ -77,7 +77,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
         {
             if (OrdenesDePreparacionLST.SelectedItems.Count == 0)  // Verificar si no hay ítems seleccionados
             {
-                MessageBox.Show("Debe seleccionar al menos una orden de entrega para agregar al remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe seleccionar al menos una orden de preparación para agregar al remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

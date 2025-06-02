@@ -14,7 +14,7 @@ namespace GrupoD.Prototipo.Almacenes
         public static IReadOnlyList<RemitoEntidad> Remitos = remitos.AsReadOnly();
 
 
-        public static void Leer()
+        static RemitoAlmacen() 
         {
             if (!File.Exists(@"Datos\Remitos.json"))
             {
