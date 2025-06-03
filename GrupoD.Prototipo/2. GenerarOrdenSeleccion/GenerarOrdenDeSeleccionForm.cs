@@ -12,7 +12,7 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
         }
         //El formulario tiene una referencia al modelo
         private GenerarOrdenSeleccionModelo modelo;
-        private List<OrdenesDePreparacion> OrdenesPreparacionDisponibles = new List<OrdenesDePreparacion>();
+        //private List<OrdenesDePreparacion> OrdenesPreparacionDisponibles = new List<OrdenesDePreparacion>();
         //private List<OrdenesDePreparacion> OrdenesAgregadas = new List<OrdenesDePreparacion>();
 
         //Esto es lo primero que se ejecuta de la funcionalidad -------------------------------------------------------------------------------------------
@@ -304,7 +304,7 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
             foreach (ListViewItem item in OrdenesPreparacionPendientesSeleccionadasLST.Items)
             {
                 var ordenPreparacion = (OrdenesDePreparacion)item.Tag;
-                OrdenesPreparacionDisponibles.Remove(ordenPreparacion);
+                modelo.OrdenesPreparacionDisponibles.Remove(ordenPreparacion);
             }
 
             //Le pido al modelo que cree una nueva OS. con esas OP.

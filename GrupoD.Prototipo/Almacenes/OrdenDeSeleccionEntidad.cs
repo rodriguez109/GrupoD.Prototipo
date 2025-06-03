@@ -8,10 +8,10 @@ namespace GrupoD.Prototipo.Almacenes
 {
     class OrdenDeSeleccionEntidad
     {
-        public int Numero { get; }
-        public DateTime FechaGeneracion { get; }
-        public EstadoOrdenDeSeleccionEnum EstadoOrdenDeSeleccion { get; }
-        public List<int> OrdenesPreparacion { get; }
+        public int Numero { get; set; }
+        public DateTime FechaGeneracion { get; set; }
+        public EstadoOrdenDeSeleccionEnum EstadoOrdenDeSeleccion { get; set; }
+        public List<int> OrdenesPreparacion { get; set; } = new();
 
         public OrdenDeSeleccionEntidad(
             int numero,

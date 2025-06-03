@@ -1,0 +1,10 @@
+﻿(Empieza con el menú principal)
+1- ACA TODO LO QUE HARIA EL USUARIO BIEN APB
+2- TODAS LAS ENTRADAS
+3-
+4-
+5- SALIDA : IMPACTO EN BD {producto 1 cliente 1 SKUxxx}
+
+20 PASOS COMO MUCHO
+
+(cierre del programa)

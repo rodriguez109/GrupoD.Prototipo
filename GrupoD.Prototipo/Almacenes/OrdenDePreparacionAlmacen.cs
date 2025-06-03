@@ -26,7 +26,7 @@ namespace GrupoD.Prototipo.Almacenes
         }
 
         //Metodo para leer los datos del archivo
-        public static void Leer()
+        static OrdenDePreparacionAlmacen()
         {
             if (!File.Exists(@"Datos\OrdenesDePreparacion.json")) //Si el archivo no existe, no hay mucho mas que hacer
             {
