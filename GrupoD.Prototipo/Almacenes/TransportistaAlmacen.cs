@@ -12,7 +12,7 @@ namespace GrupoD.Prototipo.Almacenes
         private static List<TransportistaEntidad> transportistas = new List<TransportistaEntidad>();
         public static IReadOnlyCollection<TransportistaEntidad> Transportistas => transportistas.AsReadOnly();
 
-        public static void Leer()
+        static TransportistaAlmacen()
         {
             if (!File.Exists(@"Datos\Transportistas.json")) 
             {

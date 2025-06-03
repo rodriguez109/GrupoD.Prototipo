@@ -55,7 +55,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
 
             if (ordenes.Count == 0)
             {
-                MessageBox.Show("No se encontraron órdenes de entrega para este DNI.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No se encontraron órdenes de preparación para este DNI.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -77,7 +77,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
         {
             if (OrdenesDePreparacionLST.SelectedItems.Count == 0)  // Verificar si no hay ítems seleccionados
             {
-                MessageBox.Show("Debe seleccionar al menos una orden de entrega para agregar al remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe seleccionar al menos una orden de preparación para agregar al remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

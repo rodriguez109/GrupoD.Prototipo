@@ -1,12 +1,16 @@
-﻿using GrupoD.Prototipo._4._Empaquetar_Productos;
+﻿using System.Reflection;
+using GrupoD.Prototipo._4._Empaquetar_Productos;
 
 namespace GrupoD.Prototipo._4._EmpaquetarProductos
 {
     internal class EmpaquetarProductosModelo
     {
-        public List<OrdenPreparacion> OrdenesEnPreparacionDisponibles { get; set; }
+        public List<OrdenPreparacion> OrdenesEnPreparacionDisponibles { get; } // sacar el set
+        public OrdenPreparacion ordenActual;
 
-        public EmpaquetarProductosModelo()
+
+
+        public EmpaquetarProductosModelo() //datos hardcodeados:
         {
             var productosEjemplo = new List<Producto>
                 {
@@ -34,6 +38,18 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
                         }
                     }
                 };
+        }
+
+        public OrdenPreparacion BusquedaOrdenDisponible() //EXP
+        {
+            // Buscar próxima orden "En Preparacion"
+            ordenActual = OrdenesEnPreparacionDisponibles.FirstOrDefault(o => o.EstadoOrdenPreparacion == "En Preparacion")!;
+            return ordenActual!;
+        }
+
+        public void CambioEstadoOP(OrdenPreparacion ordenActual)
+        {
+            ordenActual.EstadoOrdenPreparacion = "Preparada";
         }
     }
 }

@@ -1,10 +1,18 @@
-{
-  "exclude": [
-    "**/bin",
-    "**/bower_components",
-    "**/jspm_packages",
-    "**/node_modules",
-    "**/obj",
-    "**/platforms"
-  ]
-}
+[
+    {
+        "Codigo": "D01",
+        "Nombre": "Depósito Buenos Aires"
+    },
+    {
+        "Codigo": "D02",
+        "Nombre": "Depósito Rosario"
+    },
+    {
+        "Codigo": "D03",
+        "Nombre": "Depósito Tucumán"
+    },
+    {
+        "Codigo": "D04",
+        "Nombre": "Depósito Córdoba"
+    }
+]

@@ -13,7 +13,7 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos;
 public partial class EmpaquetarProductosForm : Form
 {
     private EmpaquetarProductosModelo modelo;
-    private OrdenPreparacion ordenActual;
+    //public OrdenPreparacion ordenActual;
 
 
     public EmpaquetarProductosForm()
@@ -25,14 +25,13 @@ public partial class EmpaquetarProductosForm : Form
         ordenEmpaquetadaBTN.Click += ordenEmpaquetadaBTN_Click;
         cancelarBTN.Click += cancelarBTN_Click;
 
-        MostrarProximaOrden();
+        MostrarOrdenPantalla();
 
     }
 
-    private void MostrarProximaOrden() //EXP
+    internal void MostrarOrdenPantalla() 
     {
-        // Buscar próxima orden "En Preparacion"
-        ordenActual = modelo.OrdenesEnPreparacionDisponibles.FirstOrDefault(o => o.EstadoOrdenPreparacion == "En Preparacion");
+        var ordenActual = modelo.BusquedaOrdenDisponible();
 
         if (ordenActual == null)
         {
@@ -40,15 +39,15 @@ public partial class EmpaquetarProductosForm : Form
             listViewProductos.Items.Clear();
             labelNumeroOrden.Text = "Sin órdenes pendientes";
             this.Close();
-            return;
         }
-
-        labelNumeroOrden.Text = $"Orden #{ordenActual.NumeroOrdenPreparacion}";
-
-        CargarProductosEnListView(ordenActual.Productos);
+        else
+        {
+            labelNumeroOrden.Text = $"Orden #{ordenActual.NumeroOrdenPreparacion}";
+            CargarProductosEnListView(ordenActual.Productos);
+        }
     }
 
-    private void CargarProductosEnListView(List<Producto> productos) //EXP
+    internal void CargarProductosEnListView(List<Producto> productos) //EXP // va en MODELO, CARGAR LISTA DE PRODUCTOS DE OP
     {
         listViewProductos.Items.Clear();
 
@@ -62,24 +61,15 @@ public partial class EmpaquetarProductosForm : Form
         }
     }
 
-    private void label1_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void label1_Click_1(object sender, EventArgs e)
-    {
-
-    }
-
     private void ordenEmpaquetadaBTN_Click(object sender, EventArgs e)
     {
+        var ordenActual = modelo.BusquedaOrdenDisponible();
         if (ordenActual != null)
         {
-            ordenActual.EstadoOrdenPreparacion = "Preparada";
+            modelo.CambioEstadoOP(ordenActual);
             MessageBox.Show("La orden fue marcada como 'Preparada'.");
-            MostrarProximaOrden();
-            //this.Close();
+            MostrarOrdenPantalla();
+
         }
     }
 

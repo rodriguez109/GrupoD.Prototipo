@@ -96,22 +96,30 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
         };
 
-        // Constructor de la clase
+
+
+
+        //Constructor de la clase
         public OrdenDePreparacionModelo()
         {
-            Clientes = ClienteAlmacen.Clientes.Select(c => new Cliente(c.Numero,c.RazonSocial)).ToList();
 
+
+
+
+            
+            Clientes = ClienteAlmacen.Clientes.Select(c => new Cliente(c.Numero, c.RazonSocial)).ToList();
             Clientes = new List<Cliente>();
-            foreach(var clienteEntidad in ClienteAlmacen.Clientes)
+            foreach (var clienteEntidad in ClienteAlmacen.Clientes)
             {
                 var cliente = new Cliente(clienteEntidad.Numero, clienteEntidad.RazonSocial);
                 Clientes.Add(cliente);
             }
 
 
-            //FALTAN ALMACENES DE PRODUCTO Y TRANSPORTISTA
+
+            //Productos = ProductoAlmacen.Productos.Select(p => new Producto(p.SKU, p.Nombre, p.Cantidad, p.Posiciones, p.NumeroCliente)).ToList();
             //Productos = new List<Producto>(ListaProductos);
-            //foreach(var productoEntidad in ProductoAlmacen.Productos)
+            //foreach (var productoEntidad in ProductoAlmacen.Productos)
             //{
             //    var producto = new Producto(productoEntidad.SKU, productoEntidad.Nombre, productoEntidad.Cantidad, productoEntidad.Posiciones, productoEntidad.NumeroCliente);
             //    Productos.Add(producto);
@@ -119,53 +127,121 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
             //}
 
-            //Transportistas = new List<Transportista>(ListaTransportistas);
-            //foreach(var transportistaEntidad in TransportistaAlmacen.Transportistas)
-            //{
-            //    var transportista = new Transportista(transportistaEntidad.DNI, transportistaEntidad.Nombre);
-            //    Transportistas.Add(transportista);
+            Transportistas = TransportistaAlmacen.Transportistas.Select(t => new Transportista(t.DNI, t.Nombre)).ToList();
+            Transportistas = new List<Transportista>(ListaTransportistas);
+            foreach (var transportistaEntidad in TransportistaAlmacen.Transportistas)
+            {
+                var transportista = new Transportista(transportistaEntidad.DNI, transportistaEntidad.Nombre);
+                Transportistas.Add(transportista);
 
-            //}
+            }
         }
 
 
+        //public void AgregarNuevaOrden(List<OrdenDePreparacionClase> nuevaOrden)
+        //{
+        //    //modelo.AgregarNuevaOrden(nuevaOrden);
+        //}
+
+        //FULL PRUEBA
+        private static int numeroOrden = 0; // Contador de órdenes autonumérico
+
+        public static int GenerarNumeroOrden()
+        {
+            return ++numeroOrden;
+        }
+
+        //Cuando funcionen los almacenes:
+        //private int ObtenerUltimoNumeroOrden()
+        //{
+        //    return Almacenes.OrdenPreparacionAlmacen.OrdenesPreparacion.LastOrDefault()?.IdOrdenPreparacion ?? 0;
+        //}
+        //Al generar nueva orden: int numeroOrdenLocal = ObtenerUltimoNumeroOrden() + 1;
+
+
+        public List<OrdenDePreparacionClase> CrearOrdenesDesdeItems(
+        IEnumerable<ListViewItem> items,
+        int numeroCliente,
+        string razonSocialCliente,
+        DateTime fechaRetirar,
+        string prioridadSeleccionada,
+        int dniTransportista,
+        bool pallet)
+        {
+            if (items == null || !items.Any())
+                throw new Exception("Debe agregar productos a la Orden de Preparación antes de generarla.");
+
+            if (string.IsNullOrEmpty(prioridadSeleccionada))
+                throw new Exception("Seleccione una prioridad para la orden.");
+
+            List<OrdenDePreparacionClase> ordenes = new List<OrdenDePreparacionClase>();
+
+            
+            
+            // Variable interna para generar números de orden
+            int numeroOrdenLocal = GenerarNumeroOrden(); 
+            
+
+
+
+            foreach (ListViewItem item in items)
+            {
+                string skuTexto = item.SubItems[0].Text;
+                string nombreProducto = item.SubItems[1].Text;
+                string cantidadTexto = item.SubItems[2].Text;
+
+                if (!int.TryParse(cantidadTexto, out int cantidad) || cantidad <= 0)
+                    throw new Exception($"La cantidad del producto '{nombreProducto}' no es válida.");
+
+                if (!int.TryParse(skuTexto, out int sku))
+                    throw new Exception($"El SKU del producto '{nombreProducto}' no es válido.");
+
+                OrdenDePreparacionClase orden = new OrdenDePreparacionClase
+                {
+                    NumeroOrdenPreparacion = numeroOrdenLocal,
+                    SKUProducto = sku,
+                    NombreProducto = nombreProducto,
+                    CantidadProducto = cantidadTexto,
+                    FechaRetirar = fechaRetirar,
+                    Prioridad = prioridadSeleccionada,
+                    DNITransportista = dniTransportista,
+                    NumeroCliente = numeroCliente,
+                    Pallet = pallet,
+                    RazonSocialCliente = razonSocialCliente,
+                    Posicion = "" // Se asigna según la lógica de la aplicación
+                };
+
+                ordenes.Add(orden);
+                numeroOrdenLocal++; // Incrementa para cada producto si buscas que cada ítem genere una orden única
+            }
+
+            return ordenes;
+        }
+
+        // Simula obtener el último número de orden registrado en el almacén;
+        // eventualmente se consultaría al almacén de órdenes.
+        private int ObtenerUltimoNumeroOrden()
+        {
+            // Aquí podrías consultar Almacenes.OrdenPreparacionAlmacen, de momento devolvemos un número hardcodeado.
+            return 0;
+        }
+
+        // Método para agregar la nueva orden a tu sistema (almacén de órdenes)
         public void AgregarNuevaOrden(List<OrdenDePreparacionClase> nuevaOrden)
         {
-            //modelo.AgregarNuevaOrden(nuevaOrden);
+            // Aquí se agregaría la orden al almacén. Por ahora, puedes dejarlo comentado o implementarlo según necesites.
+            // Ejemplo:
+            // OrdenPreparacionAlmacen.OrdenesPreparacion.AddRange(nuevaOrden);
+        }
+
+        // Validación de DNI del transportista usando la lista hardcodeada
+        public bool ValidarDNITransportista(int dni)
+        {
+            return ListaTransportistas.Any(t => t.DNITransportista == dni);
         }
 
     }
-    //class OrdenDePreparacionModelo
-    //    {
-    //        public List<OrdenDePreparacion> OrdenDePreparacion ES ESTO O SERÍA OTRA LIST?
-    //        {
-    //          get
-    //          {
-    //              var ordenesdepreparacion = new List<OrdenDePreparacion>();
-    //              foreach (var OrdenDePreparacionEntidad in OrdenDePreparacionAlmacen ordenesdepreparacion)
-    //              {
-    //                  ordenesdepreparacion.Add(new OrdenDePreparacion)
-    //                  { ACÁ ES CON LOS ATRIBUTOS DE LA CLASE OrdenDePreparacionClase?
-    //                      NumeroOrdenPreparacion = OrdenDePreparacionEntidad.Numero,
-    //                      SKUProducto = no está en la entidad
-    //                      NombreProducto = no está en la entidad
-    //                      CantidadProducto = no está en la entidad
-    //                      FechaRetirar = OrdenDePreparacionEntidad.FechaRetirar
-    //                      Prioridad = OrdenDePreparacionEntidad.PrioridadEnum (?)
-    //                      DNITransportista = OrdenDePreparacionEntidad.DNITransportista0
-    //                      NumeroCliente = OrdenDePreparacionEntidad.NumeroCliente
-    //                      Pallet = OrdenDePreparacionEntidad.Pallet,
-    //                      RazonSocialCliente = no está en la entidad
-    //                      No está en la clase: CodigoDeposito, List<ProductosPorOrden> Detalle, EstadoOrdenDePreparacionEnum Estado
-    //                  }
-    //              }
-    //          }
-    //          return OrdenesDePreparacion
-    //      }
-    //    }    
-
-
-    //                      
+                      
 
 }
 
