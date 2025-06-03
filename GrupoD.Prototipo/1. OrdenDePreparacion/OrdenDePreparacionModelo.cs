@@ -109,7 +109,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 MessageBox.Show("No se encontró el archivo: " + ruta);
             }
 
-            ClienteAlmacen.Leer();
+
 
             if (ClienteAlmacen.Clientes == null || !ClienteAlmacen.Clientes.Any())
             {
@@ -125,9 +125,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             }
 
 
-            ClienteAlmacen.Leer(); //static ClienteAlmacen()
-            ProductoAlmacen.Leer(); //static ProductoAlmacen()
-            //static TransportistaAlmacen();
+      
 
 
 
@@ -165,14 +163,14 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
             //}
 
-            //Transportistas = TransportistaAlmacen.Transportistas.Select(t => new Transportista(t.DNI, t.Nombre)).ToList();
+            Transportistas = TransportistaAlmacen.Transportistas.Select(t => new Transportista(t.DNI, t.Nombre)).ToList();
             //Transportistas = new List<Transportista>(ListaTransportistas);
-            //foreach (var transportistaEntidad in TransportistaAlmacen.Transportistas)
-            //{
-            //    var transportista = new Transportista(transportistaEntidad.DNI, transportistaEntidad.Nombre);
-            //    Transportistas.Add(transportista);
+            foreach (var transportistaEntidad in TransportistaAlmacen.Transportistas)
+            {
+                var transportista = new Transportista(transportistaEntidad.DNI, transportistaEntidad.Nombre);
+                Transportistas.Add(transportista);
 
-            //}
+            }
         }
 
 
