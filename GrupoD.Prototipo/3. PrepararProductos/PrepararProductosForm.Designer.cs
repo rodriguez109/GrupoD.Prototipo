@@ -1,6 +1,10 @@
-﻿namespace Prototipo.PrepararProductos
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace Prototipo.PrepararProductos
 {
-    partial class PrepararProductosForm
+    partial class PrepararProductosForm : Form
     {
         /// <summary>
         /// Required designer variable.
@@ -36,7 +40,6 @@
             cantidadCol = new ColumnHeader();
             btnSeleccion = new Button();
             btnCancelar = new Button();
-            SuspendLayout();
             // 
             // label1
             // 
