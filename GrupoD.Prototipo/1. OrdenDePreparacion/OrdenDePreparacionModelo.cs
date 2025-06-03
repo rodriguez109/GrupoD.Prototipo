@@ -125,14 +125,11 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             }
 
 
-            ClienteAlmacen.Leer();
-            ProductoAlmacen.Leer();
-            //TransportistaAlmacen.Leer(); //FALTA METODO LEER EN TRANSPORTISTA ALMACEN
+            ClienteAlmacen.Leer(); //static ClienteAlmacen()
+            ProductoAlmacen.Leer(); //static ProductoAlmacen()
+            //static TransportistaAlmacen();
 
-            if (ClienteAlmacen.Clientes == null || !ClienteAlmacen.Clientes.Any())
-            {
-                MessageBox.Show("No se han cargado clientes desde el almacén.");
-            }
+
 
 
             //Clientes = ClienteAlmacen.Clientes.Select(c => new Cliente(c.Numero, c.RazonSocial)).ToList();
