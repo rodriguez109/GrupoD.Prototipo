@@ -15,17 +15,17 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 {
     public partial class OrdenDePreparacion : Form
     {
-
+        private OrdenDePreparacionModelo modelo;
         public OrdenDePreparacion()
         {
             InitializeComponent();
             this.Load += new EventHandler(OrdenDePreparacion_Load);
-            ConfigurarAutoCompletar();
-            ConfigurarAutoCompletarDNITransportista();
+            //ConfigurarAutoCompletar();
+            //ConfigurarAutoCompletarDNITransportista();
         }
 
         //El formulario tiene una referencia al modelo
-        private OrdenDePreparacionModelo modelo;
+        //private OrdenDePreparacionModelo modelo;
         //private List<OrdenesDePreparacion> OrdenesPreparacionDisponibles = new List<OrdenesDePreparacion>();
         //private List<OrdenesDePreparacion> OrdenesAgregadas = new List<OrdenesDePreparacion>();
         //private List<Cliente> listaClientes = new List<Cliente>();
@@ -45,6 +45,11 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             //Vincular evento para el DateTimePicker
             fechaRetirarDTP.ValueChanged += FechaRetirarDTP_ValueChanged;
 
+            //Configurar DateTimePicker para mostrar fecha actual como fecha mínima
+            fechaRetirarDTP.MinDate = DateTime.Today;
+
+            ConfigurarAutoCompletar();
+
 
             prioridadCMB.Items.Clear(); // Limpiar elementos previos
             prioridadCMB.Items.Add("Alta");
@@ -53,33 +58,107 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
             prioridadCMB.SelectedIndex = 1; // Preselecciona "Media" por defecto
 
+
+
             // Vincular el evento del ListView para actualizar los labels al seleccionar un producto
             productosClienteLST.SelectedIndexChanged += productosClienteLST_SelectedIndexChanged;
 
+
+
+
+        }
+
+        //Razón social: búsqueda por primeras letras
+
+        private void ConfigurarAutoCompletar()
+        {
+            // Verifica que la instancia del modelo y la lista de clientes no sean nulas
+            if (modelo == null)
+            {
+                MessageBox.Show("El modelo no está inicializado.");
+                return;
+            }
+
+            if (modelo.Clientes == null)
+            {
+                MessageBox.Show("La lista de clientes no ha sido cargada.");
+                return;
+            }
+
+            AutoCompleteStringCollection listaAutocompletar = new AutoCompleteStringCollection();
+
+            // Agregar todas las razones sociales de los clientes a la lista de autocompletar
+            foreach (var cliente in modelo.Clientes)
+            {
+                listaAutocompletar.Add(cliente.RazonSocialCliente);
+            }
+
+            // Configurar el campo de texto con la lista de autocompletar
+            razonSocialClienteTXT.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            razonSocialClienteTXT.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            razonSocialClienteTXT.AutoCompleteCustomSource = listaAutocompletar;
+        }
+
+
+        //DNI Transportista: búsqueda por primeros números
+        private void ConfigurarAutoCompletarDNITransportista()
+        {
+            // Se crea la colección de cadenas para el autocompletado
+            AutoCompleteStringCollection listaAutocompletar = new AutoCompleteStringCollection();
+
+            // Agregar todos los DNIs (convertidos a string) de los transportistas
+            foreach (var transportista in modelo.Transportistas)
+            {
+                listaAutocompletar.Add(transportista.DNITransportista.ToString());
+            }
+
+            // Configurar el TextBox para usar el autocompletado con la lista personalizada
+            dniTransportistaTXT.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            dniTransportistaTXT.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            dniTransportistaTXT.AutoCompleteCustomSource = listaAutocompletar;
         }
         // Evento para establecer el formato correcto cuando el usuario selecciona una fecha
         private void FechaRetirarDTP_ValueChanged(object sender, EventArgs e)
         {
             fechaRetirarDTP.CustomFormat = "dd/MM/yyyy"; // Mostrar la fecha correctamente al seleccionarla
         }
-        
 
-        public static Cliente BuscarCliente(int numeroCliente, string razonSocial)
+        private Cliente BuscarCliente(int numeroCliente, string razonSocial)    //FIJARSE SI CLIENTE O CLIENTEALMACEN
         {
-            if (OrdenDePreparacionModelo.ListaCliente == null || !OrdenDePreparacionModelo.ListaCliente.Any())
+            // Verifica que se hayan cargado clientes en el modelo.
+            if (modelo == null || modelo.Clientes == null || !modelo.Clientes.Any())
                 return null;
 
-            Cliente clienteEncontrado = OrdenDePreparacionModelo.ListaCliente
+            // Suponiendo que la clase Cliente tiene las propiedades 'Numero' y 'RazonSocial'
+            Cliente clienteEncontrado = modelo.Clientes
                 .FirstOrDefault(c => c.NumeroCliente == numeroCliente);
 
             if (clienteEncontrado == null && !string.IsNullOrEmpty(razonSocial))
             {
-                clienteEncontrado = OrdenDePreparacionModelo.ListaCliente
+                clienteEncontrado = modelo.Clientes
                     .FirstOrDefault(c => c.RazonSocialCliente.Equals(razonSocial, StringComparison.OrdinalIgnoreCase));
             }
 
             return clienteEncontrado;
         }
+
+
+        //public static Cliente BuscarCliente(int numeroCliente, string razonSocial)
+        //{
+        //    if (OrdenDePreparacionModelo.ListaCliente == null || !OrdenDePreparacionModelo.ListaCliente.Any())
+        //        return null;
+
+        //    Cliente clienteEncontrado = OrdenDePreparacionModelo.ListaCliente
+        //        .FirstOrDefault(c => c.NumeroCliente == numeroCliente);
+
+        //    if (clienteEncontrado == null && !string.IsNullOrEmpty(razonSocial))
+        //    {
+        //        clienteEncontrado = OrdenDePreparacionModelo.ListaCliente
+        //            .FirstOrDefault(c => c.RazonSocialCliente.Equals(razonSocial, StringComparison.OrdinalIgnoreCase));
+        //    }
+
+        //    return clienteEncontrado;
+        //}
 
 
 
@@ -110,7 +189,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
         {
             List<Producto> productosCliente = new List<Producto>();
 
-            foreach (var producto in OrdenDePreparacionModelo.ListaProductos) // Usa la lista correcta
+            foreach (var producto in modelo.Productos) // Usa la lista correcta
             {
                 if (producto.NumeroCliente == numeroCliente)
                 {
@@ -216,8 +295,9 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 if (!string.IsNullOrWhiteSpace(razonSocialClienteTXT.Text))
                 {
                     string razonSocial = razonSocialClienteTXT.Text.Trim();
-                    var clienteEncontrado = OrdenDePreparacionModelo.ListaCliente
-                        .FirstOrDefault(c => c.RazonSocialCliente.Equals(razonSocial, StringComparison.OrdinalIgnoreCase));
+                    var clienteEncontrado = modelo.Clientes
+                    .FirstOrDefault(c => c.RazonSocialCliente.Equals(razonSocial, StringComparison.OrdinalIgnoreCase));
+
                     if (clienteEncontrado != null)
                     {
                         numeroCliente = clienteEncontrado.NumeroCliente;
@@ -552,44 +632,57 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
         //Razón social: búsqueda por primeras letras
 
-        private void ConfigurarAutoCompletar()
-        {
-            AutoCompleteStringCollection listaAutocompletar = new AutoCompleteStringCollection();
+        //private void ConfigurarAutoCompletar()
+        //{
+        //    // Verifica que la instancia del modelo y la lista de clientes no sean nulas
+        //    if (modelo == null)
+        //    {
+        //        MessageBox.Show("El modelo no está inicializado.");
+        //        return;
+        //    }
 
-            // Agregar todas las razones sociales de los clientes a la lista de autocompletar
-            foreach (var cliente in OrdenDePreparacionModelo.ListaCliente)
-            {
-                listaAutocompletar.Add(cliente.RazonSocialCliente);
-            }
+        //    if (modelo.Clientes == null)
+        //    {
+        //        MessageBox.Show("La lista de clientes no ha sido cargada.");
+        //        return;
+        //    }
 
-            // Configurar el campo de texto con la lista de autocompletar
-            razonSocialClienteTXT.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            razonSocialClienteTXT.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            razonSocialClienteTXT.AutoCompleteCustomSource = listaAutocompletar;
-        }
+        //    AutoCompleteStringCollection listaAutocompletar = new AutoCompleteStringCollection();
+
+        //    // Agregar todas las razones sociales de los clientes a la lista de autocompletar
+        //    foreach (var cliente in modelo.Clientes)
+        //    {
+        //        listaAutocompletar.Add(cliente.RazonSocialCliente);
+        //    }
+
+        //    // Configurar el campo de texto con la lista de autocompletar
+        //    razonSocialClienteTXT.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+        //    razonSocialClienteTXT.AutoCompleteSource = AutoCompleteSource.CustomSource;
+        //    razonSocialClienteTXT.AutoCompleteCustomSource = listaAutocompletar;
+        //}
 
 
-        //DNI Transportista: búsqueda por primeros números
-        private void ConfigurarAutoCompletarDNITransportista()
-        {
-            // Se crea la colección de cadenas para el autocompletado
-            AutoCompleteStringCollection listaAutocompletar = new AutoCompleteStringCollection();
+        ////DNI Transportista: búsqueda por primeros números
+        //private void ConfigurarAutoCompletarDNITransportista()
+        //{
+        //    // Se crea la colección de cadenas para el autocompletado
+        //    AutoCompleteStringCollection listaAutocompletar = new AutoCompleteStringCollection();
 
-            // Agregar todos los DNIs (convertidos a string) de los transportistas
-            foreach (var transportista in OrdenDePreparacionModelo.ListaTransportistas)
-            {
-                listaAutocompletar.Add(transportista.DNITransportista.ToString());
-            }
+        //    // Agregar todos los DNIs (convertidos a string) de los transportistas
+        //    foreach (var transportista in modelo.Transportistas)
+        //    {
+        //        listaAutocompletar.Add(transportista.DNITransportista.ToString());
+        //    }
 
-            // Configurar el TextBox para usar el autocompletado con la lista personalizada
-            dniTransportistaTXT.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            dniTransportistaTXT.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            dniTransportistaTXT.AutoCompleteCustomSource = listaAutocompletar;
-        }
+        //    // Configurar el TextBox para usar el autocompletado con la lista personalizada
+        //    dniTransportistaTXT.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+        //    dniTransportistaTXT.AutoCompleteSource = AutoCompleteSource.CustomSource;
+        //    dniTransportistaTXT.AutoCompleteCustomSource = listaAutocompletar;
+        //}
 
         private bool ValidarDNITransportista(int dni)
         {
-            return OrdenDePreparacionModelo.ListaTransportistas.Any(t => t.DNITransportista == dni);
+            return modelo.Transportistas.Any(t => t.DNITransportista == dni);
         }
 
 
