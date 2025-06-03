@@ -296,11 +296,11 @@
             // 
             fechaRetirarDTP.Format = DateTimePickerFormat.Short;
             fechaRetirarDTP.Location = new Point(601, 443);
-            fechaRetirarDTP.MinDate = new DateTime(2025, 5, 31, 0, 0, 0, 0);
+            fechaRetirarDTP.MinDate = new DateTime(2025, 6, 3, 0, 0, 0, 0);
             fechaRetirarDTP.Name = "fechaRetirarDTP";
             fechaRetirarDTP.Size = new Size(140, 27);
             fechaRetirarDTP.TabIndex = 40;
-            fechaRetirarDTP.Value = new DateTime(2025, 5, 31, 12, 51, 4, 0);
+            fechaRetirarDTP.Value = new DateTime(2025, 6, 3, 0, 0, 0, 0);
             // 
             // productoSeleccionadoLABEL
             // 
