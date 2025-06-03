@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrupoD.Prototipo._3._PrepararProductos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,8 @@ namespace Prototipo.PrepararProductos.PrepararProductos
     {
         public string NombreOrden { get; set; }
         public List<OrdenDeSeleccion> Productos { get; set; }
+        public EstadoOrdenSeleccion Estado { get; set; }
+        public Prioridad Prioridad { get; set; }
+        public string NombreOrdenConPrioridad => $"Orden n° {NombreOrden} (Prioridad: {Prioridad})";
     }
-
 }

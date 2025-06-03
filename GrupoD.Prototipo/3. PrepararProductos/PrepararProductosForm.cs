@@ -15,14 +15,22 @@ namespace Prototipo.PrepararProductos
     public interface IPrepararProductosView
     {
         void MostrarOrdenes(List<OrdenSeleccion> ordenes);
+        OrdenSeleccion ObtenerOrdenSeleccionada();
         void MostrarProductosEnListView(List<OrdenDeSeleccion> productos);
         void MostrarMensaje(string mensaje, string titulo);
         void MostrarAdvertencia(string mensaje, string titulo);
-        OrdenSeleccion ObtenerOrdenSeleccionada();
+        void CerrarAplicacion();
+        void HabilitarBotonConfirmar(bool v);
     }
+
     public partial class PrepararProductosForm : Form, IPrepararProductosView
     {
         private PrepararProductosPresenter _presenter;
+
+        public void HabilitarBotonConfirmar(bool habilitar)
+        {
+            btnSeleccion.Enabled = habilitar;
+        }
 
         public PrepararProductosForm()
         {
@@ -37,8 +45,14 @@ namespace Prototipo.PrepararProductos
 
         public void MostrarOrdenes(List<OrdenSeleccion> ordenes)
         {
-            comboOrdenSeleccion.DataSource = ordenes;
-            comboOrdenSeleccion.DisplayMember = "NombreOrden";
+            var ordenesOrdenadas = ordenes
+                .OrderBy(o => (int)o.Prioridad)
+                .ThenBy(o => o.NombreOrden)
+                .ToList();
+
+            comboOrdenSeleccion.DataSource = null;
+            comboOrdenSeleccion.DataSource = ordenesOrdenadas;
+            comboOrdenSeleccion.DisplayMember = "NombreOrdenConPrioridad";
         }
 
         public OrdenSeleccion ObtenerOrdenSeleccionada()
@@ -66,6 +80,11 @@ namespace Prototipo.PrepararProductos
         public void MostrarAdvertencia(string mensaje, string titulo)
         {
             MessageBox.Show(mensaje, titulo, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        public void CerrarAplicacion()
+        {
+            this.Close();
         }
     }
 }
