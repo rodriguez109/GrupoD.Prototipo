@@ -26,7 +26,7 @@ namespace GrupoD.Prototipo.Almacenes
         //Guarda ese texto en Datos\Depositos.json.
 
 
-        public static void Leer() //Lee el archivo Depositos.json y recupera la lista de depositos.
+        static DepositoAlmacen() //Lee el archivo Depositos.json y recupera la lista de depositos.
         {
             // Si el archivo NO existe, sale del método.
             //Si existe, lo lee, lo convierte desde JSON a lista(Deserialize) y lo carga en productos.

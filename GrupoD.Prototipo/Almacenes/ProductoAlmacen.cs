@@ -29,8 +29,8 @@ namespace GrupoD.Prototipo.Almacenes
         //Convierte la lista productos en un texto con formato JSON(Serialize).
         //Guarda ese texto en Datos\Productos.json.
 
-        
-        public static void Leer() //Lee el archivo Productos.json y recupera la lista de productos.
+
+        static ProductoAlmacen() //Lee el archivo Productos.json y recupera la lista de productos.
         {
             // Si el archivo NO existe, sale del método.
             //Si existe, lo lee, lo convierte desde JSON a lista(Deserialize) y lo carga en productos.
