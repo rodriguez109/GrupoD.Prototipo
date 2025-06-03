@@ -104,7 +104,7 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
             // Grabar la lista actualizada en el archivo JSON
             OrdenDeSeleccionAlmacen.Grabar(); //TODO: Grabar deberia estar en el almacen?
 
-            //Cambiar estado Orden de Preparacion
+            //Cambiar estado Orden de Preparacion    
             //foreach (var op in OPseleccionadas)
             //{
             //    OrdenDePreparacionAlmacen.cambiarEstado(int.Parse(op.Numero), EstadoOrdenDePreparacionEnum.Procesamiento);
