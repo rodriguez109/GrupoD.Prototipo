@@ -44,6 +44,7 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
         {
             // Buscar próxima orden "En Preparacion"
             ordenActual = OrdenesEnPreparacionDisponibles.FirstOrDefault(o => o.EstadoOrdenPreparacion == "En Preparacion")!;
+            //tendria q devolver la primer orden de preparacion con prioridad Alta, con fecha mas cercana a retirar
             return ordenActual!;
         }
 
