@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GrupoD.Prototipo._4._Empaquetar_Productos;
+using GrupoD.Prototipo.Almacenes;
 
 namespace GrupoD.Prototipo._4._EmpaquetarProductos;
 public partial class EmpaquetarProductosForm : Form
@@ -42,20 +43,22 @@ public partial class EmpaquetarProductosForm : Form
         }
         else
         {
-            labelNumeroOrden.Text = $"Orden #{ordenActual.NumeroOrdenPreparacion}";
-            CargarProductosEnListView(ordenActual.Productos);
+            labelNumeroOrden.Text = $"Orden #{ordenActual.Numero}";
+            CargarProductosEnListView(ordenActual.Detalle);
         }
     }
 
-    internal void CargarProductosEnListView(List<Producto> productos) //EXP // va en MODELO, CARGAR LISTA DE PRODUCTOS DE OP
+    internal void CargarProductosEnListView(List<ProductosPorOrden> productos) // va aca o en modelo?
     {
         listViewProductos.Items.Clear();
 
         foreach (var producto in productos)
         {
-            var item = new ListViewItem(producto.SKUProducto.ToString());
-            item.SubItems.Add(producto.NombreProducto);
-            item.SubItems.Add(producto.CantidadSeleccionada.ToString());
+            var productoA = ProductoAlmacen.Productos.FirstOrDefault(p=> p.SKU == producto.SKU);
+
+            var item = new ListViewItem(producto.SKU.ToString());
+            item.SubItems.Add(productoA.Nombre); //tengo q conseguir el nombre 
+            item.SubItems.Add(producto.Cantidad.ToString());
 
             listViewProductos.Items.Add(item);
         }
@@ -67,6 +70,7 @@ public partial class EmpaquetarProductosForm : Form
         if (ordenActual != null)
         {
             modelo.CambioEstadoOP(ordenActual);
+            modelo.ActualizarOrdenesDisponibles(); // Refresca la lista de órdenes disponibles
             MessageBox.Show("La orden fue marcada como 'Preparada'.");
             MostrarOrdenPantalla();
 
