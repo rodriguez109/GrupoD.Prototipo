@@ -25,7 +25,7 @@ namespace GrupoD.Prototipo.Almacenes
 
         public static void Grabar()
         {
-            var datos = JsonSerializer.Serialize(clientes);
+            var datos = JsonSerializer.Serialize(clientes, new JsonSerializerOptions{ WriteIndented = true });
             File.WriteAllText(@"Datos\Cliente.json", datos);
         }
 
