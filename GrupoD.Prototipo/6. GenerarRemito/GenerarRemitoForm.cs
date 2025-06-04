@@ -66,7 +66,8 @@ namespace GrupoD.Prototipo._6._GenerarRemito
                     if (yaAgregada)
                         continue;
 
-                    var item = new ListViewItem(orden.NumeroOrden);
+                     var item = new ListViewItem(orden.NumeroOrden.ToString());
+
                     item.Tag = orden;
                     OrdenesDePreparacionLST.Items.Add(item);
                 }
@@ -84,7 +85,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
             foreach (ListViewItem item in OrdenesDePreparacionLST.SelectedItems)
             {
                 OrdenPreparacion orden = (OrdenPreparacion)item.Tag;
-                var nuevoItem = new ListViewItem(orden.NumeroOrden);
+                var nuevoItem = new ListViewItem(orden.NumeroOrden.ToString());
                 nuevoItem.Tag = orden;
                 OrdenesAgregadasLST.Items.Add(nuevoItem);
                 OrdenesDePreparacionLST.Items.Remove(item);  // Eliminar de la lista de entrega
@@ -102,7 +103,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
             foreach (ListViewItem item in OrdenesAgregadasLST.SelectedItems)
             {
                 OrdenPreparacion orden = (OrdenPreparacion)item.Tag;
-                var nuevoItem = new ListViewItem(orden.NumeroOrden);
+                var nuevoItem = new ListViewItem(orden.NumeroOrden.ToString());
                 nuevoItem.Tag = orden;
                 OrdenesDePreparacionLST.Items.Add(nuevoItem);  // Mover ítems de vuelta a la lista de entrega
                 OrdenesAgregadasLST.Items.Remove(item);  // Eliminar de la lista agregada
@@ -118,8 +119,9 @@ namespace GrupoD.Prototipo._6._GenerarRemito
             }
 
             List<string> ordenes = OrdenesAgregadasLST.Items.Cast<ListViewItem>()
-                .Select(i => ((OrdenPreparacion)i.Tag).NumeroOrden)
-                .ToList();
+              .Select(i => ((OrdenPreparacion)i.Tag).NumeroOrden.ToString())
+              .ToList();
+
 
             string ordenesTexto = string.Join(", ", ordenes);
             MessageBox.Show($"Remito generado con éxito.\nÓrdenes incluidas: {ordenesTexto}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);

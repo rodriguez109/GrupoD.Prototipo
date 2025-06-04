@@ -10,10 +10,10 @@ namespace GrupoD.Prototipo._6._GenerarRemito
     {
         
         
-            public string NumeroOrden { get; set; }
-            public string DNITransportista { get; set; }
+            public int NumeroOrden { get; set; }
+            public int DNITransportista { get; set; }
 
-            public OrdenPreparacion(string numeroOrden, string dniTransportista)
+            public OrdenPreparacion(int numeroOrden, int dniTransportista)
             {
                 NumeroOrden = numeroOrden;
                 DNITransportista = dniTransportista;
@@ -21,7 +21,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
 
             public override string ToString()
             {
-                return NumeroOrden;
+               return NumeroOrden.ToString();
             }
         
 
