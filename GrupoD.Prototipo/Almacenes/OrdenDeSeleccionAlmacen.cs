@@ -38,21 +38,6 @@ namespace GrupoD.Prototipo.Almacenes
             File.WriteAllText(@"Datos\OrdenesDeSeleccion.json", datos); //Esta parte lo termina de escribir
         }
 
-        //Metodo para leer los datos del archivo:
-
-        //public static void Leer()
-        //{
-        //    if (!File.Exists(@"Datos\OrdenesDeSeleccion.json")) //Si el archivo no existe, no hay mucho mas que hacer
-        //    {
-        //        return;
-        //    }
-
-        //    var datos = File.ReadAllText(@"Datos\OrdenesDeSeleccion.json"); //Esta parte lo termina de leer
-
-        //    ordenesDeSeleccion = JsonSerializer.Deserialize<List<OrdenDeSeleccionEntidad>>(datos)!;
-
-        //}
-
         public static void Agregar(OrdenDeSeleccionEntidad ordenDeSeleccion)
         {
             ordenesDeSeleccion.Add(ordenDeSeleccion);

@@ -58,31 +58,10 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
 
         public void AgregarOrden(List<OrdenesDePreparacion> OPseleccionadas)
         {
-            //Aca lo que deberia hacer mi modelo post prototipo:
-
-            //Seleccionar las OP Pendientes y generar una nueva OS a partir de ellas, con estado "Pendiente"
-
-            // Agregar la nueva orden a la lista de Ordenes de Seleccion
-
-            // Grabar la lista actualizada en el archivo JSON
-
-
-            //Actualizar los datos: 
-            //Ordenes de preparacion disponibles
-            // Eliminar las órdenes seleccionadas de la lista de disponibles
-            //OrdenesPreparacionDisponibles.RemoveAll(o => ordenesSeleccionadas.Any(sel => sel.NumeroOrden == o.NumeroOrden));
-            //OrdenesDeSeleccion
-
-            // Agregar la nueva orden a la lista de órdenes de selección
-            // OrdenDeSeleccionAlmacen.Agregar(nuevaOrdenSeleccion);
-
-            // Grabar la lista actualizada en el archivo JSON
-            // OrdenDeSeleccionAlmacen.Grabar();
-
             // Obtener el número ID para la nueva Orden de Selección
             int nuevoIdOrdenSeleccion = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.Max(o => o.Numero) + 1;
 
-            // Creao una instancia de OrdenDeSeleccionEnt
+            // Creo una instancia de OrdenDeSeleccionEntidad
             var nuevaOrdenSeLeccion = new OrdenDeSeleccionEntidad(
                 numero: nuevoIdOrdenSeleccion,
                 fechaGeneracion: DateTime.Now,
@@ -104,8 +83,8 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
             // Grabar la lista actualizada en el archivo JSON
             OrdenDeSeleccionAlmacen.Grabar(); //TODO: Grabar deberia estar en el almacen?
 
-            //Cambiar estado Orden de Preparacion    
-            //foreach (var op in OPseleccionadas)
+            //Cambiar estado Orden de Preparacion
+            //foreach (var op in OPseleccionadas) AGREGAR ESTE METODO
             //{
             //    OrdenDePreparacionAlmacen.cambiarEstado(int.Parse(op.Numero), EstadoOrdenDePreparacionEnum.Procesamiento);
             //}
