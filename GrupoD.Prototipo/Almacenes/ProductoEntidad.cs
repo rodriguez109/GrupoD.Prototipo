@@ -13,7 +13,7 @@ namespace GrupoD.Prototipo.Almacenes
         public int Cantidad { get; set; }
         public List<PosicionesPorProducto> Posiciones { get; }
         public int NumeroCliente { get; set; }
-
+        /*
         public ProductoEntidad(int sku, string nombre, int cantidad, int numeroCliente)
         {
             SKU = sku;
@@ -21,6 +21,6 @@ namespace GrupoD.Prototipo.Almacenes
             Cantidad = cantidad;
             NumeroCliente = numeroCliente;
             Posiciones = new List<PosicionesPorProducto>();
-        }
+        }*/
     }
 }

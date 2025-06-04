@@ -10,11 +10,11 @@ namespace GrupoD.Prototipo.Almacenes
     {
         public int DNI { get; set; }
         public string Nombre { get; set; }
-
+        /*
         public TransportistaEntidad(int dni, string nombre)
         {
             DNI = dni;
             Nombre = nombre;
-        }
+        }*/
     }
 }

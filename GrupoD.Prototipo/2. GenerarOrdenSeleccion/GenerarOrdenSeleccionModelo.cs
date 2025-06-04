@@ -62,10 +62,11 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
             int nuevoIdOrdenSeleccion = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.Max(o => o.Numero) + 1;
 
             // Creo una instancia de OrdenDeSeleccionEntidad
-            var nuevaOrdenSeLeccion = new OrdenDeSeleccionEntidad(
-                numero: nuevoIdOrdenSeleccion,
-                fechaGeneracion: DateTime.Now,
-                ordenesPreparacion: OPseleccionadas
+            var nuevaOrdenSeLeccion = new OrdenDeSeleccionEntidad
+            {
+                Numero = nuevoIdOrdenSeleccion,
+                FechaGeneracion = DateTime.Now,
+                OrdenesPreparacion = OPseleccionadas
                     .Select(op => new OrdenDePreparacionEntidad
                     {
                         Numero = op.NumeroOrden,
@@ -74,8 +75,8 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
                     })
                     .Select(opEnt => opEnt.Numero)
                     .ToList(),
-                estado: EstadoOrdenDeSeleccionEnum.Pendiente   
-            );
+                EstadoOrdenDeSeleccion = EstadoOrdenDeSeleccionEnum.Pendiente
+            };
 
             // Agregar la nueva orden a la lista de Ordenes de Seleccion
             OrdenDeSeleccionAlmacen.Agregar(nuevaOrdenSeLeccion);

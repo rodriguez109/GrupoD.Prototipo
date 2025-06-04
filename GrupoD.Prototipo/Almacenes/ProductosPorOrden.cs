@@ -10,11 +10,11 @@ namespace GrupoD.Prototipo.Almacenes
     {
         public int SKU { get; set; }
         public int Cantidad { get; set; }
-
+        /*
         public ProductosPorOrden(int sku, int cantidad)
         {
             SKU = sku;
             Cantidad = cantidad;
-        }
+        }*/
     }
 }
