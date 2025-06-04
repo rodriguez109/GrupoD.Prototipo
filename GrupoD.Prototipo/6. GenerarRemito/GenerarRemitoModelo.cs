@@ -61,6 +61,8 @@ namespace GrupoD.Prototipo._6._GenerarRemito
         }
 
 
+        // llamaria al metodo del almcaen para cambiar el estado???
+        //le paso una lista de ordenes desde el presentador?
 
 
     }
