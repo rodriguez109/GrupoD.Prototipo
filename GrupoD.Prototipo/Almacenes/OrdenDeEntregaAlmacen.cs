@@ -40,5 +40,7 @@ namespace GrupoD.Prototipo.Almacenes
             ordenesDeEntrega.Add(ordenDeEntrega);
         }
 
+        //cambiar el estado de las OE .cambiarEstadoOE
+        //public static void cambiarEstadoOE
     }
 }

@@ -79,11 +79,11 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
             };
 
             // Agregar la nueva orden a la lista de Ordenes de Seleccion
-            OrdenDeSeleccionAlmacen.Agregar(nuevaOrdenSeLeccion);            
-            
+            OrdenDeSeleccionAlmacen.Agregar(nuevaOrdenSeLeccion);
+
 
             //Cambiar estado Orden de Preparacion
-            //foreach (var op in OPseleccionadas) AGREGAR ESTE METODO
+            //foreach (var op in OPseleccionadas) //AGREGAR ESTE METODO
             //{
             //    OrdenDePreparacionAlmacen.cambiarEstado(int.Parse(op.Numero), EstadoOrdenDePreparacionEnum.Procesamiento);
             //}

@@ -42,5 +42,8 @@ namespace GrupoD.Prototipo.Almacenes
         {
             ordenesDeSeleccion.Add(ordenDeSeleccion);
         }
+
+        //cambiar el estado de las OS .cambiarEstadoOS
+        //public static void cambiarEstadoOS
     }
 }
