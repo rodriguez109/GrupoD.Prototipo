@@ -10,19 +10,18 @@ namespace GrupoD.Prototipo.Almacenes
     {
         public int Numero { get; set; }
         public DateTime FechaGeneracion { get; set; }
-        public PrioridadEnum Prioridad { get; set; } //-------------va?
         public EstadoOrdenDeSeleccionEnum EstadoOrdenDeSeleccion { get; set; }
-        public List<int> OrdenesPreparacion { get; }
-
-
-        //ESTA PARTE CONSULTAR CON EL PROFE SI O SI!!!
-        public OrdenDeSeleccionEntidad(int numero, DateTime fechaGeneracion, PrioridadEnum prioridad)
+        public List<int> OrdenesPreparacion { get; set; } = new();
+        /*
+        public OrdenDeSeleccionEntidad(
+            int numero,
+            DateTime fechaGeneracion,
+            List<int> ordenesPreparacion, EstadoOrdenDeSeleccionEnum estado)
         {
             Numero = numero;
             FechaGeneracion = fechaGeneracion;
-            Prioridad = prioridad; //-------??
             EstadoOrdenDeSeleccion = EstadoOrdenDeSeleccionEnum.Pendiente;
-            OrdenesPreparacion = new List<int>();
-        }
+            OrdenesPreparacion = ordenesPreparacion ?? new List<int>();
+        }*/
     }
 }

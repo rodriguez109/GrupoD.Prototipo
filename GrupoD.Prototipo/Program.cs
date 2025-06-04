@@ -23,8 +23,16 @@ namespace GrupoD.Prototipo
 
             Application.Run(new MenuForm());
 
-            //Grabar datos desde almacenes (TODOS)
+            //Grabar datos desde almacenes (TODOS)            
+            ClienteAlmacen.Grabar();
+            DepositoAlmacen.Grabar();
+            OrdenDeEntregaAlmacen.Grabar();
+            OrdenDePreparacionAlmacen.Grabar();
             OrdenDeSeleccionAlmacen.Grabar();
+            ProductoAlmacen.Grabar();
+            RemitoAlmacen.Grabar();
+            TransportistaAlmacen.Grabar();
+
         }
     }
 }

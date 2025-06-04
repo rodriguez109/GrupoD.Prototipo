@@ -9,6 +9,7 @@ namespace GrupoD.Prototipo.Almacenes
     public enum EstadoOrdenDePreparacionEnum
     {
         Pendiente,
+        Procesamiento,
         EnPreparacion,
         Preparada,
         EnDespacho,

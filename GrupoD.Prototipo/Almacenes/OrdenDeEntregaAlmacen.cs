@@ -14,11 +14,11 @@ namespace GrupoD.Prototipo.Almacenes
 
         static OrdenDeEntregaAlmacen()
         {
-            if (!File.Exists(@"Datos\OrdenesDeEntrega.json")) 
+            if (!File.Exists(@"Datos\OrdenDeEntrega.json")) 
             {
                 return;
             }
-            var datos = File.ReadAllText(@"Datos\OrdenesDeEntrega.json"); //Esta parte lo termina de leer
+            var datos = File.ReadAllText(@"Datos\OrdenDeEntrega.json"); //Esta parte lo termina de leer
 
             ordenesDeEntrega = JsonSerializer.Deserialize<List<OrdenDeEntregaEntidad>>(datos)!;
 
@@ -32,7 +32,7 @@ namespace GrupoD.Prototipo.Almacenes
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(ordenesDeEntrega);
-            File.WriteAllText(@"Datos\OrdenesDeEntrega.json", datos); //Esta parte lo termina de escribir
+            File.WriteAllText(@"Datos\OrdenDeEntrega.json", datos); //Esta parte lo termina de escribir
         }
 
         public static void Agregar(OrdenDeEntregaEntidad ordenDeEntrega)
@@ -40,5 +40,7 @@ namespace GrupoD.Prototipo.Almacenes
             ordenesDeEntrega.Add(ordenDeEntrega);
         }
 
+        //cambiar el estado de las OE .cambiarEstadoOE
+        //public static void cambiarEstadoOE
     }
 }

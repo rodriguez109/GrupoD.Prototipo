@@ -12,22 +12,23 @@ namespace GrupoD.Prototipo.Almacenes
         private static List<ClienteEntidad> clientes = new List<ClienteEntidad>();
         public static IReadOnlyCollection<ClienteEntidad> Clientes => clientes.AsReadOnly();
 
-        public static void Grabar()
+        static ClienteAlmacen()
         {
-            var datos = JsonSerializer.Serialize(clientes);
-            File.WriteAllText(@"Datos\Clientes.json", datos);
-        }
-   
-        public static void Leer()
-        {
-            if (!File.Exists(@"Datos\Clientes.json"))
+            if (!File.Exists(@"Datos\Cliente.json"))
             {
                 return;
             }
 
-            var datos = File.ReadAllText(@"Datos\Clientes.json");
+            var datos = File.ReadAllText(@"Datos\Cliente.json");
             clientes = JsonSerializer.Deserialize<List<ClienteEntidad>>(datos)!;
         }
+
+        public static void Grabar()
+        {
+            var datos = JsonSerializer.Serialize(clientes, new JsonSerializerOptions{ WriteIndented = true });
+            File.WriteAllText(@"Datos\Cliente.json", datos);
+        }
+
         public static void Agregar(ClienteEntidad cliente)
         {
             clientes.Add(cliente);

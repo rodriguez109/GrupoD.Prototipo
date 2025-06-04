@@ -1,96 +1,82 @@
-{
-
-  [
-    {
-      "DNI": 20242093,
-      "Nombre": "Juan Pérez"
-    },
-    {
-      "DNI": 27242093,
-      "Nombre": "Marta Rodríguez"
-    },
-    {
-      "DNI": 30242093,
-      "Nombre": "Carlos Gómez"
-    },
-    {
-      "DNI": 31242093,
-      "Nombre": "Lucía Fernández"
-    },
-    {
-      "DNI": 36242093,
-      "Nombre": "Pedro Martínez"
-    },
-    {
-      "DNI": 37242093,
-      "Nombre": "Ana Morales"
-    },
-    {
-      "DNI": 38242093,
-      "Nombre": "Jorge Ramírez"
-    },
-    {
-      "DNI": 39242093,
-      "Nombre": "Laura Aguirre"
-    },
-    {
-      "DNI": 40242093,
-      "Nombre": "Nicolás Herrera"
-    },
-    {
-      "DNI": 41242093,
-      "Nombre": "Silvia Castro"
-    },
-    {
-      "DNI": 42242093,
-      "Nombre": "Luis Navarro"
-    },
-    {
-      "DNI": 43242093,
-      "Nombre": "Mariana Domínguez"
-    },
-    {
-      "DNI": 44242093,
-      "Nombre": "Rubén Salas"
-    },
-    {
-      "DNI": 45242093,
-      "Nombre": "Camila Molina"
-    },
-    {
-      "DNI": 46242093,
-      "Nombre": "Fabio Ríos"
-    },
-    {
-      "DNI": 47242093,
-      "Nombre": "Gabriela Núñez"
-    },
-    {
-      "DNI": 48242093,
-      "Nombre": "Tomás Medina"
-    },
-    {
-      "DNI": 49242093,
-      "Nombre": "Verónica López"
-    },
-    {
-      "DNI": 50242093,
-      "Nombre": "Esteban Torres"
-    },
-    {
-      "DNI": 51242093,
-      "Nombre": "Paula Benítez"
-    }
-  ]
-
-
-
-  "exclude": [
-    "**/bin",
-    "**/bower_components",
-    "**/jspm_packages",
-    "**/node_modules",
-    "**/obj",
-    "**/platforms"
-  ]
-}
+[
+  {
+    "DNI": 20242093,
+    "Nombre": "Juan Pérez"
+  },
+  {
+    "DNI": 27242093,
+    "Nombre": "Marta Rodríguez"
+  },
+  {
+    "DNI": 30242093,
+    "Nombre": "Carlos Gómez"
+  },
+  {
+    "DNI": 31242093,
+    "Nombre": "Lucía Fernández"
+  },
+  {
+    "DNI": 36242093,
+    "Nombre": "Pedro Martínez"
+  },
+  {
+    "DNI": 37242093,
+    "Nombre": "Ana Morales"
+  },
+  {
+    "DNI": 38242093,
+    "Nombre": "Jorge Ramírez"
+  },
+  {
+    "DNI": 39242093,
+    "Nombre": "Laura Aguirre"
+  },
+  {
+    "DNI": 40242093,
+    "Nombre": "Nicolás Herrera"
+  },
+  {
+    "DNI": 41242093,
+    "Nombre": "Silvia Castro"
+  },
+  {
+    "DNI": 42242093,
+    "Nombre": "Luis Navarro"
+  },
+  {
+    "DNI": 43242093,
+    "Nombre": "Mariana Domínguez"
+  },
+  {
+    "DNI": 44242093,
+    "Nombre": "Rubén Salas"
+  },
+  {
+    "DNI": 45242093,
+    "Nombre": "Camila Molina"
+  },
+  {
+    "DNI": 46242093,
+    "Nombre": "Fabio Ríos"
+  },
+  {
+    "DNI": 47242093,
+    "Nombre": "Gabriela Núñez"
+  },
+  {
+    "DNI": 48242093,
+    "Nombre": "Tomás Medina"
+  },
+  {
+    "DNI": 49242093,
+    "Nombre": "Verónica López"
+  },
+  {
+    "DNI": 50242093,
+    "Nombre": "Esteban Torres"
+  },
+  {
+    "DNI": 51242093,
+    "Nombre": "Paula Benítez"
+  }
+]

@@ -1,8 +1,10 @@
 ﻿using GrupoD.Prototipo.Almacenes;
 using GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion;
+using Prototipo.PrepararProductos.PrepararProductos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,26 +12,19 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
 {
     class GenerarOrdenSeleccionModelo
     {
-        public List<OrdenesDePreparacion> OrdenesPreparacionDisponibles { get; } = new();
 
-        //Esta hay que borrarla y ver cómo reemplazar su uso en el formulario en cada caso
-        public List<OrdenesDeSeleccion> OrdenesDeSeleccion { get; set; }  // Agregar esta propiedad
+        //Traigo datos de ordenes de preparacion pendientes.
+        public List<OrdenesDePreparacion> OrdenesPreparacionDisponibles { get; set; }
 
-
-        public List<OrdenesDePreparacion> OrdenesAgregadas { get; set; } // Lista de órdenes ya agregadas
-
-
-        //Aca lo que deberia hacer mi modelo post prototipo:
+        public List<OrdenesDePreparacion> OrdenesAgregadas { get; set; }  // Lista de órdenes ya agregadas
 
         //Obtener las órdenes de preparación pendientes desde el almacenamiento
-
-        //Seleccionar las OP Pendientes y generar una nueva OS a partir de ellas, con estado "Pendiente"
-
-        //Guarda los cambios
-
         public GenerarOrdenSeleccionModelo()
-        {            
-            foreach (var ordenEntidad in OrdenDePreparacionAlmacen.OrdenesDePreparacion)
+        {
+            OrdenesPreparacionDisponibles = new List<OrdenesDePreparacion>(); // Inicializar la lista
+
+            foreach (var ordenEntidad in OrdenDePreparacionAlmacen.OrdenesDePreparacion
+                    .Where(o => o.Estado == EstadoOrdenDePreparacionEnum.Pendiente)) // Filtra solo las pendientes
             {
                 var cliente = ClienteAlmacen.Clientes.FirstOrDefault(c => c.Numero == ordenEntidad.NumeroCliente);
 
@@ -54,10 +49,44 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
             }
 
             OrdenesAgregadas = new List<OrdenesDePreparacion>(); // Inicializar la nueva lista
+        }
+
+        //public int ObtenerProximoNumero()
+        //{
+        //    return OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.Max(o => o.Numero) + 1;
+        //}
+
+        public void AgregarOrden(List<OrdenesDePreparacion> OPseleccionadas)
+        {
+            // Obtener el número ID para la nueva Orden de Selección
+            int nuevoIdOrdenSeleccion = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.Max(o => o.Numero) + 1;
+
+            // Creo una instancia de OrdenDeSeleccionEntidad
+            var nuevaOrdenSeLeccion = new OrdenDeSeleccionEntidad
+            {
+                Numero = nuevoIdOrdenSeleccion,
+                FechaGeneracion = DateTime.Now,
+                OrdenesPreparacion = OPseleccionadas
+                    .Select(op => new OrdenDePreparacionEntidad
+                    {
+                        Numero = op.NumeroOrden,
+                        FechaRetirar = op.FechaEntrega,
+                        Prioridad = (PrioridadEnum)Enum.Parse(typeof(PrioridadEnum), op.Prioridad),
+                    })
+                    .Select(opEnt => opEnt.Numero)
+                    .ToList(),
+                EstadoOrdenDeSeleccion = EstadoOrdenDeSeleccionEnum.Pendiente
+            };
+
+            // Agregar la nueva orden a la lista de Ordenes de Seleccion
+            OrdenDeSeleccionAlmacen.Agregar(nuevaOrdenSeLeccion);
 
 
-            //Esta hay que borrarla.
-            OrdenesDeSeleccion = new List<OrdenesDeSeleccion>();  // Lista de órdenes de selección
+            //Cambiar estado Orden de Preparacion
+            //foreach (var op in OPseleccionadas) //AGREGAR ESTE METODO
+            //{
+            //    OrdenDePreparacionAlmacen.cambiarEstado(int.Parse(op.Numero), EstadoOrdenDePreparacionEnum.Procesamiento);
+            //}
         }
 
     }

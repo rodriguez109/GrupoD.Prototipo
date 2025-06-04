@@ -23,23 +23,23 @@ namespace GrupoD.Prototipo.Almacenes
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(productos);
-            File.WriteAllText(@"Datos\Productos.json", datos);
+            File.WriteAllText(@"Datos\Producto.json", datos);
         }
         //Guarda la lista de productos en un archivo JSON.
         //Convierte la lista productos en un texto con formato JSON(Serialize).
         //Guarda ese texto en Datos\Productos.json.
 
-        
-        public static void Leer() //Lee el archivo Productos.json y recupera la lista de productos.
+
+        static ProductoAlmacen() //Lee el archivo Productos.json y recupera la lista de productos.
         {
             // Si el archivo NO existe, sale del método.
             //Si existe, lo lee, lo convierte desde JSON a lista(Deserialize) y lo carga en productos.
-            if (!File.Exists(@"Datos\Productos.json")) 
+            if (!File.Exists(@"Datos\Producto.json")) 
             {
                 return;
             }
 
-            var datos = File.ReadAllText(@"Datos\Productos.json"); 
+            var datos = File.ReadAllText(@"Datos\Producto.json"); 
             productos = JsonSerializer.Deserialize<List<ProductoEntidad>>(datos)!;
 
         }

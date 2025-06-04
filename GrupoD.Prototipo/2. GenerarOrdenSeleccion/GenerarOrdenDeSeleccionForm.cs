@@ -1,4 +1,5 @@
 ﻿using GrupoD.Prototipo._2._GenerarOrdenSeleccion;
+using Prototipo.PrepararProductos.PrepararProductos;
 using System.Data;
 
 namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
@@ -11,8 +12,8 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
         }
         //El formulario tiene una referencia al modelo
         private GenerarOrdenSeleccionModelo modelo;
-        private List<OrdenesDePreparacion> OrdenesPreparacionDisponibles = new List<OrdenesDePreparacion>();
-        private List<OrdenesDePreparacion> OrdenesAgregadas = new List<OrdenesDePreparacion>();
+        //private List<OrdenesDePreparacion> OrdenesPreparacionDisponibles = new List<OrdenesDePreparacion>();
+        //private List<OrdenesDePreparacion> OrdenesAgregadas = new List<OrdenesDePreparacion>();
 
         //Esto es lo primero que se ejecuta de la funcionalidad -------------------------------------------------------------------------------------------
         private void GenerarOrdenDeSeleccionForm_Load(object sender, EventArgs e)
@@ -205,7 +206,7 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
                 item.SubItems.Add(orden.FechaEntrega.ToShortDateString());
                 item.SubItems.Add(orden.DNITransportista.ToString());
                 item.SubItems.Add(orden.Prioridad);
-
+                item.Tag = orden;
                 OrdenesPreparacionPendientesSeleccionadasLST.Items.Add(item);
             }
 
@@ -267,9 +268,6 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
                 return;
             }
 
-            // Definir número correlativo de orden
-            int nuevoNumeroOrdenSeleccion = modelo.OrdenesDeSeleccion.Count + 1;
-
             // Lista para almacenar las órdenes seleccionadas
             List<OrdenesDePreparacion> ordenesSeleccionadas = new List<OrdenesDePreparacion>();
 
@@ -287,28 +285,86 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
                 }
             }
 
-            // Crear nueva orden de selección con todas las órdenes seleccionadas
-            var nuevaOrdenSeleccion = new OrdenesDeSeleccion(
-                nuevoNumeroOrdenSeleccion,
-                ordenesSeleccionadas,
-                DateTime.Now,
-                "Pendiente"
-            );
+            // Crear una nueva instancia de OrdenesDeSeleccion
+            var ordenSeleccion = new OrdenesDeSeleccion
+            {
+                FechaGeneracion = DateTime.Now,
+                OrdenesPreparacion = new List<OrdenesDePreparacion>(), //Es la lista que hay que pasar al modelo
+                EstadoOrdenDeSeleccion = "Pendiente", // Estado inicial de la orden de selección
+            };
 
-            // Agregar la nueva orden de selección a la lista
-            modelo.OrdenesDeSeleccion.Add(nuevaOrdenSeleccion);
+            // Agregar las órdenes de preparación a la orden de selección
+            foreach (ListViewItem item in OrdenesPreparacionPendientesSeleccionadasLST.Items)
+            {
+                var ordenPreparacion = (OrdenesDePreparacion)item.Tag;
+                ordenSeleccion.OrdenesPreparacion.Add(ordenPreparacion);
+            }
 
-            // Eliminar las órdenes seleccionadas de la lista de disponibles
-            modelo.OrdenesPreparacionDisponibles.RemoveAll(o => ordenesSeleccionadas.Any(sel => sel.NumeroOrden == o.NumeroOrden));
+            // Eliminar las órdenes de preparación que se han agregado a la orden de selección de la lista de órdenes disponibles
+            foreach (ListViewItem item in OrdenesPreparacionPendientesSeleccionadasLST.Items)
+            {
+                var ordenPreparacion = (OrdenesDePreparacion)item.Tag;
+                modelo.OrdenesPreparacionDisponibles.Remove(ordenPreparacion);
+            }
 
-            // Limpiar la lista de órdenes seleccionadas
+            //Le pido al modelo que cree una nueva OS. con esas OP.
+            modelo.AgregarOrden(ordenSeleccion.OrdenesPreparacion);
+
+            //Eliminar las órdenes seleccionadas de la lista de disponibles
+            //modelo.OrdenesPreparacionDisponibles.RemoveAll(o => ordenesSeleccionadas.Any(sel => sel.NumeroOrden == o.NumeroOrden));
+
+            // Vaciar la lista DetalleOrdenesDePreparacionPendientesListView
             OrdenesPreparacionPendientesSeleccionadasLST.Items.Clear();
 
-            // Actualizar la lista de órdenes disponibles
+            //Actualizar la lista de órdenes disponibles
             ActualizarListaOrdenDePreparacion();
 
-            // Mensaje de éxito
-            MessageBox.Show($"Orden de selección número {nuevoNumeroOrdenSeleccion} generada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Mostrar mensaje de confirmación
+            MessageBox.Show($"Se ha creado la orden de selección exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //    // Lista para almacenar las órdenes seleccionadas
+            //    List<OrdenesDePreparacion> ordenesSeleccionadas = new List<OrdenesDePreparacion>();
+
+            //    // Obtener las órdenes directamente desde la lista de seleccionadas
+            //    foreach (ListViewItem item in OrdenesPreparacionPendientesSeleccionadasLST.Items)
+            //    {
+            //        int numeroOrden = int.Parse(item.Text);
+
+            //        var orden = modelo.OrdenesPreparacionDisponibles
+            //            .FirstOrDefault(o => o.NumeroOrden == numeroOrden);
+
+            //        if (orden != null)
+            //        {
+            //            ordenesSeleccionadas.Add(orden);
+            //        }
+            //    }
+
+            //    //Obtener numero
+            //    var numeroNumeroOrdenSeleccion = modelo.ObtenerProximoNumero();
+
+            //    // Crear nueva orden de selección con todas las órdenes seleccionadas
+            //    var nuevaOrdenSeleccion = new OrdenesDeSeleccion(
+            //        numeroNumeroOrdenSeleccion,
+            //        ordenesSeleccionadas,
+            //        DateTime.Now,
+            //        "Pendiente"
+            //    );
+
+            //    // Agregar la nueva orden de selección a la lista
+            //    modelo.AgregarOrden(nuevaOrdenSeleccion);
+
+            //    // Eliminar las órdenes seleccionadas de la lista de disponibles
+            //    modelo.OrdenesPreparacionDisponibles.RemoveAll(o => ordenesSeleccionadas.Any(sel => sel.NumeroOrden == o.NumeroOrden));
+
+
+            //    // Limpiar la lista de órdenes seleccionadas
+            //    OrdenesPreparacionPendientesSeleccionadasLST.Items.Clear();
+
+            //    // Actualizar la lista de órdenes disponibles
+            //    ActualizarListaOrdenDePreparacion();
+
+            //    // Mensaje de éxito
+            //    MessageBox.Show($"Orden de selección número {numeroNumeroOrdenSeleccion} generada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void AgregarTodoBTN_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prototipo.PrepararProductos.PrepararProductos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,15 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
             FechaGeneracion = fechaGeneracion;
             EstadoOrdenDeSeleccion = estadoOrden;
         }
+
+        // Constructor vacío para formulario
+        public OrdenesDeSeleccion()
+        {
+            OrdenesPreparacion = new List<OrdenesDePreparacion>();
+            FechaGeneracion = DateTime.Now;
+            EstadoOrdenDeSeleccion = "Pendiente";
+        }
+
     }
 
 }
