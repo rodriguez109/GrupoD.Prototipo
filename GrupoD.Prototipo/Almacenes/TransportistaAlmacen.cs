@@ -14,18 +14,18 @@ namespace GrupoD.Prototipo.Almacenes
 
         static TransportistaAlmacen()
         {
-            if (!File.Exists(@"Datos\Transportistas.json")) 
+            if (!File.Exists(@"Datos\Transportista.json")) 
             {
                 return;
             }
-            var datos = File.ReadAllText(@"Datos\Transportistas.json"); 
+            var datos = File.ReadAllText(@"Datos\Transportista.json"); 
             transportistas = JsonSerializer.Deserialize<List<TransportistaEntidad>>(datos)!; 
         }
 
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(transportistas);
-            File.WriteAllText(@"Datos\Transportistas.json", datos); 
+            File.WriteAllText(@"Datos\Transportista.json", datos); 
         }
 
         public static void Agregar(TransportistaEntidad transportista)
