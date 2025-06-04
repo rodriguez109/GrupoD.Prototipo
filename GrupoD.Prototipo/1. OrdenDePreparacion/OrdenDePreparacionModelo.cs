@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing.Text;
 using System.Reflection;
+using System.Text.Json;
 
 namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 {
@@ -153,11 +154,11 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
 
 
-            //Productos = ProductoAlmacen.Productos.Select(p => new Producto(p.SKU, p.Nombre, p.Cantidad, p.Posiciones, p.NumeroCliente)).ToList();
-            //Productos = new List<Producto>(ListaProductos);
-            //foreach (var productoEntidad in ProductoAlmacen.Productos)
+            //Productos = ProductoAlmacen.Productos.Select(p => new Producto(p.SKU, p.Nombre, p.Cantidad, p.Posiciones, p.NumeroCliente)).tolist();
+            ////productos = new list<producto>(listaproductos);
+            //foreach (var productoentidad in ProductoAlmacen.Productos)
             //{
-            //    var producto = new Producto(productoEntidad.SKU, productoEntidad.Nombre, productoEntidad.Cantidad, productoEntidad.Posiciones, productoEntidad.NumeroCliente);
+            //    var producto = new Producto(productoentidad.SKU, productoentidad.Nombre, productoentidad.Cantidad, productoentidad.Posiciones, productoentidad.numerocliente);
             //    Productos.Add(producto);
 
 
@@ -187,12 +188,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             return ++numeroOrden;
         }
 
-        //Cuando funcionen los almacenes:
-        //private int ObtenerUltimoNumeroOrden()
-        //{
-        //    return Almacenes.OrdenPreparacionAlmacen.OrdenesPreparacion.LastOrDefault()?.IdOrdenPreparacion ?? 0;
-        //}
-        //Al generar nueva orden: int numeroOrdenLocal = ObtenerUltimoNumeroOrden() + 1;
+ 
 
 
         public void CrearOrdenesDesdeItems(
@@ -222,17 +218,29 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 string skuTexto = item.SubItems[0].Text;
                 string nombreProducto = item.SubItems[1].Text;
                 string cantidadTexto = item.SubItems[2].Text;
+                int sku = int.Parse(item.SubItems[0].Text);
+                int cantidad = int.Parse(item.SubItems[2].Text);
 
-                if (!int.TryParse(cantidadTexto, out int cantidad) || cantidad <= 0)
-                    throw new Exception($"La cantidad del producto '{nombreProducto}' no es válida.");
-
-                if (!int.TryParse(skuTexto, out int sku))
-                    throw new Exception($"El SKU del producto '{nombreProducto}' no es válido.");
 
                 //Crear una entidad.
                 OrdenDePreparacionEntidad orden = new OrdenDePreparacionEntidad
                 {
                     Numero = numeroOrdenLocal,
+                    Pallet = pallet,
+                    //CodigoDeposito = deposito,
+                    //Detalle = detalle,
+                    FechaRetirar = fechaRetirar,
+                    Prioridad = prioridadSeleccionada switch
+                    {
+                        "Alta" => PrioridadEnum.Alta,
+                        "Media" => PrioridadEnum.Media,
+                        "Baja" => PrioridadEnum.Baja,
+
+                    },
+                    NumeroCliente = numeroCliente,
+                    DNITransportista = dniTransportista,
+                    Estado = EstadoOrdenDePreparacionEnum.Pendiente,
+
                     /*
                     SKUProducto = sku,
                     NombreProducto = nombreProducto,
@@ -246,7 +254,18 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                     Posicion = "" // Se asigna según la lógica de la aplicación*/
                 };
 
+                // Agregar el detalle de productos a la orden
+                ProductosPorOrden detalle = new ProductosPorOrden
+                {
+                    SKU = sku,
+                    Cantidad = cantidad
+                };
+                orden.Detalle.Add(detalle);
+
                 OrdenDePreparacionAlmacen.Agregar(orden);
+
+                //Actualiza stock
+                ActualizarStock(orden);
 
                 numeroOrdenLocal++; // Incrementa para cada producto si buscas que cada ítem genere una orden única
 
@@ -278,6 +297,32 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
         {
             return Transportistas.Any(t => t.DNITransportista == dni);
         }
+
+        private void ActualizarStock(OrdenDePreparacionEntidad orden)
+        {
+            // Se asume que ProductoAlmacen.Productos ya fue cargado en memoria
+            foreach (var detalle in orden.Detalle)
+            {
+                // Buscar el producto en la lista por SKU
+                var producto = ProductoAlmacen.Productos.FirstOrDefault(p => p.SKU == detalle.SKU);
+                if (producto != null)
+                {
+                    // Resta la cantidad indicada en el detalle; ya se verificó previamente que la cantidad es válida
+                    producto.Cantidad -= detalle.Cantidad;
+                }
+            }
+            GuardarProductos();
+        }
+
+        private void GuardarProductos()
+        {
+            string ruta = @"Datos\Producto.json";
+            var opciones = new JsonSerializerOptions { WriteIndented = true };
+            string datosJson = JsonSerializer.Serialize(ProductoAlmacen.Productos, opciones);
+            File.WriteAllText(ruta, datosJson);
+        }
+
+
 
     }
 
