@@ -19,12 +19,10 @@ namespace GrupoD.Prototipo._6._GenerarRemito
 
                 foreach (var OrdenPreparacionEntidad in OrdenDePreparacionAlmacen.OrdenesDePreparacion)
                 {
-                        OrdenesPreparacion.Add(new OrdenPreparacion ( OrdenPreparacionEntidad.Numero,
-                         OrdenPreparacionEntidad.DNITransportista));
+                     OrdenesPreparacion.Add(new OrdenPreparacion ( OrdenPreparacionEntidad.Numero,
+                     OrdenPreparacionEntidad.DNITransportista));
                 }
 
-                
-            
         }
 
 
@@ -32,10 +30,37 @@ namespace GrupoD.Prototipo._6._GenerarRemito
         {
             if (!int.TryParse(dni, out int dniNumerico))
             {
+                return new List<OrdenPreparacion>(); //acá iría otro mensaje de error??
+            }
+
+            var ordenes = OrdenesPreparacion.Where(o => o.DNITransportista == dniNumerico).ToList();// acá iría la validacion ???
+
+            if (ordenes.Count == 0)
+            {
                 return new List<OrdenPreparacion>();
             }
-            return OrdenesPreparacion.Where(o => o.DNITransportista == dniNumerico).ToList();
+
+            return ordenes;
         }
+
+        internal string Agregar (List<int> ordenes, string dni)
+        {
+
+            int numero = RemitoAlmacen.NumeroRemito();
+            DateTime fecha = DateTime.Today;
+           
+            if (int.TryParse(dni, out int Dni))
+            {
+                return "Debe ingresar un número de DNI valido";
+            }
+
+            var remito = new RemitoEntidad(numero, Dni, fecha, ordenes);
+            RemitoAlmacen.Agregar(remito); 
+
+            return null;
+        }
+
+
 
 
     }

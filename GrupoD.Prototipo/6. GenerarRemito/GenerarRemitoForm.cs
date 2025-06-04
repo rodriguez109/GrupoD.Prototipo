@@ -105,7 +105,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
                 OrdenPreparacion orden = (OrdenPreparacion)item.Tag;
                 var nuevoItem = new ListViewItem(orden.NumeroOrden.ToString());
                 nuevoItem.Tag = orden;
-                OrdenesDePreparacionLST.Items.Add(nuevoItem);  // Mover ítems de vuelta a la lista de entrega
+                OrdenesDePreparacionLST.Items.Add(nuevoItem);  // Mover ítems de vuelta a la lista 
                 OrdenesAgregadasLST.Items.Remove(item);  // Eliminar de la lista agregada
             }
         }
@@ -118,12 +118,19 @@ namespace GrupoD.Prototipo._6._GenerarRemito
                 return;
             }
 
-            List<string> ordenes = OrdenesAgregadasLST.Items.Cast<ListViewItem>()
-              .Select(i => ((OrdenPreparacion)i.Tag).NumeroOrden.ToString())
-              .ToList();
+            var ordenes = OrdenesAgregadasLST.Items.Cast<ListViewItem>().Select(i => ((OrdenPreparacion)i.Tag).NumeroOrden).ToList();
 
+            var ordenesStr = ordenes.Select(n => n.ToString()).ToList();
 
-            string ordenesTexto = string.Join(", ", ordenes);
+            string dni = DniTransportistaTXT.Text.Trim();
+            var error = modelo.Agregar(ordenes, dni);
+
+            if (error != null) {
+                MessageBox.Show(error, "Error al generar remito", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string ordenesTexto = string.Join(", ", ordenesStr);
             MessageBox.Show($"Remito generado con éxito.\nÓrdenes incluidas: {ordenesTexto}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Limpiar la lista de ordenes agregadas después de generar el remito

@@ -30,10 +30,17 @@ namespace GrupoD.Prototipo.Almacenes
             File.WriteAllText(@"Datos\Remitos.json", datos); // Escribe los datos al archivo
         }
 
+        public static int NumeroRemito()
+        {
+            if (Remitos.Any())
+                return Remitos.Max(r => r.Numero) + 1;
+            return 1;
+        }
+
         public static void Agregar(RemitoEntidad remito)
         {
             remitos.Add(remito); // Agrega el nuevo remito a la lista
-            Grabar(); // Graba los cambios al archivo
+            //Grabar(); este no va no???
         }
     }
 }

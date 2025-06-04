@@ -13,12 +13,12 @@ namespace GrupoD.Prototipo.Almacenes
         public DateTime FechaEmision { get; set; }
         public List<int> OrdenesPreparacion { get; }
 
-        public RemitoEntidad(int numero, int dniTransportista, DateTime fechaEmision)
+        public RemitoEntidad(int numero, int dniTransportista, DateTime fechaEmision, List<int> ordenesPreparacion)
         {
             Numero = numero;
             DNITransportista = dniTransportista;
             FechaEmision = fechaEmision;
-            OrdenesPreparacion = new List<int>();
+            OrdenesPreparacion = ordenesPreparacion ?? new List<int>();
         }
     }
 }
