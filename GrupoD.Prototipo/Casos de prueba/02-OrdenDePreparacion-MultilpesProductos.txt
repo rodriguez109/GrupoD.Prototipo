@@ -1,0 +1,24 @@
+﻿(Empieza con el Menú Principal)
+1- Tocar botón "Generar orden de preparación"
+2- Ingreso la Razón Social Cliente "MaxiLuz Iluminación SRL"
+3- Tocar botón "Buscar Productos"
+4- Seleccionar producto "Hidrolavadora eléctrica 1400W"
+5- Ingresar Cantidad Seleccionada "1"
+6- Tocar botón "Agregar Producto a la Orden"
+7- Seleccionar producto "Lámpara colgante LED"
+8- Ingresar Cantidad Seleccionada "5"
+9- Tocar botón "Agregar Producto a la Orden"
+10- No seleccionar Pallet
+11- Seleccionar Fecha a Retirar "18/07/2025"
+12- Seleccionar Priodad "Baja"
+13- Seleccionar DNI Transportista "27242093"
+14- Tocar botón "Generar Orden de Preparación"
+
+Verificaciones:
+15- Archivo OrdenDePreparacion.json - Ultima linea: {"numero" = "4", "pallet" = false, "codigoDeposito" = "D01", 
+"detalle" = "[{"SKU" = "20", "cantidad" = "1"}, {"SKU" = "2", "cantidad" = "4"}]", "fechaRetirar" = "18/07/2025", "prioridad" = 2, 
+"numeroCliente" = "2", dniTransportista = "27242093", "estado" = 0}
+16- Archivo productos.json: [{"SKU" = "20", "Nombre" = "Hidrolavadora eléctrica 1400W", "Cantidad" = "0", "NumeroCliente" = "2",
+"Posiciones" = "[{"Codigo": "20-31-1", "Stock": 1, "CodigoDeposito": "D01"}]], [{"SKU" = "2", "Nombre" = "Lámpara colgante LED", 
+"Cantidad" = "3", "NumeroCliente" = "2", "Posiciones" = "[{"Codigo": "02-12-2", "Stock": 3, "CodigoDeposito": "D01"}]]"
+(Termino cerrando el programa)

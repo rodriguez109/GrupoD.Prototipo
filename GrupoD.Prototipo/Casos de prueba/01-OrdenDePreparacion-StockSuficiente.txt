@@ -1,0 +1,22 @@
+﻿(Empieza con el Menú Principal)
+1- Tocar botón "Generar orden de preparación"
+2- Ingreso el Número Cliente "1"
+3- Tocar botón "Buscar Productos"
+4- Seleccionar producto "Mesa ratona de madera"
+5- Ingresar Cantidad Seleccionada "2"
+6- Tocar botón "Agregar Producto a la Orden"
+7- Seleccionar Pallet
+8- Seleccionar Fecha a Retirar "08/07/2025"
+9- Seleccionar Prioridad "Alta"
+10- Seleccionar DNI Transportista "20242093"
+11- Tocar botón "Generar Orden de Preparación"
+12- Cerrar el sistema
+
+Verificaciones:
+13- Archivo OrdenDePreparacion.json - Ultima linea: {"numero" = "4", "pallet" = true, "codigoDeposito" = "D01", 
+"detalle" = "[{"SKU" = "1", "cantidad" = "2"}]", "fechaRetirar" = "08/07/2025", "prioridad" = 0, 
+"numeroCliente" = "1", dniTransportista = "20242093", "estado" = 0 }
+14- Archivo productos.json: {"SKU" = "1", "Nombre" = "Mesa ratona de madera", "Cantidad" = "1", "NumeroCliente" = "1",
+"Posiciones" = "[{"Codigo =  "01-10-1", "Stock" = "0", "CodigoDeposito" = "D01"}, {"Codigo =  "01-11-1", "Stock" = "1", 
+"CodigoDeposito" = "D01"}]"
+(Termino cerrando el programa)
