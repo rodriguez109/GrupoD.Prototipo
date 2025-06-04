@@ -42,5 +42,19 @@ namespace GrupoD.Prototipo.Almacenes
             ordenesDePreparacion.Add(ordenDePreparacion); //Agrega la nueva orden a la lista
             Grabar(); //Graba los cambios al archivo
         }
+
+        //public static void cambiarEstado(int numeroOrden, EstadoOrdenDePreparacionEnum nuevoEstado)
+        //{
+        //    var orden = ordenesDePreparacion.FirstOrDefault(o => o.Numero == numeroOrden);
+        //    if (orden != null)
+        //    {
+        //        orden.Estado = nuevoEstado;
+        //    }
+        //    else
+        //    {
+        //        
+        //        Console.WriteLine($"No se encontró la orden con número {numeroOrden}");
+        //    }
+        //}
     }
 }

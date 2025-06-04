@@ -42,5 +42,7 @@ namespace GrupoD.Prototipo.Almacenes
             remitos.Add(remito); // Agrega el nuevo remito a la lista
             //Grabar(); este no va no???
         }
+
+        
     }
 }
