@@ -125,7 +125,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             }
 
 
-      
+
 
 
 
@@ -195,14 +195,14 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
         //Al generar nueva orden: int numeroOrdenLocal = ObtenerUltimoNumeroOrden() + 1;
 
 
-        public List<OrdenDePreparacionClase> CrearOrdenesDesdeItems(
-        IEnumerable<ListViewItem> items,
-        int numeroCliente,
-        string razonSocialCliente,
-        DateTime fechaRetirar,
-        string prioridadSeleccionada,
-        int dniTransportista,
-        bool pallet)
+        public void CrearOrdenesDesdeItems(
+            IEnumerable<ListViewItem> items,
+            int numeroCliente,
+            string razonSocialCliente,
+            DateTime fechaRetirar,
+            string prioridadSeleccionada,
+            int dniTransportista,
+            bool pallet)
         {
             if (items == null || !items.Any())
                 throw new Exception("Debe agregar productos a la Orden de Preparación antes de generarla.");
@@ -210,13 +210,10 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             if (string.IsNullOrEmpty(prioridadSeleccionada))
                 throw new Exception("Seleccione una prioridad para la orden.");
 
-            List<OrdenDePreparacionClase> ordenes = new List<OrdenDePreparacionClase>();
 
-            
-            
             // Variable interna para generar números de orden
-            int numeroOrdenLocal = GenerarNumeroOrden(); 
-            
+            int numeroOrdenLocal = GenerarNumeroOrden();
+
 
 
 
@@ -232,9 +229,11 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 if (!int.TryParse(skuTexto, out int sku))
                     throw new Exception($"El SKU del producto '{nombreProducto}' no es válido.");
 
-                OrdenDePreparacionClase orden = new OrdenDePreparacionClase
+                //Crear una entidad.
+                OrdenDePreparacionEntidad orden = new OrdenDePreparacionEntidad
                 {
-                    NumeroOrdenPreparacion = numeroOrdenLocal,
+                    Numero = numeroOrdenLocal,
+                    /*
                     SKUProducto = sku,
                     NombreProducto = nombreProducto,
                     CantidadProducto = cantidadTexto,
@@ -244,14 +243,15 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                     NumeroCliente = numeroCliente,
                     Pallet = pallet,
                     RazonSocialCliente = razonSocialCliente,
-                    Posicion = "" // Se asigna según la lógica de la aplicación
+                    Posicion = "" // Se asigna según la lógica de la aplicación*/
                 };
 
-                ordenes.Add(orden);
-                numeroOrdenLocal++; // Incrementa para cada producto si buscas que cada ítem genere una orden única
-            }
+                OrdenDePreparacionAlmacen.Agregar(orden);
 
-            return ordenes;
+                numeroOrdenLocal++; // Incrementa para cada producto si buscas que cada ítem genere una orden única
+
+                MessageBox.Show($"Orden de Preparación Nº {numeroOrdenLocal} generada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         // Simula obtener el último número de orden registrado en el almacén;
@@ -262,32 +262,25 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             return 0;
         }
 
-        // Método para agregar la nueva orden a tu sistema (almacén de órdenes)
-        public void AgregarNuevaOrden(List<OrdenDePreparacionClase> nuevaOrden)
-        {
-            // Aquí se agregaría la orden al almacén. Por ahora, puedes dejarlo comentado o implementarlo según necesites.
-            // Ejemplo:
-            // OrdenPreparacionAlmacen.OrdenesPreparacion.AddRange(nuevaOrden);
-        }
-
         private string ConvertirPosicionesAString(List<PosicionesPorProducto> posiciones)
-        { 
-        
+        {
+
             if (posiciones == null || posiciones.Count == 0)
                 return string.Empty;
-            
-                return string.Join(",", posiciones.Select(pos => $"{pos.Codigo}:{pos.Stock}:{pos.CodigoDeposito}")); // O manejar según tu lógica
-            
+
+            return string.Join(",", posiciones.Select(pos => $"{pos.Codigo}:{pos.Stock}:{pos.CodigoDeposito}")); // O manejar según tu lógica
+
 
         }
         // Validación de DNI del transportista usando la lista hardcodeada
+
         public bool ValidarDNITransportista(int dni)
         {
             return Transportistas.Any(t => t.DNITransportista == dni);
         }
 
     }
-                      
+
 
 }
 

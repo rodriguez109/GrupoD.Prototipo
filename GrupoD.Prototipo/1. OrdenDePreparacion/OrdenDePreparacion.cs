@@ -526,8 +526,8 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                     clienteFijo = numeroCliente; // Fijar el cliente en la primera adición
                 }
 
-                // Llamar al método del modelo para crear la orden
-                List<OrdenDePreparacionClase> nuevaOrden = modelo.CrearOrdenesDesdeItems(
+                // Llamar al método del modelo para crear la orden y agregarla al almacen
+                modelo.CrearOrdenesDesdeItems(
                     ordenPreparacionLST.Items.Cast<ListViewItem>(),
                     numeroCliente,
                     razonSocialCliente,
@@ -537,19 +537,13 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                     pallet
                 );
 
-                MessageBox.Show($"Orden de Preparación Nº {nuevaOrden.First().NumeroOrdenPreparacion} generada correctamente.",
-                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 // Limpiar controles
                 numeroClienteTXT.Clear();
                 razonSocialClienteTXT.Clear();
                 productosClienteLST.Items.Clear();
                 ordenPreparacionLST.Items.Clear();
                 cantidadSeleccionadaTXT.Clear();
-                dniTransportistaTXT.Clear();
-
-                // Agregar la orden al almacén (llamando al método definido en el modelo)
-                modelo.AgregarNuevaOrden(nuevaOrden);
+                dniTransportistaTXT.Clear();                                
             }
             catch (Exception ex)
             {
