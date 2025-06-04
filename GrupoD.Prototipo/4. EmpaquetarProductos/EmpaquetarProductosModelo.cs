@@ -108,9 +108,6 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
             {
                 ordenEnAlmacen.Estado = EstadoOrdenDePreparacionEnum.Preparada;
             }
-
-            // Guardar los cambios en el almacenamiento
-            OrdenDePreparacionAlmacen.Grabar();
         }
 
         public void ActualizarOrdenesDisponibles()

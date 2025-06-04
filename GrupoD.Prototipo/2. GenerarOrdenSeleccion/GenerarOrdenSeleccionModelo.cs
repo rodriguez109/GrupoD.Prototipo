@@ -79,10 +79,8 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
             };
 
             // Agregar la nueva orden a la lista de Ordenes de Seleccion
-            OrdenDeSeleccionAlmacen.Agregar(nuevaOrdenSeLeccion);
-
-            // Grabar la lista actualizada en el archivo JSON
-            OrdenDeSeleccionAlmacen.Grabar(); //TODO: Grabar deberia estar en el almacen?
+            OrdenDeSeleccionAlmacen.Agregar(nuevaOrdenSeLeccion);            
+            
 
             //Cambiar estado Orden de Preparacion
             //foreach (var op in OPseleccionadas) AGREGAR ESTE METODO
