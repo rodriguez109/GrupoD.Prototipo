@@ -206,7 +206,7 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
                 item.SubItems.Add(orden.FechaEntrega.ToShortDateString());
                 item.SubItems.Add(orden.DNITransportista.ToString());
                 item.SubItems.Add(orden.Prioridad);
-
+                item.Tag = orden;
                 OrdenesPreparacionPendientesSeleccionadasLST.Items.Add(item);
             }
 
