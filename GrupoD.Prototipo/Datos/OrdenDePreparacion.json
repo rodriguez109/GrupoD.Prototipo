@@ -56,5 +56,302 @@
     "NumeroCliente": 4,
     "DNITransportista": 35876982,
     "Estado": 0
+  },
+  {
+    "Numero": 4,
+    "Pallet": false,
+    "CodigoDeposito": "D03",
+    "Detalle": [
+      {
+        "SKU": 7,
+        "Cantidad": 10
+      }
+    ],
+    "FechaRetirar": "2025-06-12T09:00:00",
+    "Prioridad": 1,
+    "NumeroCliente": 2,
+    "DNITransportista": 24567890,
+    "Estado": 0
+  },
+  {
+    "Numero": 5,
+    "Pallet": true,
+    "CodigoDeposito": "D04",
+    "Detalle": [
+      {
+        "SKU": 9,
+        "Cantidad": 15
+      },
+      {
+        "SKU": 11,
+        "Cantidad": 5
+      }
+    ],
+    "FechaRetirar": "2025-06-14T11:30:00",
+    "Prioridad": 2,
+    "NumeroCliente": 5,
+    "DNITransportista": 20123456,
+    "Estado": 0
+  },
+  {
+    "Numero": 6,
+    "Pallet": false,
+    "CodigoDeposito": "D05",
+    "Detalle": [
+      {
+        "SKU": 13,
+        "Cantidad": 7
+      }
+    ],
+    "FechaRetirar": "2025-06-15T14:00:00",
+    "Prioridad": 1,
+    "NumeroCliente": 6,
+    "DNITransportista": 32456789,
+    "Estado": 0
+  },
+  {
+    "Numero": 7,
+    "Pallet": true,
+    "CodigoDeposito": "D06",
+    "Detalle": [
+      {
+        "SKU": 17,
+        "Cantidad": 12
+      }
+    ],
+    "FechaRetirar": "2025-06-16T08:00:00",
+    "Prioridad": 0,
+    "NumeroCliente": 7,
+    "DNITransportista": 30201928,
+    "Estado": 0
+  },
+  {
+    "Numero": 8,
+    "Pallet": false,
+    "CodigoDeposito": "D07",
+    "Detalle": [
+      {
+        "SKU": 19,
+        "Cantidad": 3
+      },
+      {
+        "SKU": 21,
+        "Cantidad": 6
+      }
+    ],
+    "FechaRetirar": "2025-06-17T13:15:00",
+    "Prioridad": 2,
+    "NumeroCliente": 8,
+    "DNITransportista": 29384756,
+    "Estado": 0
+  },
+  {
+    "Numero": 9,
+    "Pallet": true,
+    "CodigoDeposito": "D08",
+    "Detalle": [
+      {
+        "SKU": 23,
+        "Cantidad": 8
+      }
+    ],
+    "FechaRetirar": "2025-06-18T09:45:00",
+    "Prioridad": 1,
+    "NumeroCliente": 9,
+    "DNITransportista": 28765432,
+    "Estado": 0
+  },
+  {
+    "Numero": 10,
+    "Pallet": false,
+    "CodigoDeposito": "D09",
+    "Detalle": [
+      {
+        "SKU": 25,
+        "Cantidad": 10
+      }
+    ],
+    "FechaRetirar": "2025-06-19T12:00:00",
+    "Prioridad": 0,
+    "NumeroCliente": 10,
+    "DNITransportista": 27654321,
+    "Estado": 0
+  },
+  {
+    "Numero": 11,
+    "Pallet": true,
+    "CodigoDeposito": "D10",
+    "Detalle": [
+      {
+        "SKU": 27,
+        "Cantidad": 20
+      },
+      {
+        "SKU": 29,
+        "Cantidad": 30
+      }
+    ],
+    "FechaRetirar": "2025-06-20T10:30:00",
+    "Prioridad": 1,
+    "NumeroCliente": 11,
+    "DNITransportista": 26543210,
+    "Estado": 0
+  },
+  {
+    "Numero": 12,
+    "Pallet": false,
+    "CodigoDeposito": "D11",
+    "Detalle": [
+      {
+        "SKU": 31,
+        "Cantidad": 5
+      }
+    ],
+    "FechaRetirar": "2025-06-21T15:45:00",
+    "Prioridad": 2,
+    "NumeroCliente": 12,
+    "DNITransportista": 25432109,
+    "Estado": 0
+  },
+  {
+    "Numero": 13,
+    "Pallet": true,
+    "CodigoDeposito": "D12",
+    "Detalle": [
+      {
+        "SKU": 33,
+        "Cantidad": 11
+      }
+    ],
+    "FechaRetirar": "2025-06-22T11:15:00",
+    "Prioridad": 0,
+    "NumeroCliente": 13,
+    "DNITransportista": 24321098,
+    "Estado": 0
+  },
+  {
+    "Numero": 14,
+    "Pallet": false,
+    "CodigoDeposito": "D13",
+    "Detalle": [
+      {
+        "SKU": 35,
+        "Cantidad": 7
+      },
+      {
+        "SKU": 37,
+        "Cantidad": 9
+      }
+    ],
+    "FechaRetirar": "2025-06-23T09:30:00",
+    "Prioridad": 1,
+    "NumeroCliente": 14,
+    "DNITransportista": 23210987,
+    "Estado": 0
+  },
+  {
+    "Numero": 15,
+    "Pallet": true,
+    "CodigoDeposito": "D14",
+    "Detalle": [
+      {
+        "SKU": 39,
+        "Cantidad": 13
+      }
+    ],
+    "FechaRetirar": "2025-06-24T14:40:00",
+    "Prioridad": 2,
+    "NumeroCliente": 15,
+    "DNITransportista": 22109876,
+    "Estado": 0
+  },
+  {
+    "Numero": 16,
+    "Pallet": false,
+    "CodigoDeposito": "D15",
+    "Detalle": [
+      {
+        "SKU": 41,
+        "Cantidad": 2
+      }
+    ],
+    "FechaRetirar": "2025-06-25T08:50:00",
+    "Prioridad": 0,
+    "NumeroCliente": 16,
+    "DNITransportista": 21098765,
+    "Estado": 0
+  },
+  {
+    "Numero": 17,
+    "Pallet": true,
+    "CodigoDeposito": "D16",
+    "Detalle": [
+      {
+        "SKU": 43,
+        "Cantidad": 4
+      },
+      {
+        "SKU": 45,
+        "Cantidad": 6
+      }
+    ],
+    "FechaRetirar": "2025-06-26T13:25:00",
+    "Prioridad": 1,
+    "NumeroCliente": 17,
+    "DNITransportista": 20987654,
+    "Estado": 0
+  },
+  {
+    "Numero": 18,
+    "Pallet": false,
+    "CodigoDeposito": "D17",
+    "Detalle": [
+      {
+        "SKU": 47,
+        "Cantidad": 9
+      }
+    ],
+    "FechaRetirar": "2025-06-27T10:10:00",
+    "Prioridad": 2,
+    "NumeroCliente": 18,
+    "DNITransportista": 19876543,
+    "Estado": 0
+  },
+  {
+    "Numero": 19,
+    "Pallet": true,
+    "CodigoDeposito": "D18",
+    "Detalle": [
+      {
+        "SKU": 49,
+        "Cantidad": 14
+      }
+    ],
+    "FechaRetirar": "2025-06-28T15:00:00",
+    "Prioridad": 0,
+    "NumeroCliente": 19,
+    "DNITransportista": 18765432,
+    "Estado": 0
+  },
+  {
+    "Numero": 20,
+    "Pallet": false,
+    "CodigoDeposito": "D19",
+    "Detalle": [
+      {
+        "SKU": 51,
+        "Cantidad": 3
+      },
+      {
+        "SKU": 53,
+        "Cantidad": 7
+      }
+    ],
+    "FechaRetirar": "2025-06-29T09:20:00",
+    "Prioridad": 1,
+    "NumeroCliente": 20,
+    "DNITransportista": 17654321,
+    "Estado": 0
   }
 ]
+

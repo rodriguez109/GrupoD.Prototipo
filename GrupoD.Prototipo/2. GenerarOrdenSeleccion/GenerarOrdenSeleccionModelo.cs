@@ -21,34 +21,28 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
         //Obtener las órdenes de preparación pendientes desde el almacenamiento
         public GenerarOrdenSeleccionModelo()
         {
-            OrdenesPreparacionDisponibles = new List<OrdenesDePreparacion>(); // Inicializar la lista
+            OrdenesPreparacionDisponibles = (
+                    from orden in OrdenDePreparacionAlmacen.OrdenesDePreparacion
+                    where orden.Estado == EstadoOrdenDePreparacionEnum.Pendiente
+                    join cliente in ClienteAlmacen.Clientes
+                        on orden.NumeroCliente equals cliente.Numero into clientesJoin
+                    from cliente in clientesJoin.DefaultIfEmpty()
+                    where cliente != null  // evitamos que cliente sea null
+                    select new OrdenesDePreparacion(
+                        orden.Numero,
+                        cliente.RazonSocial, // seguro no es null porque filtramos arriba
+                        orden.FechaRetirar,
+                        orden.DNITransportista,
+                        orden.Prioridad switch
+                        {
+                            PrioridadEnum.Alta => "Alta",
+                            PrioridadEnum.Media => "Media",
+                            _ => "Baja"
+                        }
+                    )
+                ).ToList();
 
-            foreach (var ordenEntidad in OrdenDePreparacionAlmacen.OrdenesDePreparacion
-                    .Where(o => o.Estado == EstadoOrdenDePreparacionEnum.Pendiente)) // Filtra solo las pendientes
-            {
-                var cliente = ClienteAlmacen.Clientes.FirstOrDefault(c => c.Numero == ordenEntidad.NumeroCliente);
-
-                string prioridad;
-                if (ordenEntidad.Prioridad == PrioridadEnum.Alta)
-                {
-                    prioridad = "Alta";
-                }
-                else if (ordenEntidad.Prioridad == PrioridadEnum.Media)
-                {
-                    prioridad = "Media";
-                }
-                else
-                {
-                    prioridad = "Baja";
-                }
-
-                var ordenPrep = new OrdenesDePreparacion(
-                    ordenEntidad.Numero, cliente.RazonSocial, ordenEntidad.FechaRetirar, ordenEntidad.DNITransportista, prioridad);
-
-                OrdenesPreparacionDisponibles.Add(ordenPrep);
-            }
-
-            OrdenesAgregadas = new List<OrdenesDePreparacion>(); // Inicializar la nueva lista
+            OrdenesAgregadas = new List<OrdenesDePreparacion>();
         }
 
         //public int ObtenerProximoNumero()
@@ -70,8 +64,6 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
                     .Select(op => new OrdenDePreparacionEntidad
                     {
                         Numero = op.NumeroOrden,
-                        FechaRetirar = op.FechaEntrega,
-                        Prioridad = (PrioridadEnum)Enum.Parse(typeof(PrioridadEnum), op.Prioridad),
                     })
                     .Select(opEnt => opEnt.Numero)
                     .ToList(),
@@ -82,7 +74,7 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
             OrdenDeSeleccionAlmacen.Agregar(nuevaOrdenSeLeccion);
 
 
-            //Cambiar estado Orden de Preparacion
+            //Cambiar estado Orden de Preparacion PENDIENTE
             //foreach (var op in OPseleccionadas) //AGREGAR ESTE METODO
             //{
             //    OrdenDePreparacionAlmacen.cambiarEstado(int.Parse(op.Numero), EstadoOrdenDePreparacionEnum.Procesamiento);
