@@ -16,18 +16,18 @@ namespace GrupoD.Prototipo.Almacenes
 
         static RemitoAlmacen() 
         {
-            if (!File.Exists(@"Datos\Remitos.json"))
+            if (!File.Exists(@"Datos\Remito.json"))
             {
                 return;
             }
-            var datos = File.ReadAllText(@"Datos\Remitos.json"); // Lee los datos del archivo
+            var datos = File.ReadAllText(@"Datos\Remito.json"); // Lee los datos del archivo
             remitos = JsonSerializer.Deserialize<List<RemitoEntidad>>(datos)!; // Deserializa los datos a la lista
         }
 
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(remitos);
-            File.WriteAllText(@"Datos\Remitos.json", datos); // Escribe los datos al archivo
+            File.WriteAllText(@"Datos\Remito.json", datos); // Escribe los datos al archivo
         }
 
         public static int NumeroRemito()

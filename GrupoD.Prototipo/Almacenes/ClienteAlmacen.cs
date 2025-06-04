@@ -14,19 +14,19 @@ namespace GrupoD.Prototipo.Almacenes
 
         static ClienteAlmacen()
         {
-            if (!File.Exists(@"Datos\Clientes.json"))
+            if (!File.Exists(@"Datos\Cliente.json"))
             {
                 return;
             }
 
-            var datos = File.ReadAllText(@"Datos\Clientes.json");
+            var datos = File.ReadAllText(@"Datos\Cliente.json");
             clientes = JsonSerializer.Deserialize<List<ClienteEntidad>>(datos)!;
         }
 
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(clientes);
-            File.WriteAllText(@"Datos\Clientes.json", datos);
+            File.WriteAllText(@"Datos\Cliente.json", datos);
         }
 
         public static void Agregar(ClienteEntidad cliente)

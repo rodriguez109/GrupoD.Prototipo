@@ -54,7 +54,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
                 return "Debe ingresar un número de DNI valido";
             }
 
-            var remito = new RemitoEntidad(numero, Dni, fecha, ordenes);
+            var remito = new RemitoEntidad { Numero = numero, DNITransportista = Dni, FechaEmision = fecha, OrdenesPreparacion = ordenes };
             RemitoAlmacen.Agregar(remito); 
 
             return null;

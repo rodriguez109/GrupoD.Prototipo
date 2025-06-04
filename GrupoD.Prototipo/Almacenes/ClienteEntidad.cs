@@ -11,10 +11,11 @@ namespace GrupoD.Prototipo.Almacenes
         public int Numero { get; set; }
         public string RazonSocial { get; set; }
 
+        /*
         public ClienteEntidad(int numero, string razonSocial)
         {
             Numero = numero;
             RazonSocial = razonSocial;
-        }
+        }*/
     }
 }

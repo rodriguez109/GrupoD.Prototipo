@@ -19,7 +19,7 @@ namespace GrupoD.Prototipo.Almacenes
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(depositos);
-            File.WriteAllText(@"Datos\Depositos.json", datos);
+            File.WriteAllText(@"Datos\Deposito.json", datos);
         }
         //Guarda la lista de depositos en un archivo JSON.
         //Convierte la lista depositos en un texto con formato JSON(Serialize).
@@ -30,12 +30,12 @@ namespace GrupoD.Prototipo.Almacenes
         {
             // Si el archivo NO existe, sale del método.
             //Si existe, lo lee, lo convierte desde JSON a lista(Deserialize) y lo carga en productos.
-            if (!File.Exists(@"Datos\Depositos.json"))
+            if (!File.Exists(@"Datos\Deposito.json"))
             {
                 return;
             }
 
-            var datos = File.ReadAllText(@"Datos\Depositos.json");
+            var datos = File.ReadAllText(@"Datos\Deposito.json");
             depositos = JsonSerializer.Deserialize<List<DepositoEntidad>>(datos)!;
 
         }

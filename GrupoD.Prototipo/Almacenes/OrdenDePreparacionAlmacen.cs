@@ -22,17 +22,17 @@ namespace GrupoD.Prototipo.Almacenes
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(ordenesDePreparacion);
-            File.WriteAllText(@"Datos\OrdenesDePreparacion.json", datos); //Escribe los datos al archivo
+            File.WriteAllText(@"Datos\OrdenDePreparacion.json", datos); //Escribe los datos al archivo
         }
 
         //Metodo para leer los datos del archivo
         static OrdenDePreparacionAlmacen()
         {
-            if (!File.Exists(@"Datos\OrdenesDePreparacion.json")) //Si el archivo no existe, no hay mucho mas que hacer
+            if (!File.Exists(@"Datos\OrdenDePreparacion.json")) //Si el archivo no existe, no hay mucho mas que hacer
             {
                 return;
             }
-            var datos = File.ReadAllText(@"Datos\OrdenesDePreparacion.json"); //Lee los datos del archivo
+            var datos = File.ReadAllText(@"Datos\OrdenDePreparacion.json"); //Lee los datos del archivo
             ordenesDePreparacion = JsonSerializer.Deserialize<List<OrdenDePreparacionEntidad>>(datos)!; //Deserializa los datos a la lista
         }
 

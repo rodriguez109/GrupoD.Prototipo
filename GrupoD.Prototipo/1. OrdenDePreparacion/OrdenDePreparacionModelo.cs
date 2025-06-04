@@ -103,7 +103,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
         //Constructor de la clase
         public OrdenDePreparacionModelo()
         {
-            string ruta = @"Datos\Clientes.json";
+            string ruta = @"Datos\Cliente.json";
             if (!File.Exists(ruta))
             {
                 MessageBox.Show("No se encontró el archivo: " + ruta);
