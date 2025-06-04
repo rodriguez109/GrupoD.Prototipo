@@ -1,0 +1,19 @@
+﻿Plan de Prueba: Orden de Preparación con Stock Insuficiente
+
+(Empieza con el Menú Principal)
+
+
+1- Botón						"Generar orden de preparación"
+2- Razón Social Cliente			""
+3- Botón						""
+4- Producto						""
+5- Cantidad Seleccionada		""
+6- Botón						""
+7- Producto						""
+8- Cantidad Seleccionada		""
+9- Botón						""
+11- Fecha a Retirar				""
+12- Priodad						""
+13- DNI Transportista			""
+14- Botón						"Generar Orden de Preparación"
+15- Cerrar el sistema

@@ -21,7 +21,7 @@ namespace GrupoD.Prototipo.Almacenes
         //Aca pasamos la lista de OP a formato JSON
         public static void Grabar()
         {
-            var datos = JsonSerializer.Serialize(ordenesDePreparacion);
+            var datos = JsonSerializer.Serialize(ordenesDePreparacion, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(@"Datos\OrdenDePreparacion.json", datos); //Escribe los datos al archivo
         }
 
