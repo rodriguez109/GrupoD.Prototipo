@@ -2,26 +2,22 @@
 
 (Empieza con el menú principal)
 
-1- Tocar botón "Generar Orden de Selección"
-2- En el formulario, completar campo "Nombre de cliente" con: "MundoFOX S.A."
-3- Tocar botón "Buscar órdenes pendientes"
-4- En la lista de órdenes pendientes, seleccionar:
-5- Orden de Preparación N° 12 //DEFINIR CON DATOS JSON ESTO ES PROVISIORIO
-6- Orden de Preparación N° 17 //DEFINIR CON DATOS JSON ESTO ES PROVISIORIO
-7- Tocar botón "Agregar órdenes seleccionadas"
-8- Verificar que las órdenes seleccionadas aparecen en el listado "Detalle de Órdenes a Seleccionar"
-9- Tocar botón "Generar orden de selección"
-10- El sistema muestra el mensaje: "Se ha creado la orden de selección exitosamente."
-11- Volver al menú principal
-12- Cerrar el sistema
+1- Botón                                 "Generar Orden de Selección"
+2- Nombre de cliente                     "MundoFOX S.A."
+3- Botón                                 "Buscar órdenes pendientes"
+4- Ordenes pendientes seleccionadas      "12" y "17" DEFINIR CON DATOS JSON ESTO ES PROVISIORIO
+7- Botón                                 "Agregar órdenes seleccionadas"
+8- Botón                                 "Generar orden de selección"
+9- Volver al menú principal
+10- Cerrar el sistema
 
 Verificaciones
-13- Archivo ordenesSeleccion.json – Última entrada agregada debe ser similar a:
+11- Archivo ordenesSeleccion.json – Última entrada agregada debe ser similar a:
 {
   "Numero": 6,
   "FechaGeneracion": "2025-06-04T16:30:00",
   "EstadoOrdenDeSeleccion": 0,
   "OrdenesPreparacion": [12, 17]
 }
-14- Las órdenes de preparación 12 y 17 ya no aparecen como ordenes de preparacion pendientes en futuras búsquedas por cliente "MundoFOX S.A."
 
+(Termino cerrando el programa)

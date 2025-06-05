@@ -1,18 +1,22 @@
 ﻿Plan de Prueba: GenerarOrdenDeSeleccion-SinSeleccion.txt
 
 (Empieza con el menú principal)
-1- Tocar botón "Generar Orden de Selección"
-2- En el formulario, no completar ningún filtro de búsqueda
-3- No presionar el botón "Buscar órdenes pendientes"
-4- No seleccionar ni agregar ninguna orden
-5- Presionar directamente el botón "Generar orden de selección"
-6- El sistema muestra el siguiente mensaje de error: "No hay órdenes de preparación pendientes para crear una orden de selección."
+1- Botón                                 "Generar Orden de Selección"
+2- Nombre de cliente                     ""
+3- Numero de orden de preparacion        ""
+4- Fecha de entrega                      ""
+5- Prioridad                             ""
+6- Botón                                 "Generar orden de selección"
 7- Volver al menú principal
 8- Cerrar el sistema
 
 Verificaciones
-9- Archivo ordenesSeleccion.json: No se agrega ninguna nueva entrada en archivo
-10- La última orden de selección generada sigue siendo la anterior (por ejemplo, "Numero": 6)
+11- Archivo ordenesSeleccion.json – Última entrada agregada debe ser similar a:
+{
+  "Numero": 6,
+  "FechaGeneracion": "2025-06-04T16:30:00",
+  "EstadoOrdenDeSeleccion": 0,
+  "OrdenesPreparacion": [12, 17]
+}
 
-VER 05-GenerarOrdenSeleccion-MismaOrdenUsadaDosVeces.txt (IMPACTO DE UNA ORDEN DE SELECCION EN EL ALMACEN)
-
+(Termino cerrando el programa)
