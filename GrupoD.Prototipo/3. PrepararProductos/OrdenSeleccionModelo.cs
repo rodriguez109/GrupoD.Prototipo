@@ -1,9 +1,9 @@
-﻿using GrupoD.Prototipo._3._PrepararProductos;
+﻿using GrupoD.Prototipo._3._PrepararProductos;  
+using GrupoD.Prototipo.Almacenes;               
+using Prototipo.PrepararProductos.PrepararProductos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Prototipo.PrepararProductos.PrepararProductos
@@ -11,7 +11,7 @@ namespace Prototipo.PrepararProductos.PrepararProductos
     public class PrepararProductosPresenter
     {
         private readonly IPrepararProductosView _view;
-        private List<OrdenSeleccion> _ordenes;
+        private List<OrdenSeleccion> _ordenes = new List<OrdenSeleccion>();
 
         public PrepararProductosPresenter(IPrepararProductosView view)
         {
@@ -20,11 +20,70 @@ namespace Prototipo.PrepararProductos.PrepararProductos
 
         public void CargarOrdenes()
         {
-            _ordenes = ObtenerOrdenesMock();
+            var seleccionEntidades = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.ToList();
+            var preparacionEntidades = OrdenDePreparacionAlmacen.OrdenesDePreparacion.ToList();
+
+            _ordenes.Clear();
+
+            foreach (var selEnt in seleccionEntidades)
+            {
+                if (selEnt.EstadoOrdenDeSeleccion != EstadoOrdenDeSeleccionEnum.Pendiente)
+                    continue;
+
+                string nombre = selEnt.Numero.ToString();
+
+              
+                var prioridadesDePreparacion = selEnt.OrdenesPreparacion
+                    .Select(idPrep => preparacionEntidades
+                        .FirstOrDefault(op => op.Numero == idPrep)?.Prioridad)
+                    .Where(p => p.HasValue)
+                    .Select(p => p.Value)
+                    .ToList();
+
+                Prioridad prioVista;
+                if (prioridadesDePreparacion.Any())
+                {
+                    var minPrioEnum = prioridadesDePreparacion.Min();
+                    switch (minPrioEnum)
+                    {
+                        case PrioridadEnum.Alta: prioVista = Prioridad.Alta; break;
+                        case PrioridadEnum.Media: prioVista = Prioridad.Media; break;
+                        case PrioridadEnum.Baja: prioVista = Prioridad.Baja; break;
+                        default: prioVista = Prioridad.Baja; break;
+                    }
+                }
+                else
+                {
+                    prioVista = Prioridad.Baja;
+                }
+
+                var productosVista = new List<OrdenDeSeleccion>();
+                foreach (var prepEnt in preparacionEntidades.Where(p => selEnt.OrdenesPreparacion.Contains(p.Numero)))
+                {
+                    foreach (var linea in prepEnt.Detalle)
+                    {
+                        productosVista.Add(new OrdenDeSeleccion
+                        {
+                            Posicion = linea.SKU.ToString(),
+                            SKUProducto = linea.SKU.ToString(),
+                            Cantidad = linea.Cantidad
+                        });
+                    }
+                }
+
+                _ordenes.Add(new OrdenSeleccion
+                {
+                    NombreOrden = nombre,
+                    Estado = EstadoOrdenSeleccion.Pendiente,
+                    Prioridad = prioVista,
+                    Productos = productosVista
+                });
+            }
+
             ActualizarListaOrdenesSegunPrioridad();
         }
 
-        private void ActualizarListaOrdenesSegunPrioridad() // [2]
+        private void ActualizarListaOrdenesSegunPrioridad()
         {
             var ordenesPendientes = _ordenes
                 .Where(o => o.Estado == EstadoOrdenSeleccion.Pendiente)
@@ -32,7 +91,16 @@ namespace Prototipo.PrepararProductos.PrepararProductos
 
             if (!ordenesPendientes.Any())
             {
-                _view.CerrarAplicacion();
+                // Ya no cerramos el form. Simplemente le avisamos al usuario:
+                MessageBox.Show(
+                    "No hay órdenes pendientes en este momento.",
+                    "Información",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+
+                // Limpiamos el combo (si lo estuvieras poblando antes)
+                _view.MostrarOrdenes(new List<OrdenSeleccion>());
                 return;
             }
 
@@ -44,10 +112,10 @@ namespace Prototipo.PrepararProductos.PrepararProductos
             _view.MostrarOrdenes(ordenesParaMostrar);
         }
 
+
         public void OrdenSeleccionadaCambiada()
         {
             var ordenSeleccionada = _view.ObtenerOrdenSeleccionada();
-
             if (ordenSeleccionada == null)
             {
                 _view.MostrarProductosEnListView(new List<OrdenDeSeleccion>());
@@ -57,11 +125,11 @@ namespace Prototipo.PrepararProductos.PrepararProductos
 
             _view.MostrarProductosEnListView(ordenSeleccionada.Productos);
 
-            var hayOrdenesDeMayorPrioridad = _ordenes
+            bool hayMayorPrio = _ordenes
                 .Any(o => o.Estado == EstadoOrdenSeleccion.Pendiente
                        && (int)o.Prioridad < (int)ordenSeleccionada.Prioridad);
 
-            if (hayOrdenesDeMayorPrioridad)
+            if (hayMayorPrio)
             {
                 _view.HabilitarBotonConfirmar(false);
                 _view.MostrarMensaje(
@@ -76,9 +144,8 @@ namespace Prototipo.PrepararProductos.PrepararProductos
 
         public void ConfirmarSeleccion()
         {
-            var orden = _view.ObtenerOrdenSeleccionada();
-
-            if (orden == null)
+            var ordenVista = _view.ObtenerOrdenSeleccionada();
+            if (ordenVista == null)
             {
                 _view.MostrarAdvertencia(
                     "Por favor, seleccione una orden válida antes de confirmar.",
@@ -86,105 +153,62 @@ namespace Prototipo.PrepararProductos.PrepararProductos
                 return;
             }
 
-            var prioridadMaximaPendiente = _ordenes
-                .Where(o => o.Estado == EstadoOrdenSeleccion.Pendiente) // Orden estado "Pendiente" [3]
-                .Min(o => (int)o.Prioridad);
+            var prioridadesPendientes = _ordenes
+                .Where(o => o.Estado == EstadoOrdenSeleccion.Pendiente)
+                .Select(o => (int)o.Prioridad)
+                .ToList();
 
-            if ((int)orden.Prioridad > prioridadMaximaPendiente)
+            if (!prioridadesPendientes.Any())
+            {
+                _view.MostrarAdvertencia("No hay órdenes pendientes para confirmar.", "Advertencia");
+                return;
+            }
+
+            int prioMinima = prioridadesPendientes.Min();
+            if ((int)ordenVista.Prioridad > prioMinima)
             {
                 _view.MostrarAdvertencia(
-                    $"Solo puede confirmar órdenes con prioridad {(Prioridad)prioridadMaximaPendiente}.",
+                    $"Solo puede confirmar órdenes con prioridad {(Prioridad)prioMinima}.",
                     "Prioridad incorrecta");
                 return;
             }
 
-            var ordenEnLista = _ordenes.FirstOrDefault(o => o.NombreOrden == orden.NombreOrden);
-
-            if (ordenEnLista != null)
+            // 1) Cambio estado de la orden de selección (usa “Confirmada” en lugar de “Seleccionada”):
+            if (!int.TryParse(ordenVista.NombreOrden, out int idSel))
             {
-                ordenEnLista.Estado = EstadoOrdenSeleccion.EnPreparacion; // Orden estado "En preparación" [3]
-
-                _view.MostrarMensaje(
-                     $"LA ORDEN N° {ordenEnLista.NombreOrden} CAMBIÓ A ESTADO \"EN PREPARACIÓN\".",
-                     "ORDEN CONFIRMADA !");
-
-                _ordenes.Remove(ordenEnLista);
-                ActualizarListaOrdenesSegunPrioridad();
+                _view.MostrarAdvertencia("ID de orden inválido al confirmar.", "Error interno");
+                return;
             }
+            OrdenDeSeleccionAlmacen.cambiarEstadoOS(idSel, EstadoOrdenDeSeleccionEnum.Confirmada);
+            OrdenDeSeleccionAlmacen.Grabar();
+
+            // 2) Cambio estado de cada orden de preparación asociada a “EnPreparacion”:
+            var selEntOriginal = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion
+                .FirstOrDefault(o => o.Numero == idSel);
+
+            if (selEntOriginal != null)
+            {
+                var todasPrep = OrdenDePreparacionAlmacen.OrdenesDePreparacion.ToList();
+                foreach (var idPrep in selEntOriginal.OrdenesPreparacion)
+                {
+                    var prepEnt = todasPrep.FirstOrDefault(p => p.Numero == idPrep);
+                    if (prepEnt != null)
+                    {
+                        // Uso “EnPreparacion” porque es el nombre exacto que sí existe en tu enum:
+                        prepEnt.Estado = EstadoOrdenDePreparacionEnum.EnPreparacion;
+                    }
+                }
+                OrdenDePreparacionAlmacen.Grabar();
+            }
+
+            // 3) Actualizo en memoria y notifico a la vista:
+            ordenVista.Estado = EstadoOrdenSeleccion.EnPreparacion;
+            _view.MostrarMensaje(
+                $"La orden n° {ordenVista.NombreOrden} cambió a estado \"En Preparación\" ",
+                "¡Orden Confirmada!");
+
+            _ordenes.Remove(ordenVista);
+            ActualizarListaOrdenesSegunPrioridad();
         }
-        private List<OrdenSeleccion> ObtenerOrdenesMock()
-        {
-            return new List<OrdenSeleccion>
-    {
-        new OrdenSeleccion
-        {
-            NombreOrden = "1",
-            Estado = EstadoOrdenSeleccion.Pendiente,
-            Prioridad = Prioridad.Alta,
-            Productos = new List<OrdenDeSeleccion>
-            {
-                new OrdenDeSeleccion { Posicion = "QW-01-1", SKUProducto = "SKU003", Cantidad = 10 },
-                new OrdenDeSeleccion { Posicion = "DC-01-2", SKUProducto = "SKU003", Cantidad = 5 },
-                new OrdenDeSeleccion { Posicion = "SA-01-3", SKUProducto = "SKU003", Cantidad = 7 }, 
-                new OrdenDeSeleccion { Posicion = "ZX-01-4", SKUProducto = "SKU008", Cantidad = 4 },
-                new OrdenDeSeleccion { Posicion = "XX-01-5", SKUProducto = "SKU009", Cantidad = 6 },
-                new OrdenDeSeleccion { Posicion = "EW-01-6", SKUProducto = "SKU004", Cantidad = 3 }
-            }
-        },
-        new OrdenSeleccion
-        {
-            NombreOrden = "2",
-            Estado = EstadoOrdenSeleccion.Pendiente,
-            Prioridad = Prioridad.Alta,
-            Productos = new List<OrdenDeSeleccion>
-            {
-                new OrdenDeSeleccion { Posicion = "SA-01-1", SKUProducto = "SKU003", Cantidad = 15 }, 
-                new OrdenDeSeleccion { Posicion = "LO-01-1", SKUProducto = "SKU004", Cantidad = 8 },
-                new OrdenDeSeleccion { Posicion = "WQ-01-7", SKUProducto = "SKU010", Cantidad = 9 },
-                new OrdenDeSeleccion { Posicion = "RV-01-9", SKUProducto = "SKU002", Cantidad = 2 },
-                new OrdenDeSeleccion { Posicion = "CD-01-5", SKUProducto = "SKU005", Cantidad = 1 },
-                new OrdenDeSeleccion { Posicion = "PO-01-3", SKUProducto = "SKU011", Cantidad = 7 }
-            }
-        },
-        new OrdenSeleccion
-        {
-            NombreOrden = "3",
-            Estado = EstadoOrdenSeleccion.Pendiente,
-            Prioridad = Prioridad.Media,
-            Productos = new List<OrdenDeSeleccion>
-            {
-                new OrdenDeSeleccion { Posicion = "RI-01-1", SKUProducto = "SKU004", Cantidad = 12 },  // [1]
-                new OrdenDeSeleccion { Posicion = "VR-01-7", SKUProducto = "SKU004", Cantidad = 5 },  
-                new OrdenDeSeleccion { Posicion = "NN-01-3", SKUProducto = "SKU006", Cantidad = 9 },
-                new OrdenDeSeleccion { Posicion = "SR-01-9", SKUProducto = "SKU012", Cantidad = 3 },
-                new OrdenDeSeleccion { Posicion = "PP-01-5", SKUProducto = "SKU001", Cantidad = 4 },
-                new OrdenDeSeleccion { Posicion = "CD-01-2", SKUProducto = "SKU007", Cantidad = 6 }
-            }
-        },
-        new OrdenSeleccion
-        {
-            NombreOrden = "4",
-            Estado = EstadoOrdenSeleccion.Pendiente,
-            Prioridad = Prioridad.Baja,
-            Productos = new List<OrdenDeSeleccion>
-            {
-                new OrdenDeSeleccion { Posicion = "PÑ-01-7", SKUProducto = "SKU005", Cantidad = 6 },
-                new OrdenDeSeleccion { Posicion = "TP-01-2", SKUProducto = "SKU007", Cantidad = 3 },
-                new OrdenDeSeleccion { Posicion = "RR-01-9", SKUProducto = "SKU004", Cantidad = 4 },
-                new OrdenDeSeleccion { Posicion = "GH-01-4", SKUProducto = "SKU006", Cantidad = 2 },
-                new OrdenDeSeleccion { Posicion = "RD-01-9", SKUProducto = "SKU013", Cantidad = 5 },
-                new OrdenDeSeleccion { Posicion = "DC-01-6", SKUProducto = "SKU008", Cantidad = 3 }
-            }
-        }
-    };
-        }
-
     }
 }
-
-
-//El modelo ya soporta un SKU en varias posiciones, se debe configurar la lista de productos para determinada orden [1]
-
-// Prioridad en las órdenes [2] se desactiva botón si el usuario elije orden de menor prioridad [2]
-
-// Cambio de estado de la orden, de "Pendiente" a "En preparación" [3]
