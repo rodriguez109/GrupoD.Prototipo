@@ -9,8 +9,8 @@ namespace GrupoD.Prototipo.Almacenes
     class OrdenDeEntregaEntidad
     {
         public int Numero { get; set; }
-        public List<int> OrdenesPreparacion { get; }
-        public PrioridadEnum Prioridad { get; set; } //----??
+        public List<int> OrdenesPreparacion { get; set; }
+        public DateTime FechaGeneracion  { get; set; } 
         public EstadoOrdenDeEntregaEnum EstadoOrdenDeEntrega { get; set; }
         /*
         public OrdenDeEntregaEntidad(int numero, PrioridadEnum prioridad)

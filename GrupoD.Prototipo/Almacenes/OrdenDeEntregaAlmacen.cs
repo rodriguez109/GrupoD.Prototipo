@@ -39,6 +39,21 @@ namespace GrupoD.Prototipo.Almacenes
         public static void Agregar(OrdenDeEntregaEntidad ordenDeEntrega)
         {
             ordenesDeEntrega.Add(ordenDeEntrega);
+
+        }
+
+        public static void cambiarEstadoOE(int IdOP, EstadoOrdenDeEntregaEnum estado)
+        {
+            foreach (var ordEnt in ordenesDeEntrega)
+            {
+                if (ordEnt.Numero == IdOP)
+                {
+                    ordEnt.EstadoOrdenDeEntrega = estado;
+                    Grabar();
+                    return;
+                }
+
+            }
         }
 
         //cambiar el estado de las OE .cambiarEstadoOE
