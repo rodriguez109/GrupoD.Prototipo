@@ -188,7 +188,12 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             return ++numeroOrden;
         }
 
- 
+        public int ObtenerProximoNumero()
+        {
+            return OrdenDePreparacionAlmacen.OrdenesDePreparacion.Max(o => o.Numero) + 1;
+        }
+
+
 
 
         public void CrearOrdenesDesdeItems(
@@ -203,12 +208,11 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             if (items == null || !items.Any())
                 throw new Exception("Debe agregar productos a la Orden de Preparación antes de generarla.");
 
-            if (string.IsNullOrEmpty(prioridadSeleccionada))
-                throw new Exception("Seleccione una prioridad para la orden.");
+
 
 
             // Variable interna para generar números de orden
-            int numeroOrdenLocal = GenerarNumeroOrden();
+            int numeroOrdenLocal = ObtenerProximoNumero();
 
 
 
@@ -282,13 +286,13 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                     Cantidad = cantidad
                 };
                 orden.Detalle.Add(detalle);
-
+                    
                 OrdenDePreparacionAlmacen.Agregar(orden);
 
                 //Actualiza stock
                 ActualizarStock(orden);
 
-                numeroOrdenLocal++; // Incrementa para cada producto si buscas que cada ítem genere una orden única
+                //numeroOrdenLocal++; // Incrementa para cada producto si buscas que cada ítem genere una orden única
 
                 MessageBox.Show($"Orden de Preparación Nº {numeroOrdenLocal} generada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
