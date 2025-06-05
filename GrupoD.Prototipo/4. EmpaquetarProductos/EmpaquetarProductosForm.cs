@@ -73,7 +73,7 @@ public partial class EmpaquetarProductosForm : Form
 
             var item = new ListViewItem(producto.SKU.ToString());
             item.SubItems.Add(productoConsultar.Nombre); //tengo q conseguir el nombre 
-            //mandar al modelo para que consiga el nombre?
+            //mandar al MODELO para que consiga el nombre?
             item.SubItems.Add(producto.Cantidad.ToString());
 
             listViewProductos.Items.Add(item);
