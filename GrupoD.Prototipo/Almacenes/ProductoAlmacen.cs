@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrupoD.Prototipo._2._GenerarOrdenSeleccion;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace GrupoD.Prototipo.Almacenes
         
         public static void Grabar()
         {
-            var datos = JsonSerializer.Serialize(productos);
+            var datos = JsonSerializer.Serialize(productos, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(@"Datos\Producto.json", datos);
         }
         //Guarda la lista de productos en un archivo JSON.

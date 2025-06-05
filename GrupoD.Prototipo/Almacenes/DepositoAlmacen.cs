@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrupoD.Prototipo._2._GenerarOrdenSeleccion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace GrupoD.Prototipo.Almacenes
 
         public static void Grabar()
         {
-            var datos = JsonSerializer.Serialize(depositos);
+            var datos = JsonSerializer.Serialize(depositos, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(@"Datos\Deposito.json", datos);
         }
         //Guarda la lista de depositos en un archivo JSON.

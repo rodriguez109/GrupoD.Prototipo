@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrupoD.Prototipo._2._GenerarOrdenSeleccion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,7 +35,7 @@ namespace GrupoD.Prototipo.Almacenes
 
         public static void Grabar()
         {
-            var datos = JsonSerializer.Serialize(ordenesDeSeleccion);
+            var datos = JsonSerializer.Serialize(ordenesDeSeleccion, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(@"Datos\OrdenDeSeleccion.json", datos); //Esta parte lo termina de escribir
         }
 

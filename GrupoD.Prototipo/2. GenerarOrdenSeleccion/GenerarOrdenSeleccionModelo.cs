@@ -45,15 +45,15 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
             OrdenesAgregadas = new List<OrdenesDePreparacion>();
         }
 
-        //public int ObtenerProximoNumero()
-        //{
-        //    return OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.Max(o => o.Numero) + 1;
-        //}
+        public int ObtenerProximoNumero()
+        {
+            return OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.Max(o => o.Numero) + 1;
+        }
 
         public void AgregarOrden(List<OrdenesDePreparacion> OPseleccionadas)
         {
             // Obtener el número ID para la nueva Orden de Selección
-            int nuevoIdOrdenSeleccion = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.Max(o => o.Numero) + 1;
+            int nuevoIdOrdenSeleccion = ObtenerProximoNumero();
 
             // Creo una instancia de OrdenDeSeleccionEntidad
             var nuevaOrdenSeLeccion = new OrdenDeSeleccionEntidad
@@ -77,7 +77,7 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
             //Cambiar estado Orden de Preparacion PENDIENTE
             //foreach (var op in OPseleccionadas) //AGREGAR ESTE METODO
             //{
-            //    OrdenDePreparacionAlmacen.cambiarEstado(int.Parse(op.Numero), EstadoOrdenDePreparacionEnum.Procesamiento);
+            //    OrdenDePreparacionAlmacen.cambiarEstado((op.NumeroOrden), EstadoOrdenDePreparacionEnum.Procesamiento);
             //}
         }
 

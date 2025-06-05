@@ -43,18 +43,19 @@ namespace GrupoD.Prototipo.Almacenes
             Grabar(); //Graba los cambios al archivo
         }
 
-        public static void cambiarEstadoOP(int numeroOrden, EstadoOrdenDePreparacionEnum nuevoEstado)
-        {
-            var orden = ordenesDePreparacion.FirstOrDefault(o => o.Numero == numeroOrden);
-            if (orden != null)
-            {
-                orden.Estado = nuevoEstado;
-            }
-            //else
-            //{
+        //public static void cambiarEstado(int IdOP, EstadoOrdenDePreparacionEnum estado)
+        //{
+        //    foreach (var ordEnt in ordenesDePreparacion)
+        //    {
+        //        if (ordEnt.Numero == IdOP)
+        //        {
+        //            ordEnt.Estado = estado;
+        //            Grabar();
+        //            return;
+        //        }
 
-            //    Console.WriteLine($"No se encontró la orden con número {numeroOrden}");
-            //}
-        }
+        //    }
+        //}
     }
+    
 }

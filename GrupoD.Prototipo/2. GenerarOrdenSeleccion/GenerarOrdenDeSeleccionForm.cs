@@ -310,8 +310,11 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
             //Le pido al modelo que cree una nueva OS. con esas OP.
             modelo.AgregarOrden(ordenSeleccion.OrdenesPreparacion);
 
+            // Obtener el número de la nueva orden de selección después de agregarla
+            int nuevoIdOrdenSeleccion = modelo.ObtenerProximoNumero(); // Asegúrate de que este método devuelva el número correcto
+
             //Eliminar las órdenes seleccionadas de la lista de disponibles
-            //modelo.OrdenesPreparacionDisponibles.RemoveAll(o => ordenesSeleccionadas.Any(sel => sel.NumeroOrden == o.NumeroOrden));
+            modelo.OrdenesPreparacionDisponibles.RemoveAll(o => ordenesSeleccionadas.Any(sel => sel.NumeroOrden == o.NumeroOrden));
 
             // Vaciar la lista DetalleOrdenesDePreparacionPendientesListView
             OrdenesPreparacionPendientesSeleccionadasLST.Items.Clear();
@@ -319,8 +322,9 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
             //Actualizar la lista de órdenes disponibles
             ActualizarListaOrdenDePreparacion();
 
-            // Mostrar mensaje de confirmación
-            MessageBox.Show($"Se ha creado la orden de selección exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Mostrar mensaje de confirmación con el número de orden
+            MessageBox.Show($"Se ha creado la orden de selección exitosamente. Número de Orden: {nuevoIdOrdenSeleccion}",
+                            "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //    // Lista para almacenar las órdenes seleccionadas
             //    List<OrdenesDePreparacion> ordenesSeleccionadas = new List<OrdenesDePreparacion>();
