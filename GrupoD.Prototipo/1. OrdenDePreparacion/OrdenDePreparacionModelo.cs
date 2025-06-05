@@ -221,6 +221,18 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 int sku = int.Parse(item.SubItems[0].Text);
                 int cantidad = int.Parse(item.SubItems[2].Text);
 
+                // Verificar el stock disponible en ProductoAlmacen.Productos
+                var productoStock = ProductoAlmacen.Productos.FirstOrDefault(p => p.SKU == sku);
+                if (productoStock == null)
+                {
+                    MessageBox.Show($"Producto no encontrado (SKU: {sku}).");
+                    continue; // O puedes lanzar una excepción
+                }
+                if (productoStock.Cantidad < cantidad)
+                {
+                    MessageBox.Show($"Stock insuficiente para el producto {productoStock.Nombre}. Stock disponible: {productoStock.Cantidad}");
+                    continue; // Se impide la creación de la orden para este producto
+                }
 
                 //Crear una entidad.
                 OrdenDePreparacionEntidad orden = new OrdenDePreparacionEntidad
@@ -228,7 +240,6 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                     Numero = numeroOrdenLocal,
                     Pallet = pallet,
                     //CodigoDeposito = deposito,
-                    //Detalle = detalle,
                     FechaRetirar = fechaRetirar,
                     Prioridad = prioridadSeleccionada switch
                     {
@@ -240,6 +251,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                     NumeroCliente = numeroCliente,
                     DNITransportista = dniTransportista,
                     Estado = EstadoOrdenDePreparacionEnum.Pendiente,
+                    Detalle = new List<ProductosPorOrden>(),
 
                     /*
                     SKUProducto = sku,
@@ -253,6 +265,15 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                     RazonSocialCliente = razonSocialCliente,
                     Posicion = "" // Se asigna según la lógica de la aplicación*/
                 };
+
+                // Verificar si la lista Detalle es null y inicializarla si es necesario
+                if (orden.Detalle == null)
+                {
+                    orden.Detalle = new List<ProductosPorOrden>();
+                }
+
+                // Agregar detalles de productos
+                orden.Detalle.Add(new ProductosPorOrden { SKU = sku, Cantidad = cantidad });
 
                 // Agregar el detalle de productos a la orden
                 ProductosPorOrden detalle = new ProductosPorOrden
