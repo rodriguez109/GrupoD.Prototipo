@@ -133,6 +133,9 @@ namespace GrupoD.Prototipo._6._GenerarRemito
             string ordenesTexto = string.Join(", ", ordenesStr);
             MessageBox.Show($"Remito generado con éxito.\nÓrdenes incluidas: {ordenesTexto}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            // metodo cambiar estado ordenes de preparacion despachadas 
+            // metodo orden de entrega confirmada ?? como le paso la orden de entrega??
+
             // Limpiar la lista de ordenes agregadas después de generar el remito
             OrdenesAgregadasLST.Items.Clear();
         }

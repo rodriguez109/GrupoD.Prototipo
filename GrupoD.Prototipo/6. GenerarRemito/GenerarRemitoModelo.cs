@@ -17,15 +17,14 @@ namespace GrupoD.Prototipo._6._GenerarRemito
         public GenerarRemitoModelo()
         {
 
-                foreach (var OrdenPreparacionEntidad in OrdenDePreparacionAlmacen.OrdenesDePreparacion)
-                {
-                     OrdenesPreparacion.Add(new OrdenPreparacion ( OrdenPreparacionEntidad.Numero,
-                     OrdenPreparacionEntidad.DNITransportista));
-                }
+            foreach (var OrdenPreparacionEntidad in OrdenDePreparacionAlmacen.OrdenesDePreparacion)
+            {
+                OrdenesPreparacion.Add(new OrdenPreparacion(OrdenPreparacionEntidad.Numero,
+                OrdenPreparacionEntidad.DNITransportista, OrdenPreparacionEntidad.Estado));
+
+            }
 
         }
-
-
         public List<OrdenPreparacion> ObtenerOrdenesPorDNI(string dni)
         {
             if (!int.TryParse(dni, out int dniNumerico))
@@ -33,7 +32,8 @@ namespace GrupoD.Prototipo._6._GenerarRemito
                 return new List<OrdenPreparacion>(); //acá iría otro mensaje de error??
             }
 
-            var ordenes = OrdenesPreparacion.Where(o => o.DNITransportista == dniNumerico).ToList();// acá iría la validacion ???
+            var ordenes = OrdenesPreparacion.Where(o => o.DNITransportista == dniNumerico && o.Estado == EstadoOrdenDePreparacionEnum.EnDespacho).ToList();
+
 
             if (ordenes.Count == 0)
             {
@@ -61,8 +61,17 @@ namespace GrupoD.Prototipo._6._GenerarRemito
         }
 
 
-        // llamaria al metodo del almcaen para cambiar el estado???
-        //le paso una lista de ordenes desde el presentador?
+
+        //Cambiar estado Orden de Preparacion despachada
+        //Cambiar estado Orden de entrega confirmada  que dato le paso???
+
+        //foreach (var op in OPseleccionadas) //AGREGAR ESTE METODO
+        //{
+        //    OrdenDePreparacionAlmacen.cambiarEstado((op.NumeroOrden), EstadoOrdenDePreparacionEnum.Despachada);
+        //}
+
+        // linq  
+
 
 
     }
