@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using GrupoD.Prototipo._2._GenerarOrdenSeleccion;
 using GrupoD.Prototipo.Almacenes;
 using System;
 using System.Collections.Generic;
@@ -8,71 +7,27 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-
-
-using GrupoD.Prototipo._4._Empaquetar_Productos;
-using GrupoD.Prototipo._3._PrepararProductos;
-
 namespace GrupoD.Prototipo._4._EmpaquetarProductos
 {
     internal class EmpaquetarProductosModelo
     {
-        public List<OrdenDePreparacionEntidad> OrdenesEnPreparacionDisponibles { get; } = new();
-        /*public List<OrdenDePreparacionEntidad> OrdenesEnPreparacionDisponibles
-    => OrdenDePreparacionAlmacen.OrdenesDePreparacion
-       .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.EnPreparacion)
-       .ToList(); //te aseguras de siempre trabajar con datos actualizados sin necesidad de sincronización manual.+/
+        //public List<OrdenDePreparacionEntidad> OrdenesEnPreparacionDisponibles { get; } = new();
+        public List<OrdenDePreparacionEntidad> OrdenesEnPreparacionDisponibles { get; private set; } = new ();
+        //    public List<OrdenDePreparacionEntidad> OrdenesEnPreparacionDisponibles
+        //=> OrdenDePreparacionAlmacen.OrdenesDePreparacion
+        //   .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.EnPreparacion)
+        // .ToList(); //te aseguras de siempre trabajar con datos actualizados sin necesidad de sincronización manual.+/
 
-
-        //public OrdenPreparacion ordenActual;
         public EmpaquetarProductosModelo()
         {
-            OrdenesEnPreparacionDisponibles = OrdenDePreparacionAlmacen.OrdenesDePreparacion
-            .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.EnPreparacion)
-            .ToList(); //OrdenesEnPreparacionDisponibles solo contenga órdenes que están en preparación.
+            //OrdenDePreparacionAlmacen.Leer(); // Asegura que se carguen los datos desde JSON
+            ActualizarOrdenesDisponibles();   // Llena la lista interna con órdenes en preparación
         }
+        
 
-
-        /*public EmpaquetarProductosModelo() //datos hardcodeados:
-        {
-            var productosEjemplo = new List<Producto>
-                {
-                    new Producto(1, "Mesa ratona de madera", 2),
-                    new Producto(2, "Lámpara colgante LED", 5),
-                    new Producto(3, "Smart TV 43 pulgadas", 1)
-                };
-
-            OrdenesEnPreparacionDisponibles = new List<OrdenPreparacion>
-                {
-                    new OrdenPreparacion
-                    {
-                        NumeroOrdenPreparacion = 1,
-                        EstadoOrdenPreparacion = "En Preparacion",
-                        Productos = productosEjemplo
-                    },
-                    new OrdenPreparacion
-                    {
-                        NumeroOrdenPreparacion = 2,
-                        EstadoOrdenPreparacion = "En Preparacion",
-                        Productos = new List<Producto>
-                        {
-                            new Producto(4, "Pintura látex interior 20L", 1),
-                            new Producto(5, "Silla de comedor moderna", 1)
-                        }
-                    }
-                };
-        }*/
 
         public OrdenDePreparacionEntidad BusquedaOrdenDisponible() //EXP
         {
-            // Buscar próxima orden "En Preparacion"
-            //ordenActual = OrdenesEnPreparacionDisponibles.FirstOrDefault(o => o.EstadoOrdenPreparacion == "En Preparacion")!;
-
-
-
-            //var ordenActual = OrdenDePreparacionAlmacen.OrdenesDePreparacion.FirstOrDefault(o => o.Estado == EstadoOrdenDePreparacionEnum.EnPreparacion);
-
-            //tendria q devolver la primer orden de preparacion con prioridad Alta, con fecha mas cercana a retirar
 
             var ordenActual = OrdenesEnPreparacionDisponibles
             .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.EnPreparacion && op.Prioridad == PrioridadEnum.Alta)
@@ -108,6 +63,9 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
             {
                 ordenEnAlmacen.Estado = EstadoOrdenDePreparacionEnum.Preparada;
             }
+
+
+            ActualizarOrdenesDisponibles();
         }
 
         public void ActualizarOrdenesDisponibles()
@@ -116,6 +74,12 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
             OrdenesEnPreparacionDisponibles.AddRange(OrdenDePreparacionAlmacen.OrdenesDePreparacion
                 .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.EnPreparacion));
         }
+
+
+        //public Producto ObtenerProductoPorSKU(int sku)
+        //{
+        //    return ProductoAlmacen.Productos.FirstOrDefault(p => p.SKU == sku);
+        //}
     }
 }
 

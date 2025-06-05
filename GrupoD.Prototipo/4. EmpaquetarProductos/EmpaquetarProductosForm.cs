@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GrupoD.Prototipo._4._Empaquetar_Productos;
 using GrupoD.Prototipo.Almacenes;
 
 namespace GrupoD.Prototipo._4._EmpaquetarProductos;
@@ -34,30 +33,47 @@ public partial class EmpaquetarProductosForm : Form
     {
         var ordenActual = modelo.BusquedaOrdenDisponible();
 
+        //if (ordenActual == null)
+        //{
+        //    MessageBox.Show("No hay más órdenes pendientes.");
+        //    listViewProductos.Items.Clear();
+        //    labelNumeroOrden.Text = "Sin órdenes pendientes";
+        //    this.Close();
+        //}
         if (ordenActual == null)
         {
-            MessageBox.Show("No hay más órdenes pendientes.");
+            MessageBox.Show("No hay más órdenes en estado 'En Preparacion' para empaquetar.");
             listViewProductos.Items.Clear();
             labelNumeroOrden.Text = "Sin órdenes pendientes";
-            this.Close();
+            ordenEmpaquetadaBTN.Enabled = false;
+            cancelarBTN.Text = "Cerrar";
         }
         else
         {
             labelNumeroOrden.Text = $"Orden #{ordenActual.Numero}";
             CargarProductosEnListView(ordenActual.Detalle);
         }
+
+
+        
     }
 
-    internal void CargarProductosEnListView(List<ProductosPorOrden> productos) // va aca o en modelo?
+    internal void CargarProductosEnListView(List<ProductosPorOrden> productos) 
     {
         listViewProductos.Items.Clear();
 
         foreach (var producto in productos)
         {
-            var productoA = ProductoAlmacen.Productos.FirstOrDefault(p=> p.SKU == producto.SKU);
+            var productoConsultar = ProductoAlmacen.Productos.FirstOrDefault(p=> p.SKU == producto.SKU);  //tiene q ir en modelo
+            if (productoConsultar == null)
+            {
+                MessageBox.Show($"El producto con SKU {producto.SKU} no existe en el almacén.");
+                continue; // Evita añadir productos no encontrados
+            }
 
             var item = new ListViewItem(producto.SKU.ToString());
-            item.SubItems.Add(productoA.Nombre); //tengo q conseguir el nombre 
+            item.SubItems.Add(productoConsultar.Nombre); //tengo q conseguir el nombre 
+            //mandar al modelo para que consiga el nombre?
             item.SubItems.Add(producto.Cantidad.ToString());
 
             listViewProductos.Items.Add(item);
