@@ -43,6 +43,12 @@ namespace GrupoD.Prototipo.Almacenes
             Grabar(); //Graba los cambios al archivo
         }
 
+        public static OrdenDePreparacionEntidad Buscar(int numero)
+        {
+            return ordenesDePreparacion.FirstOrDefault(o => o.Numero == numero);
+        }
+
+
         //public static void cambiarEstado(int IdOP, EstadoOrdenDePreparacionEnum estado)
         //{
         //    foreach (var ordEnt in ordenesDePreparacion)
@@ -57,5 +63,5 @@ namespace GrupoD.Prototipo.Almacenes
         //    }
         //}
     }
-    
+
 }

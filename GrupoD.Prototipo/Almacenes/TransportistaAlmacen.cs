@@ -35,5 +35,11 @@ namespace GrupoD.Prototipo.Almacenes
             Grabar(); 
         }
 
+        public static TransportistaEntidad Buscar(int dni)
+        {
+            return transportistas.FirstOrDefault(t => t.DNI == dni);
+        }
+
+
     }
 }

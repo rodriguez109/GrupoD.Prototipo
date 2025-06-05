@@ -14,10 +14,10 @@
       }
     ],
     "FechaRetirar": "2025-06-10T10:00:00",
-    "Prioridad": 0,
+    "Prioridad": 2,
     "NumeroCliente": 1,
     "DNITransportista": 20242093,
-    "Estado": 0
+    "Estado": 2
   },
   {
     "Numero": 2,
@@ -38,7 +38,7 @@
   {
     "Numero": 3,
     "Pallet": true,
-    "CodigoAlmacen": "DEP-001",
+    "CodigoDeposito": "DEP01",
     "Detalle": [
       {
         "SKU": 12345,
@@ -71,7 +71,7 @@
     "Prioridad": 1,
     "NumeroCliente": 2,
     "DNITransportista": 24567890,
-    "Estado": 0
+    "Estado": 2
   },
   {
     "Numero": 5,
@@ -123,7 +123,7 @@
     "Prioridad": 0,
     "NumeroCliente": 7,
     "DNITransportista": 30201928,
-    "Estado": 0
+    "Estado": 2
   },
   {
     "Numero": 8,

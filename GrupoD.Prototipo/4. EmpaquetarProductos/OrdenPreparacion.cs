@@ -15,5 +15,12 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
 
         //agregar Prioridad
         public List<Producto> Productos { get; set; } = new List<Producto>();
+
+        public OrdenPreparacion(int numeroOrden, string estadoOP, List<Producto> productos)
+        {
+            NumeroOrdenPreparacion = numeroOrden;
+            EstadoOrdenPreparacion = estadoOP;
+            Productos = productos;
+        }
     }
 }
