@@ -1,19 +1,33 @@
 ﻿Plan de Prueba: Orden de Preparación con Stock Insuficiente
 
 (Empieza con el Menú Principal)
-
+Habría que probar: 120 remeras en la orden, ahora quiero meter 110 en la orden; no es que stock venga insuficiente de antes, lo genero ahora
+Probaria stock insuficientes por las ordenes cargadas, no xq la cantidad no te da en el inventario
+Inventario tengo 10 x, cargo orden por 10: la acepto, ahora cargo orden por 5 donde no me debería dejar por falta de stock
 
 1- Botón						"Generar orden de preparación"
-2- Razón Social Cliente			""
-3- Botón						""
-4- Producto						""
-5- Cantidad Seleccionada		""
-6- Botón						""
-7- Producto						""
-8- Cantidad Seleccionada		""
-9- Botón						""
-11- Fecha a Retirar				""
-12- Priodad						""
-13- DNI Transportista			""
-14- Botón						"Generar Orden de Preparación"
-15- Cerrar el sistema
+2- Número Cliente				"3"
+3- Botón						"Buscar Productos"
+4- Producto						"Smart TV 43 pulgadas"
+5- Cantidad Seleccionada		"2"
+6- Botón						"Agregar Producto a la Orden"
+7- Fecha a retirar				"20/07/2025"
+8- Prioridad					"Media"
+9- DNI Transportista			"30242093"
+10- Botón						"Generar Orden de Preparación"
+11- Número Cliente				"3"
+12- Botón						"Buscar Productos"
+13- Producto					"Smart TV 43 pulgadas"
+14- Cantidad Seleccionada		"2"
+15- Botón						"Agregar Producto a la Orden"
+El sistema no debería dejarte crear esta segunda orden de preparación debido a la falta de stock
+16- Cerrar el sistema
+
+Verificaciones:
+17- Archivo OrdenDePreparacion.json - Ultima linea: {"numero" = "6", "pallet" = false, "codigoDeposito" = "D02", 
+"detalle" = "[{"SKU" = "3", "cantidad" = "2"}]", "fechaRetirar" = "20/07/2025", "prioridad" = 1, 
+"numeroCliente" = "3", dniTransportista = "30242093", "estado" = 0 }
+18- Archivo productos.json: "SKU" = "3", "Cantidad" = "0" //{"SKU" = "3", "Nombre" = "Smart TV 43 pulgadas", "Cantidad" = "0", 
+"NumeroCliente" = "3", "Posiciones" = "[{"Codigo =  "03-14-1", "Stock" = "0", "CodigoDeposito" = "D02"}, 
+{"Codigo =  "03-14-2", "Stock" = "0", "CodigoDeposito" = "D02"}]"
+
