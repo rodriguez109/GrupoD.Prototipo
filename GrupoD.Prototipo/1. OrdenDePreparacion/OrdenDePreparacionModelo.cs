@@ -203,7 +203,8 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             DateTime fechaRetirar,
             string prioridadSeleccionada,
             int dniTransportista,
-            bool pallet)
+            bool pallet,
+            string deposito)
         {
             if (items == null || !items.Any())
                 throw new Exception("Debe agregar productos a la Orden de Preparación antes de generarla.");
@@ -238,12 +239,25 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                     continue; // Se impide la creación de la orden para este producto
                 }
 
+                string codigoDeposito = string.Empty;
+                if (productoStock.Posiciones != null && productoStock.Posiciones.Any())
+                {
+                    // Por ejemplo, usar el de la primera posición
+                    codigoDeposito = productoStock.Posiciones.First().CodigoDeposito;
+                }
+                else
+                {
+                    // Manejar el caso en que no haya posiciones definidas.
+                    MessageBox.Show($"No se encontró una posición para el producto {productoStock.Nombre}.");
+                    continue;
+                }
+
                 //Crear una entidad.
                 OrdenDePreparacionEntidad orden = new OrdenDePreparacionEntidad
                 {
                     Numero = numeroOrdenLocal,
                     Pallet = pallet,
-                    //CodigoDeposito = deposito,
+                    CodigoDeposito = deposito,
                     FechaRetirar = fechaRetirar,
                     Prioridad = prioridadSeleccionada switch
                     {
