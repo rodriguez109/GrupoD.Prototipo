@@ -38,7 +38,7 @@
   {
     "Numero": 3,
     "Pallet": true,
-    "CodigoDeposito": "DEP01",
+    "CodigoDeposito": "D01",
     "Detalle": [
       {
         "SKU": 12345,

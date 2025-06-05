@@ -1,0 +1,36 @@
+Plan de Prueba: EmpaquetarProductos-ConfirmacionExitosa.txt
+
+(Empieza con el menú principal)
+1- Botón										"Empaquetar los productos"
+2- Orden de preparacion							#7
+3- SKU								   			17
+Verificar que listViewProductos muestra los productos correspondientes a la orden.
+4- Nombre										Monitor Samsung 24\" LED
+5- Cantidad										12
+6- Botón										"Orden Empaquetada"
+7- Mensaje										"La orden fue marcada como 'Preparada'.".
+8- Revisar que la siguiente orden de preparación se muestra en pantalla. 
+9- Mensaje (si no hay más órdenes disponibles) "No hay más órdenes pen estado 'En Preparacion' para empaquetar." 
+10- Se deshabilitar el botón "Orden empaquetada". 
+11- Botón										"Cerrar"
+12- Vuelve al menú principal
+
+Verificaciones
+13- Archivo ordenDePreparacion.json – la orden de preparacion numero 7 deberia aparecer con el estado actualizado ("Estado"" = 3):
+  {
+    "Numero": 7,
+    "Pallet": true,
+    "CodigoDeposito": "D06",
+    "Detalle": [
+      {
+        "SKU": 17,
+        "Cantidad": 12
+      }
+    ],
+    "FechaRetirar": "2025-06-16T08:00:00",
+    "Prioridad": 0,
+    "NumeroCliente": 7,
+    "DNITransportista": 30201928,
+    "Estado": 
+  },
+
