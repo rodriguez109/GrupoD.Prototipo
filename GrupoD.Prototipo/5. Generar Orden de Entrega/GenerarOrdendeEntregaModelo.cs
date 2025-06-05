@@ -17,6 +17,8 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
             {
                 var lista = new List<OrdenDeEntregaPendiente>();
 
+
+
                 foreach (var ordenEntidad in OrdenDeEntregaAlmacen.OrdenesDeEntrega)
                 {
                     // Tomamos la primera orden de preparación relacionada
@@ -40,15 +42,49 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
                     );
 
                     lista.Add(ordenPendiente);
+
+
+                }
+
+
+                if (!lista.Any())
+                {
+                    Console.WriteLine("No hay órdenes pendientes.");
                 }
 
                 return lista;
             }
         }
+
     }
-
-
 }
+
+        //public void CambioEstadoOP(OrdenDePreparacionEntidad ordenActual)
+        //{
+        //    //ordenActual.Estado = EstadoOrdenDePreparacionEnum.Preparada;
+        //    //OrdenesEnPreparacionDisponibles.Remove(ordenActual); // Remueve de la lista interna
+
+        //    //ordenActual.Estado = EstadoOrdenDePreparacionEnum.Preparada;
+
+        //    // Buscar la orden original en OrdenDePreparacionAlmacen y actualizar su estado
+        //    var ordenEnAlmacen = OrdenDePreparacionAlmacen.OrdenesDePreparacion
+        //        .FirstOrDefault(op => op.Numero == ordenActual.Numero);
+
+        //    if (ordenEnAlmacen != null)
+        //    {
+        //        ordenEnAlmacen.Estado = EstadoOrdenDePreparacionEnum.EnDespacho;
+        //    }
+
+
+        //    ActualizarOrdenesDisponibles();
+        //}
+
+        //public void ActualizarOrdenesDisponibles()
+        //{
+        //    OrdenesEnPreparacionDisponibles.Clear();
+        //    OrdenesEnPreparacionDisponibles.AddRange(OrdenDePreparacionAlmacen.OrdenesDePreparacion
+        //        .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.Preparada));
+       
 
 
 
