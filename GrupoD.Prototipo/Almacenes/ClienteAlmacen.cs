@@ -34,5 +34,12 @@ namespace GrupoD.Prototipo.Almacenes
             clientes.Add(cliente);
             Grabar();
         }
+
+        public static ClienteEntidad Buscar(int numero)
+        {
+            return clientes.FirstOrDefault(c => c.Numero == numero);
+        }
+
+
     }
 }
