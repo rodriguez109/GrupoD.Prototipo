@@ -18,8 +18,8 @@ Verificaciones:
 13- Archivo OrdenDePreparacion.json - Ultima linea: {"numero" = "4", "pallet" = true, "codigoDeposito" = "D01", 
 "detalle" = "[{"SKU" = "1", "cantidad" = "2"}]", "fechaRetirar" = "08/07/2025", "prioridad" = 0, 
 "numeroCliente" = "1", dniTransportista = "20242093", "estado" = 0 }
-14- Archivo productos.json: "SKU" = "1", "Cantidad" = "1" //{"SKU" = "1", "Nombre" = "Mesa ratona de madera", "Cantidad" = "1", "NumeroCliente" = "1",
-"Posiciones" = "[{"Codigo =  "01-10-1", "Stock" = "0", "CodigoDeposito" = "D01"}, {"Codigo =  "01-11-1", "Stock" = "1", 
-"CodigoDeposito" = "D01"}]"
+14- Archivo productos.json: "SKU" = "1", "Cantidad" = "1" //{"SKU" = "1", "Nombre" = "Mesa ratona de madera", "Cantidad" = "1", 
+"NumeroCliente" = "1", "Posiciones" = "[{"Codigo =  "01-10-1", "Stock" = "0", "CodigoDeposito" = "D01"}, 
+{"Codigo =  "01-11-1", "Stock" = "1", "CodigoDeposito" = "D01"}]"
 
 (Termino cerrando el programa)

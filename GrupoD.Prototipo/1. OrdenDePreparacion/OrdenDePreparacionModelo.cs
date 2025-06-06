@@ -203,8 +203,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             DateTime fechaRetirar,
             string prioridadSeleccionada,
             int dniTransportista,
-            bool pallet,
-            string deposito)
+            bool pallet)
         {
             if (items == null || !items.Any())
                 throw new Exception("Debe agregar productos a la Orden de Preparación antes de generarla.");
@@ -257,7 +256,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 {
                     Numero = numeroOrdenLocal,
                     Pallet = pallet,
-                    CodigoDeposito = deposito,
+                    CodigoDeposito = codigoDeposito,
                     FechaRetirar = fechaRetirar,
                     Prioridad = prioridadSeleccionada switch
                     {
