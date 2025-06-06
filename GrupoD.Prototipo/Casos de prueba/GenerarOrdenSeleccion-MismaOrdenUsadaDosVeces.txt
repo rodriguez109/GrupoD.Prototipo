@@ -1,0 +1,22 @@
+﻿Plan de Prueba: GenerarOrdenSeleccion-MismaOrdenUsadaDosVeces.txt
+
+(Empieza con el menú principal)
+1- Botón                                 "Generar Orden de Selección"
+2- Nombre de cliente                     ""
+3- Numero de orden de preparacion        ""
+4- Fecha de entrega                      ""
+5- Prioridad                             ""
+6- Botón                                 "Generar orden de selección"
+7- Volver al menú principal
+8- Cerrar el sistema
+
+Verificaciones
+11- Archivo ordenesSeleccion.json – Última entrada agregada debe ser similar a:
+{
+  "Numero": 6,
+  "FechaGeneracion": "2025-06-06T16:30:00",
+  "EstadoOrdenDeSeleccion": 0,
+  "OrdenesPreparacion": [3]
+}
+
+(Termino cerrando el programa)
