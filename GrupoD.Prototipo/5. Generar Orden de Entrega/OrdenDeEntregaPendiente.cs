@@ -17,10 +17,10 @@ namespace GrupoD.Prototipo
         public long DniTransportista { get; set; }
         public string NombreTransportista { get; set; }
         public string EstadoOrdenDeEntrega { get; set; }
-        public List<OrdenesDePreparacion> OrdenesPreparacion { get; set; } // va?
+        //public List<OrdenesDePreparacion> OrdenesPreparacion { get; set; } // va?
 
 
-        public OrdenDeEntregaPendiente(int numeroOrden, List<OrdenesDePreparacion> ordenesPreparacion, string nombreCliente, DateTime fechaEntrega, long dniTransportista, string nombreTransportista, string estadoOrdenDeEntrega)
+        public OrdenDeEntregaPendiente(int numeroOrden, string nombreCliente, DateTime fechaEntrega, long dniTransportista, string nombreTransportista, string estadoOrdenDeEntrega)
         {
             NumeroOrden = numeroOrden;
            
@@ -29,7 +29,7 @@ namespace GrupoD.Prototipo
             DniTransportista = dniTransportista;
             NombreTransportista = nombreTransportista;
             EstadoOrdenDeEntrega = estadoOrdenDeEntrega;
-            OrdenesPreparacion = ordenesPreparacion;
+           // OrdenesPreparacion = ordenesPreparacion;
         }
 
         // Constructor vacío para formulario

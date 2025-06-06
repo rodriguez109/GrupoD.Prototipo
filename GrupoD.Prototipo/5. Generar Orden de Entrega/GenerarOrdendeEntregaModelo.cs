@@ -25,28 +25,28 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
                         return lista;
                     }
 
-                    foreach (var ordenEntidad in ordenes)
-                    {
-                        var idOrdenPreparacion = ordenEntidad.OrdenesPreparacion.FirstOrDefault();
-                        if (idOrdenPreparacion == 0) continue;
+                    //foreach (var ordenEntidad in ordenes)
+                    //{
+                    //    var idOrdenPreparacion = ordenEntidad.OrdenesPreparacion.FirstOrDefault();
+                    //    if (idOrdenPreparacion == 0) continue;
 
-                        var ordenPreparacion = OrdenDePreparacionAlmacen.Buscar(idOrdenPreparacion);
-                        if (ordenPreparacion == null) continue;
+                    //    var ordenPreparacion = OrdenDePreparacionAlmacen.Buscar(idOrdenPreparacion);
+                    //    if (ordenPreparacion == null) continue;
 
-                        var cliente = ClienteAlmacen.Buscar(ordenPreparacion.NumeroCliente);
-                        var transportista = TransportistaAlmacen.Buscar(ordenPreparacion.DNITransportista);
-                        if (cliente == null || transportista == null) continue;
+                    //    var cliente = ClienteAlmacen.Buscar(ordenPreparacion.NumeroCliente);
+                    //    var transportista = TransportistaAlmacen.Buscar(ordenPreparacion.DNITransportista);
+                    //    if (cliente == null || transportista == null) continue;
 
-                        var orden = new OrdenDePreparacionEntidad
-                        (   ordenEntidad.Numero,
-                            cliente.RazonSocial,
-                            ordenPreparacion.FechaRetirar,
-                            transportista.DNI,
-                            transportista.Nombre
-                        );
+                    //    var orden = new OrdenDePreparacionEntidad
+                    //    (   ordenEntidad.Numero,
+                    //        cliente.RazonSocial,
+                    //        ordenPreparacion.FechaRetirar,
+                    //        transportista.DNI,
+                    //        transportista.Nombre
+                    //    );
 
-                        lista.Add(orden);
-                    }
+                    //    lista.Add(orden);
+                    //}
 
                     return lista;
                 }
@@ -56,35 +56,35 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
                 {
                     return OrdenDeEntregaAlmacen.OrdenesDeEntrega.Max(o => o.Numero) + 1;
                 }
-                public void AgregarOrdenDeEntrega(List<OrdenDePreparacionEntidad> OPseleccionadas)
-                {
-                    // Obtener el número ID para la nueva Orden de Entrega
-                    int nuevoNumeroOrdenEntrega = ObtenerProximoNumero();
+                //public void AgregarOrdenDeEntrega(List<OrdenDePreparacionEntidad> OPseleccionadas)
+                //{
+                //     Obtener el número ID para la nueva Orden de Entrega
+                //    int nuevoNumeroOrdenEntrega = ObtenerProximoNumero();
 
-                    // Crear la nueva orden de entrega
-                    var nuevaOrdenEntrega = new OrdenDeEntregaEntidad
-                    {
-                        Numero = nuevoNumeroOrdenEntrega,
-                        FechaGeneracion = DateTime.Now,
-                        OrdenesPreparacion = OPseleccionadas
-                            .Select(op => op.Numero)
-                            .ToList(),
-                        EstadoOrdenDeEntrega = EstadoOrdenDeEntregaEnum.Pendiente
-                    };
+                //     Crear la nueva orden de entrega
+                //    var nuevaOrdenEntrega = new OrdenDeEntregaEntidad
+                //    {
+                //        Numero = nuevoNumeroOrdenEntrega,
+                //        FechaGeneracion = DateTime.Now,
+                //        OrdenesPreparacion = OPseleccionadas
+                //            .Select(op => op.Numero)
+                //            .ToList(),
+                //        EstadoOrdenDeEntrega = EstadoOrdenDeEntregaEnum.Pendiente
+                //    };
 
-                    // Agregarla al almacén
-                    OrdenDeEntregaAlmacen.Agregar(nuevaOrdenEntrega);
-                }
-                public void CambioEstadoOP(OrdenDePreparacionEntidad ordenActual)
-                {
-                    var ordenEnAlmacen = OrdenDePreparacionAlmacen.OrdenesDePreparacion
-                        .FirstOrDefault(op => op.Numero == ordenActual.Numero);
+                //     Agregarla al almacén
+                //    OrdenDeEntregaAlmacen.Agregar(nuevaOrdenEntrega);
+                //}
+                //public void CambioEstadoOP(OrdenDePreparacionEntidad ordenActual)
+                //{
+                //    var ordenEnAlmacen = OrdenDePreparacionAlmacen.OrdenesDePreparacion
+                //        .FirstOrDefault(op => op.Numero == ordenActual.Numero);
 
-                    if (ordenEnAlmacen != null)
-                    {
-                        ordenEnAlmacen.Estado = EstadoOrdenDePreparacionEnum.EnDespacho;
-                    }
-                }
+                //    if (ordenEnAlmacen != null)
+                //    {
+                //        ordenEnAlmacen.Estado = EstadoOrdenDePreparacionEnum.EnDespacho;
+                //    }
+                //}
 
     }
 }
