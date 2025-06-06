@@ -1,0 +1,41 @@
+﻿Plan de Prueba: Generar Remito - Sin Selección de ordenes
+
+(Empieza con el Menú Principal)
+1- Botón							"Generar remito"
+2- DNI Transportista			    "28765432"
+3- Botón							"Buscar órdenes"
+5- Botón				            "Agregar al remito"
+6- Botón 						    "Generar remito"
+7- Cerrar el sistema
+
+Verificaciones:
+13- Archivo Remito.json - Ultima linea: 
+{
+    "Numero": 3,
+    "DNITransportista": 29384756,
+    "FechaEmision": "2025-06-13T09:45:00",
+    "OrdenesPreparacion": [ 9 ]
+ }
+14- Archivo OrdenDePreparacion.json - orden nro 9:
+    
+  {
+    "Numero": 9,
+    "Pallet": true,
+    "CodigoDeposito": "D08",
+    "Detalle": [
+      {
+        "SKU": 23,
+        "Cantidad": 8
+      }
+    ],
+    "FechaRetirar": "2025-06-18T09:45:00",
+    "Prioridad": 1,
+    "NumeroCliente": 9,
+    "DNITransportista": 28765432,
+    "Estado": 5
+  }
+  15- Archivo OrdenDeEntrega.json - orden ...: confirmada???????
+  
+  
+
+(Termino cerrando el programa)

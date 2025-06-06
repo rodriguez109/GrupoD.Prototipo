@@ -71,8 +71,39 @@ namespace GrupoD.Prototipo._6._GenerarRemito
         //}
 
         // linq  
+        //por cada orden de entrega ver for each ver q las ordenes de preparacion esten todas despachadas entonces cambio el estado sino no
 
-
-
+       // Le paso al modelo ordenes de prep les cambia el estado y luego busca la orden de entrega de cada una 
+         //   y cheque q todas las ordenes de prep en ella esten despachadas y si lo estan cambia el estado de la orden de entrega a confirmada.
     }
 }
+//public void DespacharOrdenesDePreparacion(List<int> idsOrdenesPrep)
+//{
+//    // 1. Cambiar estado a "Despachada"
+//    foreach (var id in idsOrdenesPrep)
+//    {
+//        _almacenOrdenesPrep.CambiarEstado(id, EstadoOrdenDePreparacionEnum.Despachada);
+//    }
+
+//    // 2. Agrupar órdenes por orden de entrega
+//    var ordenes = idsOrdenesPrep
+//        .Select(id => _almacenOrdenesPrep.ObtenerPorId(id))
+//        .GroupBy(op => op.IdOrdenEntrega);
+
+//    foreach (var grupo in ordenes)
+//    {
+//        int idOrdenEntrega = grupo.Key;
+
+//        var ordenEntrega = _almacenOrdenesEntrega.ObtenerPorId(idOrdenEntrega);
+//        if (ordenEntrega == null)
+//            continue;
+
+//        // 3. Verificar si todas las órdenes de preparación están despachadas
+//        bool todasDespachadas = ordenEntrega.OrdenesPreparacion
+//            .All(op => op.Estado == EstadoOrdenDePreparacionEnum.Despachada);
+
+//        // 4. Confirmar la orden de entrega si corresponde
+//        if (todasDespachadas)
+//        {
+//            _almacenOrdenesEntrega.Confirmar(idOrdenEntrega);
+//        }
