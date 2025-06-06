@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
 {
-    internal class OrdenDePreparacionClase
+     class OrdenDePreparacionClase
     {
         
             // Atributos

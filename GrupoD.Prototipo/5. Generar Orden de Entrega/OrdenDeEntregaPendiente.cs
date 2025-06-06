@@ -7,37 +7,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GrupoD.Prototipo
+namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
 {
-    public class OrdenDeEntregaPendiente
+    class OrdenDeEntregaPendiente //refleja datos del json
     {
         public int NumeroOrden { get; set; }
-        public string NombreCliente { get; set; }
+
         public DateTime FechaEntrega { get; set; }
-        public long DniTransportista { get; set; }
-        public string NombreTransportista { get; set; }
+
         public string EstadoOrdenDeEntrega { get; set; }
-        //public List<OrdenesDePreparacion> OrdenesPreparacion { get; set; } // va?
+        public List<OrdenDePreparacionClase> OrdenDePreparacionClase { get; set; }
 
 
-        public OrdenDeEntregaPendiente(int numeroOrden, string nombreCliente, DateTime fechaEntrega, long dniTransportista, string nombreTransportista, string estadoOrdenDeEntrega)
+        public OrdenDeEntregaPendiente(int numeroOrden, DateTime fechaEntrega, string estadoOrdenDeEntrega, List<OrdenDePreparacionClase> ordenesPreparacion)
         {
             NumeroOrden = numeroOrden;
-           
-            NombreCliente = nombreCliente;
+
             FechaEntrega = fechaEntrega;
-            DniTransportista = dniTransportista;
-            NombreTransportista = nombreTransportista;
+
             EstadoOrdenDeEntrega = estadoOrdenDeEntrega;
-           // OrdenesPreparacion = ordenesPreparacion;
+            OrdenDePreparacionClase = ordenesPreparacion;
         }
 
-        // Constructor vacío para formulario
-        public OrdenDeEntregaPendiente()
-        {
-            FechaEntrega = DateTime.Now;
-            EstadoOrdenDeEntrega = "Pendiente";
-        }
+        //// Constructor vacío para formulario
+        //public OrdenDeEntregaPendiente()
+        //{
+        //    FechaEntrega = DateTime.Now;
+        //    EstadoOrdenDeEntrega = "Pendiente";
+        //}
     }
 
 }
