@@ -214,12 +214,12 @@
     {
         "SKU": 15,
         "Nombre": "Escritorio en L melamina",
-        "Cantidad": 2,
+        "Cantidad": 10,
         "NumeroCliente": 15,
         "Posiciones": [
             {
                 "Codigo": "15-15-1",
-                "Stock": 5,
+                "Stock": 10,
                 "CodigoDeposito": "D01"
             }
         ]
