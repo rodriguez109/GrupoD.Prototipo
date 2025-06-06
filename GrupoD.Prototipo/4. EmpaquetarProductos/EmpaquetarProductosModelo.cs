@@ -24,7 +24,6 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
         }
         
 
-
         public OrdenDePreparacionEntidad BusquedaOrdenDisponible() //EXP
         {
 
