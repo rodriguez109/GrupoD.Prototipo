@@ -21,7 +21,7 @@
 Verificaciones:
 16- Archivo OrdenDePreparacion.json - Ultima entrada: 
 {
-    "Numero": 22,
+    "Numero": 21,
     "Pallet": false,
     "CodigoDeposito": "D01",
     "Detalle": [

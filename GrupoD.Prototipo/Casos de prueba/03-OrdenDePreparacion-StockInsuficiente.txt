@@ -27,7 +27,7 @@ El sistema no debería dejarte crear esta segunda orden de preparación debido a
 Verificaciones:
 17- Archivo OrdenDePreparacion.json - Ultima entrada:
 {
-    "Numero": 23,
+    "Numero": 21,
     "Pallet": false,
     "CodigoDeposito": "D02",
     "Detalle": [
