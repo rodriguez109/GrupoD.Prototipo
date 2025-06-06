@@ -1,0 +1,47 @@
+﻿Plan de Prueba: Generar Orden de Entrega - Confirmación Exitosa.
+
+(Empieza con el Menú Principal)
+
+1- Botón							"Generar Orden de Entrega"
+2- Orden de preparacion				 #2
+3- Verificar que listViewProductos muestra los productos correspondientes a la orden.							"Buscar órdenes"
+5- Razón Social Cliente				 "EasyTech Distribuciones S.A."
+6- Fecha Entrega                     "2025-06-28T15:00:00" //chequeo formato
+7- DNI Transportista                  "50242093"
+8- Razón Social Transportista           "Esteban Torres"
+9- Botón							 "Confirmar Orden de Entrega"
+10- Mensaje										"Éxito: La orden seleccionada ha sido confirmado."
+11- Botón							 "Aceptar"
+12- Cerrar el sistema
+
+Verificaciones:
+13- Archivo Archivo OrdenDeEntrega.json - Ultima linea: 
+
+ {
+    "Numero": 6,
+    "OrdenesPreparacion": [ 2 ],
+    "FechaGeneracion": "2025-06-28T15:00:00",
+    "EstadoOrdenDeEntrega": 0
+  }
+
+14- Archivo OrdenDePreparacion.json - orden nro 2:
+    
+  {// ojo num 2 pero aparece el 3
+    "Numero": 2,
+    "Pallet": false,
+    "CodigoDeposito": "D02",
+    "Detalle": [
+      {
+        "SKU": 3,
+        "Cantidad": 2
+      }
+    ],
+    "FechaRetirar": "2025-06-11T15:30:00",
+    "Prioridad": 0,
+    "NumeroCliente": 3,
+    "DNITransportista": 31242093,
+    "Estado": 4
+  }
+  
+
+(Termino cerrando el programa)

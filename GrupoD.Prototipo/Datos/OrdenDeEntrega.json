@@ -1,122 +1,32 @@
 [
   {
     "Numero": 1,
-    "OrdenesPreparacion": [ 100, 101 ],
+    "OrdenesPreparacion": [ 5, 12 ],
     "FechaGeneracion": "2025-06-01T10:00:00",
     "EstadoOrdenDeEntrega": 0
   },
   {
     "Numero": 2,
-    "OrdenesPreparacion": [ 102, 103 ],
+    "OrdenesPreparacion": [ 3, 17, 9 ],
     "FechaGeneracion": "2025-06-02T12:00:00",
     "EstadoOrdenDeEntrega": 0
   },
   {
     "Numero": 3,
-    "OrdenesPreparacion": [ 104, 105 ],
+    "OrdenesPreparacion": [ 1, 20 ],
     "FechaGeneracion": "2025-06-03T15:00:00",
     "EstadoOrdenDeEntrega": 0
   },
   {
     "Numero": 4,
-    "OrdenesPreparacion": [ 106, 107 ],
+    "OrdenesPreparacion": [ 7, 14 ],
     "FechaGeneracion": "2025-06-04T09:00:00",
     "EstadoOrdenDeEntrega": 0
   },
   {
     "Numero": 5,
-    "OrdenesPreparacion": [ 108, 109 ],
+    "OrdenesPreparacion": [ 2, 10, 18 ],
     "FechaGeneracion": "2025-06-05T14:00:00",
-    "EstadoOrdenDeEntrega": 0
-  },
-  {
-    "Numero": 6,
-    "OrdenesPreparacion": [ 110, 111 ],
-    "FechaGeneracion": "2025-06-06T08:00:00",
-    "EstadoOrdenDeEntrega": 0
-  },
-  {
-    "Numero": 7,
-    "OrdenesPreparacion": [ 112, 113 ],
-    "FechaGeneracion": "2025-06-07T10:00:00",
-    "EstadoOrdenDeEntrega": 0
-  },
-  {
-    "Numero": 8,
-    "OrdenesPreparacion": [ 114, 115 ],
-    "FechaGeneracion": "2025-06-08T14:00:00",
-    "EstadoOrdenDeEntrega": 0
-  },
-  {
-    "Numero": 9,
-    "OrdenesPreparacion": [ 116, 117 ],
-    "FechaGeneracion": "2025-06-09T09:00:00",
-    "EstadoOrdenDeEntrega": 0
-  },
-  {
-    "Numero": 10,
-    "OrdenesPreparacion": [ 118, 119 ],
-    "FechaGeneracion": "2025-06-10T16:00:00",
-    "EstadoOrdenDeEntrega": 0
-  },
-  {
-    "Numero": 11,
-    "OrdenesPreparacion": [ 120 ],
-    "FechaGeneracion": "2025-06-11T11:00:00",
-    "EstadoOrdenDeEntrega": 0
-  },
-  {
-    "Numero": 12,
-    "OrdenesPreparacion": [ 100, 101 ],
-    "FechaGeneracion": "2025-06-12T13:00:00",
-    "EstadoOrdenDeEntrega": 0
-  },
-  {
-    "Numero": 13,
-    "OrdenesPreparacion": [ 102, 103 ],
-    "FechaGeneracion": "2025-06-13T15:00:00",
-    "EstadoOrdenDeEntrega": 0
-  },
-  {
-    "Numero": 14,
-    "OrdenesPreparacion": [ 104, 105 ],
-    "FechaGeneracion": "2025-06-14T09:30:00",
-    "EstadoOrdenDeEntrega": 0
-  },
-  {
-    "Numero": 15,
-    "OrdenesPreparacion": [ 106, 107 ],
-    "FechaGeneracion": "2025-06-15T10:45:00",
-    "EstadoOrdenDeEntrega": 0
-  },
-  {
-    "Numero": 16,
-    "OrdenesPreparacion": [ 108, 109 ],
-    "FechaGeneracion": "2025-06-16T13:15:00",
-    "EstadoOrdenDeEntrega": 0
-  },
-  {
-    "Numero": 17,
-    "OrdenesPreparacion": [ 110, 111 ],
-    "FechaGeneracion": "2025-06-17T12:00:00",
-    "EstadoOrdenDeEntrega": 0
-  },
-  {
-    "Numero": 18,
-    "OrdenesPreparacion": [ 112, 113 ],
-    "FechaGeneracion": "2025-06-18T15:30:00",
-    "EstadoOrdenDeEntrega": 0
-  },
-  {
-    "Numero": 19,
-    "OrdenesPreparacion": [ 114, 115 ],
-    "FechaGeneracion": "2025-06-19T08:30:00",
-    "EstadoOrdenDeEntrega": 0
-  },
-  {
-    "Numero": 20,
-    "OrdenesPreparacion": [ 116, 117 ],
-    "FechaGeneracion": "2025-06-20T14:15:00",
     "EstadoOrdenDeEntrega": 0
   }
 ]
