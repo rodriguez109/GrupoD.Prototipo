@@ -2,9 +2,9 @@
 
 (Empieza con el Menú Principal)
 1- Botón							"Generar remito"
-2- DNI Transportista			    "29384756"
+2- DNI Transportista			    "20242093" 
 3- Botón							"Buscar órdenes"
-4- Seleccionar Nro de orden			"8"
+4- Seleccionar Nro de orden			"3"
 5- Botón				            "Agregar al remito"
 6- Botón 						    "Generar remito"
 7- Cerrar el sistema
@@ -13,10 +13,10 @@ Verificaciones:
 13- Archivo Remito.json - Ultima linea: 
 {
     "Numero": 4,
-    "DNITransportista": 29384756,
+    "DNITransportista": 20242093 ,
     "FechaEmision": ""2025-06-02T09:45:00"",
     "OrdenesPreparacion": [
-      8
+      
     ]
  }
 
