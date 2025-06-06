@@ -61,49 +61,49 @@ namespace GrupoD.Prototipo._6._GenerarRemito
         }
 
 
+        internal void CambiarEstadoOP(List<int> ordenes)
+        {
 
-        //Cambiar estado Orden de Preparacion despachada
-        //Cambiar estado Orden de entrega confirmada  que dato le paso???
+            foreach (var nroOp in ordenes)
+            {
+                OrdenDePreparacionAlmacen.cambiarEstado(nroOp, EstadoOrdenDePreparacionEnum.Despachada);
+            }
 
-        //foreach (var op in OPseleccionadas) //AGREGAR ESTE METODO
-        //{
-        //    OrdenDePreparacionAlmacen.cambiarEstado((op.NumeroOrden), EstadoOrdenDePreparacionEnum.Despachada);
-        //}
+        }
 
-        // linq  
-        //por cada orden de entrega ver for each ver q las ordenes de preparacion esten todas despachadas entonces cambio el estado sino no
 
-       // Le paso al modelo ordenes de prep les cambia el estado y luego busca la orden de entrega de cada una 
-         //   y cheque q todas las ordenes de prep en ella esten despachadas y si lo estan cambia el estado de la orden de entrega a confirmada.
+        internal void CambiarEstadoOE(List<int> ordenesDePreparacion)
+        {
+            foreach (var oe in OrdenDeEntregaAlmacen.OrdenesDeEntrega)
+            {
+                bool contieneOP = oe.OrdenesPreparacion.Any(opNumero => ordenesDePreparacion.Contains(opNumero));
+
+                if (contieneOP)
+                {
+                    var ordenesPrepDeOE = OrdenDePreparacionAlmacen.OrdenesDePreparacion
+                        .Where(op => oe.OrdenesPreparacion.Contains(op.Numero))
+                        .ToList();
+                    
+                    bool todasDespachadas = ordenesPrepDeOE
+                        .All(op => op.Estado == EstadoOrdenDePreparacionEnum.Despachada);
+
+                    if (todasDespachadas)
+                    {
+                        OrdenDeEntregaAlmacen.cambiarEstadoOE(oe.Numero, EstadoOrdenDeEntregaEnum.Confirmada);
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
     }
 }
-//public void DespacharOrdenesDePreparacion(List<int> idsOrdenesPrep)
-//{
-//    // 1. Cambiar estado a "Despachada"
-//    foreach (var id in idsOrdenesPrep)
-//    {
-//        _almacenOrdenesPrep.CambiarEstado(id, EstadoOrdenDePreparacionEnum.Despachada);
-//    }
-
-//    // 2. Agrupar órdenes por orden de entrega
-//    var ordenes = idsOrdenesPrep
-//        .Select(id => _almacenOrdenesPrep.ObtenerPorId(id))
-//        .GroupBy(op => op.IdOrdenEntrega);
-
-//    foreach (var grupo in ordenes)
-//    {
-//        int idOrdenEntrega = grupo.Key;
-
-//        var ordenEntrega = _almacenOrdenesEntrega.ObtenerPorId(idOrdenEntrega);
-//        if (ordenEntrega == null)
-//            continue;
-
-//        // 3. Verificar si todas las órdenes de preparación están despachadas
-//        bool todasDespachadas = ordenEntrega.OrdenesPreparacion
-//            .All(op => op.Estado == EstadoOrdenDePreparacionEnum.Despachada);
-
-//        // 4. Confirmar la orden de entrega si corresponde
-//        if (todasDespachadas)
-//        {
-//            _almacenOrdenesEntrega.Confirmar(idOrdenEntrega);
-//        }
