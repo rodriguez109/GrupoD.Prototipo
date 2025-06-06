@@ -14,9 +14,9 @@ Verificaciones
 11- Archivo ordenesSeleccion.json – Última entrada agregada debe ser similar a:
 {
   "Numero": 6,
-  "FechaGeneracion": "2025-06-04T16:30:00",
+  "FechaGeneracion": "2025-06-06T16:30:00",
   "EstadoOrdenDeSeleccion": 0,
-  "OrdenesPreparacion": [12, 17]
+  "OrdenesPreparacion": [3]
 }
 
 (Termino cerrando el programa)
