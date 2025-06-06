@@ -1,7 +1,6 @@
-﻿// Archivo: PrepararProductosPresenter.cs
-using GrupoD.Prototipo._3._PrepararProductos;   // Tus POCOs públicas
-using GrupoD.Prototipo.Almacenes;               // Tus almacenes y entidades
-using Prototipo.PrepararProductos;              // Para IPrepararProductosView
+﻿using GrupoD.Prototipo._3._PrepararProductos;   
+using GrupoD.Prototipo.Almacenes;              
+using Prototipo.PrepararProductos;              
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +18,8 @@ namespace Prototipo.PrepararProductos.PrepararProductos
             _view = view;
         }
 
-        /// <summary>
         /// Paso 1: Carga todas las OS pendientes y las envía a la vista.
-        /// </summary>
+        
         public void CargarOrdenes()
         {
             // 1.a) Traer entidades de OS y filtrar solo “Pendiente”
@@ -47,9 +45,9 @@ namespace Prototipo.PrepararProductos.PrepararProductos
             _view.MostrarOrdenes(_ordenesPendientes);
         }
 
-        /// <summary>
+        
         /// Paso 2, 3, 4: Cuando el usuario elige una OS en el combo.
-        /// </summary>
+        
         public void OrdenSeleccionadaCambiada()
         {
             // 1) Obtener la POCO de la OS seleccionada
@@ -94,7 +92,7 @@ namespace Prototipo.PrepararProductos.PrepararProductos
                     string posicion;
                     if (prodEnt != null && prodEnt.Posiciones != null && prodEnt.Posiciones.Count > 0)
                     {
-                        // Tomamos la primera posición disponible (puedes ajustar la lógica si quieres otra prioridad)
+                        // Tomamos la primera posición disponible.
                         posicion = prodEnt.Posiciones[0].Codigo;
                     }
                     else
@@ -122,14 +120,14 @@ namespace Prototipo.PrepararProductos.PrepararProductos
             _view.HabilitarBotonConfirmar(listaPOCO_OP.Any());
         }
 
-        /// <summary>
+        
         /// Paso 5 y 6: Cuando el usuario hace clic en “Confirmar”:
         ///   - Cambia estado de OS a “Confirmada”
         ///   - Cambia estado de cada OP de “Procesamiento” a “EnPreparacion”
-        ///   - Si existiera restarStock, aquí iría (se comenta porque no existe en tu almacén)
+        ///   - restarStock
         ///   - Graba todos los cambios en JSON
         ///   - Refresca la lista de OS y limpia ListView
-        /// </summary>
+        
         public void ConfirmarSeleccion()
         {
             // 5.1) Tomar la POCO OS seleccionada
@@ -177,7 +175,7 @@ namespace Prototipo.PrepararProductos.PrepararProductos
             }
 
             // 5.7) Mensaje de confirmación
-            _view.MostrarMensaje($"La orden de selección #{idOS} ha quedado CONFIRMADA.", "Éxito");
+            _view.MostrarMensaje($"¡Orden de selección #{idOS} CONFIRMADA!", "Éxito");
 
             // 5.8) Quitar esa POCO OS de la lista interna y recargar combo
             _ordenesPendientes.RemoveAll(o => o.NumeroOrdenSeleccion == idOS);
@@ -189,3 +187,17 @@ namespace Prototipo.PrepararProductos.PrepararProductos
         }
     }
 }
+
+// PANTALLA:
+// 1: Cargar en memoria las órdenes de selección disponibles en el almacén [OS Almacen], Filtrar y devolver aquellas órdenes de selección que están en estado “Pendiente”.
+// 2: El usuario selecciona una OS (Pendiente) del CmBox e invoca (por id) las ordenes de preparacion [Almacen OP] asociadas a esta.
+// 3: El ListView muestra los productos de las órdenes de preparación asociadas a la OS seleccionada (SKUproducto y cantidad necesarios) y posición de depósito (ProductoAlmacen -> JsonProducto) y lo deserializa en una colección de objetos ProductoEntidad. 
+// NOTA: Si al elegir la Orden de Selección no hay ninguna Orden de Preparación en estado “Pendiente”, el listado queda vacío y el botón de “Confirmar” aparece deshabilitado, porque no hay nada que procesar.
+// 4: Al confirmar orden Seleccion: Cambio estado de "pendiente" a "confirmada" Y orden de preparacion de "en proceamiento" a "en preparacion" --> Ambos con boton "confirmar"
+// 5: Y Modifica cambio de stock --> Impacta en ProductoAlmacen -> Datos\Producto.json
+
+//JSon = OrdenDePreparacion, OrdenDeSeleccion y Productos 
+//Almacenes: OrdenDePreparacionAlmacen, OrdenDeSeleccionAlmacen y ProductoAlmacen
+//Entidad: OrdenDeSeleccionEntidad, OrdenDePreparacionEntidad y ProductoEntidad
+
+//Resumen: La Pantalla permite ver rápidamente qué productos y su ubicaciones se requieren (buscar) para cumplir una Orden de Selección, y al confirmar ese trabajo se actualizan automáticamente los estados de selección y preparación, así como el stock disponible en el depósito.

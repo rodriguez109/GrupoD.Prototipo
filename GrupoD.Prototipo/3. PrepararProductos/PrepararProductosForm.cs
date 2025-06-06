@@ -1,10 +1,9 @@
-﻿// Archivo: PrepararProductosForm.cs
-using Prototipo.PrepararProductos.PrepararProductos; // Para IPrepararProductosView y el Presenter
+﻿using Prototipo.PrepararProductos.PrepararProductos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using GrupoD.Prototipo._3._PrepararProductos; // Para los POCOs
+using GrupoD.Prototipo._3._PrepararProductos; 
 
 namespace Prototipo.PrepararProductos
 {
