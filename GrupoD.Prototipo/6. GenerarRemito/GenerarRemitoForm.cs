@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GrupoD.Prototipo._2._GenerarOrdenSeleccion;
+using GrupoD.Prototipo.Almacenes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GrupoD.Prototipo._2._GenerarOrdenSeleccion;
 
 namespace GrupoD.Prototipo._6._GenerarRemito
 {
@@ -133,14 +134,14 @@ namespace GrupoD.Prototipo._6._GenerarRemito
             string ordenesTexto = string.Join(", ", ordenesStr);
             MessageBox.Show($"Remito generado con éxito.\nÓrdenes incluidas: {ordenesTexto}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // metodo cambiar estado ordenes de preparacion despachadas 
-            // metodo orden de entrega confirmada ?? como le paso la orden de entrega??
-
-            // Limpiar la lista de ordenes agregadas después de generar el remito
             OrdenesAgregadasLST.Items.Clear();
+            modelo.CambiarEstadoOP(ordenes);
+            modelo.CambiarEstadoOE(ordenes);
         }
 
         
+
+
 
         private void CancelarBTN_Click(object sender, EventArgs e)
         {

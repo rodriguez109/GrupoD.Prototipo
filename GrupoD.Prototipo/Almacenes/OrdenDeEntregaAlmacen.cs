@@ -2,6 +2,7 @@
 using GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -12,6 +13,7 @@ namespace GrupoD.Prototipo.Almacenes
     internal static class OrdenDeEntregaAlmacen
     {
         private static List<OrdenDeEntregaEntidad> ordenesDeEntrega = new List<OrdenDeEntregaEntidad>();
+        
 
         static OrdenDeEntregaAlmacen()
         {
@@ -41,6 +43,8 @@ namespace GrupoD.Prototipo.Almacenes
             ordenesDeEntrega.Add(ordenDeEntrega);
 
         }
+
+
 
         public static void cambiarEstadoOE(int IdOP, EstadoOrdenDeEntregaEnum estado)
         {

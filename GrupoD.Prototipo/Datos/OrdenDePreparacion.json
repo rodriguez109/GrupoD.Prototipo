@@ -45,7 +45,7 @@
     "Prioridad": 0,
     "NumeroCliente": 11,
     "DNITransportista": 20242093,
-    "Estado": 0
+    "Estado": 4
   },
   {
     "Numero": 4,
@@ -125,7 +125,7 @@
     "Prioridad": 0,
     "NumeroCliente": 15,
     "DNITransportista": 41242093,
-    "Estado": 0
+    "Estado": 4
   },
   {
     "Numero": 9,
@@ -141,7 +141,7 @@
     "Prioridad": 1,
     "NumeroCliente": 19,
     "DNITransportista": 30242093,
-    "Estado": 0
+    "Estado": 5
   },
   {
     "Numero": 10,
@@ -237,7 +237,7 @@
     "Prioridad": 1,
     "NumeroCliente": 19,
     "DNITransportista": 30242093,
-    "Estado": 0
+    "Estado": 5
   },
   {
     "Numero": 16,
@@ -253,7 +253,7 @@
     "Prioridad": 0,
     "NumeroCliente": 19,
     "DNITransportista": 50242093,
-    "Estado": 0
+    "Estado": 5
   },
   {
     "Numero": 17,
@@ -269,7 +269,7 @@
     "Prioridad": 2,
     "NumeroCliente": 5,
     "DNITransportista": 31242093,
-    "Estado": 0
+    "Estado": 5
   },
   {
     "Numero": 18,
@@ -285,7 +285,7 @@
     "Prioridad": 1,
     "NumeroCliente": 3,
     "DNITransportista": 49242093,
-    "Estado": 0
+    "Estado": 5
   },
   {
     "Numero": 19,
