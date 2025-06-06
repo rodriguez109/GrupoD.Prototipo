@@ -7,123 +7,113 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
+namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
+{
+    public class GenerarOrdendeEntregaModelo
+    {
+        
+            public List<OrdenDeEntregaPendiente> Ordenes
+            {
+                get
+                {
+                    var lista = new List<OrdenDeEntregaPendiente>();
+                    var ordenes = OrdenDeEntregaAlmacen.OrdenesDeEntrega;
+
+                    if (ordenes == null || !ordenes.Any())
+                    {
+                        Console.WriteLine("No hay órdenes pendientes.");
+                        return lista;
+                    }
+
+                    foreach (var ordenEntidad in ordenes)
+                    {
+                        var idOrdenPreparacion = ordenEntidad.OrdenesPreparacion.FirstOrDefault();
+                        if (idOrdenPreparacion == 0) continue;
+
+                        var ordenPreparacion = OrdenDePreparacionAlmacen.Buscar(idOrdenPreparacion);
+                        if (ordenPreparacion == null) continue;
+
+                        var cliente = ClienteAlmacen.Buscar(ordenPreparacion.NumeroCliente);
+                        var transportista = TransportistaAlmacen.Buscar(ordenPreparacion.DNITransportista);
+                        if (cliente == null || transportista == null) continue;
+
+                        var orden = new OrdenDePreparacionEntidad
+                        (   ordenEntidad.Numero,
+                            cliente.RazonSocial,
+                            ordenPreparacion.FechaRetirar,
+                            transportista.DNI,
+                            transportista.Nombre
+                        );
+
+                        lista.Add(orden);
+                    }
+
+                    return lista;
+                }
+            }
+
+                public int ObtenerProximoNumero()
+                {
+                    return OrdenDeEntregaAlmacen.OrdenesDeEntrega.Max(o => o.Numero) + 1;
+                }
+                public void AgregarOrdenDeEntrega(List<OrdenDePreparacionEntidad> OPseleccionadas)
+                {
+                    // Obtener el número ID para la nueva Orden de Entrega
+                    int nuevoNumeroOrdenEntrega = ObtenerProximoNumero();
+
+                    // Crear la nueva orden de entrega
+                    var nuevaOrdenEntrega = new OrdenDeEntregaEntidad
+                    {
+                        Numero = nuevoNumeroOrdenEntrega,
+                        FechaGeneracion = DateTime.Now,
+                        OrdenesPreparacion = OPseleccionadas
+                            .Select(op => op.Numero)
+                            .ToList(),
+                        EstadoOrdenDeEntrega = EstadoOrdenDeEntregaEnum.Pendiente
+                    };
+
+                    // Agregarla al almacén
+                    OrdenDeEntregaAlmacen.Agregar(nuevaOrdenEntrega);
+                }
+                public void CambioEstadoOP(OrdenDePreparacionEntidad ordenActual)
+                {
+                    var ordenEnAlmacen = OrdenDePreparacionAlmacen.OrdenesDePreparacion
+                        .FirstOrDefault(op => op.Numero == ordenActual.Numero);
+
+                    if (ordenEnAlmacen != null)
+                    {
+                        ordenEnAlmacen.Estado = EstadoOrdenDePreparacionEnum.EnDespacho;
+                    }
+                }
+
+    }
+}
+
+
+//formulario ? public void ActualizarOrdenesDisponibles()
 //{
-//    public class GenerarOrdendeEntregaModelo
-//    {
-//       public List<OrdenesDePreparacion> OrdenesPreparacionDisponibles { get; set; }
-
-//        public List<OrdenesDePreparacion> OrdenesAgregadas { get; set; }  // Lista de órdenes ya agregadas
-
-//        //Obtener las órdenes de preparación pendientes desde el almacenamiento
-//        public GenerarOrdenSeleccionModelo()
-//        {
-//            OrdenesPreparacionDisponibles = (
-//                    from orden in OrdenDePreparacionAlmacen.OrdenesDePreparacion
-//                    where orden.Estado == EstadoOrdenDePreparacionEnum.Preparada
-//                    join cliente in ClienteAlmacen.Clientes
-//                        on orden.NumeroCliente equals cliente.Numero into clientesJoin
-//                    from cliente in clientesJoin.DefaultIfEmpty()
-//                    where cliente != null  // evitamos que cliente sea null
-
-//                    join transportista in TransportistaAlmacen.Transportistas
-//                     on orden.Nombre equals transportista.Nombre into transportistasJoin
-//                    from transportista in transportistasJoin.DefaultIfEmpty()
-//                    where transportista != null  // evitamos que transportista sea null
-
-//                    select new OrdenesDePreparacion(
-//                        orden.Numero,
-//                        cliente.RazonSocial, // seguro no es null porque filtramos arriba
-//                        orden.FechaRetirar,
-//                        orden.DNITransportista
-                        
-                        
-//                    )
-//                ).ToList();
-
-//            OrdenesAgregadas = new List<OrdenesDePreparacion>();
-//        }
-
-//        public int ObtenerProximoNumero()
-//        {
-//            return OrdenDeEntregaAlmacen.OrdenesDeEntrega.Max(o => o.Numero) + 1;
-//        }
-//        public void AgregarOrdenDeEntrega(List<OrdenDePreparacionEntidad> OPseleccionadas)
-//        {
-//            // Obtener el número ID para la nueva Orden de Entrega
-//            int nuevoNumeroOrdenEntrega = ObtenerProximoNumero();
-
-//            // Crear la nueva orden de entrega
-//            var nuevaOrdenEntrega = new OrdenDeEntregaEntidad
-//            {
-//                Numero = nuevoNumeroOrdenEntrega,
-//                FechaGeneracion = DateTime.Now,
-//                OrdenesPreparacion = OPseleccionadas
-//                    .Select(op => op.Numero)
-//                    .ToList(),
-//                EstadoOrdenDeEntrega = EstadoOrdenDeEntregaEnum.Pendiente
-//            };
-
-//            // Agregarla al almacén
-//            OrdenDeEntregaAlmacen.Agregar(nuevaOrdenEntrega);
-//        }
-//    }
+//    OrdenesEnPreparacionDisponibles.Clear();
+//    OrdenesEnPreparacionDisponibles.AddRange(OrdenDePreparacionAlmacen.OrdenesDePreparacion
+//        .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.Preparada));
 //}
 
-        //public void CambioEstadoOP(OrdenDePreparacionEntidad ordenActual)
-        //{
-            
-        //    // Buscar la orden original en OrdenDePreparacionAlmacen y actualizar su estado
-        //    var ordenEnAlmacen = OrdenDePreparacionAlmacen.OrdenesDePreparacion
-        //        .FirstOrDefault(op => op.Numero == ordenActual.Numero);
-
-        //    if (ordenEnAlmacen != null)
-        //    {
-        //        ordenEnAlmacen.Estado = EstadoOrdenDePreparacionEnum.EnDespacho;
-        //    }
-
-
-           
-        //}
-        //// formulario? public void ActualizarOrdenesDisponibles()
-        //{
-        //    OrdenesEnPreparacionDisponibles.Clear();
-        //    OrdenesEnPreparacionDisponibles.AddRange(OrdenDePreparacionAlmacen.OrdenesDePreparacion
-        //        .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.Preparada));
-        //}
-
-        ////ActualizarOrdenesDisponibles();
-   
+//ActualizarOrdenesDisponibles();
 
 
 
 
-        //public void CambioEstadoOP(OrdenDePreparacionEntidad ordenActual)
-        //{
-        //    //ordenActual.Estado = EstadoOrdenDePreparacionEnum.Preparada;
-        //    //OrdenesEnPreparacionDisponibles.Remove(ordenActual); // Remueve de la lista interna
-
-        //    //ordenActual.Estado = EstadoOrdenDePreparacionEnum.Preparada;
-
-        //    // Buscar la orden original en OrdenDePreparacionAlmacen y actualizar su estado
-        //    var ordenEnAlmacen = OrdenDePreparacionAlmacen.OrdenesDePreparacion
-        //        .FirstOrDefault(op => op.Numero == ordenActual.Numero);
-
-        //    if (ordenEnAlmacen != null)
-        //    {
-        //        ordenEnAlmacen.Estado = EstadoOrdenDePreparacionEnum.EnDespacho;
-        //    }
 
 
-        //    ActualizarOrdenesDisponibles();
-        //}
 
-        //public void ActualizarOrdenesDisponibles()
-        //{
-        //    OrdenesEnPreparacionDisponibles.Clear();
-        //    OrdenesEnPreparacionDisponibles.AddRange(OrdenDePreparacionAlmacen.OrdenesDePreparacion
-        //        .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.Preparada));
-       
+//    ActualizarOrdenesDisponibles();
+//}
+
+//public void ActualizarOrdenesDisponibles()
+//{
+//    OrdenesEnPreparacionDisponibles.Clear();
+//    OrdenesEnPreparacionDisponibles.AddRange(OrdenDePreparacionAlmacen.OrdenesDePreparacion
+//        .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.Preparada));
+//}
 
 
 
