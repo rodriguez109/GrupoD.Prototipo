@@ -535,6 +535,9 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                     prioridadSeleccionada,
                     dniTransportista,
                     pallet
+                    
+
+
                 );
 
                 // Limpiar controles
