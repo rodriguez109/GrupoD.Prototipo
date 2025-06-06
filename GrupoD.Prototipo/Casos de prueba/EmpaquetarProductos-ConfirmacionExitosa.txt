@@ -31,6 +31,6 @@ Verificaciones
     "Prioridad": 0,
     "NumeroCliente": 7,
     "DNITransportista": 30201928,
-    "Estado": 
+    "Estado": 3
   },
 
