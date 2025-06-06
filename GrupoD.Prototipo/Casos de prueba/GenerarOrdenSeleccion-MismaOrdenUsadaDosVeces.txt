@@ -1,22 +1,63 @@
 ﻿Plan de Prueba: GenerarOrdenSeleccion-MismaOrdenUsadaDosVeces.txt
 
 (Empieza con el menú principal)
+
 1- Botón                                 "Generar Orden de Selección"
-2- Nombre de cliente                     ""
-3- Numero de orden de preparacion        ""
-4- Fecha de entrega                      ""
-5- Prioridad                             ""
-6- Botón                                 "Generar orden de selección"
-7- Volver al menú principal
-8- Cerrar el sistema
+2- Nombre de cliente                     "DecoCentro S.A."
+3- Botón                                 "Buscar órdenes pendientes"
+4- Ordenes pendientes visualizadas        Ninguna
+5- Volver al menú principal
+6- Cerrar el sistema
 
 Verificaciones
-11- Archivo ordenesSeleccion.json – Última entrada agregada debe ser similar a:
+7- Archivo OrdenDePreparacion.json – Ordenes de preparación en estado "Procesamiento" (no "Pendientes") asociadas al cliente DecoCentro S.A.:
 {
-  "Numero": 6,
-  "FechaGeneracion": "2025-06-06T16:30:00",
-  "EstadoOrdenDeSeleccion": 0,
-  "OrdenesPreparacion": [3]
-}
+    "Numero": 5,
+    "Pallet": true,
+    "CodigoDeposito": "D01",
+    "Detalle": [
+      {
+        "SKU": 15,
+        "Cantidad": 1
+      }
+    ],
+    "FechaRetirar": "2025-06-19T00:00:00",
+    "Prioridad": 1,
+    "NumeroCliente": 15,
+    "DNITransportista": 43242093,
+    "Estado": 1
+  },
+  {
+    "Numero": 7,
+    "Pallet": false,
+    "CodigoDeposito": "D01",
+    "Detalle": [
+      {
+        "SKU": 15,
+        "Cantidad": 2
+      }
+    ],
+    "FechaRetirar": "2025-06-10T00:00:00",
+    "Prioridad": 0,
+    "NumeroCliente": 15,
+    "DNITransportista": 43242093,
+    "Estado": 1
+  },
+  {
+    "Numero": 8,
+    "Pallet": true,
+    "CodigoDeposito": "D01",
+    "Detalle": [
+      {
+        "SKU": 15,
+        "Cantidad": 5
+      }
+    ],
+    "FechaRetirar": "2025-06-19T00:00:00",
+    "Prioridad": 0,
+    "NumeroCliente": 15,
+    "DNITransportista": 41242093,
+    "Estado": 1
+  },
 
 (Termino cerrando el programa)
