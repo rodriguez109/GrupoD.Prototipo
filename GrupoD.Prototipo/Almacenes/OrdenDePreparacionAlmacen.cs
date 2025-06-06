@@ -49,19 +49,19 @@ namespace GrupoD.Prototipo.Almacenes
         }
 
 
-        //public static void cambiarEstado(int IdOP, EstadoOrdenDePreparacionEnum estado)
-        //{
-        //    foreach (var ordEnt in ordenesDePreparacion)
-        //    {
-        //        if (ordEnt.Numero == IdOP)
-        //        {
-        //            ordEnt.Estado = estado;
-        //            Grabar();
-        //            return;
-        //        }
+        public static void cambiarEstado(int IdOP, EstadoOrdenDePreparacionEnum estado)
+        {
+            foreach (var ordEnt in ordenesDePreparacion)
+            {
+                if (ordEnt.Numero == IdOP)
+                {
+                    ordEnt.Estado = estado;
+                    Grabar();
+                    return;
+                }
 
-        //    }
-        //}
+            }
+        }
     }
 
 }

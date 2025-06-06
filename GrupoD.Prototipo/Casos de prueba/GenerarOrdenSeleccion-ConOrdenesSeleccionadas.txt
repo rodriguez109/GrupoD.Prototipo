@@ -3,9 +3,9 @@
 (Empieza con el menú principal)
 
 1- Botón                                 "Generar Orden de Selección"
-2- Nombre de cliente                     "MundoFOX S.A."
+2- Nombre de cliente                     "FullColor Pinturerias SRL"
 3- Botón                                 "Buscar órdenes pendientes"
-4- Ordenes pendientes seleccionadas      "12" y "17" DEFINIR CON DATOS JSON ESTO ES PROVISIORIO
+4- Ordenes pendientes seleccionadas      "3"
 7- Botón                                 "Agregar órdenes seleccionadas"
 8- Botón                                 "Generar orden de selección"
 9- Volver al menú principal
@@ -15,9 +15,9 @@ Verificaciones
 11- Archivo ordenesSeleccion.json – Última entrada agregada debe ser similar a:
 {
   "Numero": 6,
-  "FechaGeneracion": "2025-06-04T16:30:00",
+  "FechaGeneracion": "2025-06-06T16:30:00",
   "EstadoOrdenDeSeleccion": 0,
-  "OrdenesPreparacion": [12, 17]
+  "OrdenesPreparacion": [3]
 }
 
 (Termino cerrando el programa)

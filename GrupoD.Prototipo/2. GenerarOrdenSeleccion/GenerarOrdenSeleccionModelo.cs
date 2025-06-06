@@ -73,12 +73,16 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
             // Agregar la nueva orden a la lista de Ordenes de Seleccion
             OrdenDeSeleccionAlmacen.Agregar(nuevaOrdenSeLeccion);
 
+            // **Mostrar el número recién guardado**
+            MessageBox.Show($"Se ha creado la orden de selección exitosamente. Número de Orden: {nuevaOrdenSeLeccion.Numero}",
+                            "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
             //Cambiar estado Orden de Preparacion PENDIENTE
-            //foreach (var op in OPseleccionadas) //AGREGAR ESTE METODO
-            //{
-            //    OrdenDePreparacionAlmacen.cambiarEstado((op.NumeroOrden), EstadoOrdenDePreparacionEnum.Procesamiento);
-            //}
+            foreach (var op in OPseleccionadas) //AGREGAR ESTE METODO
+            {
+                OrdenDePreparacionAlmacen.cambiarEstado((op.NumeroOrden), EstadoOrdenDePreparacionEnum.Procesamiento);
+            }
         }
 
     }

@@ -1,6 +1,8 @@
 ﻿using GrupoD.Prototipo._2._GenerarOrdenSeleccion;
 using Prototipo.PrepararProductos.PrepararProductos;
 using System.Data;
+using System.Globalization;
+using System.Text;
 
 namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
 {
@@ -60,7 +62,7 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
             OrdenesPreparacionPendientesLST.Items.Clear();
 
             // Obtener los valores de los filtros
-            string clienteAFiltrar = NombreClienteTXT.Text.Trim();
+            string clienteAFiltrar = RemoveDiacritics(NombreClienteTXT.Text.Trim());
             string idOrdenAFiltrar = NumeroOrdenPreparacionTXT.Text.Trim();
             string prioridadAFiltrar = PrioridadCMB.SelectedItem?.ToString();
             DateTime? fechaAFiltrar = string.IsNullOrWhiteSpace(FechaEntregaDTP.CustomFormat.Trim()) ? null : FechaEntregaDTP.Value.Date;
@@ -86,11 +88,11 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
                 .Where(o => !modelo.OrdenesAgregadas.Any(ag => ag.NumeroOrden == o.NumeroOrden))
                 .ToList();
 
-            // Aplicar filtros
             if (!string.IsNullOrWhiteSpace(clienteAFiltrar))
             {
                 ordenesFiltradas = ordenesFiltradas
-                    .Where(o => o.NombreCliente.IndexOf(clienteAFiltrar, StringComparison.OrdinalIgnoreCase) >= 0)
+                    .Where(o => RemoveDiacritics(o.NombreCliente)
+                        .IndexOf(RemoveDiacritics(clienteAFiltrar), StringComparison.OrdinalIgnoreCase) >= 0)
                     .ToList();
             }
 
@@ -150,6 +152,27 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
                 OrdenesPreparacionPendientesLST.Items.Add(item);
             }
         }
+
+        private string RemoveDiacritics(string text)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+                return text;
+
+            text = text.Normalize(NormalizationForm.FormD);
+            StringBuilder sb = new StringBuilder();
+
+            foreach (char c in text)
+            {
+                UnicodeCategory uc = CharUnicodeInfo.GetUnicodeCategory(c);
+                if (uc != UnicodeCategory.NonSpacingMark)
+                {
+                    sb.Append(c);
+                }
+            }
+
+            return sb.ToString().Normalize(NormalizationForm.FormC);
+        }
+
 
         private void ReiniciarBusquedaBTN_Click(object sender, EventArgs e)
         {
@@ -311,7 +334,7 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
             modelo.AgregarOrden(ordenSeleccion.OrdenesPreparacion);
 
             // Obtener el número de la nueva orden de selección después de agregarla
-            int nuevoIdOrdenSeleccion = modelo.ObtenerProximoNumero(); // Asegúrate de que este método devuelva el número correcto
+            //int nuevoIdOrdenSeleccion = modelo.ObtenerProximoNumero(); // Asegúrate de que este método devuelva el número correcto
 
             //Eliminar las órdenes seleccionadas de la lista de disponibles
             modelo.OrdenesPreparacionDisponibles.RemoveAll(o => ordenesSeleccionadas.Any(sel => sel.NumeroOrden == o.NumeroOrden));
@@ -323,8 +346,8 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
             ActualizarListaOrdenDePreparacion();
 
             // Mostrar mensaje de confirmación con el número de orden
-            MessageBox.Show($"Se ha creado la orden de selección exitosamente. Número de Orden: {nuevoIdOrdenSeleccion}",
-                            "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show($"Se ha creado la orden de selección exitosamente. Número de Orden: {nuevoIdOrdenSeleccion}",
+            //                "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //    // Lista para almacenar las órdenes seleccionadas
             //    List<OrdenesDePreparacion> ordenesSeleccionadas = new List<OrdenesDePreparacion>();
