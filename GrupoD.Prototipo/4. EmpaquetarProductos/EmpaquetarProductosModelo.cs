@@ -11,8 +11,8 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
 {
     internal class EmpaquetarProductosModelo
     {
-        //public List<OrdenDePreparacionEntidad> OrdenesEnPreparacionDisponibles { get; } = new();
-        public List<OrdenDePreparacionEntidad> OrdenesEnPreparacionDisponibles { get; private set; } = new ();
+        public List<OrdenDePreparacionEntidad> OrdenesEnPreparacionDisponibles { get; } = new();
+        //public List<OrdenDePreparacionEntidad> OrdenesEnPreparacionDisponibles { get; private set; } = new ();
         //    public List<OrdenDePreparacionEntidad> OrdenesEnPreparacionDisponibles
         //=> OrdenDePreparacionAlmacen.OrdenesDePreparacion
         //   .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.EnPreparacion)
@@ -20,11 +20,9 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
 
         public EmpaquetarProductosModelo()
         {
-            //OrdenDePreparacionAlmacen.Leer(); // Asegura que se carguen los datos desde JSON
             ActualizarOrdenesDisponibles();   // Llena la lista interna con órdenes en preparación
         }
         
-
 
         public OrdenDePreparacionEntidad BusquedaOrdenDisponible() //EXP
         {
@@ -50,11 +48,6 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
 
         public void CambioEstadoOP(OrdenDePreparacionEntidad ordenActual)
         {
-            //ordenActual.Estado = EstadoOrdenDePreparacionEnum.Preparada;
-            //OrdenesEnPreparacionDisponibles.Remove(ordenActual); // Remueve de la lista interna
-
-            //ordenActual.Estado = EstadoOrdenDePreparacionEnum.Preparada;
-
             // Buscar la orden original en OrdenDePreparacionAlmacen y actualizar su estado
             var ordenEnAlmacen = OrdenDePreparacionAlmacen.OrdenesDePreparacion
                 .FirstOrDefault(op => op.Numero == ordenActual.Numero);
@@ -63,7 +56,6 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
             {
                 ordenEnAlmacen.Estado = EstadoOrdenDePreparacionEnum.Preparada;
             }
-
 
             ActualizarOrdenesDisponibles();
         }
@@ -75,11 +67,10 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
                 .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.EnPreparacion));
         }
 
-
-        //public Producto ObtenerProductoPorSKU(int sku)
-        //{
-        //    return ProductoAlmacen.Productos.FirstOrDefault(p => p.SKU == sku);
-        //}
+        public ProductoEntidad ObtenerProductoPorSKU(int sku)
+        {
+            return ProductoAlmacen.Productos.FirstOrDefault(p => p.SKU == sku);
+        }
     }
 }
 
