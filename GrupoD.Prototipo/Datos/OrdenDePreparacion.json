@@ -143,7 +143,7 @@
     "Prioridad": 2,
     "NumeroCliente": 8,
     "DNITransportista": 29384756,
-    "Estado": 0
+    "Estado": 4
   },
   {
     "Numero": 9,
@@ -278,7 +278,7 @@
     "FechaRetirar": "2025-06-25T08:50:00",
     "Prioridad": 0,
     "NumeroCliente": 16,
-    "DNITransportista": 21098765,
+    "DNITransportista": 22109876,
     "Estado": 4
   },
   {
@@ -314,7 +314,7 @@
     "FechaRetirar": "2025-06-27T10:10:00",
     "Prioridad": 2,
     "NumeroCliente": 18,
-    "DNITransportista": 19876543,
+    "DNITransportista": 20987654,
     "Estado": 4
   },
   {

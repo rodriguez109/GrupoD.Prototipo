@@ -49,7 +49,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
             int numero = RemitoAlmacen.NumeroRemito();
             DateTime fecha = DateTime.Today;
            
-            if (int.TryParse(dni, out int Dni))
+            if (!int.TryParse(dni, out int Dni))
             {
                 return "Debe ingresar un número de DNI valido";
             }
