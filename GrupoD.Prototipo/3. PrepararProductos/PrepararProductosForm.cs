@@ -1,66 +1,65 @@
-﻿using Prototipo.PrepararProductos.PrepararProductos;
+﻿// Archivo: PrepararProductosForm.cs
+using Prototipo.PrepararProductos.PrepararProductos; // Para IPrepararProductosView y el Presenter
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using GrupoD.Prototipo._3._PrepararProductos; // Para los POCOs
 
 namespace Prototipo.PrepararProductos
 {
     public interface IPrepararProductosView
     {
-        void MostrarOrdenes(List<OrdenSeleccion> ordenes);
-        OrdenSeleccion ObtenerOrdenSeleccionada();
-        void MostrarProductosEnListView(List<OrdenDeSeleccion> productos);
+        void MostrarOrdenes(List<OrdenesDeSeleccion> ordenes);
+        OrdenesDeSeleccion ObtenerOrdenSeleccionada();
+        void MostrarProductosEnListView(List<OrdenesDePreparacion> productos);
         void MostrarMensaje(string mensaje, string titulo);
         void MostrarAdvertencia(string mensaje, string titulo);
         void CerrarAplicacion();
-        void HabilitarBotonConfirmar(bool v);
+        void HabilitarBotonConfirmar(bool habilitar);
     }
 
     public partial class PrepararProductosForm : Form, IPrepararProductosView
     {
         private PrepararProductosPresenter _presenter;
 
-        public void HabilitarBotonConfirmar(bool habilitar)
-        {
-            btnSeleccion.Enabled = habilitar;
-        }
-
         public PrepararProductosForm()
         {
             InitializeComponent();
             _presenter = new PrepararProductosPresenter(this);
 
+            // 1) Al cargar el formulario, cargamos las OS pendientes
             this.Load += (s, e) => _presenter.CargarOrdenes();
+
+            // 2) Cuando cambia la selección en el combo, pedimos al Presenter que muestre las OP
             comboOrdenSeleccion.SelectedIndexChanged += (s, e) => _presenter.OrdenSeleccionadaCambiada();
+
+            // 3) Al hacer clic en “Confirmar”, pedimos confirmar la OS
             btnSeleccion.Click += (s, e) => _presenter.ConfirmarSeleccion();
+
+            // 4) “Cancelar” cierra el formulario
             btnCancelar.Click += (s, e) => this.Close();
+
+            // 5) Inicialmente, deshabilitamos el botón Confirmar
+            btnSeleccion.Enabled = false;
         }
 
-        public void MostrarOrdenes(List<OrdenSeleccion> ordenes)
+        public void MostrarOrdenes(List<OrdenesDeSeleccion> ordenes)
         {
-            var ordenesOrdenadas = ordenes
-                .OrderBy(o => (int)o.Prioridad)
-                .ThenBy(o => o.NombreOrden)
-                .ToList();
+            // Ordenamos por número de orden para que aparezcan en orden ascendente
+            var ordenesOrdenadas = ordenes.OrderBy(o => o.NumeroOrdenSeleccion).ToList();
 
             comboOrdenSeleccion.DataSource = null;
             comboOrdenSeleccion.DataSource = ordenesOrdenadas;
-            comboOrdenSeleccion.DisplayMember = "NombreOrdenConPrioridad";
+            comboOrdenSeleccion.DisplayMember = nameof(OrdenesDeSeleccion.NumeroOrdenSeleccion);
         }
 
-        public OrdenSeleccion ObtenerOrdenSeleccionada()
+        public OrdenesDeSeleccion ObtenerOrdenSeleccionada()
         {
-            return comboOrdenSeleccion.SelectedItem as OrdenSeleccion;
+            return comboOrdenSeleccion.SelectedItem as OrdenesDeSeleccion;
         }
 
-        public void MostrarProductosEnListView(List<OrdenDeSeleccion> productos)
+        public void MostrarProductosEnListView(List<OrdenesDePreparacion> productos)
         {
             lViewOrdenSeleccion.Items.Clear();
             foreach (var prod in productos)
@@ -85,6 +84,11 @@ namespace Prototipo.PrepararProductos
         public void CerrarAplicacion()
         {
             this.Close();
+        }
+
+        public void HabilitarBotonConfirmar(bool habilitar)
+        {
+            btnSeleccion.Enabled = habilitar;
         }
     }
 }
