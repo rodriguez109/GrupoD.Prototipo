@@ -1,0 +1,29 @@
+Plan de Prueba : PrepararProductos-ConfirmacionExitosaDescuentoStock.txt
+
+(Empieza con el menu principal) 
+
+1- Botón Preparar los productos
+2- Seleccionar orden en listado "Orden de seleccion"
+
+3- La pantalla mostrará los datos de la Orden de Selección:
+
+	Orden de seleccion: 1
+
+	Posicion - sku - Cantidad 
+			    15      1
+				4       5
+
+
+4- Botón: “Confirmar orden de selección”
+
+5- Mensaje: ¡Orden de selección # xx CONFIRMADA!
+
+6- Botón: "Cancelar"
+
+7- Cerrar el sistema
+
+Verificaciones: 
+
+8- Archivo xxxx.Json - Ultima linea:
+
+(Termina cerrando el programa) 
