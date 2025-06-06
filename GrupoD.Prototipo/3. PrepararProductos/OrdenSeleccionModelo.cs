@@ -1,6 +1,6 @@
-﻿using GrupoD.Prototipo._3._PrepararProductos;  
-using GrupoD.Prototipo.Almacenes;               
-using Prototipo.PrepararProductos.PrepararProductos;
+﻿using GrupoD.Prototipo._3._PrepararProductos;   
+using GrupoD.Prototipo.Almacenes;              
+using Prototipo.PrepararProductos;              
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,204 +11,193 @@ namespace Prototipo.PrepararProductos.PrepararProductos
     public class PrepararProductosPresenter
     {
         private readonly IPrepararProductosView _view;
-        private List<OrdenSeleccion> _ordenes = new List<OrdenSeleccion>();
+        private List<OrdenesDeSeleccion> _ordenesPendientes = new List<OrdenesDeSeleccion>();
 
         public PrepararProductosPresenter(IPrepararProductosView view)
         {
             _view = view;
         }
 
+        /// Paso 1: Carga todas las OS pendientes y las envía a la vista.
+        
         public void CargarOrdenes()
         {
-            var seleccionEntidades = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.ToList();
-            var preparacionEntidades = OrdenDePreparacionAlmacen.OrdenesDePreparacion.ToList();
+            // 1.a) Traer entidades de OS y filtrar solo “Pendiente”
+            var osEntidades = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion
+                                .Where(e => e.EstadoOrdenDeSeleccion == EstadoOrdenDeSeleccionEnum.Pendiente)
+                                .ToList();
 
-            _ordenes.Clear();
-
-            foreach (var selEnt in seleccionEntidades)
+            // 1.b) Mapear cada entidad a nuestro POCO OrdenesDeSeleccion (sin OP cargadas todavía)
+            _ordenesPendientes.Clear();
+            foreach (var osEnt in osEntidades)
             {
-                if (selEnt.EstadoOrdenDeSeleccion != EstadoOrdenDeSeleccionEnum.Pendiente)
-                    continue;
-
-                string nombre = selEnt.Numero.ToString();
-
-              
-                var prioridadesDePreparacion = selEnt.OrdenesPreparacion
-                    .Select(idPrep => preparacionEntidades
-                        .FirstOrDefault(op => op.Numero == idPrep)?.Prioridad)
-                    .Where(p => p.HasValue)
-                    .Select(p => p.Value)
-                    .ToList();
-
-                Prioridad prioVista;
-                if (prioridadesDePreparacion.Any())
+                var pocoOS = new OrdenesDeSeleccion
                 {
-                    var minPrioEnum = prioridadesDePreparacion.Min();
-                    switch (minPrioEnum)
-                    {
-                        case PrioridadEnum.Alta: prioVista = Prioridad.Alta; break;
-                        case PrioridadEnum.Media: prioVista = Prioridad.Media; break;
-                        case PrioridadEnum.Baja: prioVista = Prioridad.Baja; break;
-                        default: prioVista = Prioridad.Baja; break;
-                    }
-                }
-                else
-                {
-                    prioVista = Prioridad.Baja;
-                }
-
-                var productosVista = new List<OrdenDeSeleccion>();
-                foreach (var prepEnt in preparacionEntidades.Where(p => selEnt.OrdenesPreparacion.Contains(p.Numero)))
-                {
-                    foreach (var linea in prepEnt.Detalle)
-                    {
-                        productosVista.Add(new OrdenDeSeleccion
-                        {
-                            Posicion = linea.SKU.ToString(),
-                            SKUProducto = linea.SKU.ToString(),
-                            Cantidad = linea.Cantidad
-                        });
-                    }
-                }
-
-                _ordenes.Add(new OrdenSeleccion
-                {
-                    NombreOrden = nombre,
-                    Estado = EstadoOrdenSeleccion.Pendiente,
-                    Prioridad = prioVista,
-                    Productos = productosVista
-                });
+                    NumeroOrdenSeleccion = osEnt.Numero,
+                    FechaGeneracion = osEnt.FechaGeneracion,
+                    EstadoOrdenDeSeleccion = osEnt.EstadoOrdenDeSeleccion.ToString(),
+                    OrdenesPreparacion = new List<OrdenesDePreparacion>() // se llenará al seleccionar
+                };
+                _ordenesPendientes.Add(pocoOS);
             }
 
-            ActualizarListaOrdenesSegunPrioridad();
+            // 1.c) Mandar la lista a la vista
+            _view.MostrarOrdenes(_ordenesPendientes);
         }
 
-        private void ActualizarListaOrdenesSegunPrioridad()
-        {
-            var ordenesPendientes = _ordenes
-                .Where(o => o.Estado == EstadoOrdenSeleccion.Pendiente)
-                .ToList();
-
-            if (!ordenesPendientes.Any())
-            {
-                // Ya no cerramos el form. Simplemente le avisamos al usuario:
-                MessageBox.Show(
-                    "No hay órdenes pendientes en este momento.",
-                    "Información",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
-
-                // Limpiamos el combo (si lo estuvieras poblando antes)
-                _view.MostrarOrdenes(new List<OrdenSeleccion>());
-                return;
-            }
-
-            var ordenesParaMostrar = ordenesPendientes
-                .OrderBy(o => (int)o.Prioridad)
-                .ThenBy(o => o.NombreOrden)
-                .ToList();
-
-            _view.MostrarOrdenes(ordenesParaMostrar);
-        }
-
-
+        
+        /// Paso 2, 3, 4: Cuando el usuario elige una OS en el combo.
+        
         public void OrdenSeleccionadaCambiada()
         {
-            var ordenSeleccionada = _view.ObtenerOrdenSeleccionada();
-            if (ordenSeleccionada == null)
+            // 1) Obtener la POCO de la OS seleccionada
+            var osPOCO = _view.ObtenerOrdenSeleccionada();
+            if (osPOCO == null)
             {
-                _view.MostrarProductosEnListView(new List<OrdenDeSeleccion>());
+                _view.MostrarProductosEnListView(new List<OrdenesDePreparacion>());
                 _view.HabilitarBotonConfirmar(false);
                 return;
             }
 
-            _view.MostrarProductosEnListView(ordenSeleccionada.Productos);
+            int idOS = osPOCO.NumeroOrdenSeleccion;
 
-            bool hayMayorPrio = _ordenes
-                .Any(o => o.Estado == EstadoOrdenSeleccion.Pendiente
-                       && (int)o.Prioridad < (int)ordenSeleccionada.Prioridad);
-
-            if (hayMayorPrio)
+            // 2) Recuperar la entidad completa de esta OS para acceder a su lista de IDs de OP
+            var osEntidad = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion
+                              .FirstOrDefault(o => o.Numero == idOS);
+            if (osEntidad == null)
             {
+                _view.MostrarProductosEnListView(new List<OrdenesDePreparacion>());
                 _view.HabilitarBotonConfirmar(false);
-                _view.MostrarMensaje(
-                    "No puede confirmar esta orden porque existen órdenes con prioridad más alta pendientes.",
-                    "Confirmación no permitida");
+                return;
             }
-            else
+
+            // 3) Filtrar las OP que estén en “Pendiente” (0)
+            var opEntidades = OrdenDePreparacionAlmacen.OrdenesDePreparacion
+                                  .Where(op =>
+                                      osEntidad.OrdenesPreparacion.Contains(op.Numero) &&
+                                      op.Estado == EstadoOrdenDePreparacionEnum.Pendiente)
+                                  .ToList();
+
+            // 4) Mapear cada línea de detalle de esas OP a tu POCO OrdenesDePreparacion,
+            //    buscando la POSICIÓN real en ProductoAlmacen según el SKU.
+            var listaPOCO_OP = new List<OrdenesDePreparacion>();
+            foreach (var opEnt in opEntidades)
             {
-                _view.HabilitarBotonConfirmar(true);
+                foreach (var linea in opEnt.Detalle)
+                {
+                    // 4.a) Intentar encontrar el ProductoEntidad correspondiente a este SKU
+                    var prodEnt = ProductoAlmacen.Productos
+                                    .FirstOrDefault(p => p.SKU == linea.SKU);
+
+                    string posicion;
+                    if (prodEnt != null && prodEnt.Posiciones != null && prodEnt.Posiciones.Count > 0)
+                    {
+                        // Tomamos la primera posición disponible.
+                        posicion = prodEnt.Posiciones[0].Codigo;
+                    }
+                    else
+                    {
+                        // Si por alguna razón no existe esa entidad o no tiene posiciones, dejamos un placeholder:
+                        posicion = "(sin_posición)";
+                    }
+
+                    listaPOCO_OP.Add(new OrdenesDePreparacion(
+                        opEnt.Numero,            // Id de la orden de preparación
+                        posicion,                // Ahora sí la ubicación real, p.ej. "01-10-1"
+                        linea.SKU.ToString(),    // SKUProducto (string)
+                        linea.Cantidad           // Cantidad
+                    ));
+                }
             }
+
+            // 5) Asignar la lista de OP al POCO OS (opcional)
+            osPOCO.OrdenesPreparacion = listaPOCO_OP;
+
+            // 6) Mostrar en el ListView
+            _view.MostrarProductosEnListView(listaPOCO_OP);
+
+            // 7) Habilitar o deshabilitar el botón Confirmar
+            _view.HabilitarBotonConfirmar(listaPOCO_OP.Any());
         }
 
+        
+        /// Paso 5 y 6: Cuando el usuario hace clic en “Confirmar”:
+        ///   - Cambia estado de OS a “Confirmada”
+        ///   - Cambia estado de cada OP de “Procesamiento” a “EnPreparacion”
+        ///   - restarStock
+        ///   - Graba todos los cambios en JSON
+        ///   - Refresca la lista de OS y limpia ListView
+        
         public void ConfirmarSeleccion()
         {
-            var ordenVista = _view.ObtenerOrdenSeleccionada();
-            if (ordenVista == null)
+            // 5.1) Tomar la POCO OS seleccionada
+            var osPOCO = _view.ObtenerOrdenSeleccionada();
+            if (osPOCO == null)
             {
-                _view.MostrarAdvertencia(
-                    "Por favor, seleccione una orden válida antes de confirmar.",
-                    "Advertencia");
+                _view.MostrarAdvertencia("Debe seleccionar una orden antes de confirmar.", "Atención");
                 return;
             }
 
-            var prioridadesPendientes = _ordenes
-                .Where(o => o.Estado == EstadoOrdenSeleccion.Pendiente)
-                .Select(o => (int)o.Prioridad)
-                .ToList();
+            int idOS = osPOCO.NumeroOrdenSeleccion;
 
-            if (!prioridadesPendientes.Any())
-            {
-                _view.MostrarAdvertencia("No hay órdenes pendientes para confirmar.", "Advertencia");
-                return;
-            }
-
-            int prioMinima = prioridadesPendientes.Min();
-            if ((int)ordenVista.Prioridad > prioMinima)
-            {
-                _view.MostrarAdvertencia(
-                    $"Solo puede confirmar órdenes con prioridad {(Prioridad)prioMinima}.",
-                    "Prioridad incorrecta");
-                return;
-            }
-
-            // 1) Cambio estado de la orden de selección (usa “Confirmada” en lugar de “Seleccionada”):
-            if (!int.TryParse(ordenVista.NombreOrden, out int idSel))
-            {
-                _view.MostrarAdvertencia("ID de orden inválido al confirmar.", "Error interno");
-                return;
-            }
-            OrdenDeSeleccionAlmacen.cambiarEstadoOS(idSel, EstadoOrdenDeSeleccionEnum.Confirmada);
+            // 5.2) Cambiar estado de la OS en el almacén JSON a "Confirmada"
+            OrdenDeSeleccionAlmacen.cambiarEstadoOS(idOS, EstadoOrdenDeSeleccionEnum.Confirmada);
             OrdenDeSeleccionAlmacen.Grabar();
 
-            // 2) Cambio estado de cada orden de preparación asociada a “EnPreparacion”:
-            var selEntOriginal = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion
-                .FirstOrDefault(o => o.Numero == idSel);
-
-            if (selEntOriginal != null)
+            // 5.3) Recuperar nuevamente la entidad OS para obtener su lista de IDs de OP
+            var osEntidad = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion
+                              .FirstOrDefault(o => o.Numero == idOS);
+            if (osEntidad != null)
             {
-                var todasPrep = OrdenDePreparacionAlmacen.OrdenesDePreparacion.ToList();
-                foreach (var idPrep in selEntOriginal.OrdenesPreparacion)
+                // 5.4) Para cada ID de OP en osEntidad.OrdenesPreparacion:
+                var todasOpEntidades = OrdenDePreparacionAlmacen.OrdenesDePreparacion;
+                foreach (var idOp in osEntidad.OrdenesPreparacion)
                 {
-                    var prepEnt = todasPrep.FirstOrDefault(p => p.Numero == idPrep);
-                    if (prepEnt != null)
+                    var opEnt = todasOpEntidades.FirstOrDefault(o => o.Numero == idOp);
+                    if (opEnt != null && opEnt.Estado == EstadoOrdenDePreparacionEnum.Procesamiento)
                     {
-                        // Uso “EnPreparacion” porque es el nombre exacto que sí existe en tu enum:
-                        prepEnt.Estado = EstadoOrdenDePreparacionEnum.EnPreparacion;
+                        //// 5.4.a) Reducir stock en ProductoAlmacen (comentado porque no existe restarStock)
+                        //foreach (var linea in opEnt.Detalle)
+                        //{
+                        //    ProductoAlmacen.restarStock(linea.SKU, linea.Cantidad);
+                        //}
+
+                        // 5.4.b) Cambiar estado de OP a "EnPreparacion"
+                        OrdenDePreparacionAlmacen.cambiarEstado(idOp, EstadoOrdenDePreparacionEnum.EnPreparacion);
                     }
                 }
+
+                // 5.5) Grabar cambios en las OP
                 OrdenDePreparacionAlmacen.Grabar();
+
+                // 5.6) Si hubiera modificado stock, se haría ProductoAlmacen.Grabar();
+                //ProductoAlmacen.Grabar();
             }
 
-            // 3) Actualizo en memoria y notifico a la vista:
-            ordenVista.Estado = EstadoOrdenSeleccion.EnPreparacion;
-            _view.MostrarMensaje(
-                $"La orden n° {ordenVista.NombreOrden} cambió a estado \"En Preparación\" ",
-                "¡Orden Confirmada!");
+            // 5.7) Mensaje de confirmación
+            _view.MostrarMensaje($"¡Orden de selección #{idOS} CONFIRMADA!", "Éxito");
 
-            _ordenes.Remove(ordenVista);
-            ActualizarListaOrdenesSegunPrioridad();
+            // 5.8) Quitar esa POCO OS de la lista interna y recargar combo
+            _ordenesPendientes.RemoveAll(o => o.NumeroOrdenSeleccion == idOS);
+            CargarOrdenes();
+
+            // 5.9) Limpiar ListView y deshabilitar el botón Confirmar
+            _view.MostrarProductosEnListView(new List<OrdenesDePreparacion>());
+            _view.HabilitarBotonConfirmar(false);
         }
     }
 }
+
+// PANTALLA:
+// 1: Cargar en memoria las órdenes de selección disponibles en el almacén [OS Almacen], Filtrar y devolver aquellas órdenes de selección que están en estado “Pendiente”.
+// 2: El usuario selecciona una OS (Pendiente) del CmBox e invoca (por id) las ordenes de preparacion [Almacen OP] asociadas a esta.
+// 3: El ListView muestra los productos de las órdenes de preparación asociadas a la OS seleccionada (SKUproducto y cantidad necesarios) y posición de depósito (ProductoAlmacen -> JsonProducto) y lo deserializa en una colección de objetos ProductoEntidad. 
+// NOTA: Si al elegir la Orden de Selección no hay ninguna Orden de Preparación en estado “Pendiente”, el listado queda vacío y el botón de “Confirmar” aparece deshabilitado, porque no hay nada que procesar.
+// 4: Al confirmar orden Seleccion: Cambio estado de "pendiente" a "confirmada" Y orden de preparacion de "en proceamiento" a "en preparacion" --> Ambos con boton "confirmar"
+// 5: Y Modifica cambio de stock --> Impacta en ProductoAlmacen -> Datos\Producto.json
+
+//JSon = OrdenDePreparacion, OrdenDeSeleccion y Productos 
+//Almacenes: OrdenDePreparacionAlmacen, OrdenDeSeleccionAlmacen y ProductoAlmacen
+//Entidad: OrdenDeSeleccionEntidad, OrdenDePreparacionEntidad y ProductoEntidad
+
+//Resumen: La Pantalla permite ver rápidamente qué productos y su ubicaciones se requieren (buscar) para cumplir una Orden de Selección, y al confirmar ese trabajo se actualizan automáticamente los estados de selección y preparación, así como el stock disponible en el depósito.
