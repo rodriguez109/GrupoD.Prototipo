@@ -344,54 +344,6 @@ namespace GrupoD.Prototipo.CDU2._GenerarOrdenSeleccion
 
             //Actualizar la lista de órdenes disponibles
             ActualizarListaOrdenDePreparacion();
-
-            // Mostrar mensaje de confirmación con el número de orden
-            //MessageBox.Show($"Se ha creado la orden de selección exitosamente. Número de Orden: {nuevoIdOrdenSeleccion}",
-            //                "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //    // Lista para almacenar las órdenes seleccionadas
-            //    List<OrdenesDePreparacion> ordenesSeleccionadas = new List<OrdenesDePreparacion>();
-
-            //    // Obtener las órdenes directamente desde la lista de seleccionadas
-            //    foreach (ListViewItem item in OrdenesPreparacionPendientesSeleccionadasLST.Items)
-            //    {
-            //        int numeroOrden = int.Parse(item.Text);
-
-            //        var orden = modelo.OrdenesPreparacionDisponibles
-            //            .FirstOrDefault(o => o.NumeroOrden == numeroOrden);
-
-            //        if (orden != null)
-            //        {
-            //            ordenesSeleccionadas.Add(orden);
-            //        }
-            //    }
-
-            //    //Obtener numero
-            //    var numeroNumeroOrdenSeleccion = modelo.ObtenerProximoNumero();
-
-            //    // Crear nueva orden de selección con todas las órdenes seleccionadas
-            //    var nuevaOrdenSeleccion = new OrdenesDeSeleccion(
-            //        numeroNumeroOrdenSeleccion,
-            //        ordenesSeleccionadas,
-            //        DateTime.Now,
-            //        "Pendiente"
-            //    );
-
-            //    // Agregar la nueva orden de selección a la lista
-            //    modelo.AgregarOrden(nuevaOrdenSeleccion);
-
-            //    // Eliminar las órdenes seleccionadas de la lista de disponibles
-            //    modelo.OrdenesPreparacionDisponibles.RemoveAll(o => ordenesSeleccionadas.Any(sel => sel.NumeroOrden == o.NumeroOrden));
-
-
-            //    // Limpiar la lista de órdenes seleccionadas
-            //    OrdenesPreparacionPendientesSeleccionadasLST.Items.Clear();
-
-            //    // Actualizar la lista de órdenes disponibles
-            //    ActualizarListaOrdenDePreparacion();
-
-            //    // Mensaje de éxito
-            //    MessageBox.Show($"Orden de selección número {numeroNumeroOrdenSeleccion} generada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void AgregarTodoBTN_Click(object sender, EventArgs e)

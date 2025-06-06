@@ -12,12 +12,34 @@
 10- Cerrar el sistema
 
 Verificaciones
-11- Archivo ordenesSeleccion.json – Última entrada agregada debe ser similar a:
+11- Archivo OrdenDeSeleccion.json – Última entrada agregada debe ser similar a:
 {
   "Numero": 6,
   "FechaGeneracion": "2025-06-06T16:30:00",
   "EstadoOrdenDeSeleccion": 0,
   "OrdenesPreparacion": [3]
 }
+12- Archivo OrdenDePreparacion.json – Modificación debe ser similar a:
+    "Numero": 3,
+    "Pallet": true,
+    "CodigoDeposito": "D01",
+    "Detalle": [
+      {
+        "SKU": 12345,
+        "NombreProducto": "Caja de tornillos",
+        "Cantidad": 50
+      },
+      {
+        "SKU": 67890,
+        "NombreProducto": "Tubos PVC",
+        "Cantidad": 20
+      }
+    ],
+    "FechaRetirar": "2025-06-05T10:00:00",
+    "Prioridad": 0,
+    "NumeroCliente": 4,
+    "DNITransportista": 35876982,
+    "Estado": 1
+  }
 
 (Termino cerrando el programa)
