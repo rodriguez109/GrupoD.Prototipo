@@ -51,7 +51,7 @@
             listView1LST.TabIndex = 1;
             listView1LST.UseCompatibleStateImageBehavior = false;
             listView1LST.View = View.Details;
-            listView1LST.SelectedIndexChanged += listView1_SelectedIndexChanged;
+           // listView1LST.SelectedIndexChanged += listView1_SelectedIndexChanged;
             // 
             // columnHeader0
             // 
@@ -108,7 +108,8 @@
             Controls.Add(groupBox1);
             Name = "GenerarOrdendeEntregaForm";
             Text = "Generar Orden de Entrega";
-            Load += GenerarOrdendeEntregaForm_Load_1;
+            //Load += GenerarOrdendeEntregaForm_Load_1;
+            Load += GenerarOrdendeEntregaForm_Load;
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);
         }
