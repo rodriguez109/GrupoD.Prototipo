@@ -3,7 +3,7 @@
 (Empieza con el menú principal)
 
 1- Botón                                 "Generar Orden de Selección"
-2- Nombre de cliente                     "MundoFOX S.A."
+2- Nombre de cliente                     "FullColor Pinturerias SRL"
 3- Botón                                 "Buscar órdenes pendientes"
 4- Ordenes pendientes seleccionadas      "12" y "17" DEFINIR CON DATOS JSON ESTO ES PROVISIORIO
 7- Botón                                 "Agregar órdenes seleccionadas"
