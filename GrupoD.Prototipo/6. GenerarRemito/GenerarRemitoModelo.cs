@@ -17,14 +17,14 @@ namespace GrupoD.Prototipo._6._GenerarRemito
         public GenerarRemitoModelo()
         {
 
-            foreach (var OrdenPreparacionEntidad in OrdenDePreparacionAlmacen.OrdenesDePreparacion)
+            foreach (var OrdenPreparacionEntidad in OrdenDePreparacionAlmacen.OrdenesDePreparacion.Where(o => o.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual))
             {
                 OrdenesPreparacion.Add(new OrdenPreparacion(OrdenPreparacionEntidad.Numero,
                 OrdenPreparacionEntidad.DNITransportista, OrdenPreparacionEntidad.Estado));
 
             }
-
         }
+
         public List<OrdenPreparacion> ObtenerOrdenesPorDNI(string dni)
         {
             if (!int.TryParse(dni, out int dniNumerico))

@@ -527,15 +527,16 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 }
 
                 // Llamar al método del modelo para crear la orden y agregarla al almacen
-                //modelo.CrearOrdenesDesdeItems(
-                //    ordenPreparacionLST.Items.Cast<ListViewItem>(),
-                //    numeroCliente,
-                //    razonSocialCliente,
-                //    fechaRetirar,
-                //    prioridadSeleccionada,
-                //    dniTransportista,
-                //    pallet
-                //);
+                
+                modelo.CrearOrdenesDesdeItems(
+                    ordenPreparacionLST.Items.Cast<ListViewItem>(),
+                    numeroCliente,
+                    razonSocialCliente,
+                    fechaRetirar,
+                    prioridadSeleccionada,
+                    dniTransportista,
+                    pallet
+                );
 
                 // Limpiar controles
                 numeroClienteTXT.Clear();

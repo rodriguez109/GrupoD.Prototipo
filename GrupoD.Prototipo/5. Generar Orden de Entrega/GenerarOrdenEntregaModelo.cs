@@ -29,7 +29,7 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
         private void BuscarOrdenesPreparadas()
         {
             ordenesPreparadas = OrdenDePreparacionAlmacen.OrdenesDePreparacion
-                .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.Preparada)
+                .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.Preparada && op.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual)
                 .ToList();
         }
 

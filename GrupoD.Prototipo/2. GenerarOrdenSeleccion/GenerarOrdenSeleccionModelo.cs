@@ -23,7 +23,7 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
         {
             OrdenesPreparacionDisponibles = (
                     from orden in OrdenDePreparacionAlmacen.OrdenesDePreparacion
-                    where orden.Estado == EstadoOrdenDePreparacionEnum.Pendiente
+                    where orden.Estado == EstadoOrdenDePreparacionEnum.Pendiente && orden.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual
                     join cliente in ClienteAlmacen.Clientes
                         on orden.NumeroCliente equals cliente.Numero into clientesJoin
                     from cliente in clientesJoin.DefaultIfEmpty()

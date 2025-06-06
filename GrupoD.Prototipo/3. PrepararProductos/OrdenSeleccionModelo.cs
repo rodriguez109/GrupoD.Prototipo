@@ -1,10 +1,11 @@
-﻿using GrupoD.Prototipo._3._PrepararProductos;   
-using GrupoD.Prototipo.Almacenes;              
-using Prototipo.PrepararProductos;              
+﻿using GrupoD.Prototipo._3._PrepararProductos;
+using GrupoD.Prototipo.Almacenes;
+using Prototipo.PrepararProductos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+
 
 namespace Prototipo.PrepararProductos.PrepararProductos
 {
@@ -17,14 +18,16 @@ namespace Prototipo.PrepararProductos.PrepararProductos
         {
             _view = view;
         }
-
+      
         /// Paso 1: Carga todas las OS pendientes y las envía a la vista.
-        
+
         public void CargarOrdenes()
         {
-            // 1.a) Traer entidades de OS y filtrar solo “Pendiente”
+            // 1.a) Traer entidades de OS y filtrar solo “Pendiente” que tengan una orden de preparacion del almacen actual.
             var osEntidades = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion
-                                .Where(e => e.EstadoOrdenDeSeleccion == EstadoOrdenDeSeleccionEnum.Pendiente)
+                                .Where(e => e.EstadoOrdenDeSeleccion == EstadoOrdenDeSeleccionEnum.Pendiente &&
+                                            e.OrdenesPreparacion.Any(o => 
+                                                    OrdenDePreparacionAlmacen.OrdenesDePreparacion.First(op => op.Numero == o).CodigoDeposito == DepositoAlmacen.CodigoDepositoActual))
                                 .ToList();
 
             // 1.b) Mapear cada entidad a nuestro POCO OrdenesDeSeleccion (sin OP cargadas todavía)
@@ -45,9 +48,9 @@ namespace Prototipo.PrepararProductos.PrepararProductos
             _view.MostrarOrdenes(_ordenesPendientes);
         }
 
-        
+
         /// Paso 2, 3, 4: Cuando el usuario elige una OS en el combo.
-        
+
         public void OrdenSeleccionadaCambiada()
         {
             // 1) Obtener la POCO de la OS seleccionada
@@ -120,14 +123,14 @@ namespace Prototipo.PrepararProductos.PrepararProductos
             _view.HabilitarBotonConfirmar(listaPOCO_OP.Any());
         }
 
-        
+
         /// Paso 5 y 6: Cuando el usuario hace clic en “Confirmar”:
         ///   - Cambia estado de OS a “Confirmada”
         ///   - Cambia estado de cada OP de “Procesamiento” a “EnPreparacion”
         ///   - restarStock
         ///   - Graba todos los cambios en JSON
         ///   - Refresca la lista de OS y limpia ListView
-        
+
         public void ConfirmarSeleccion()
         {
             // 5.1) Tomar la POCO OS seleccionada
@@ -142,7 +145,6 @@ namespace Prototipo.PrepararProductos.PrepararProductos
 
             // 5.2) Cambiar estado de la OS en el almacén JSON a "Confirmada"
             OrdenDeSeleccionAlmacen.cambiarEstadoOS(idOS, EstadoOrdenDeSeleccionEnum.Confirmada);
-            OrdenDeSeleccionAlmacen.Grabar();
 
             // 5.3) Recuperar nuevamente la entidad OS para obtener su lista de IDs de OP
             var osEntidad = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion
@@ -166,9 +168,6 @@ namespace Prototipo.PrepararProductos.PrepararProductos
                         OrdenDePreparacionAlmacen.cambiarEstado(idOp, EstadoOrdenDePreparacionEnum.EnPreparacion);
                     }
                 }
-
-                // 5.5) Grabar cambios en las OP
-                OrdenDePreparacionAlmacen.Grabar();
 
                 // 5.6) Si hubiera modificado stock, se haría ProductoAlmacen.Grabar();
                 //ProductoAlmacen.Grabar();

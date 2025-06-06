@@ -138,7 +138,9 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
 
 
-            Productos = ProductoAlmacen.Productos.Select(p => new Producto(p.SKU, p.Nombre, p.Cantidad, ConvertirPosicionesAString(p.Posiciones), p.NumeroCliente)).ToList();
+            Productos = ProductoAlmacen.Productos
+                            .Where(p => p.Posiciones.Any(p => p.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual))
+                            .Select(p => new Producto(p.SKU, p.Nombre, p.CantidadEnDeposito(DepositoAlmacen.CodigoDepositoActual), ConvertirPosicionesAString(p.Posiciones), p.NumeroCliente)).ToList();
 
             Transportistas = TransportistaAlmacen.Transportistas.Select(t => new Transportista(t.DNI, t.Nombre)).ToList();
 
@@ -150,9 +152,16 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 Clientes.Add(cliente);
             }
 
-
-
-
+            //Ajustar las cantidades de los productos restando lo que esté reservado por ordenes de preparación pendientes
+            foreach (var producto in Productos)
+            {
+                producto.Cantidad -= OrdenDePreparacionAlmacen.OrdenesDePreparacion
+                                                              .Where(o => o.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual)
+                                                              .Where(o => o.Estado == EstadoOrdenDePreparacionEnum.Pendiente || o.Estado == EstadoOrdenDePreparacionEnum.Procesamiento)                                                              
+                                                              .SelectMany(o => o.Detalle)
+                                                              .Where(o => o.SKU == producto.SKUProducto)
+                                                              .Sum(o => o.Cantidad);
+            }
 
             //Productos = ProductoAlmacen.Productos.Select(p => new Producto(p.SKU, p.Nombre, p.Cantidad, p.Posiciones, p.NumeroCliente)).tolist();
             ////productos = new list<producto>(listaproductos);
@@ -203,8 +212,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             DateTime fechaRetirar,
             string prioridadSeleccionada,
             int dniTransportista,
-            bool pallet,
-            string deposito)
+            bool pallet)
         {
             if (items == null || !items.Any())
                 throw new Exception("Debe agregar productos a la Orden de Preparación antes de generarla.");
@@ -233,9 +241,11 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                     MessageBox.Show($"Producto no encontrado (SKU: {sku}).");
                     continue; // O puedes lanzar una excepción
                 }
-                if (productoStock.Cantidad < cantidad)
+
+                int cantidadEnDepositoActual = productoStock.CantidadEnDeposito(DepositoAlmacen.CodigoDepositoActual);
+                if (cantidadEnDepositoActual < cantidad)
                 {
-                    MessageBox.Show($"Stock insuficiente para el producto {productoStock.Nombre}. Stock disponible: {productoStock.Cantidad}");
+                    MessageBox.Show($"Stock insuficiente para el producto {productoStock.Nombre}. Stock disponible: {cantidadEnDepositoActual}");
                     continue; // Se impide la creación de la orden para este producto
                 }
 
@@ -257,7 +267,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 {
                     Numero = numeroOrdenLocal,
                     Pallet = pallet,
-                    CodigoDeposito = deposito,
+                    CodigoDeposito = DepositoAlmacen.CodigoDepositoActual,
                     FechaRetirar = fechaRetirar,
                     Prioridad = prioridadSeleccionada switch
                     {
@@ -300,11 +310,8 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                     Cantidad = cantidad
                 };
                 orden.Detalle.Add(detalle);
-                    
-                OrdenDePreparacionAlmacen.Agregar(orden);
 
-                //Actualiza stock
-                ActualizarStock(orden);
+                OrdenDePreparacionAlmacen.Agregar(orden);
 
                 //numeroOrdenLocal++; // Incrementa para cada producto si buscas que cada ítem genere una orden única
 
@@ -335,22 +342,6 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
         public bool ValidarDNITransportista(int dni)
         {
             return Transportistas.Any(t => t.DNITransportista == dni);
-        }
-
-        private void ActualizarStock(OrdenDePreparacionEntidad orden)
-        {
-            // Se asume que ProductoAlmacen.Productos ya fue cargado en memoria
-            foreach (var detalle in orden.Detalle)
-            {
-                // Buscar el producto en la lista por SKU
-                var producto = ProductoAlmacen.Productos.FirstOrDefault(p => p.SKU == detalle.SKU);
-                if (producto != null)
-                {
-                    // Resta la cantidad indicada en el detalle; ya se verificó previamente que la cantidad es válida
-                    producto.Cantidad -= detalle.Cantidad;
-                }
-            }
-            GuardarProductos();
         }
 
         private void GuardarProductos()

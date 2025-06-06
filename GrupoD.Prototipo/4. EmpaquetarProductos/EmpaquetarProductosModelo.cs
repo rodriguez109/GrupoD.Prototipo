@@ -64,7 +64,8 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
         {
             OrdenesEnPreparacionDisponibles.Clear();
             OrdenesEnPreparacionDisponibles.AddRange(OrdenDePreparacionAlmacen.OrdenesDePreparacion
-                .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.EnPreparacion));
+                .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.EnPreparacion && op.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual)
+                .OrderBy(o => o.FechaRetirar));
         }
 
         public ProductoEntidad ObtenerProductoPorSKU(int sku)
