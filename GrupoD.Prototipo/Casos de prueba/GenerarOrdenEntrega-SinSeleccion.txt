@@ -1,2 +1,26 @@
-﻿Plan de Prueba: Generar Orden de Entrega - Sin Selección de ordenes
+﻿Plan de Prueba: GenerarOrdenEntrega-SinSeleccion.txt
 
+(Empieza con el menú principal)
+1- Botón                                 "Generar Orden de Entrega"
+2- Nombre de cliente                     ""
+3- Numero de orden de preparacion        ""
+4- Fecha de entrega                      ""
+5- Prioridad                             ""
+6- Botón                                 "Confirmar Orden de Entrega"
+7- Mensaje							     "Error: Debe seleccionar al menos una orden para continuar."
+8- Botón							     "Aceptar"
+7- Volver al menú principal
+8- Cerrar el sistema
+
+Verificaciones
+11- AArchivo Archivo OrdenDeEntrega.json -  Última entrada agregada debe ser similar a:
+
+  {
+    "Numero": 5,
+    "OrdenesPreparacion": [ 2, 10, 18 ],
+    "FechaGeneracion": "2025-06-05T14:00:00",
+    "EstadoOrdenDeEntrega": 0
+  }
+
+
+(Termino cerrando el programa)

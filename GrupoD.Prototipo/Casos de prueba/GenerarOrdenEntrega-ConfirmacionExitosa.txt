@@ -1,21 +1,21 @@
-﻿Plan de Prueba: Generar Orden de Entrega - Confirmación Exitosa.
+﻿Plan de Prueba: GenerarOrdenEntrega-ConfirmacionExitosa.txt
 
 (Empieza con el Menú Principal)
 
-1- Botón							"Generar Orden de Entrega"
-2- Orden de preparacion				 #2
+1- Botón							 "Generar Orden de Entrega"
+2- Orden de preparacion				  #2
 3- Verificar que listViewProductos muestra los productos correspondientes a la orden.							"Buscar órdenes"
-5- Razón Social Cliente				 "EasyTech Distribuciones S.A."
-6- Fecha Entrega                     "2025-06-28T15:00:00" //chequeo formato
-7- DNI Transportista                  "50242093"
-8- Razón Social Transportista           "Esteban Torres"
+5- Razón Social Cliente				 "FullOffice S.A."
+6- Fecha Entrega                     "11/06/2025"
+7- DNI Transportista                 "42242093"
+8- Razón Social Transportista        "Luis Navarro"
 9- Botón							 "Confirmar Orden de Entrega"
-10- Mensaje										"Éxito: La orden seleccionada ha sido confirmado."
+10- Mensaje							 "Éxito: La orden seleccionada ha sido confirmado."
 11- Botón							 "Aceptar"
-12- Cerrar el sistema
+12- Volver al menú principal
 
 Verificaciones:
-13- Archivo Archivo OrdenDeEntrega.json - Ultima linea: 
+13- Archivo Archivo OrdenDeEntrega.json -  Última entrada agregada debe ser similar a:
 
  {
     "Numero": 6,
@@ -24,24 +24,22 @@ Verificaciones:
     "EstadoOrdenDeEntrega": 0
   }
 
-14- Archivo OrdenDePreparacion.json - orden nro 2:
-    
-  {// ojo num 2 pero aparece el 3
+14- Archivo ordenDePreparacion.json – la orden de preparacion numero 2 deberia aparecer con el estado actualizado ("Estado"" = 4):
+  {
     "Numero": 2,
-    "Pallet": false,
-    "CodigoDeposito": "D02",
+    "Pallet": true,
+    "CodigoDeposito": "D04",
     "Detalle": [
       {
-        "SKU": 3,
+        "SKU": 17,
         "Cantidad": 2
       }
     ],
-    "FechaRetirar": "2025-06-11T15:30:00",
-    "Prioridad": 0,
-    "NumeroCliente": 3,
-    "DNITransportista": 31242093,
+    "FechaRetirar": "2025-06-11T00:00:00",
+    "Prioridad": 2,
+    "NumeroCliente": 17,
+    "DNITransportista": 42242093,
     "Estado": 4
-  }
-  
+  },
 
 (Termino cerrando el programa)

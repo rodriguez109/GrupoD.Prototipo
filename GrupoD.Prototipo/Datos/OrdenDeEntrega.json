@@ -1,19 +1,19 @@
 [
   {
     "Numero": 1,
-    "OrdenesPreparacion": [ 5, 12 ],
+    "OrdenesPreparacion": [ 5 ],
     "FechaGeneracion": "2025-06-01T10:00:00",
     "EstadoOrdenDeEntrega": 0
   },
   {
     "Numero": 2,
-    "OrdenesPreparacion": [ 3, 17, 9 ],
+    "OrdenesPreparacion": [ 3, 9 ],
     "FechaGeneracion": "2025-06-02T12:00:00",
     "EstadoOrdenDeEntrega": 0
   },
   {
     "Numero": 3,
-    "OrdenesPreparacion": [ 1, 20 ],
+    "OrdenesPreparacion": [ 1],
     "FechaGeneracion": "2025-06-03T15:00:00",
     "EstadoOrdenDeEntrega": 0
   },
