@@ -13,7 +13,10 @@ namespace GrupoD.Prototipo.Almacenes
         private static List<DepositoEntidad> depositos = new List<DepositoEntidad>();
         //Es una lista privada donde se guardan todos los depositos que cargues. Solo la clase DepositoAlmacen puede modificarla directamente.
 
-        public static string CodigoDepositoActual { get; set; } = "D01"; //TODO: sacar el "D01" cuando se pueda seleccionar desde el menu principal.
+        //public static string CodigoDepositoActual { get; set; } = "D01"; //TODO: sacar el "D01" cuando se pueda seleccionar desde el menu principal.
+
+        //Asignando correctamente el código del depósito desde el ComboBox.
+        public static string CodigoDepositoActual { get; set; }
 
         public static IReadOnlyCollection<DepositoEntidad> Depositos => depositos.AsReadOnly();
         // versión pública de la lista, pero solo de lectura.
