@@ -35,6 +35,8 @@
             GenerarOEMenuBTN = new Button();
             GenerarDocMenuBTN = new Button();
             label1 = new Label();
+            seleccionDepositoCMB = new ComboBox();
+            depositoLBL = new Label();
             SuspendLayout();
             // 
             // GenerarOPMenuBTN
@@ -112,11 +114,30 @@
             label1.TabIndex = 7;
             label1.Text = "Menu Inicio Empresa";
             // 
+            // seleccionDepositoCMB
+            // 
+            seleccionDepositoCMB.FormattingEnabled = true;
+            seleccionDepositoCMB.Location = new Point(12, 91);
+            seleccionDepositoCMB.Name = "seleccionDepositoCMB";
+            seleccionDepositoCMB.Size = new Size(161, 28);
+            seleccionDepositoCMB.TabIndex = 8;
+            // 
+            // depositoLBL
+            // 
+            depositoLBL.AutoSize = true;
+            depositoLBL.Location = new Point(12, 68);
+            depositoLBL.Name = "depositoLBL";
+            depositoLBL.Size = new Size(70, 20);
+            depositoLBL.TabIndex = 9;
+            depositoLBL.Text = "Depósito";
+            // 
             // MenuForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(639, 709);
+            Controls.Add(depositoLBL);
+            Controls.Add(seleccionDepositoCMB);
             Controls.Add(label1);
             Controls.Add(GenerarDocMenuBTN);
             Controls.Add(GenerarOEMenuBTN);
@@ -141,5 +162,7 @@
         private Button GenerarOEMenuBTN;
         private Button GenerarDocMenuBTN;
         private Label label1;
+        private ComboBox seleccionDepositoCMB;
+        private Label depositoLBL;
     }
 }
