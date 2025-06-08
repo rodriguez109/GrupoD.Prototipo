@@ -110,6 +110,7 @@
             // 
             // seleccionDepositoCMB
             // 
+            seleccionDepositoCMB.DropDownStyle = ComboBoxStyle.DropDownList;
             seleccionDepositoCMB.FormattingEnabled = true;
             seleccionDepositoCMB.Location = new Point(103, 64);
             seleccionDepositoCMB.Margin = new Padding(3, 2, 3, 2);

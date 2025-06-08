@@ -18,6 +18,7 @@ public partial class MenuForm : Form
         {
             seleccionDepositoCMB.Items.Add(deposito.Nombre);
         }
+        seleccionDepositoCMB.SelectedItem = seleccionDepositoCMB.Items[0];
     }
 
     //codigo de paulo
@@ -41,7 +42,7 @@ public partial class MenuForm : Form
         if (deposito != null)
         {
             DepositoAlmacen.CodigoDepositoActual = deposito.Codigo; // Se actualiza el depósito actual
-            MessageBox.Show($"Depósito seleccionado: {deposito.Nombre} (Código: {deposito.Codigo})");
+            //MessageBox.Show($"Depósito seleccionado: {deposito.Nombre} (Código: {deposito.Codigo})");
         }
     }
 
