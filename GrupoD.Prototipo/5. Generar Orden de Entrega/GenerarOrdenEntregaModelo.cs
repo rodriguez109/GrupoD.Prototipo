@@ -78,7 +78,6 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
             };
 
             OrdenDeEntregaAlmacen.Agregar(nuevaOrdenEntrega);
-            OrdenDeEntregaAlmacen.Grabar();
 
             // PASO 5: Cambiar estado de las órdenes de preparación a "En Despacho"
             foreach (var orden in OPseleccionadas)
@@ -103,8 +102,6 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
             {
                 ordenEnAlmacen.Estado = EstadoOrdenDePreparacionEnum.EnDespacho;
             }
-
-            OrdenDePreparacionAlmacen.Grabar();
         }
     }
 }

@@ -65,16 +65,11 @@ namespace GrupoD.Prototipo._3._PrepararProductos
 
                     // Cambiar el estado de la orden de  
                     ordenPreparacion.Estado = EstadoOrdenDePreparacionEnum.EnPreparacion;
-
-                    OrdenDePreparacionAlmacen.Grabar();
                 }
             }
 
             // Cambiar el estado de la orden de selección a "Confirmada"  
             ordenSeleccionEntidad.EstadoOrdenDeSeleccion = EstadoOrdenDeSeleccionEnum.Confirmada;
-
-            // Persistir los cambios en el almacenamiento  
-            OrdenDeSeleccionAlmacen.Grabar();
 
             // Eliminar la orden de selección de la lista en memoria de órdenes de selección activas  
             OrdenesDeSeleccion.RemoveAll(o => o.Numero == idOrdenSeleccion);
@@ -89,6 +84,7 @@ namespace GrupoD.Prototipo._3._PrepararProductos
                 ProductoAlmacen.RestarStock(linea.SKU, linea.Cantidad); // "RestarStock" en ProductoAlmacen.cs
             }
         }
+        
         public void CargarOrdenesSeleccionEnComboBox(ComboBox comboBox)
         {
             comboBox.Items.Clear();
@@ -107,6 +103,7 @@ namespace GrupoD.Prototipo._3._PrepararProductos
             }
         }
         // Construye y devuelve, para una orden de selección dada, la lista de productos que hay que reservar de depósitos junto con la cantidad disponible en cada ubicación.
+        
         public List<Producto> ObtenerProductosPorOrdenDeSeleccion(int idOrdenSeleccion)
         {
             var orden = OrdenesDeSeleccion.FirstOrDefault(o => o.Numero == idOrdenSeleccion);

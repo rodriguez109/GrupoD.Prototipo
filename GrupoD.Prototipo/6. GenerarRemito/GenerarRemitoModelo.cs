@@ -73,14 +73,13 @@ namespace GrupoD.Prototipo._6._GenerarRemito
 
         internal void CambiarEstadoOE(List<int> ordenesDePreparacion)
         {
-            foreach (var oe in OrdenDeEntregaAlmacen.OrdenesDeEntrega)
+            foreach (var ordenEntrega in OrdenDeEntregaAlmacen.OrdenesDeEntrega)
             {
-                bool contieneOP = oe.OrdenesPreparacion.Any(opNumero => ordenesDePreparacion.Contains(opNumero));
-
+                bool contieneOP = ordenEntrega.OrdenesPreparacion.Any(opNumero => ordenesDePreparacion.Contains(opNumero));
                 if (contieneOP)
                 {
                     var ordenesPrepDeOE = OrdenDePreparacionAlmacen.OrdenesDePreparacion
-                        .Where(op => oe.OrdenesPreparacion.Contains(op.Numero))
+                        .Where(op => ordenEntrega.OrdenesPreparacion.Contains(op.Numero))
                         .ToList();
                     
                     bool todasDespachadas = ordenesPrepDeOE
@@ -88,7 +87,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
 
                     if (todasDespachadas)
                     {
-                        OrdenDeEntregaAlmacen.cambiarEstadoOE(oe.Numero, EstadoOrdenDeEntregaEnum.Confirmada);
+                        OrdenDeEntregaAlmacen.cambiarEstadoOE(ordenEntrega.Numero, EstadoOrdenDeEntregaEnum.Confirmada);
                     }
                 }
             }
