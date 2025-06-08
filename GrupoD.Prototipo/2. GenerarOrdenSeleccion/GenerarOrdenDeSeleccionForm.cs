@@ -1,5 +1,4 @@
 ﻿using GrupoD.Prototipo._2._GenerarOrdenSeleccion;
-using Prototipo.PrepararProductos.PrepararProductos;
 using System.Data;
 using System.Globalization;
 using System.Text;

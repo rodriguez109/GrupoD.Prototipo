@@ -29,7 +29,19 @@ namespace GrupoD.Prototipo.Almacenes
         //Guarda la lista de productos en un archivo JSON.
         //Convierte la lista productos en un texto con formato JSON(Serialize).
         //Guarda ese texto en Datos\Productos.json.
+        public static void RestarStock(int sku, int cantidad)
+        {
+            var producto = productos.FirstOrDefault(p => p.SKU == sku);
+            if (producto == null)
+                throw new InvalidOperationException($"No existe producto con SKU '{sku}'.");
 
+            if (producto.Stock < cantidad)
+                throw new InvalidOperationException(
+                    $"Stock insuficiente para SKU '{sku}'. Disponible: {producto.Stock}, requerido: {cantidad}.");
+
+            producto.Stock -= cantidad;
+            Grabar();
+        }
 
         static ProductoAlmacen() //Lee el archivo Productos.json y recupera la lista de productos.
         {

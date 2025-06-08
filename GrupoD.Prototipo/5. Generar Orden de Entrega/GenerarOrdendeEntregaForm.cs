@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using GrupoD.Prototipo._2._GenerarOrdenSeleccion;
 using GrupoD.Prototipo._5._Generar_Orden_de_Entrega;
 using GrupoD.Prototipo.Almacenes;
-using Prototipo.PrepararProductos.PrepararProductos;
 
 
 

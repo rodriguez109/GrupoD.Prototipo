@@ -1,6 +1,5 @@
 ﻿using GrupoD.Prototipo._2._GenerarOrdenSeleccion;
 using GrupoD.Prototipo.Almacenes;
-using Prototipo.PrepararProductos.PrepararProductos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
