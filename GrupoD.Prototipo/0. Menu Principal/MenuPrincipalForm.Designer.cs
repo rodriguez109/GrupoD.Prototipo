@@ -102,7 +102,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(228, 53);
+            label1.Location = new Point(228, 9);
             label1.Name = "label1";
             label1.Size = new Size(118, 15);
             label1.TabIndex = 7;
@@ -111,17 +111,17 @@
             // seleccionDepositoCMB
             // 
             seleccionDepositoCMB.FormattingEnabled = true;
-            seleccionDepositoCMB.Location = new Point(10, 68);
+            seleccionDepositoCMB.Location = new Point(103, 64);
             seleccionDepositoCMB.Margin = new Padding(3, 2, 3, 2);
             seleccionDepositoCMB.Name = "seleccionDepositoCMB";
-            seleccionDepositoCMB.Size = new Size(141, 23);
+            seleccionDepositoCMB.Size = new Size(357, 23);
             seleccionDepositoCMB.TabIndex = 8;
             seleccionDepositoCMB.SelectedIndexChanged += seleccionDepositoCMB_SelectedIndexChanged;
             // 
             // depositoLBL
             // 
             depositoLBL.AutoSize = true;
-            depositoLBL.Location = new Point(10, 51);
+            depositoLBL.Location = new Point(103, 47);
             depositoLBL.Name = "depositoLBL";
             depositoLBL.Size = new Size(54, 15);
             depositoLBL.TabIndex = 9;
