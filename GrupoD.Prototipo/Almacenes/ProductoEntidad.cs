@@ -10,7 +10,7 @@ namespace GrupoD.Prototipo.Almacenes
     {
         public int SKU { get; set; }
         public string Nombre { get; set; }
-        public List<PosicionesPorProducto> Posiciones { get; }
+        public List<PosicionesPorProducto> Posiciones { get; set; } = new(); // ← ¡clave!
         public int NumeroCliente { get; set; }
 
         public int CantidadEnDeposito(string codigoDeposito)

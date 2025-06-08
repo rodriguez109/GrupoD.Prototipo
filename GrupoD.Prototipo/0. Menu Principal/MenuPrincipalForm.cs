@@ -41,7 +41,7 @@ public partial class MenuForm : Form
         if (deposito != null)
         {
             DepositoAlmacen.CodigoDepositoActual = deposito.Codigo; // Se actualiza el depósito actual
-            //MessageBox.Show($"Depósito seleccionado: {deposito.Nombre} (Código: {deposito.Codigo})");
+            MessageBox.Show($"Depósito seleccionado: {deposito.Nombre} (Código: {deposito.Codigo})");
         }
     }
 

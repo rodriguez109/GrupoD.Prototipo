@@ -137,10 +137,26 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             //.ToList();
 
 
+            //Codigo anterior!!!
+            //Productos = ProductoAlmacen.Productos
+            //                .Where(p => p.Posiciones.Any(p => p.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual))
+            //                .Select(p => new Producto(p.SKU, p.Nombre, p.CantidadEnDeposito(DepositoAlmacen.CodigoDepositoActual), ConvertirPosicionesAString(p.Posiciones), p.NumeroCliente)).ToList();
 
-            Productos = ProductoAlmacen.Productos
-                            .Where(p => p.Posiciones.Any(p => p.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual))
-                            .Select(p => new Producto(p.SKU, p.Nombre, p.CantidadEnDeposito(DepositoAlmacen.CodigoDepositoActual), ConvertirPosicionesAString(p.Posiciones), p.NumeroCliente)).ToList();
+            //Nuevo codigo
+
+            Productos = ProductoAlmacen.Productos?
+                                    .Where(p => p.Posiciones != null &&
+                                                p.Posiciones.Any(pos => pos.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual))
+                                    .Select(p => new Producto(
+                                        p.SKU,
+                                        p.Nombre,
+                                        p.CantidadEnDeposito(DepositoAlmacen.CodigoDepositoActual),
+                                        ConvertirPosicionesAString(p.Posiciones),
+                                        p.NumeroCliente))
+                                    .ToList() ?? new List<Producto>();
+
+
+
 
             Transportistas = TransportistaAlmacen.Transportistas.Select(t => new Transportista(t.DNI, t.Nombre)).ToList();
 
