@@ -42,7 +42,7 @@ namespace GrupoD.Prototipo.Almacenes
         public static void Agregar(OrdenDeSeleccionEntidad ordenDeSeleccion)
         {
             ordenesDeSeleccion.Add(ordenDeSeleccion);
-            //Grabar(); // <--- guardar cambios en archivo JSON
+            Grabar(); // <--- guardar cambios en archivo JSON
         }
 
         //public static void cambiarEstadoOS
