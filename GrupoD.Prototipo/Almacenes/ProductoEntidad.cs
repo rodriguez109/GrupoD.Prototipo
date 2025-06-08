@@ -16,8 +16,7 @@ namespace GrupoD.Prototipo.Almacenes
 
         public int CantidadEnDeposito(string codigoDeposito)
         {
-            // Implementación del método según sea necesario.  
-            return 0;
+            return Posiciones.Where(p => p.CodigoDeposito == codigoDeposito).Select(p => p.Stock).DefaultIfEmpty().Sum();
         }
     }
 }

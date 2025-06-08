@@ -64,7 +64,7 @@ public partial class MenuForm : Form
         if (!ValidarSeleccionDeposito()) return;
 
         var generarOrdenDeSeleccionForm = new GenerarOrdenDeSeleccionForm();
-        generarOrdenDeSeleccionForm.Show();
+        generarOrdenDeSeleccionForm.ShowDialog();
     }
 
     private void GenerarOEMenuBTN_Click(object sender, EventArgs e)
@@ -72,7 +72,7 @@ public partial class MenuForm : Form
         if (!ValidarSeleccionDeposito()) return;
 
         var generarOrdendeEntregaForm = new GenerarOrdendeEntregaForm();
-        generarOrdendeEntregaForm.Show();
+        generarOrdendeEntregaForm.ShowDialog();
     }
 
     private void GenerarOPMenuBTN_Click(object sender, EventArgs e)
@@ -80,7 +80,7 @@ public partial class MenuForm : Form
         if (!ValidarSeleccionDeposito()) return;
 
         var ordenDePreparacion = new OrdenDePreparacion();
-        ordenDePreparacion.Show();
+        ordenDePreparacion.ShowDialog();
     }
 
     private void PrepararProductoMenuBTN_Click(object sender, EventArgs e)
@@ -88,7 +88,7 @@ public partial class MenuForm : Form
         if (!ValidarSeleccionDeposito()) return;
 
         var prepararProductosForm = new PrepararProductosForm();
-        prepararProductosForm.Show();
+        prepararProductosForm.ShowDialog();
     }
 
     private void EmpaquetarMenuBTN_Click(object sender, EventArgs e)
@@ -96,7 +96,7 @@ public partial class MenuForm : Form
         if (!ValidarSeleccionDeposito()) return;
 
         var empaquetarProductosForm = new EmpaquetarProductosForm();
-        empaquetarProductosForm.Show();
+        empaquetarProductosForm.ShowDialog();
     }
 
     private void GenerarDocMenuBTN_Click(object sender, EventArgs e)
@@ -104,6 +104,6 @@ public partial class MenuForm : Form
         if (!ValidarSeleccionDeposito()) return;
 
         var generarRemitoForm = new GenerarRemitoForm();
-        generarRemitoForm.Show();
+        generarRemitoForm.ShowDialog();
     }
 }
