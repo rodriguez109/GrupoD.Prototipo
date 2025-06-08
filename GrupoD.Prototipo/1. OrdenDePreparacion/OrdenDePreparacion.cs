@@ -20,27 +20,20 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
         {
             InitializeComponent();
             this.Load += new EventHandler(OrdenDePreparacion_Load);
-            //ConfigurarAutoCompletar();
-            //ConfigurarAutoCompletarDNITransportista();
+           
         }
 
-        //El formulario tiene una referencia al modelo
-        //private OrdenDePreparacionModelo modelo;
-        //private List<OrdenesDePreparacion> OrdenesPreparacionDisponibles = new List<OrdenesDePreparacion>();
-        //private List<OrdenesDePreparacion> OrdenesAgregadas = new List<OrdenesDePreparacion>();
-        //private List<Cliente> listaClientes = new List<Cliente>();
-        //private List<Producto> productos = new List<Producto>();
+  
 
         private void OrdenDePreparacion_Load(object sender, EventArgs e)
         {
             modelo = new OrdenDePreparacionModelo();
-            // Aquí puedes inicializar el modelo o cargar datos si es necesario
+       
 
-            //Habilitar las partes superiores del formulario
+        
             numeroClienteTXT.Enabled = true;
             razonSocialClienteTXT.Enabled = true;
-            //buscarProductosBTN.Enabled = true;
-            //limpiarFiltrosBTN.Enabled = true;
+            
 
             //Vincular evento para el DateTimePicker
             fechaRetirarDTP.ValueChanged += FechaRetirarDTP_ValueChanged;
@@ -60,7 +53,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
 
 
-            // Vincular el evento del ListView para actualizar los labels al seleccionar un producto
+           
             productosClienteLST.SelectedIndexChanged += productosClienteLST_SelectedIndexChanged;
 
 
@@ -72,7 +65,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
         private void ConfigurarAutoCompletar()
         {
-            // Verifica que la instancia del modelo y la lista de clientes no sean nulas
+            
             if (modelo == null)
             {
                 MessageBox.Show("El modelo no está inicializado.");
@@ -117,7 +110,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             dniTransportistaTXT.AutoCompleteSource = AutoCompleteSource.CustomSource;
             dniTransportistaTXT.AutoCompleteCustomSource = listaAutocompletar;
         }
-        // Evento para establecer el formato correcto cuando el usuario selecciona una fecha
+        
         private void FechaRetirarDTP_ValueChanged(object sender, EventArgs e)
         {
             fechaRetirarDTP.CustomFormat = "dd/MM/yyyy"; // Mostrar la fecha correctamente al seleccionarla
@@ -143,22 +136,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
         }
 
 
-        //public static Cliente BuscarCliente(int numeroCliente, string razonSocial)
-        //{
-        //    if (OrdenDePreparacionModelo.ListaCliente == null || !OrdenDePreparacionModelo.ListaCliente.Any())
-        //        return null;
-
-        //    Cliente clienteEncontrado = OrdenDePreparacionModelo.ListaCliente
-        //        .FirstOrDefault(c => c.NumeroCliente == numeroCliente);
-
-        //    if (clienteEncontrado == null && !string.IsNullOrEmpty(razonSocial))
-        //    {
-        //        clienteEncontrado = OrdenDePreparacionModelo.ListaCliente
-        //            .FirstOrDefault(c => c.RazonSocialCliente.Equals(razonSocial, StringComparison.OrdinalIgnoreCase));
-        //    }
-
-        //    return clienteEncontrado;
-        //}
+        
 
 
 
@@ -355,118 +333,8 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
        
         private static int numeroOrden = 0; // Variable autonumérica para las órdenes
-        private static int GenerarNumeroOrden()
-        {
-            return ++numeroOrden;
-        }
-
-        //private void generarOPBTN_Click(object sender, EventArgs e)
-        //{
-
-        //    if (ordenPreparacionLST.Items.Count == 0)
-        //    {
-        //        MessageBox.Show("Debe agregar productos a la Orden de Preparación antes de generarla.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return;
-        //    }
-
-        //    if (string.IsNullOrEmpty(prioridadCMB.Text))
-        //    {
-        //        MessageBox.Show("Seleccione una prioridad para la orden.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return;
-        //    }
-
-        //    int dniTransportista = 0;
-
-        //    if (string.IsNullOrEmpty(dniTransportistaTXT.Text) || dniTransportistaTXT.Text.Length != 8 || !int.TryParse(dniTransportistaTXT.Text, out dniTransportista))
-        //    {
-        //        MessageBox.Show("Ingrese un DNI válido de 8 dígitos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return;
-        //    }
-
-        //    // Validar el DNI del transportista con la lista de transportistas
-        //    if (!ValidarDNITransportista(dniTransportista))
-        //    {
-        //        MessageBox.Show("Transportista no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return;
-        //    }
-
-
-        //    // Convertir númeroCliente a int
-        //    if (!int.TryParse(numeroClienteTXT.Text, out int numeroCliente))
-        //    {
-        //        MessageBox.Show("El número de cliente debe ser un valor numérico válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return;
-        //    }
-
-        //    DateTime fechaRetiro = fechaRetirarDTP.Value; // Obtener fecha como DateTime
-        //    string prioridadSeleccionada = prioridadCMB.Text;
-        //    //string cuilTransportista = cuilTransportistaTXT.Text;
-        //    /*int dniTransportista = int.Parse(dniTransportistaTXT.Text);*/ // Convertir a int
-
-        //    string razonSocialCliente = razonSocialClienteTXT.Text;
-
-
-
-
-        //    List<OrdenDePreparacionClase> nuevaOrden = new List<OrdenDePreparacionClase>();
-
-        //    foreach (ListViewItem item in ordenPreparacionLST.Items)
-        //    {
-        //        // Obtener valores desde el ListView
-        //        string nombreProducto = item.SubItems[1].Text;
-        //        string cantidadTexto = item.SubItems[2].Text;
-        //        string skuTexto = item.SubItems[0].Text;
-
-        //        // Validar cantidad seleccionada
-        //        if (!int.TryParse(cantidadTexto, out int cantidadSeleccionada) || cantidadSeleccionada <= 0)
-        //        {
-        //            MessageBox.Show($"La cantidad del producto '{nombreProducto}' no es válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //            return;
-        //        }
-
-        //        if (!int.TryParse(skuTexto, out int skuProducto))
-        //        {
-        //            MessageBox.Show($"El SKU del producto '{nombreProducto}' no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //            return;
-        //        }
-        //            OrdenDePreparacionClase orden = new OrdenDePreparacionClase
-        //        {
-        //            NumeroOrdenPreparacion = numeroOrden, // Número autonumérico
-        //            NumeroCliente = numeroCliente, // Número de cliente
-        //            RazonSocialCliente = razonSocialCliente, // Razón social del cliente
-        //            NombreProducto = item.SubItems[1].Text,
-        //            CantidadProducto = item.SubItems[2].Text,
-
-        //            SKUProducto = int.Parse(item.SubItems[0].Text), // SKU del producto
-
-        //            FechaRetirar = fechaRetiro, // Obtiene la fecha correctamente
-        //            Prioridad = prioridadSeleccionada, // Obtiene la prioridad desde el ComboBox
-        //            /*CUILTransportista = cuilTransportista*/ // Obtiene el CUIL desde el TextBox
-        //            //DNITransportista = int.Parse(dniTransportista)
-        //            Pallet = palletCBX.Checked, //Pallet si o no
-        //            DNITransportista = dniTransportista // Obtiene el DNI desde el TextBox
-
-        //            };
-
-        //        nuevaOrden.Add(orden);
-        //    }
-
-
-        //    // Incrementar el número de orden para la próxima vez
-        //    numeroOrden++;
-
-        //    MessageBox.Show($"Orden de Preparación Nº {numeroOrden - 1} generada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-        //    //Limpia los controles
-        //    numeroClienteTXT.Clear();
-        //    razonSocialClienteTXT.Clear();
-        //    productosClienteLST.Items.Clear();
-        //    ordenPreparacionLST.Items.Clear();
-        //    cantidadSeleccionadaTXT.Clear();
-        //    dniTransportistaTXT.Clear();
-
-        //    modelo.AgregarNuevaOrden(nuevaOrden);
-        //}
+        
+        
 
         private void generarOPBTN_Click(object sender, EventArgs e)
         {
@@ -625,55 +493,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
         }
 
 
-        //Razón social: búsqueda por primeras letras
-
-        //private void ConfigurarAutoCompletar()
-        //{
-        //    // Verifica que la instancia del modelo y la lista de clientes no sean nulas
-        //    if (modelo == null)
-        //    {
-        //        MessageBox.Show("El modelo no está inicializado.");
-        //        return;
-        //    }
-
-        //    if (modelo.Clientes == null)
-        //    {
-        //        MessageBox.Show("La lista de clientes no ha sido cargada.");
-        //        return;
-        //    }
-
-        //    AutoCompleteStringCollection listaAutocompletar = new AutoCompleteStringCollection();
-
-        //    // Agregar todas las razones sociales de los clientes a la lista de autocompletar
-        //    foreach (var cliente in modelo.Clientes)
-        //    {
-        //        listaAutocompletar.Add(cliente.RazonSocialCliente);
-        //    }
-
-        //    // Configurar el campo de texto con la lista de autocompletar
-        //    razonSocialClienteTXT.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-        //    razonSocialClienteTXT.AutoCompleteSource = AutoCompleteSource.CustomSource;
-        //    razonSocialClienteTXT.AutoCompleteCustomSource = listaAutocompletar;
-        //}
-
-
-        ////DNI Transportista: búsqueda por primeros números
-        //private void ConfigurarAutoCompletarDNITransportista()
-        //{
-        //    // Se crea la colección de cadenas para el autocompletado
-        //    AutoCompleteStringCollection listaAutocompletar = new AutoCompleteStringCollection();
-
-        //    // Agregar todos los DNIs (convertidos a string) de los transportistas
-        //    foreach (var transportista in modelo.Transportistas)
-        //    {
-        //        listaAutocompletar.Add(transportista.DNITransportista.ToString());
-        //    }
-
-        //    // Configurar el TextBox para usar el autocompletado con la lista personalizada
-        //    dniTransportistaTXT.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-        //    dniTransportistaTXT.AutoCompleteSource = AutoCompleteSource.CustomSource;
-        //    dniTransportistaTXT.AutoCompleteCustomSource = listaAutocompletar;
-        //}
+       
 
         private bool ValidarDNITransportista(int dni)
         {
