@@ -84,7 +84,7 @@ internal class PrepararProductosModelo
                 resultado.Add(new PosicionProducto
                 {
                     Posicion = pos.Codigo,
-                    Sku = sku.ToString(),
+                    Sku = sku.ToString(), 
                     Cantidad = toma
                 });
                 restante -= toma;
