@@ -9,6 +9,8 @@ namespace GrupoD.Prototipo._3._PrepararProductos
     public class OrdenesDeSeleccion
     {
         public int NumeroOrdenSeleccion { get; set; }
+
+
         public List<OrdenesDePreparacion> OrdenesPreparacion { get; set; }  // Esta lista se usará solo para mostrar en el ListView
         public DateTime FechaGeneracion { get; set; }
         public string EstadoOrdenDeSeleccion { get; set; }

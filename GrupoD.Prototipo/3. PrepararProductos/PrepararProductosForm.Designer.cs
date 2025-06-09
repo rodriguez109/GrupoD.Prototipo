@@ -40,6 +40,7 @@ namespace Prototipo.PrepararProductos
             cantidadCol = new ColumnHeader();
             btnSeleccion = new Button();
             btnCancelar = new Button();
+            SuspendLayout();
             // 
             // label1
             // 
@@ -92,6 +93,7 @@ namespace Prototipo.PrepararProductos
             btnSeleccion.TabIndex = 3;
             btnSeleccion.Text = "Confirmar órden de selección";
             btnSeleccion.UseVisualStyleBackColor = true;
+            btnSeleccion.Click += btnSeleccion_Click;
             // 
             // btnCancelar
             // 
@@ -101,6 +103,7 @@ namespace Prototipo.PrepararProductos
             btnCancelar.TabIndex = 4;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // PrepararProductosForm
             // 
@@ -114,6 +117,7 @@ namespace Prototipo.PrepararProductos
             Controls.Add(label1);
             Name = "PrepararProductosForm";
             Text = "Preparar Productos";
+            Load += PrepararProductosForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

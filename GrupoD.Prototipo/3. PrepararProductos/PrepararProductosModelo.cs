@@ -34,6 +34,7 @@ namespace GrupoD.Prototipo._3._PrepararProductos
                 })
                 .ToList();
         }
+        
         //Filtrará lista en memoria tomando sólo las órdenes cuya propiedad EstadoOrden sea PENDIENTE y devolverá una lista de sus IDs.
         public List<int> ObtenerOrdenesDeSeleccion()
         {
@@ -42,6 +43,7 @@ namespace GrupoD.Prototipo._3._PrepararProductos
                 .Select(o => o.Numero)
                 .ToList();
         }
+
         public void ConfirmarOrdenSeleccion(int idOrdenSeleccion)
         {
             // Obtener la orden de selección desde el almacenamiento persistente  

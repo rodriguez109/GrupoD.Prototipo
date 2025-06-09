@@ -16,12 +16,6 @@ namespace Prototipo.PrepararProductos
             InitializeComponent();
             modelo = new PrepararProductosModelo();
             productosInfo = new List<Producto>();
-
-
-            btnSeleccion.Click += btnSeleccion_Click;
-            btnCancelar.Click += btnCancelar_Click;
-
-
         }
         private void PrepararProductosForm_Load(object sender, EventArgs e)
         {
@@ -37,16 +31,11 @@ namespace Prototipo.PrepararProductos
                 comboOrdenSeleccion.SelectedIndex = 0; // Selecciona automáticamente la primera orden de selección  
             }
         }
-        private List<int> ObtenerOrdenDeSeleccion()
-        {
-            // Obtener las órdenes de selección activas  
-            return modelo.ObtenerOrdenesDeSeleccion();
-        }
 
         public void CargarOrdenesSeleccionEnComboBox(ComboBox comboBox)
         {
             comboBox.Items.Clear();
-            List<int> ordenes = ObtenerOrdenDeSeleccion();
+            List<int> ordenes = modelo.ObtenerOrdenesDeSeleccion();
 
             foreach (var orden in ordenes)
             {
