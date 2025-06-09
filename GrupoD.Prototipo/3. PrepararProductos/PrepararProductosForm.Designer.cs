@@ -53,11 +53,13 @@ namespace Prototipo.PrepararProductos
             // 
             // comboOrdenSeleccion
             // 
+            comboOrdenSeleccion.DropDownStyle = ComboBoxStyle.DropDownList;
             comboOrdenSeleccion.FormattingEnabled = true;
             comboOrdenSeleccion.Location = new Point(12, 43);
             comboOrdenSeleccion.Name = "comboOrdenSeleccion";
             comboOrdenSeleccion.Size = new Size(277, 23);
             comboOrdenSeleccion.TabIndex = 1;
+            comboOrdenSeleccion.SelectedIndexChanged += comboOrdenSeleccion_SelectedIndexChanged;
             // 
             // lViewOrdenSeleccion
             // 
