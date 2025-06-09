@@ -179,7 +179,7 @@ internal class PrepararProductosModelo
             entPrep.Estado = EstadoOrdenDePreparacionEnum.EnPreparacion;
         }
 
-    // Vuelve a llamar a ObtenerListaPosiciones(numero): devuelve una lista de PosicionProducto, con posicion, sku y cantidad.
+     // Vuelve a llamar a ObtenerListaPosiciones(numero): devuelve una lista de PosicionProducto, con posicion, sku y cantidad.
 
         var stockADescontar = ObtenerListaPosiciones(numero);
 
