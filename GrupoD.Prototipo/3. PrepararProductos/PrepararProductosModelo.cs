@@ -1,7 +1,9 @@
 ﻿using GrupoD.Prototipo.Almacenes;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.ConstrainedExecution;
+using System.Security.Cryptography;
 
 namespace GrupoD.Prototipo._3._PrepararProductos;
 
@@ -94,10 +96,10 @@ internal class PrepararProductosModelo
 
             if (restante > 0)
                 throw new InvalidOperationException(
-                    $"Stock insuficiente para SKU '{sku}'. Falta {restante} unidades.");
+                    $"Stock insuficiente para SKU '{sku}'. Falta {restante} unidades."); 
         }
 
-        return resultado; // return null; ---> ara que compile, reemplazar con resultado.
+        return resultado; // return null; ---> Para que compile, reemplazar con resultado.
     }
     // Ejemplo:
 
@@ -125,17 +127,17 @@ internal class PrepararProductosModelo
 
     //Pasos:
     // Sumar la cantidad de cada articulo: 7 remeras y 19 zapatillas
-    
+
     // Para cada articulo:
 
     //  a - Buscar a la primera posicion que cubra la cantidad que quiero. Si no hay, cualquier posicion en donde haya producto
     //  b - Tomar la cantidad q se necesita o todo lo que hay si no cubre lo que se necesita. Agregar a la lista de posiciones resultado
     //  c - Si necesito más vuelvo a a)
-    
+
 
 
     //Confirmar OS:Cambia el estado de OS Y OP asociadas, luego llama a 'ObtenerListaPosiciones' para ver de donde se saca el stock.
-    internal string? ConfirmarOrdenSeleccion(int numero)
+    /*internal string? ConfirmarOrdenSeleccion(int numero)
     {
         var ordenSeleccion = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.First(o => o.Numero == numero);
 
@@ -155,6 +157,43 @@ internal class PrepararProductosModelo
         //TODO: descontar del stock de acuerdo a la lista stockADescontar
 
 
+
+        return null;
+    }*/
+
+    //Confirmar OS:Cambia el estado de OS Y OP asociadas, luego llama a 'ObtenerListaPosiciones' para ver de donde se saca el stock.
+    internal string? ConfirmarOrdenSeleccion(int numero)
+    {
+        //pasar la orden de pendiente a confirmada.
+
+        var ordenSeleccion = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion
+                                 .First(o => o.Numero == numero);
+        ordenSeleccion.EstadoOrdenDeSeleccion = EstadoOrdenDeSeleccionEnum.Confirmada;
+
+        //pasar las ordenes de preparacion a EnPreparacion
+
+        foreach (var prepId in ordenSeleccion.OrdenesPreparacion)
+        {
+            var entPrep = OrdenDePreparacionAlmacen.OrdenesDePreparacion
+                            .First(o => o.Numero == prepId);
+            entPrep.Estado = EstadoOrdenDePreparacionEnum.EnPreparacion;
+        }
+
+    // Vuelve a llamar a ObtenerListaPosiciones(numero): devuelve una lista de PosicionProducto, con posicion, sku y cantidad.
+
+        var stockADescontar = ObtenerListaPosiciones(numero);
+
+        // Llama a ProductoAlmacen.RestarStock(skuInt, cantidad): Verifica que exista el producto, comprueba que haya stock suficiente 
+        //Resta cantidad de la propiedad Stock de la entidad y persiste la lista actualizada en tu JSON(Grabar()).
+
+        foreach (var mov in stockADescontar)
+        {
+            int skuInt = int.Parse(mov.Sku);
+            int cantidad = mov.Cantidad;
+            ProductoAlmacen.RestarStock(skuInt, cantidad);
+        }
+
+        // Devuelvo null = todo OK, sino arroja excepcion..
 
         return null;
     }
