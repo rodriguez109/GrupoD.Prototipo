@@ -168,7 +168,7 @@ internal class PrepararProductosModelo
 
         var ordenSeleccion = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion
                                  .First(o => o.Numero == numero);
-        ordenSeleccion.EstadoOrdenDeSeleccion = EstadoOrdenDeSeleccionEnum.Confirmada;
+        ordenSeleccion.EstadoOrdenDeSeleccion = EstadoOrdenDeSeleccionEnum.Confirmada;  
 
         //pasar las ordenes de preparacion a EnPreparacion
 
