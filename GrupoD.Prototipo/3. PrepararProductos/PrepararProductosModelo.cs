@@ -1,9 +1,11 @@
 ﻿using GrupoD.Prototipo.Almacenes;
+using System.Runtime.ConstrainedExecution;
 
 namespace GrupoD.Prototipo._3._PrepararProductos;
 
 internal class PrepararProductosModelo
 {
+    //ObtenerOrdenesDeSeleccion: extrae del almacén todos los números de órdenes cuyo estado sea Pendiente.
     internal List<int> ObtenerOrdenesDeSeleccion()
     {
         return OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.Where(o => o.EstadoOrdenDeSeleccion == EstadoOrdenDeSeleccionEnum.Pendiente)
@@ -51,6 +53,7 @@ internal class PrepararProductosModelo
         return null; //Lo pongo para que compile, reemplazar con resultado.
     }
 
+    //Confirmar OS:Cambia el estado de OS Y OP asociadas, luego llama a 'ObtenerListaPosiciones' para ver de donde se saca el stock.
     internal string? ConfirmarOrdenSeleccion(int numero)
     {
         var ordenSeleccion = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.First(o => o.Numero == numero);

@@ -1,4 +1,8 @@
 ﻿using GrupoD.Prototipo._3._PrepararProductos;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Windows.Forms;
+using System.IO.Pipelines;
+using System.Reflection;
 
 namespace Prototipo.PrepararProductos;
 
@@ -17,6 +21,8 @@ public partial class PrepararProductosForm : Form
         CargarOrdenesSeleccionEnComboBox();
     }
 
+    // CM_OS: Lee ID(int) de la orden elegida. Llama a modelo.ObtenerListaPosiciones(id) → devuelve una lista de PosicionProducto con: Posicion, sku y cantidad
+    // Por cada posición, crea un ListViewItem y lo añade a lViewOrdenSeleccion.
     private void comboOrdenSeleccion_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (comboOrdenSeleccion.SelectedItem == null)
@@ -37,6 +43,9 @@ public partial class PrepararProductosForm : Form
         }
     }
 
+    // Click en seleccionar: Llama a ConfirmarOrdenSeleccion(id), que:
+    // Cambia el estado de la orden de selección a Confirmada. Cambia el estado de cada orden de preparación asociada a EnPreparación.
+    // Debe descontar el stock según la lista que proporcione ObtenerListaPosiciones. Devuelve null si todo salió bien, o un mensaje de error si algo falló.
     private void btnSeleccion_Click(object sender, EventArgs e)
     {
         if (comboOrdenSeleccion.SelectedItem == null)
@@ -63,6 +72,8 @@ public partial class PrepararProductosForm : Form
         Close();
     }
 
+    //CargarOrdenesSeleccionEnComboBox: Pide al modelo la lista de IDs de órdenes Pendientes. Las añade al ComboBox.
+    //Si hay al menos una, selecciona la primera (dispara el evento). Si no queda ninguna, avisa y cierra.
     private void CargarOrdenesSeleccionEnComboBox()
     {
         comboOrdenSeleccion.Items.Clear();
