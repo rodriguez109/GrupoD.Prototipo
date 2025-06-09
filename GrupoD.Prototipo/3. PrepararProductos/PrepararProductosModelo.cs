@@ -162,7 +162,7 @@ internal class PrepararProductosModelo
     }*/
 
     //Confirmar OS:Cambia el estado de OS Y OP asociadas, luego llama a 'ObtenerListaPosiciones' para ver de donde se saca el stock.
-    internal string? ConfirmarOrdenSeleccion(int numero)
+    internal string? ConfirmarOrdenSeleccion(int numero) // -------> PENDIENTE A CODIFICAR
     {
         //pasar la orden de pendiente a confirmada.
 
