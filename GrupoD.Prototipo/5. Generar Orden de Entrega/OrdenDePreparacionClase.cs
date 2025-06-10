@@ -15,15 +15,18 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
             public string NombreCliente { get; set; }
             public int DNITransportista { get; set; }
             public DateTime FechaEntrega { get; set; }
+            public string NombreTransportista { get; set; } // NUEVO
+
 
         // Constructor
-        public OrdenDePreparacionClase(int numeroOrden, string nombreCliente, DateTime fechaEntrega, int dniTransportista)
+        public OrdenDePreparacionClase(int numeroOrden, string nombreCliente, DateTime fechaEntrega, int dniTransportista, string nombreTransportista)
             {
                 NumeroOrden = numeroOrden;
                 NombreCliente = nombreCliente;
                 DNITransportista = dniTransportista;
                 FechaEntrega = fechaEntrega;
+                NombreTransportista = nombreTransportista;
         }
         
-    }
+     }
 }

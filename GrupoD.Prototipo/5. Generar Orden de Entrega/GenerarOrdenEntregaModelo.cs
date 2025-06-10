@@ -32,13 +32,16 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
                              op.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual))
             {
                 var cliente = ClienteAlmacen.Buscar(op.NumeroCliente);
-                if (cliente != null)
+                var transportista = TransportistaAlmacen.Buscar(op.DNITransportista);
+
+                if (cliente != null && transportista != null)
                 {
                     var clase = new OrdenDePreparacionClase(
                         op.Numero,
                         cliente.RazonSocial,
                         op.FechaRetirar,
-                        op.DNITransportista
+                        op.DNITransportista,
+                        transportista.Nombre // nuevo
                     );
 
                     ordenesPreparadas.Add(clase);

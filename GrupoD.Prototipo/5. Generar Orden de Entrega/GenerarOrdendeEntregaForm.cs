@@ -42,14 +42,11 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
 
             foreach (var orden in ordenes)
             {
-                var transportista = TransportistaAlmacen.Buscar(orden.DNITransportista);
-                var razonSocialTransportista = transportista != null ? transportista.Nombre : "Transportista no encontrado";
-
                 var item = new ListViewItem(orden.NumeroOrden.ToString());
                 item.SubItems.Add(orden.NombreCliente);
                 item.SubItems.Add(orden.FechaEntrega.ToShortDateString());
                 item.SubItems.Add(orden.DNITransportista.ToString());
-                item.SubItems.Add(razonSocialTransportista);
+                item.SubItems.Add(orden.NombreTransportista); // Ya viene listo desde el modelo
 
                 item.Tag = orden;
 
