@@ -15,7 +15,7 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
             public string NombreCliente { get; set; }
             public int DNITransportista { get; set; }
             public DateTime FechaEntrega { get; set; }
-            public string NombreTransportista { get; set; } // NUEVO
+            public string NombreTransportista { get; set; } 
 
 
         // Constructor

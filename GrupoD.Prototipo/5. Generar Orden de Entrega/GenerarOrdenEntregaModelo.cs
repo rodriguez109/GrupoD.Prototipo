@@ -41,7 +41,7 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
                         cliente.RazonSocial,
                         op.FechaRetirar,
                         op.DNITransportista,
-                        transportista.Nombre // nuevo
+                        transportista.Nombre 
                     );
 
                     ordenesPreparadas.Add(clase);
