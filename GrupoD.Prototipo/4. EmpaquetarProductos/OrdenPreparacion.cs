@@ -4,23 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GrupoD.Prototipo._4._Empaquetar_Productos;
+using GrupoD.Prototipo.Almacenes;
 
 namespace GrupoD.Prototipo._4._EmpaquetarProductos
 {
     class OrdenPreparacion
     {
-        // Atributos.
-        public int NumeroOrdenPreparacion { get; set; }
-        public string EstadoOrdenPreparacion { get; set; }
+        public int NumeroOP { get; set; }
+        public EstadoOrdenDePreparacionEnum EstadoOP { get; set; }
+        public PrioridadEnum Prioridad { get; set; }
+        public DateTime FechaRetirar { get; set; } // Nueva propiedad
+        public List<ProductoOP> Productos { get; set; } = new List<ProductoOP>();
 
-        //agregar Prioridad
-        public List<Producto> Productos { get; set; } = new List<Producto>();
-
-        public OrdenPreparacion(int numeroOrden, string estadoOP, List<Producto> productos)
+        public OrdenPreparacion(int numeroOrden, EstadoOrdenDePreparacionEnum estadoOP, PrioridadEnum prioridad, DateTime fechaRetirar, List<ProductoOP> productos)
         {
-            NumeroOrdenPreparacion = numeroOrden;
-            EstadoOrdenPreparacion = estadoOP;
-            Productos = productos;
+            NumeroOP = numeroOrden;
+            EstadoOP = estadoOP;
+            Prioridad = prioridad;
+            FechaRetirar = fechaRetirar; // Asignación correcta
+            Productos = productos ?? new List<ProductoOP>();
         }
     }
+
 }

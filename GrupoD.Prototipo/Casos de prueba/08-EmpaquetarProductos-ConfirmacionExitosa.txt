@@ -3,10 +3,10 @@ Plan de Prueba: EmpaquetarProductos-ConfirmacionExitosa.txt
 (Empieza con el menú principal)
 1- Botón										"Empaquetar los productos"
 2- Orden de preparacion							#7
-3- SKU								   			17
+3- SKU								   			15
 Verificar que listViewProductos muestra los productos correspondientes a la orden.
-4- Nombre										Monitor Samsung 24\" LED
-5- Cantidad										12
+4- Nombre										Escritorio en L melamina
+5- Cantidad										2
 6- Botón										"Orden Empaquetada"
 7- Mensaje										"La orden fue marcada como 'Preparada'.".
 8- Revisar que la siguiente orden de preparación se muestra en pantalla. 
@@ -17,20 +17,21 @@ Verificar que listViewProductos muestra los productos correspondientes a la orde
 
 Verificaciones
 13- Archivo ordenDePreparacion.json – la orden de preparacion numero 7 deberia aparecer con el estado actualizado ("Estado"" = 3):
-  {
-    "Numero": 7,
-    "Pallet": true,
-    "CodigoDeposito": "D06",
-    "Detalle": [
-      {
-        "SKU": 17,
-        "Cantidad": 12
-      }
-    ],
-    "FechaRetirar": "2025-06-16T08:00:00",
-    "Prioridad": 0,
-    "NumeroCliente": 7,
-    "DNITransportista": 30201928,
-    "Estado": 3
-  },
+
+{
+"Numero": 7,
+"Pallet": false,
+"CodigoDeposito": "D01",
+"Detalle": [
+    {
+    "SKU": 15,
+    "Cantidad": 2
+    }
+],
+"FechaRetirar": "2025-06-10T00:00:00",
+"Prioridad": 0,
+"NumeroCliente": 15,
+"DNITransportista": 43242093,
+"Estado": 3
+},
 
