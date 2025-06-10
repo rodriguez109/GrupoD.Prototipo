@@ -14,7 +14,6 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
     {
         private GenerarOrdenEntregaModelo modelo = new GenerarOrdenEntregaModelo();
 
-
         public GenerarOrdendeEntregaForm()
         {
             InitializeComponent();
@@ -23,10 +22,9 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
 
         private void GenerarOrdendeEntregaForm_Load(object sender, EventArgs e)
         {
-            // Configuración del ListView
             listView1LST.View = View.Details;
             listView1LST.FullRowSelect = true;
-            listView1LST.MultiSelect = false; // por ahora solo 1 a la vez
+            listView1LST.MultiSelect = false;
             listView1LST.Columns.Clear();
             listView1LST.Columns.Add("Número de Orden", 150);
             listView1LST.Columns.Add("Razón Social Cliente", 230);
@@ -34,7 +32,6 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
             listView1LST.Columns.Add("DNI Transportista", 150);
             listView1LST.Columns.Add("Razón Social Transportista", 230);
 
-            // Cargar datos
             CargarOrdenesEnListView();
         }
 
@@ -45,19 +42,15 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
 
             foreach (var orden in ordenes)
             {
-                var cliente = ClienteAlmacen.Buscar(orden.NumeroCliente);
                 var transportista = TransportistaAlmacen.Buscar(orden.DNITransportista);
-
-                var razonSocialCliente = cliente != null ? cliente.RazonSocial : "Cliente no encontrado";
                 var razonSocialTransportista = transportista != null ? transportista.Nombre : "Transportista no encontrado";
 
-                var item = new ListViewItem(orden.Numero.ToString());
-                item.SubItems.Add(razonSocialCliente);
-                item.SubItems.Add(orden.FechaRetirar.ToShortDateString());
+                var item = new ListViewItem(orden.NumeroOrden.ToString());
+                item.SubItems.Add(orden.NombreCliente);
+                item.SubItems.Add(orden.FechaEntrega.ToShortDateString());
                 item.SubItems.Add(orden.DNITransportista.ToString());
                 item.SubItems.Add(razonSocialTransportista);
 
-                // Guardamos una referencia directa a la entidad
                 item.Tag = orden;
 
                 listView1LST.Items.Add(item);
@@ -69,17 +62,16 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
             if (listView1LST.SelectedItems.Count == 1)
             {
                 var itemSeleccionado = listView1LST.SelectedItems[0];
-                var ordenSeleccionada = itemSeleccionado.Tag as OrdenDePreparacionEntidad;
+                var ordenSeleccionada = itemSeleccionado.Tag as OrdenDePreparacionClase;
 
                 if (ordenSeleccionada != null)
                 {
                     try
                     {
-                        modelo.CrearYGuardarOrdenDeEntrega(new List<OrdenDePreparacionEntidad> { ordenSeleccionada });
+                        modelo.CrearYGuardarOrdenDeEntrega(new List<OrdenDePreparacionClase> { ordenSeleccionada });
 
                         MessageBox.Show("La orden de entrega ha sido generada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // Recargar el ListView para reflejar cambios
                         CargarOrdenesEnListView();
                     }
                     catch (Exception ex)
@@ -100,4 +92,3 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
         }
     }
 }
-
