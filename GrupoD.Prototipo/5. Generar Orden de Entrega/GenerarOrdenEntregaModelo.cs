@@ -68,7 +68,7 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
         public void CrearYGuardarOrdenDeEntrega(List<OrdenDePreparacionClase> ordenesSeleccionadas)
         {
             if (ordenesSeleccionadas == null || !ordenesSeleccionadas.Any())
-                throw new ArgumentException("Debe seleccionar al menos una Orden de Preparación.");
+                throw new ArgumentException("Debe seleccionar al menos una orden para continuar.");
 
             int nuevoNumero = ObtenerProximoNumero();
 

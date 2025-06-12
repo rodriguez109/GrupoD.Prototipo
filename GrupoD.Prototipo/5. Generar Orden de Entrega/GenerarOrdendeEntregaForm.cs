@@ -63,23 +63,15 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
 
                 if (ordenSeleccionada != null)
                 {
-                    try
-                    {
-                        modelo.CrearYGuardarOrdenDeEntrega(new List<OrdenDePreparacionClase> { ordenSeleccionada });
-
-                        MessageBox.Show("La orden de entrega ha sido generada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     MessageBox.Show("La orden de entrega ha sido generada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         CargarOrdenesEnListView();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error al generar la orden de entrega: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    
                 }
             }
             else
             {
-                MessageBox.Show("Debe seleccionar exactamente una orden para confirmar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe seleccionar al menos una orden para continuar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
