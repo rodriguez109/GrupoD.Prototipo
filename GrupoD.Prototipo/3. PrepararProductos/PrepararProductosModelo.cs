@@ -12,7 +12,10 @@ internal class PrepararProductosModelo
     //Obtener OS: extrae del almacén todos los números de órdenes cuyo estado sea Pendiente.
     internal List<int> ObtenerOrdenesDeSeleccion()
     {
-        return OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.Where(o => o.EstadoOrdenDeSeleccion == EstadoOrdenDeSeleccionEnum.Pendiente)
+        return OrdenDeSeleccionAlmacen.OrdenesDeSeleccion
+                            //El primer where intenta seleccionar las ordenes de seleccion que tengan ordenes de preparacion del deposito actual.
+                            .Where(o => o.OrdenesPreparacion.Any(o => OrdenDePreparacionAlmacen.OrdenesDePreparacion.First(op => op.Numero == o).CodigoDeposito == DepositoAlmacen.CodigoDepositoActual))
+                            .Where(o => o.EstadoOrdenDeSeleccion == EstadoOrdenDeSeleccionEnum.Pendiente)
                             .Select(o => o.Numero)
                             .ToList();
     }
@@ -58,6 +61,7 @@ internal class PrepararProductosModelo
             var posiciones = ProductoAlmacen.Productos
                 .First(p => p.SKU == sku)
                 .Posiciones
+                .Where(p => p.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual)
                 .OrderByDescending(p => p.Stock)
                 .ToList();
 
@@ -81,12 +85,15 @@ internal class PrepararProductosModelo
             {
                 if (restante == 0) break;
                 int toma = Math.Min(pos.Stock, restante);
-                if (toma <= 0) continue;
+                if (toma <= 0)
+                {
+                    throw new Exception("El stock no puede ser menor a 0. No es mi culpa.");
+                }
 
                 resultado.Add(new PosicionProducto
                 {
                     Posicion = pos.Codigo,
-                    Sku = sku.ToString(), 
+                    Sku = sku.ToString(),
                     Cantidad = toma
                 });
                 restante -= toma;
@@ -95,12 +102,14 @@ internal class PrepararProductosModelo
             // Verifica si quedó demanda sin cubrir:
 
             if (restante > 0)
-                throw new InvalidOperationException(
-                    $"Stock insuficiente para SKU '{sku}'. Falta {restante} unidades."); 
+            {
+                throw new InvalidOperationException($"Stock insuficiente para SKU '{sku}'. Falta {restante} unidades. Hay un error en la pantalla de ingreso de órdenes, no es mi culpa.");
+            }
         }
 
         return resultado; // return null; ---> Para que compile, reemplazar con resultado.
     }
+
     // Ejemplo:
 
     // Orden prep 1: 2 remeras(SKU = reme) 3 zapas(SKU = zapa)
@@ -168,7 +177,7 @@ internal class PrepararProductosModelo
 
         var ordenSeleccion = OrdenDeSeleccionAlmacen.OrdenesDeSeleccion
                                  .First(o => o.Numero == numero);
-        ordenSeleccion.EstadoOrdenDeSeleccion = EstadoOrdenDeSeleccionEnum.Confirmada;  
+        ordenSeleccion.EstadoOrdenDeSeleccion = EstadoOrdenDeSeleccionEnum.Confirmada;
 
         //pasar las ordenes de preparacion a EnPreparacion
 
@@ -179,7 +188,7 @@ internal class PrepararProductosModelo
             entPrep.Estado = EstadoOrdenDePreparacionEnum.EnPreparacion;
         }
 
-     // Vuelve a llamar a ObtenerListaPosiciones(numero): devuelve una lista de PosicionProducto, con posicion, sku y cantidad.
+        // Vuelve a llamar a ObtenerListaPosiciones(numero): devuelve una lista de PosicionProducto, con posicion, sku y cantidad.
 
         var stockADescontar = ObtenerListaPosiciones(numero);
 
@@ -190,7 +199,7 @@ internal class PrepararProductosModelo
         {
             int skuInt = int.Parse(mov.Sku);
             int cantidad = mov.Cantidad;
-            ProductoAlmacen.RestarStock(skuInt, cantidad);
+            ProductoAlmacen.RestarStock(skuInt, cantidad, mov.Posicion);
         }
 
         // Devuelvo null = todo OK, sino arroja excepcion..
