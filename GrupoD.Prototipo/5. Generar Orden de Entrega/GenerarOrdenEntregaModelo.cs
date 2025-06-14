@@ -56,12 +56,13 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
         }
 
         /// PASO 3: Obtener el próximo número disponible para una orden de entrega
-        public int ObtenerProximoNumero()
-        {
-            return OrdenDeEntregaAlmacen.OrdenesDeEntrega.Any()
-                ? OrdenDeEntregaAlmacen.OrdenesDeEntrega.Max(o => o.Numero) + 1
-                : 1;
-        }
+        /// 
+        //public int ObtenerProximoNumero()
+        //{
+        //    return OrdenDeEntregaAlmacen.OrdenesDeEntrega.Any()
+        //        ? OrdenDeEntregaAlmacen.OrdenesDeEntrega.Max(o => o.Numero) + 1
+        //        : 1;
+        //}
 
         /// PASO 4: Crear y guardar una nueva orden de entrega con las órdenes seleccionadas
         /// <param name="ordenesSeleccionadas">Órdenes de preparación seleccionadas</param>
@@ -89,6 +90,18 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
             }
 
             BuscarOrdenesPreparadas();
+        }
+
+        public int ObtenerProximoNumero()
+        {
+            if (OrdenDeEntregaAlmacen.OrdenesDeEntrega.Any())
+            {
+                return OrdenDeEntregaAlmacen.OrdenesDeEntrega.Max(o => o.Numero) + 1;
+            }
+            else
+            {
+                return 1; // Primera orden
+            }
         }
 
         /// PASO 5: Cambiar estado de una orden de preparación a "En Despacho"
