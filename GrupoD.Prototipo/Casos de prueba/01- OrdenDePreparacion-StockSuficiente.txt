@@ -1,17 +1,18 @@
-﻿Plan de Prueba: Orden de Preparación con Stock Suficiente
+﻿Plan de Prueba: Orden de Preparación con Stock Insuficiente por Depósito
 
 (Empieza con el Menú Principal)
-1- Botón							"Generar orden de preparación"
-2- Número Cliente					"1"
-3- Botón							"Buscar Productos"
-4- Producto							"Mesa ratona de madera"
-5- Cantidad Seleccionada			"2"
-6- Botón							"Agregar Producto a la Orden"
+1- Depósito						"Depósito Rosario"
+1- Botón						"Generar orden de preparación"
+2- Número Cliente				"1"
+3- Botón						"Buscar Productos"
+4- Producto						"Mesa ratona de madera"
+5- Cantidad Seleccionada		"2"
+6- Botón						"Agregar Producto a la Orden"
 7- Seleccionar Pallet
-8- Fecha a Retirar					"08/07/2025"
-9- Prioridad						"Alta"
-10- DNI Transportista				"20242093"
-11- Botón							"Generar Orden de Preparación"
+8- Fecha a Retirar				"08/07/2025"
+9- Prioridad					"Alta"
+10- DNI Transportista			"20242093"
+11- Botón						"Generar Orden de Preparación"
 12- Cerrar el sistema
 
 Verificaciones:
@@ -31,25 +32,6 @@ Verificaciones:
     "NumeroCliente": 1,
     "DNITransportista": 20242093,
     "Estado": 0
-  }
-14- Archivo Producto.json: "SKU" = "1", "Cantidad" = "1" 
- {
-        "SKU": 1,
-        "Nombre": "Mesa ratona de madera",
-        "Cantidad": 1,
-        "NumeroCliente": 1,
-        "Posiciones": [
-            {
-                "Codigo": "01-10-1",
-                "Stock": 0,
-                "CodigoDeposito": "D01"
-            },
-            {
-                "Codigo": "01-11-1",
-                "Stock": 1,
-                "CodigoDeposito": "D01"
-            }
-        ]
-    }
+}
 
 (Termino cerrando el programa)

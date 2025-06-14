@@ -15,10 +15,26 @@ internal class OrdenDePreparacionModelo
         CargarDatosIniciales();
     }
 
-    public int ObtenerProximoNumero() => OrdenDePreparacionAlmacen.OrdenesDePreparacion.Select(o => o.Numero).DefaultIfEmpty().Max() + 1;
+
+    public int ObtenerProximoNumero()
+    {
+        if (OrdenDePreparacionAlmacen.OrdenesDePreparacion.Select(o => o.Numero).Any())
+        {
+            return OrdenDePreparacionAlmacen.OrdenesDePreparacion.Select(o => o.Numero).Max() + 1;
+        }
+        else
+        {
+            return 1; // Si no hay órdenes, el próximo número es 1
+        }
+    }
+    //public int ObtenerProximoNumero() => OrdenDePreparacionAlmacen.OrdenesDePreparacion.Select(o => o.Numero).DefaultIfEmpty().Max() + 1;
+
+    
+                         
 
     public bool ValidarDNITransportista(int dni) => Transportistas.Any(t => t.DNITransportista == dni);
 
+       
     public void CrearOrdenesDesdeItems(
         IEnumerable<ListViewItem> items,
         int numeroCliente,
