@@ -44,7 +44,7 @@
       {
         "Codigo": "03-14-2",
         "Stock": 1,
-        "CodigoDeposito": "D02"
+        "CodigoDeposito": "D04"
       }
     ]
   },
@@ -75,7 +75,7 @@
       {
         "Codigo": "05-19-2",
         "Stock": 2,
-        "CodigoDeposito": "D02"
+        "CodigoDeposito": "D03"
       }
     ]
   },
@@ -150,7 +150,7 @@
       {
         "Codigo": "10-18-2",
         "Stock": 1,
-        "CodigoDeposito": "D01"
+        "CodigoDeposito": "D02"
       }
     ]
   },
@@ -181,7 +181,7 @@
       {
         "Codigo": "12-24-2",
         "Stock": 6,
-        "CodigoDeposito": "D02"
+        "CodigoDeposito": "D03"
       }
     ]
   },
