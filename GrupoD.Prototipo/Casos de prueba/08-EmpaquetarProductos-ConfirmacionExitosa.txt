@@ -2,36 +2,35 @@ Plan de Prueba: EmpaquetarProductos-ConfirmacionExitosa.txt
 
 (Empieza con el menú principal)
 1- Botón										"Empaquetar los productos"
-2- Orden de preparacion							#7
-3- SKU								   			15
+2- Orden de preparacion							#11
+3- SKU								   			7
 Verificar que listViewProductos muestra los productos correspondientes a la orden.
-4- Nombre										Escritorio en L melamina
-5- Cantidad										2
+4- Nombre										Estantería metálica 4 estantes
+5- Cantidad										5
 6- Botón										"Orden Empaquetada"
 7- Mensaje										"La orden fue marcada como 'Preparada'.".
 8- Revisar que la siguiente orden de preparación se muestra en pantalla. 
-9- Mensaje (si no hay más órdenes disponibles) "No hay más órdenes pen estado 'En Preparacion' para empaquetar." 
+9- Mensaje (si no hay más órdenes disponibles) "No hay más órdenes en estado 'En Preparacion' para empaquetar." 
 10- Se deshabilitar el botón "Orden empaquetada". 
 11- Botón										"Cerrar"
 12- Vuelve al menú principal
 
 Verificaciones
-13- Archivo ordenDePreparacion.json – la orden de preparacion numero 7 deberia aparecer con el estado actualizado ("Estado"" = 3):
+13- Archivo ordenDePreparacion.json – la orden de preparacion numero 11 deberia aparecer con el estado actualizado ("Estado"" = 3):
 
 {
-"Numero": 7,
-"Pallet": false,
-"CodigoDeposito": "D01",
-"Detalle": [
-    {
-    "SKU": 15,
-    "Cantidad": 2
-    }
-],
-"FechaRetirar": "2025-06-10T00:00:00",
-"Prioridad": 0,
-"NumeroCliente": 15,
-"DNITransportista": 43242093,
-"Estado": 3
+    "Numero": 11,
+    "Pallet": false,
+    "CodigoDeposito": "D04",
+    "Detalle": [
+        {
+            "SKU": 7,
+            "Cantidad": 5
+        }
+    ],
+    "FechaRetirar": "2025-06-07T00:00:00",
+    "Prioridad": 2,
+    "NumeroCliente": 7,
+    "DNITransportista": 40242093,
+    "Estado": 2
 },
-

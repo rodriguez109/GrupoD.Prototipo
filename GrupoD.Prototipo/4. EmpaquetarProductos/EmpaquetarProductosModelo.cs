@@ -6,26 +6,21 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using GrupoD.Prototipo._4._Empaquetar_Productos;
+using GrupoD.Prototipo._4._EmpaquetarProductos;
+using System.Collections;
 
 namespace GrupoD.Prototipo._4._EmpaquetarProductos
 {
     internal class EmpaquetarProductosModelo
     {
-        //public List<OrdenPreparacion> OrdenesEnPreparacionDisponibles { get; } = new();
-        //public List<OrdenDePreparacionEntidad> OrdenesEnPreparacionDisponibles { get; private set; } = new ();
-        //    public List<OrdenDePreparacionEntidad> OrdenesEnPreparacionDisponibles
-        //=> OrdenDePreparacionAlmacen.OrdenesDePreparacion
-        //   .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.EnPreparacion)
-        // .ToList(); //te aseguras de siempre trabajar con datos actualizados sin necesidad de sincronización manual.+/
-
-
-        public List<OrdenPreparacion> OrdenesEnPreparacionDisponibles
+         public List<OrdenPreparacion> OrdenesEnPreparacionDisponibles
     => OrdenDePreparacionAlmacen.OrdenesDePreparacion
        .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.EnPreparacion)
        .Select(op => new OrdenPreparacion(
-           op.Numero,
+           op.Numero, // Cambio de `Numero` a `NumeroOP`
            op.Estado,
+           op.Prioridad,
+           op.FechaRetirar,
            op.Detalle.Select(detallep =>
            {
                var productoEntidad = ProductoAlmacen.Productos.FirstOrDefault(p => p.SKU == detallep.SKU);
@@ -33,10 +28,11 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
                {
                    SKU = detallep.SKU,
                    Nombre = productoEntidad?.Nombre ?? "Desconocido",
-                   CantidadSeleccionada = detallep.Cantidad
+                   CantidadSolicitada = detallep.Cantidad
                };
            }).ToList()
        )).ToList();
+
         public EmpaquetarProductosModelo()
         {
             //ActualizarOrdenesDisponibles();  ahora se calcula arriba automaticamente
@@ -44,6 +40,10 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
         }
 
 
+        /*Cuando usar ObtenerOrdenesDisponibles()?
+            - Devuelve una lista completa de órdenes en preparación, permitiendo visualizar todas. 
+            - Útil si necesitas mostrar varias órdenes en una vista, como un listado en el formulario. 
+            - Ideal para reportes o para elegir manualmente qué orden procesar, en lugar de que el sistema seleccione automáticamente.*/
         public List<OrdenPreparacion> ObtenerOrdenesDisponibles()
         {
             return OrdenDePreparacionAlmacen.OrdenesDePreparacion
@@ -60,23 +60,20 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
                         {
                             SKU = dp.SKU,
                             Nombre = productoEntidad?.Nombre ?? "Desconocido",
-                            CantidadSeleccionada = dp.Cantidad
+                            CantidadSolicitada = dp.Cantidad
                         };
                     }).ToList()
                 )).ToList();
         }
 
-
-        public OrdenPreparacion BusquedaOrdenDisponible()
+        public OrdenPreparacion BusquedaOrdenDisponible() //primer ordend e preparacion mas prox a retirar
+            //falta que tenga en cuenta la prioridad
         {
             return OrdenesEnPreparacionDisponibles
-                .Where(op => op.EstadoOP == EstadoOrdenDePreparacionEnum.EnPreparacion) // Comparación correcta con Enum
+                .Where(op => op.EstadoOP == EstadoOrdenDePreparacionEnum.EnPreparacion)
                 .OrderBy(op => op.FechaRetirar)
-                .FirstOrDefault();
+                .FirstOrDefault()!;
         }
-
-
-
 
         public void CambioEstadoOP(OrdenPreparacion ordenActual)
         {
@@ -92,7 +89,7 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
             //ActualizarOrdenesDisponibles();
         }
 
-        //public void ActualizarOrdenesDisponibles()      //YA NO ES NECESARIO XQ SE CALCULA
+        //public void ActualizarOrdenesDisponibles()      // se calcula automaticamente ahora
         //{
         //    OrdenesEnPreparacionDisponibles.Clear();
         //    OrdenesEnPreparacionDisponibles.AddRange(OrdenDePreparacionAlmacen.OrdenesDePreparacion
@@ -100,9 +97,9 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
         //        .OrderBy(o => o.FechaRetirar));
         //}
 
-        public ProductoOP ObtenerProductoPorSKU(int sku)
+        public ProductoOP ObtenerProductoPorSKU(int sku, int cantidadSolicitada)
         {
-            var productoEntidad = ProductoAlmacen.Productos.FirstOrDefault(p => p.SKU == sku);
+            var productoEntidad = ProductoAlmacen.Productos.FirstOrDefault(p => p.SKU == sku); //devuelve solo el primer producto???
 
             if (productoEntidad == null) return null;
 
@@ -110,12 +107,9 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
             {
                 SKU = productoEntidad.SKU,
                 Nombre = productoEntidad.Nombre,
-                CantidadSeleccionada = productoEntidad.Stock // Ajusta si necesitas otro valor
+                CantidadSolicitada = cantidadSolicitada // cantidad pedida en la orden
             };
         }
-
-
-
     }
 }
 

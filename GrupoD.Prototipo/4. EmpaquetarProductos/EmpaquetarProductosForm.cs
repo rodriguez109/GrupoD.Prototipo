@@ -44,27 +44,29 @@ public partial class EmpaquetarProductosForm : Form
         }
         else
         {
-            labelNumeroOrden.Text = $"Orden #{ordenActual.Numero}";
-            CargarProductosEnListView(ordenActual.Detalle);
+            labelNumeroOrden.Text = $"Orden #{ordenActual.NumeroOP}";
+            CargarProductosEnListView(ordenActual.Productos);
         }    
     }
 
-    internal void CargarProductosEnListView(List<ProductosPorOrden> productos)
+    internal void CargarProductosEnListView(List<ProductoOP> productos)
     {
         listViewProductos.Items.Clear();
 
-        foreach (var producto in productos)
+        foreach (var producto in productos) // se repite por cada producto en la lista productos
         {
-            var productoConsultar = modelo.ObtenerProductoPorSKU(producto.SKU); // Llamada al método del modelo
+            var productoConsultar = modelo.ObtenerProductoPorSKU(producto.SKU, producto.CantidadSolicitada);
+
             if (productoConsultar == null)
             {
-                MessageBox.Show($"El producto con SKU {producto.SKU} no existe en el almacén.");
+                MessageBox.Show($"El producto con SKU {producto.SKU} no existe en el almacén."); //ELSE 2 DDS
+                //CASO DE PRUEBA DE ORDEN SIN PRODUCTOS###########################
                 continue; // Evita añadir productos no encontrados
             }
 
             var item = new ListViewItem(producto.SKU.ToString());
             item.SubItems.Add(productoConsultar.Nombre);
-            item.SubItems.Add(producto.Cantidad.ToString());
+            item.SubItems.Add(producto.CantidadSolicitada.ToString());
 
             listViewProductos.Items.Add(item);
         }
@@ -76,7 +78,7 @@ public partial class EmpaquetarProductosForm : Form
         if (ordenActual != null)
         {
             modelo.CambioEstadoOP(ordenActual);
-            modelo.ActualizarOrdenesDisponibles(); // Refresca la lista de órdenes disponibles
+            //modelo.ActualizarOrdenesDisponibles(); // Refresca la lista de órdenes disponibles
             MessageBox.Show("La orden fue marcada como 'Preparada'.");
             MostrarOrdenPantalla();
 
