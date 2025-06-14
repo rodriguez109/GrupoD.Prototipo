@@ -124,7 +124,7 @@ internal class OrdenDePreparacionModelo
         {
             producto.Cantidad -= OrdenDePreparacionAlmacen.OrdenesDePreparacion
                                                           .Where(o => o.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual)
-                                                          .Where(o => o.Estado is EstadoOrdenDePreparacionEnum.Pendiente or EstadoOrdenDePreparacionEnum.Procesamiento)
+                                                          .Where(o => o.Estado is EstadoOrdenDePreparacionEnum.EnPreparacion)
                                                           .SelectMany(o => o.Detalle)
                                                           .Where(o => o.SKU == producto.SKUProducto)
                                                           .Sum(o => o.Cantidad);

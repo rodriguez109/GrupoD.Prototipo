@@ -23,6 +23,25 @@ public partial class PrepararProductosForm : Form
 
     // CM_OS: Lee ID(int) de la orden elegida. Llama a modelo.ObtenerListaPosiciones(id) → devuelve una lista de PosicionProducto con: Posicion, sku y cantidad
     // Por cada posición, crea un ListViewItem y lo añade a lViewOrdenSeleccion.
+    //private void comboOrdenSeleccion_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    if (comboOrdenSeleccion.SelectedItem == null)
+    //    {
+    //        lViewOrdenSeleccion.Items.Clear();
+    //        return; // No hay orden seleccionada
+    //    }
+
+    //    var idOrdenSeleccion = Convert.ToInt32(comboOrdenSeleccion.SelectedItem);
+    //    foreach (var posicion in modelo.ObtenerListaPosiciones(idOrdenSeleccion))
+    //    {
+    //        var lvItem = new ListViewItem
+    //        {
+    //            Text = posicion.Posicion
+    //        };
+    //        _ = lvItem.SubItems.Add(posicion.Sku);
+    //        _ = lvItem.SubItems.Add(posicion.Cantidad.ToString());
+    //    }
+    //}
     private void comboOrdenSeleccion_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (comboOrdenSeleccion.SelectedItem == null)
@@ -31,15 +50,21 @@ public partial class PrepararProductosForm : Form
             return; // No hay orden seleccionada
         }
 
+
+        lViewOrdenSeleccion.Items.Clear();
+
         var idOrdenSeleccion = Convert.ToInt32(comboOrdenSeleccion.SelectedItem);
+
         foreach (var posicion in modelo.ObtenerListaPosiciones(idOrdenSeleccion))
         {
-            var lvItem = new ListViewItem
-            {
-                Text = posicion.Posicion
-            };
-            _ = lvItem.SubItems.Add(posicion.Sku);
-            _ = lvItem.SubItems.Add(posicion.Cantidad.ToString());
+            var lvItem = new ListViewItem(posicion.Posicion);
+
+
+            lvItem.SubItems.Add(posicion.Sku);
+            lvItem.SubItems.Add(posicion.Cantidad.ToString());
+
+
+            lViewOrdenSeleccion.Items.Add(lvItem);
         }
     }
 
