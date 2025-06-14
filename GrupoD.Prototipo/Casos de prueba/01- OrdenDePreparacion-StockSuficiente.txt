@@ -1,11 +1,12 @@
 ﻿Plan de Prueba: Orden de Preparación con Stock Insuficiente por Depósito
 
 (Empieza con el Menú Principal)
+
 1- Depósito						"Depósito Rosario"
 1- Botón						"Generar orden de preparación"
-2- Número Cliente				"1"
+2- Número Cliente				"3"
 3- Botón						"Buscar Productos"
-4- Producto						"Mesa ratona de madera"
+4- Producto						"Smart TV 43 pulgadas"
 5- Cantidad Seleccionada		"2"
 6- Botón						"Agregar Producto a la Orden"
 7- Seleccionar Pallet

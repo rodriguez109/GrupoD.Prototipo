@@ -35,21 +35,20 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             razonSocialClienteTXT.Enabled = true;
             
 
-            //Vincular evento para el DateTimePicker
+            
             fechaRetirarDTP.ValueChanged += FechaRetirarDTP_ValueChanged;
 
-            //Configurar DateTimePicker para mostrar fecha actual como fecha mínima
             fechaRetirarDTP.MinDate = DateTime.Today;
 
             ConfigurarAutoCompletar();
 
 
-            prioridadCMB.Items.Clear(); // Limpiar elementos previos
+            prioridadCMB.Items.Clear(); 
             prioridadCMB.Items.Add("Alta");
             prioridadCMB.Items.Add("Media");
             prioridadCMB.Items.Add("Baja");
 
-            prioridadCMB.SelectedIndex = 1; // Preselecciona "Media" por defecto
+            prioridadCMB.SelectedIndex = 1; 
 
 
 
@@ -61,7 +60,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
         }
 
-        //Razón social: búsqueda por primeras letras
+
 
         private void ConfigurarAutoCompletar()
         {
@@ -80,13 +79,13 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
             AutoCompleteStringCollection listaAutocompletar = new AutoCompleteStringCollection();
 
-            // Agregar todas las razones sociales de los clientes a la lista de autocompletar
+            
             foreach (var cliente in modelo.Clientes)
             {
                 listaAutocompletar.Add(cliente.RazonSocialCliente);
             }
 
-            // Configurar el campo de texto con la lista de autocompletar
+            
             razonSocialClienteTXT.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             razonSocialClienteTXT.AutoCompleteSource = AutoCompleteSource.CustomSource;
             razonSocialClienteTXT.AutoCompleteCustomSource = listaAutocompletar;
@@ -113,16 +112,16 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
         
         private void FechaRetirarDTP_ValueChanged(object sender, EventArgs e)
         {
-            fechaRetirarDTP.CustomFormat = "dd/MM/yyyy"; // Mostrar la fecha correctamente al seleccionarla
+            fechaRetirarDTP.CustomFormat = "dd/MM/yyyy"; 
         }
 
-        private Cliente BuscarCliente(int numeroCliente, string razonSocial)    //FIJARSE SI CLIENTE O CLIENTEALMACEN
+        private Cliente BuscarCliente(int numeroCliente, string razonSocial)    
         {
-            // Verifica que se hayan cargado clientes en el modelo.
+            
             if (modelo == null || modelo.Clientes == null || !modelo.Clientes.Any())
                 return null;
 
-            // Suponiendo que la clase Cliente tiene las propiedades 'Numero' y 'RazonSocial'
+            
             Cliente clienteEncontrado = modelo.Clientes
                 .FirstOrDefault(c => c.NumeroCliente == numeroCliente);
 
@@ -167,7 +166,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
         {
             List<Producto> productosCliente = new List<Producto>();
 
-            foreach (var producto in modelo.Productos) // Usa la lista correcta
+            foreach (var producto in modelo.Productos) 
             {
                 if (producto.NumeroCliente == numeroCliente)
                 {
@@ -181,7 +180,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
         private void limpiarFiltrosBTN_Click(object sender, EventArgs e)
         {
             
-            // Limpiar los campos de búsqueda
+            
             numeroClienteTXT.Text = "";
             razonSocialClienteTXT.Text = "";
         }
@@ -192,15 +191,15 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
             if (productosClienteLST.SelectedItems.Count > 0)
             {
-                // Captura el producto seleccionado
+                
                 ListViewItem itemSeleccionado = productosClienteLST.SelectedItems[0];
 
-                // Verifica que el ListViewItem tenga suficientes subitems
+                
                 if (itemSeleccionado.SubItems.Count >= 3)
                 {
-                    // Actualizar los Labels con el nombre y la cantidad
-                    productoSeleccionadoLABEL.Text = itemSeleccionado.SubItems[1].Text; // Nombre del producto
-                    cantidadDisponibleLABEL.Text = itemSeleccionado.SubItems[2].Text; // Cantidad disponible
+                   
+                    productoSeleccionadoLABEL.Text = itemSeleccionado.SubItems[1].Text; 
+                    cantidadDisponibleLABEL.Text = itemSeleccionado.SubItems[2].Text; 
                 }
                 else
                 {
@@ -209,7 +208,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             }
             else
             {
-                // Si no hay selección, los labels quedan vacíos
+               
                 productoSeleccionadoLABEL.Text = "Seleccione un producto";
                 cantidadDisponibleLABEL.Text = "0";
             }
@@ -219,15 +218,15 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
         private void cantidadSeleccionadaTXT_TextChanged(object sender, EventArgs e)
         {
-            //Limpiar la cantidad seleccionada
+            
             cantidadSeleccionadaTXT.Clear();
-            // Validar que la cantidad seleccionada sea un número entero
+           
             if (!int.TryParse(cantidadSeleccionadaTXT.Text, out int cantidadSeleccionada))
             {
                 MessageBox.Show("La cantidad seleccionada no es válida.");
                 return;
             }
-            // Validar que la cantidad seleccionada no exceda la cantidad disponible
+            
             if (cantidadSeleccionada > int.Parse(cantidadDisponibleLABEL.Text))
             {
                 MessageBox.Show("La cantidad seleccionada excede la cantidad disponible.");
@@ -245,21 +244,21 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 return;
             }
 
-            // Convertir los valores a números para comparación
+            
             if (!int.TryParse(cantidadSeleccionadaTXT.Text, out int cantidadSeleccionada) || !int.TryParse(cantidadDisponibleLABEL.Text, out int cantidadDisponible))
             {
                 MessageBox.Show("Ingrese una cantidad numérica válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Verificar que la cantidad seleccionada sea mayor a cero
+            
             if (cantidadSeleccionada <= 0)
             {
                 MessageBox.Show("La cantidad debe ser mayor a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Verificar que la cantidad seleccionada no sea mayor a la disponible
+            
             if (cantidadSeleccionada > cantidadDisponible)
             {
                 MessageBox.Show($"La cantidad seleccionada ({cantidadSeleccionada}) es mayor a la disponible ({cantidadDisponible}).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -269,7 +268,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             int numeroCliente = 0;
             if (string.IsNullOrWhiteSpace(numeroClienteTXT.Text))
             {
-                // Si no se ingresó un número de cliente, se busca por razón social.
+                
                 if (!string.IsNullOrWhiteSpace(razonSocialClienteTXT.Text))
                 {
                     string razonSocial = razonSocialClienteTXT.Text.Trim();
@@ -279,7 +278,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                     if (clienteEncontrado != null)
                     {
                         numeroCliente = clienteEncontrado.NumeroCliente;
-                        // Opcional: actualizar el TextBox para reflejar el número obtenido.
+                        
                         numeroClienteTXT.Text = numeroCliente.ToString();
                     }
                     else
@@ -300,7 +299,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 return;
             }
 
-            // Bloquear cambio de cliente después de agregar productos
+            
             if (ordenPreparacionLST.Items.Count > 0)
             {
                 if (clienteFijo != numeroCliente)
@@ -311,28 +310,28 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             }
             else
             {
-                clienteFijo = numeroCliente; // Fijar el cliente en la primera adición
+                clienteFijo = numeroCliente; 
             }
 
 
-            // Obtener los valores correctos en el orden adecuado
-            string skuProducto = productosClienteLST.SelectedItems[0].SubItems[0].Text; // SKU del producto
-            string nombreProducto = productoSeleccionadoLABEL.Text; // Nombre del producto
-            string cantidadSeleccionadaTexto = cantidadSeleccionadaTXT.Text; // Cantidad seleccionada
+            
+            string skuProducto = productosClienteLST.SelectedItems[0].SubItems[0].Text; 
+            string nombreProducto = productoSeleccionadoLABEL.Text; 
+            string cantidadSeleccionadaTexto = cantidadSeleccionadaTXT.Text; 
 
-            // Crear un nuevo ítem para el ListView con las columnas correctamente ordenadas
-            ListViewItem nuevoItem = new ListViewItem(skuProducto); // Primera columna: SKU Producto
-            nuevoItem.SubItems.Add(nombreProducto); // Segunda columna: Nombre Producto
-            nuevoItem.SubItems.Add(cantidadSeleccionadaTexto); // Tercera columna: Cantidad Seleccionada
+           
+            ListViewItem nuevoItem = new ListViewItem(skuProducto); 
+            nuevoItem.SubItems.Add(nombreProducto); 
+            nuevoItem.SubItems.Add(cantidadSeleccionadaTexto); 
 
 
-            // Agregar el producto al ListView de la Orden de Preparación
+            
             ordenPreparacionLST.Items.Add(nuevoItem);
         }
 
 
        
-        private static int numeroOrden = 0; // Variable autonumérica para las órdenes
+        private static int numeroOrden = 0; 
         
         
 
@@ -340,7 +339,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
         {
             try
             {
-                // Validar que se hayan agregado productos a la orden
+                
                 if (ordenPreparacionLST.Items.Count == 0)
                 {
                     MessageBox.Show("Debe agregar productos a la Orden de Preparación antes de generarla.",
@@ -349,7 +348,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 }
 
 
-                // Validar y convertir DNI del transportista
+               
                 if (string.IsNullOrEmpty(dniTransportistaTXT.Text) || dniTransportistaTXT.Text.Length != 8 ||
                     !int.TryParse(dniTransportistaTXT.Text, out int dniTransportista))
                 {
@@ -357,7 +356,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                // Usar la validación del modelo
+                
                 if (!modelo.ValidarDNITransportista(dniTransportista))
                 {
                     MessageBox.Show("Transportista no encontrado.",
@@ -365,7 +364,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                     return;
                 }
 
-                // Validar y convertir el número de cliente
+                
                 if (!int.TryParse(numeroClienteTXT.Text, out int numeroCliente))
                 {
                     MessageBox.Show("El número de cliente debe ser un valor numérico válido.",
@@ -373,13 +372,12 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                     return;
                 }
 
-                // Obtener datos adicionales de la UI
+               
                 DateTime fechaRetirar = fechaRetirarDTP.Value;
                 string prioridadSeleccionada = prioridadCMB.Text;
                 string razonSocialCliente = razonSocialClienteTXT.Text;
                 bool pallet = palletCBX.Checked;
 
-                // Bloquear cambio de cliente si ya se han agregado productos
                 if (ordenPreparacionLST.Items.Count > 0)
                 {
                     if (clienteFijo != numeroCliente)
@@ -391,10 +389,10 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 }
                 else
                 {
-                    clienteFijo = numeroCliente; // Fijar el cliente en la primera adición
+                    clienteFijo = numeroCliente; 
                 }
 
-                // Llamar al método del modelo para crear la orden y agregarla al almacen
+                
                 
                 modelo.CrearOrdenesDesdeItems(
                     ordenPreparacionLST.Items.Cast<ListViewItem>(),
@@ -406,7 +404,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                     pallet
                 );
 
-                // Limpiar controles
+               
                 numeroClienteTXT.Clear();
                 razonSocialClienteTXT.Clear();
                 productosClienteLST.Items.Clear();
@@ -426,7 +424,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             int numeroCliente = 0;
             string razonSocialTexto = razonSocialClienteTXT.Text.Trim();
 
-            // Validar número de cliente solo si se ingresó
+            
             if (!string.IsNullOrEmpty(numeroClienteTXT.Text))
             {
                 if (!int.TryParse(numeroClienteTXT.Text, out numeroCliente))
@@ -441,19 +439,19 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                 }
             }
 
-            // Validar que al menos haya ingresado un número de cliente o una razón social
+            
             if (numeroCliente == 0 && string.IsNullOrEmpty(razonSocialTexto))
             {
                 MessageBox.Show("Debe ingresar un número de cliente o una razón social.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Buscar cliente con el método correcto
+            
             Cliente clienteEncontrado = BuscarCliente(numeroCliente, razonSocialTexto);
 
             if (clienteEncontrado != null)
             {
-                // Si el usuario ingresó ambos datos, verificar que coincidan
+                
                 if (numeroCliente > 0 && !string.IsNullOrEmpty(razonSocialTexto) &&
                     !clienteEncontrado.RazonSocialCliente.Equals(razonSocialTexto, StringComparison.OrdinalIgnoreCase))
                 {
@@ -461,7 +459,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
                     return;
                 }
 
-                // Si la validación es correcta, cargar los productos
+                
                 CargarProductosCliente(clienteEncontrado.NumeroCliente);
             }
             else
@@ -477,7 +475,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
         {
             if (ordenPreparacionLST.SelectedItems.Count > 0)
             {
-                // Eliminar el producto seleccionado
+                
                 ordenPreparacionLST.Items.Remove(ordenPreparacionLST.SelectedItems[0]);
             }
             else
