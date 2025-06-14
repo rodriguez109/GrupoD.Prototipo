@@ -44,9 +44,21 @@ namespace GrupoD.Prototipo._2._GenerarOrdenSeleccion
             OrdenesAgregadas = new List<OrdenesDePreparacion>();
         }
 
+        //public int ObtenerProximoNumero()
+        //{
+        //    return OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.Max(o => o.Numero) + 1;
+        //}
+
         public int ObtenerProximoNumero()
         {
-            return OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.Max(o => o.Numero) + 1;
+            if (OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.Any())
+            {
+                return OrdenDeSeleccionAlmacen.OrdenesDeSeleccion.Max(o => o.Numero) + 1;
+            }
+            else
+            {
+                return 1; // Primera orden
+            }
         }
 
         public void AgregarOrden(List<OrdenesDePreparacion> OPseleccionadas)
