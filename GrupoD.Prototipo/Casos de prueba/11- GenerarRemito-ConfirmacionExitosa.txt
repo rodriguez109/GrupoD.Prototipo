@@ -1,25 +1,50 @@
 ﻿Plan de Prueba: Generar Remito - Confirmación Exitosa
 
 (Empieza con el Menú Principal)
-1- Botón							"Generar remito"
-2- DNI Transportista			    "20242093" 
-3- Botón							"Buscar órdenes"
-4- Seleccionar Nro de orden			"3"
-5- Botón				            "Agregar al remito"
-6- Botón 						    "Generar remito"
-7- Cerrar el sistema
+1- Depósito                         "Deposito Córdoba"
+2_ Botón							"Generar remito"
+3- DNI Transportista			    "20242093" 
+4- Botón							"Buscar órdenes"
+5- Seleccionar Nro de orden			"3"
+6- Botón				            "Agregar al remito"
+7- Botón 						    "Generar remito"
+8- Cerrar el sistema
 
 Verificaciones:
-13- Archivo Remito.json - Ultima linea: 
+9- Archivo Remito.json - Ultima linea: 
 {
     "Numero": 4,
     "DNITransportista": 20242093 ,
     "FechaEmision": ""2025-06-02T09:45:00"",
-    "OrdenesPreparacion": [
+    "OrdenesPreparacion": [ 3
       
     ]
  }
+10-  Archivo OrdenPreparacion.json - Tercer registro??: 
+  {
+    "Numero": 3,
+    "Pallet": true,
+    "CodigoDeposito": "D04",
+    "Detalle": [
+      {
+        "SKU": 11,
+        "Cantidad": 3
+      }
+    ],
+    "FechaRetirar": "2025-06-11T00:00:00",
+    "Prioridad": 0,
+    "NumeroCliente": 11,
+    "DNITransportista": 20242093,
+    "Estado": 5
+  }
 
+11- Archivo OrdenDeEntrega.json - segundo registro??: 
+  {
+    "Numero": 2,
+    "OrdenesPreparacion": [ 3, 9 ],
+    "FechaGeneracion": "2025-06-02T12:00:00",
+    "EstadoOrdenDeEntrega": 1
+  }
   
 
 (Termino cerrando el programa)
