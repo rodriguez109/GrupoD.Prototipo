@@ -19,7 +19,7 @@
 15- Cerrar el sistema
 
 Verificaciones:
-16- Archivo OrdenDePreparacion.json - Ultima entrada: 
+16- Archivo OrdenDePreparacion.json - Nueva entrada: 
 {
     "Numero": 1,
     "Pallet": false,
