@@ -46,7 +46,8 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
                 item.SubItems.Add(orden.NombreCliente);
                 item.SubItems.Add(orden.FechaEntrega.ToShortDateString());
                 item.SubItems.Add(orden.DNITransportista.ToString());
-                item.SubItems.Add(orden.NombreTransportista); 
+                item.SubItems.Add(orden.NombreTransportista);
+
 
                 item.Tag = orden;
 
@@ -63,7 +64,9 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
 
                 if (ordenSeleccionada != null)
                 {
-                     MessageBox.Show("La orden de entrega ha sido generada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    modelo.CrearYGuardarOrdenDeEntrega(new List<OrdenDePreparacionClase> { ordenSeleccionada });
+
+                    MessageBox.Show("La orden de entrega ha sido generada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         CargarOrdenesEnListView();
                     

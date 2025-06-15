@@ -34,20 +34,22 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
                 var cliente = ClienteAlmacen.Buscar(op.NumeroCliente);
                 var transportista = TransportistaAlmacen.Buscar(op.DNITransportista);
 
-                if (cliente != null && transportista != null)
-                {
-                    var clase = new OrdenDePreparacionClase(
-                        op.Numero,
-                        cliente.RazonSocial,
-                        op.FechaRetirar,
-                        op.DNITransportista,
-                        transportista.Nombre 
-                    );
+                // Carga razonable incluso si alguno falta
+                var nombreCliente = cliente?.RazonSocial ?? "Cliente no encontrado";
+                var nombreTransportista = transportista?.Nombre ?? "Transportista no encontrado";
 
-                    ordenesPreparadas.Add(clase);
-                }
+                var clase = new OrdenDePreparacionClase(
+                    op.Numero,
+                    nombreCliente,
+                    op.FechaRetirar,
+                    op.DNITransportista,
+                    nombreTransportista
+                );
+
+                ordenesPreparadas.Add(clase);
             }
         }
+        
 
         /// PASO 2: Devolver las órdenes preparadas para mostrar en pantalla
         public List<OrdenDePreparacionClase> ObtenerOrdenesPreparadas()
@@ -107,14 +109,9 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
         /// PASO 5: Cambiar estado de una orden de preparación a "En Despacho"
         private void CambiarEstadoOrdenPreparacion(int numeroOrden)
         {
-            var ordenEnAlmacen = OrdenDePreparacionAlmacen.OrdenesDePreparacion
-                .FirstOrDefault(op => op.Numero == numeroOrden);
-
-            if (ordenEnAlmacen != null)
-            {
-                ordenEnAlmacen.Estado = EstadoOrdenDePreparacionEnum.EnDespacho;
-            }
+            OrdenDePreparacionAlmacen.cambiarEstado(numeroOrden, EstadoOrdenDePreparacionEnum.EnDespacho);
         }
+
     }
 }
 
