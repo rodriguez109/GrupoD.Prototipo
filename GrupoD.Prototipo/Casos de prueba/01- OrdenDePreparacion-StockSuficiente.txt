@@ -7,7 +7,7 @@
 2- Número Cliente				"3"
 3- Botón						"Buscar Productos"
 4- Producto						"Smart TV 43 pulgadas"
-5- Cantidad Seleccionada		"2"
+5- Cantidad Seleccionada		"1"
 6- Botón						"Agregar Producto a la Orden"
 7- Seleccionar Pallet
 8- Fecha a Retirar				"08/07/2025"
@@ -17,15 +17,15 @@
 12- Cerrar el sistema
 
 Verificaciones:
-13- Archivo OrdenDePreparacion.json - Ultima entrada: 
+13- Archivo OrdenDePreparacion.json - Nueva entrada: 
 {
-    "Numero": 21,
+    "Numero": 1,
     "Pallet": true,
     "CodigoDeposito": "D01",
     "Detalle": [
       {
-        "SKU": 1,
-        "Cantidad": 2
+        "SKU": 3,
+        "Cantidad": 1
       }
     ],
     "FechaRetirar": "2025-07-08T09:20:00",
@@ -34,5 +34,6 @@ Verificaciones:
     "DNITransportista": 20242093,
     "Estado": 0
 }
+14- Se verifica que aparece el stock por depósito, no puede agregar más a la Cantidad Seleccionada porque está en otro depósito
 
 (Termino cerrando el programa)
