@@ -1,16 +1,26 @@
-﻿Plan de Prueba: GenerarOrdenSeleccion-MismaOrdenUsadaDosVeces.txt
+﻿Plan de Prueba: GenerarOrdenSeleccion-ConOrdenesSeleccionadas.txt
 
 (Empieza con el menú principal)
 
+1- Depósito						         "Depósito Buenos Aires"
 1- Botón                                 "Generar Orden de Selección"
 2- Nombre de cliente                     "DecoCentro S.A."
 3- Botón                                 "Buscar órdenes pendientes"
-4- Ordenes pendientes visualizadas        Ninguna
-5- Volver al menú principal
-6- Cerrar el sistema
+4- Ordenes pendientes seleccionadas      "5,7,8"
+7- Botón                                 "Agregar órdenes seleccionadas"
+8- Botón                                 "Generar orden de selección"
+9- Volver al menú principal
+10- Cerrar el sistema
 
 Verificaciones
-7- Archivo OrdenDePreparacion.json – Ordenes de preparación en estado "Procesamiento" (no "Pendientes") asociadas al cliente DecoCentro S.A.:
+11- Archivo OrdenDeSeleccion.json – Última entrada agregada debe ser similar a:
+{
+  "Numero": 6,
+  "FechaGeneracion": "2025-06-06T14:30:00",
+  "EstadoOrdenDeSeleccion": 0,
+  "OrdenesPreparacion": [ 5, 7, 8 ]
+}
+12- Archivo OrdenDePreparacion.json – Modificación debe ser similar a:
 {
     "Numero": 5,
     "Pallet": true,

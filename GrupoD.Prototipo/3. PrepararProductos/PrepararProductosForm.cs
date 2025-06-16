@@ -81,15 +81,16 @@ public partial class PrepararProductosForm : Form
 
         var id = Convert.ToInt32(comboOrdenSeleccion.SelectedItem);
         var error = modelo.ConfirmarOrdenSeleccion(id);
-        if (error == null)
+        if (error != null)
         {
-            _ = MessageBox.Show(error);
+            _ = MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         else
         {
-            _ = MessageBox.Show("Orden confirmada correctamente.", "Éxito");
+            _ = MessageBox.Show("Orden confirmada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             CargarOrdenesSeleccionEnComboBox();
         }
+
     }
 
     private void btnCancelar_Click(object sender, EventArgs e)

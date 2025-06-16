@@ -29,28 +29,52 @@ namespace GrupoD.Prototipo.Almacenes
         //Guarda la lista de productos en un archivo JSON.
         //Convierte la lista productos en un texto con formato JSON(Serialize).
         //Guarda ese texto en Datos\Productos.json.
+        //public static void RestarStock(int sku, int cantidad, string posicion)
+        //{
+        //    var producto = productos.FirstOrDefault(p => p.SKU == sku);
+        //    if (producto == null)
+        //        throw new InvalidOperationException($"No existe producto con SKU '{sku}'.");
+
+        //    if (producto.Stock < cantidad)
+        //        throw new InvalidOperationException(
+        //            $"Stock insuficiente para SKU '{sku}'. Disponible: {producto.Stock}, requerido: {cantidad}.");
+
+        //    producto.Stock -= cantidad;
+
+        //    var enPosicion = producto.Posiciones.FirstOrDefault(p => p.Codigo == posicion && p.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual);
+        //    if(enPosicion == null)
+        //        throw new InvalidOperationException($"No existe la posición '{posicion}' para el producto con SKU '{sku}'.");
+
+        //    if(enPosicion.Stock< cantidad)
+        //        throw new InvalidOperationException(
+        //            $"Stock insuficiente en la posición '{posicion}' para SKU '{sku}'. Disponible: {enPosicion.Stock}, requerido: {cantidad}.");
+
+        //    enPosicion.Stock -= cantidad;
+        //}
         public static void RestarStock(int sku, int cantidad, string posicion)
         {
             var producto = productos.FirstOrDefault(p => p.SKU == sku);
             if (producto == null)
                 throw new InvalidOperationException($"No existe producto con SKU '{sku}'.");
 
-            if (producto.Stock < cantidad)
+            int stockEnDeposito = producto.CantidadEnDeposito(DepositoAlmacen.CodigoDepositoActual);
+            if (stockEnDeposito < cantidad)
                 throw new InvalidOperationException(
-                    $"Stock insuficiente para SKU '{sku}'. Disponible: {producto.Stock}, requerido: {cantidad}.");
-
-            producto.Stock -= cantidad;
+                    $"Stock insuficiente para SKU '{sku}'. Disponible: {stockEnDeposito}, requerido: {cantidad}.");
 
             var enPosicion = producto.Posiciones.FirstOrDefault(p => p.Codigo == posicion && p.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual);
-            if(enPosicion == null)
+            if (enPosicion == null)
                 throw new InvalidOperationException($"No existe la posición '{posicion}' para el producto con SKU '{sku}'.");
 
-            if(enPosicion.Stock< cantidad)
+            if (enPosicion.Stock < cantidad)
                 throw new InvalidOperationException(
                     $"Stock insuficiente en la posición '{posicion}' para SKU '{sku}'. Disponible: {enPosicion.Stock}, requerido: {cantidad}.");
 
             enPosicion.Stock -= cantidad;
+
+            Grabar(); 
         }
+
 
         static ProductoAlmacen() //Lee el archivo Productos.json y recupera la lista de productos.
         {

@@ -47,8 +47,9 @@ namespace GrupoD.Prototipo.Almacenes
 
         public static void Agregar(RemitoEntidad remito)
         {
-            remitos.Add(remito); 
-            
+            remitos.Add(remito);
+            //Grabar(); va o no va???????
+
         }
 
         

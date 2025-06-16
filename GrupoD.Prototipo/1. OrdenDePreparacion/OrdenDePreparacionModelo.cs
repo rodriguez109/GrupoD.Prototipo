@@ -120,15 +120,15 @@ internal class OrdenDePreparacionModelo
                         p.NumeroCliente))
                     .ToList() ?? [];
 
-        foreach (var producto in Productos)
-        {
-            producto.Cantidad -= OrdenDePreparacionAlmacen.OrdenesDePreparacion
-                                                          .Where(o => o.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual)
-                                                          .Where(o => o.Estado is EstadoOrdenDePreparacionEnum.EnPreparacion)
-                                                          .SelectMany(o => o.Detalle)
-                                                          .Where(o => o.SKU == producto.SKUProducto)
-                                                          .Sum(o => o.Cantidad);
-        }
+        //foreach (var producto in Productos)
+        //{
+        //    producto.Cantidad -= OrdenDePreparacionAlmacen.OrdenesDePreparacion
+        //                                                  .Where(o => o.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual)
+        //                                                  .Where(o => o.Estado is EstadoOrdenDePreparacionEnum.EnPreparacion)
+        //                                                  .SelectMany(o => o.Detalle)
+        //                                                  .Where(o => o.SKU == producto.SKUProducto)
+        //                                                  .Sum(o => o.Cantidad);
+        //}
     }
 
     private string ConvertirPosicionesAString(List<PosicionesPorProducto> posiciones)

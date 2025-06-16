@@ -1,6 +1,8 @@
 ﻿Plan de Prueba: GenerarOrdenDeSeleccion-SinSeleccion.txt
 
 (Empieza con el menú principal)
+
+1- Depósito						         "Depósito Buenos Aires"
 1- Botón                                 "Generar Orden de Selección"
 2- Nombre de cliente                     ""
 3- Numero de orden de preparacion        ""
