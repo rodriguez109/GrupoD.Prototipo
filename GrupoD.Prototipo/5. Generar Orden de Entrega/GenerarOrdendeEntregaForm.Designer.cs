@@ -18,20 +18,20 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            listView1LST = new ListView();
+            OrdenesPreparacionEstadoPreparadasLST = new ListView();
             columnHeader0 = new ColumnHeader();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
-            buttonBTN = new Button();
-            button2BTN = new Button();
+            GenerarOrdenEntregaBTN = new Button();
+            CancelarOrdenEntregaBTN = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(listView1LST);
+            groupBox1.Controls.Add(OrdenesPreparacionEstadoPreparadasLST);
             groupBox1.Font = new Font("Segoe UI", 9F);
             groupBox1.ForeColor = SystemColors.ActiveCaptionText;
             groupBox1.Location = new Point(18, 12);
@@ -41,17 +41,16 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Ordenes Preparadas hacia Despacho";
             // 
-            // listView1LST
+            // OrdenesPreparacionEstadoPreparadasLST
             // 
-            listView1LST.Columns.AddRange(new ColumnHeader[] { columnHeader0, columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
-            listView1LST.FullRowSelect = true;
-            listView1LST.Location = new Point(10, 25);
-            listView1LST.Name = "listView1LST";
-            listView1LST.Size = new Size(1048, 426);
-            listView1LST.TabIndex = 1;
-            listView1LST.UseCompatibleStateImageBehavior = false;
-            listView1LST.View = View.Details;
-           // listView1LST.SelectedIndexChanged += listView1_SelectedIndexChanged;
+            OrdenesPreparacionEstadoPreparadasLST.Columns.AddRange(new ColumnHeader[] { columnHeader0, columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
+            OrdenesPreparacionEstadoPreparadasLST.FullRowSelect = true;
+            OrdenesPreparacionEstadoPreparadasLST.Location = new Point(10, 25);
+            OrdenesPreparacionEstadoPreparadasLST.Name = "OrdenesPreparacionEstadoPreparadasLST";
+            OrdenesPreparacionEstadoPreparadasLST.Size = new Size(1048, 426);
+            OrdenesPreparacionEstadoPreparadasLST.TabIndex = 1;
+            OrdenesPreparacionEstadoPreparadasLST.UseCompatibleStateImageBehavior = false;
+            OrdenesPreparacionEstadoPreparadasLST.View = View.Details;
             // 
             // columnHeader0
             // 
@@ -78,37 +77,36 @@
             columnHeader4.Text = "Razón Social Transportista";
             columnHeader4.Width = 230;
             // 
-            // buttonBTN
+            // GenerarOrdenEntregaBTN
             // 
-            buttonBTN.Location = new Point(727, 488);
-            buttonBTN.Name = "buttonBTN";
-            buttonBTN.Size = new Size(232, 29);
-            buttonBTN.TabIndex = 2;
-            buttonBTN.Text = "Confirmar Orden de Entrega";
-            buttonBTN.UseVisualStyleBackColor = true;
-            buttonBTN.Click += buttonBTN_Click;
+            GenerarOrdenEntregaBTN.Location = new Point(727, 488);
+            GenerarOrdenEntregaBTN.Name = "GenerarOrdenEntregaBTN";
+            GenerarOrdenEntregaBTN.Size = new Size(232, 29);
+            GenerarOrdenEntregaBTN.TabIndex = 2;
+            GenerarOrdenEntregaBTN.Text = "Generar orden de Entrega";
+            GenerarOrdenEntregaBTN.UseVisualStyleBackColor = true;
+            GenerarOrdenEntregaBTN.Click += GenerarOrdenEntregaBTN_Click;
             // 
-            // button2BTN
+            // CancelarOrdenEntregaBTN
             // 
-            button2BTN.Location = new Point(975, 488);
-            button2BTN.Name = "button2BTN";
-            button2BTN.Size = new Size(101, 29);
-            button2BTN.TabIndex = 3;
-            button2BTN.Text = "Cancelar";
-            button2BTN.UseVisualStyleBackColor = true;
-            button2BTN.Click += button2BTN_Click;
+            CancelarOrdenEntregaBTN.Location = new Point(965, 488);
+            CancelarOrdenEntregaBTN.Name = "CancelarOrdenEntregaBTN";
+            CancelarOrdenEntregaBTN.Size = new Size(111, 29);
+            CancelarOrdenEntregaBTN.TabIndex = 3;
+            CancelarOrdenEntregaBTN.Text = "Cancelar";
+            CancelarOrdenEntregaBTN.UseVisualStyleBackColor = true;
+            CancelarOrdenEntregaBTN.Click += CancelarOrdenEntregaBTN_Click;
             // 
             // GenerarOrdendeEntregaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1101, 554);
-            Controls.Add(button2BTN);
-            Controls.Add(buttonBTN);
+            Controls.Add(CancelarOrdenEntregaBTN);
+            Controls.Add(GenerarOrdenEntregaBTN);
             Controls.Add(groupBox1);
             Name = "GenerarOrdendeEntregaForm";
             Text = "Generar Orden de Entrega";
-            //Load += GenerarOrdendeEntregaForm_Load_1;
             Load += GenerarOrdendeEntregaForm_Load;
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);
@@ -117,13 +115,13 @@
         #endregion
 
         private GroupBox groupBox1;
-        private ListView listView1LST;
+        private ListView OrdenesPreparacionEstadoPreparadasLST;
         private ColumnHeader columnHeader0;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
-        private Button buttonBTN;
-        private Button button2BTN;
+        private Button GenerarOrdenEntregaBTN;
+        private Button CancelarOrdenEntregaBTN;
         private ColumnHeader columnHeader4;
     }
 }

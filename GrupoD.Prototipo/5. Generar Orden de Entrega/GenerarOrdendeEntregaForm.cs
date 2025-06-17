@@ -22,22 +22,22 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
 
         private void GenerarOrdendeEntregaForm_Load(object sender, EventArgs e)
         {
-            listView1LST.View = View.Details;
-            listView1LST.FullRowSelect = true;
-            listView1LST.MultiSelect = false;
-            listView1LST.Columns.Clear();
-            listView1LST.Columns.Add("Número de Orden", 150);
-            listView1LST.Columns.Add("Razón Social Cliente", 230);
-            listView1LST.Columns.Add("Fecha Entrega", 200);
-            listView1LST.Columns.Add("DNI Transportista", 150);
-            listView1LST.Columns.Add("Razón Social Transportista", 230);
+            OrdenesPreparacionEstadoPreparadasLST.View = View.Details;
+            OrdenesPreparacionEstadoPreparadasLST.FullRowSelect = true;
+            OrdenesPreparacionEstadoPreparadasLST.MultiSelect = false;
+            OrdenesPreparacionEstadoPreparadasLST.Columns.Clear();
+            OrdenesPreparacionEstadoPreparadasLST.Columns.Add("Número de Orden", 150);
+            OrdenesPreparacionEstadoPreparadasLST.Columns.Add("Razón Social Cliente", 230);
+            OrdenesPreparacionEstadoPreparadasLST.Columns.Add("Fecha Entrega", 200);
+            OrdenesPreparacionEstadoPreparadasLST.Columns.Add("DNI Transportista", 150);
+            OrdenesPreparacionEstadoPreparadasLST.Columns.Add("Razón Social Transportista", 230);
 
             CargarOrdenesEnListView();
         }
 
         private void CargarOrdenesEnListView()
         {
-            listView1LST.Items.Clear();
+            OrdenesPreparacionEstadoPreparadasLST.Items.Clear();
             var ordenes = modelo.ObtenerOrdenesPreparadas();
 
             foreach (var orden in ordenes)
@@ -51,15 +51,19 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
 
                 item.Tag = orden;
 
-                listView1LST.Items.Add(item);
+                OrdenesPreparacionEstadoPreparadasLST.Items.Add(item);
             }
         }
 
-        private void buttonBTN_Click(object sender, EventArgs e)
+
+
+       
+
+        private void GenerarOrdenEntregaBTN_Click(object sender, EventArgs e)
         {
-            if (listView1LST.SelectedItems.Count == 1)
+            if (OrdenesPreparacionEstadoPreparadasLST.SelectedItems.Count == 1)
             {
-                var itemSeleccionado = listView1LST.SelectedItems[0];
+                var itemSeleccionado = OrdenesPreparacionEstadoPreparadasLST.SelectedItems[0];
                 var ordenSeleccionada = itemSeleccionado.Tag as OrdenDePreparacionClase;
 
                 if (ordenSeleccionada != null)
@@ -68,8 +72,8 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
 
                     MessageBox.Show("La orden de entrega ha sido generada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        CargarOrdenesEnListView();
-                    
+                    CargarOrdenesEnListView();
+
                 }
             }
             else
@@ -78,7 +82,7 @@ namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
             }
         }
 
-        private void button2BTN_Click(object sender, EventArgs e)
+        private void CancelarOrdenEntregaBTN_Click(object sender, EventArgs e)
         {
             this.Close();
         }

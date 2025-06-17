@@ -12,17 +12,12 @@ namespace GrupoD.Prototipo.Almacenes
 {
     internal static class OrdenDeEntregaAlmacen
     {
+        // lista privada para modificar
         private static List<OrdenDeEntregaEntidad> ordenesDeEntrega = new List<OrdenDeEntregaEntidad>();
-
-        public static IReadOnlyCollection<OrdenDeEntregaEntidad> OrdenesDeEntrega => ordenesDeEntrega.AsReadOnly();
-        public static void Grabar()
-        {
-            var datos = JsonSerializer.Serialize(ordenesDeEntrega, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(@"Datos\OrdenDeEntrega.json", datos); //Esta parte lo termina de escribir
-        }
+        // metodo para leer los datos del archivo:
         static OrdenDeEntregaAlmacen()
         {
-            if (!File.Exists(@"Datos\OrdenDeEntrega.json")) 
+            if (!File.Exists(@"Datos\OrdenDeEntrega.json"))
             {
                 return;
             }
@@ -31,26 +26,26 @@ namespace GrupoD.Prototipo.Almacenes
             ordenesDeEntrega = JsonSerializer.Deserialize<List<OrdenDeEntregaEntidad>>(datos)!;
 
         }
-        //Muestro una lista publica con todas las OS para que el resto del sistema consulte ReadOnly
-        
-
-        //Metodo para grabar los datos al archivo:
-        //Aca pasamos la lista de OS a formato JSON (la transformamos a un string con los datos de todas las OS)
-
-        
-
+        //Muestro una lista publica con todas las OE para que el resto del sistema consulte ReadOnly
+        public static IReadOnlyCollection<OrdenDeEntregaEntidad> OrdenesDeEntrega => ordenesDeEntrega.AsReadOnly();
+        //Metodo para grabar los datos al archivo: pasamos la lista de OE a formato JSON (la transformamos a un string con los datos de todas las OE)
+        public static void Grabar()
+        {
+            var datos = JsonSerializer.Serialize(ordenesDeEntrega, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(@"Datos\OrdenDeEntrega.json", datos); //Esta parte lo termina de escribir
+        }
+        //Metodo para agregar una nueva orden de entrega
         public static void Agregar(OrdenDeEntregaEntidad ordenDeEntrega)
         {
             ordenesDeEntrega.Add(ordenDeEntrega);
-            Grabar();
+            Grabar(); // <--- guardar cambios en archivo JSON
         }
 
         public static OrdenDeEntregaEntidad Buscar(int numero)
         {
             return ordenesDeEntrega.FirstOrDefault(o => o.Numero == numero);
         }
-
-
+        //public static void cambiarEstadoOE
         public static void cambiarEstadoOE(int IdOP, EstadoOrdenDeEntregaEnum estado)
         {
             foreach (var ordEnt in ordenesDeEntrega)
@@ -64,8 +59,5 @@ namespace GrupoD.Prototipo.Almacenes
 
             }
         }
-
-        //cambiar el estado de las OE .cambiarEstadoOE
-        //public static void cambiarEstadoOE
     }
 }

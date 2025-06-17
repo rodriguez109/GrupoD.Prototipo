@@ -9,32 +9,30 @@ using System.Threading.Tasks;
 
 namespace GrupoD.Prototipo._5._Generar_Orden_de_Entrega
 {
-    class OrdenDeEntregaPendiente //refleja datos del json
+    class OrdenDeEntregaPendiente
     {
+        // Atributos
         public int NumeroOrden { get; set; }
-
-        public DateTime FechaEntrega { get; set; }
-
-        public string EstadoOrdenDeEntrega { get; set; }
         public List<OrdenDePreparacionClase> OrdenDePreparacionClase { get; set; }
+        public DateTime FechaEntrega { get; set; }
+        public string EstadoOrdenDeEntrega { get; set; }
 
-
-        public OrdenDeEntregaPendiente(int numeroOrden, DateTime fechaEntrega, string estadoOrdenDeEntrega, List<OrdenDePreparacionClase> ordenesPreparacion)
+        // Constructor
+        public OrdenDeEntregaPendiente(int numeroOrden, List<OrdenDePreparacionClase> ordenesPreparacion, DateTime fechaEntrega, string estadoOrdenDeEntrega)
         {
             NumeroOrden = numeroOrden;
-
-            FechaEntrega = fechaEntrega;
-
-            EstadoOrdenDeEntrega = estadoOrdenDeEntrega;
             OrdenDePreparacionClase = ordenesPreparacion;
+            FechaEntrega = fechaEntrega;
+            EstadoOrdenDeEntrega = estadoOrdenDeEntrega;
         }
 
-        //// Constructor vacío para formulario
-        //public OrdenDeEntregaPendiente()
-        //{
-        //    FechaEntrega = DateTime.Now;
-        //    EstadoOrdenDeEntrega = "Pendiente";
-        //}
+        // Constructor vacío para formulario
+        public OrdenDeEntregaPendiente()
+        {
+            OrdenDePreparacionClase = new List<OrdenDePreparacionClase>();
+            FechaEntrega = DateTime.Now;
+            EstadoOrdenDeEntrega = "Pendiente";
+        }
     }
 
 }

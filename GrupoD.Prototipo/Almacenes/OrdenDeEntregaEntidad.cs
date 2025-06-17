@@ -12,13 +12,7 @@ namespace GrupoD.Prototipo.Almacenes
         public List<int> OrdenesPreparacion { get; set; }
         public DateTime FechaGeneracion  { get; set; } 
         public EstadoOrdenDeEntregaEnum EstadoOrdenDeEntrega { get; set; }
-        /*
-        public OrdenDeEntregaEntidad(int numero, PrioridadEnum prioridad)
-        {
-            Numero = numero;
-            Prioridad = prioridad; //---?
-            EstadoOrdenDeEntrega = EstadoOrdenDeEntregaEnum.Pendiente;
-            OrdenesPreparacion = new List<int>();
-        }*/
+        
     }
 }
+
