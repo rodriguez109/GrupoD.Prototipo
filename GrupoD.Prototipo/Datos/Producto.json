@@ -2,30 +2,30 @@
   {
     "SKU": 1,
     "Nombre": "Mesa ratona de madera",
-    "Cantidad": 3,
+    "Cantidad": 50,
     "NumeroCliente": 1,
     "Posiciones": [
       {
         "Codigo": "01-10-1",
-        "Stock": 2,
-        "CodigoDeposito": "D01"
+        "Stock": 20,
+        "CodigoDeposito": "D03"
       },
       {
         "Codigo": "01-11-1",
-        "Stock": 1,
-        "CodigoDeposito": "D01"
+        "Stock": 30,
+        "CodigoDeposito": "D04"
       }
     ]
   },
   {
     "SKU": 2,
     "Nombre": "Lámpara colgante LED",
-    "Cantidad": 8,
+    "Cantidad": 250,
     "NumeroCliente": 2,
     "Posiciones": [
       {
         "Codigo": "02-12-2",
-        "Stock": 8,
+        "Stock": 250,
         "CodigoDeposito": "D01"
       }
     ]
@@ -33,30 +33,30 @@
   {
     "SKU": 3,
     "Nombre": "Smart TV 43 pulgadas",
-    "Cantidad": 2,
-    "NumeroCliente": 3,
+    "Cantidad": 50,
+    "NumeroCliente": 2,
     "Posiciones": [
       {
         "Codigo": "03-14-1",
-        "Stock": 1,
-        "CodigoDeposito": "D02"
+        "Stock": 20,
+        "CodigoDeposito": "D01"
       },
       {
         "Codigo": "03-14-2",
-        "Stock": 1,
-        "CodigoDeposito": "D04"
+        "Stock": 30,
+        "CodigoDeposito": "D02"
       }
     ]
   },
   {
     "SKU": 4,
     "Nombre": "Pintura látex interior 20L",
-    "Cantidad": 5,
+    "Cantidad": 40,
     "NumeroCliente": 4,
     "Posiciones": [
       {
         "Codigo": "04-08-3",
-        "Stock": 5,
+        "Stock": 40,
         "CodigoDeposito": "D03"
       }
     ]
@@ -64,17 +64,17 @@
   {
     "SKU": 5,
     "Nombre": "Silla de comedor moderna",
-    "Cantidad": 4,
+    "Cantidad": 100,
     "NumeroCliente": 5,
     "Posiciones": [
       {
         "Codigo": "05-19-1",
-        "Stock": 2,
+        "Stock": 60,
         "CodigoDeposito": "D02"
       },
       {
         "Codigo": "05-19-2",
-        "Stock": 2,
+        "Stock": 40,
         "CodigoDeposito": "D03"
       }
     ]
@@ -82,12 +82,12 @@
   {
     "SKU": 6,
     "Nombre": "Taladro inalámbrico Black+Decker",
-    "Cantidad": 6,
+    "Cantidad": 30,
     "NumeroCliente": 6,
     "Posiciones": [
       {
         "Codigo": "06-03-1",
-        "Stock": 6,
+        "Stock": 30,
         "CodigoDeposito": "D01"
       }
     ]
@@ -95,17 +95,17 @@
   {
     "SKU": 7,
     "Nombre": "Estantería metálica 4 estantes",
-    "Cantidad": 3,
+    "Cantidad": 20,
     "NumeroCliente": 7,
     "Posiciones": [
       {
         "Codigo": "07-22-2",
-        "Stock": 1,
-        "CodigoDeposito": "D04"
+        "Stock": 10,
+        "CodigoDeposito": "D02"
       },
       {
         "Codigo": "07-23-2",
-        "Stock": 2,
+        "Stock": 10,
         "CodigoDeposito": "D04"
       }
     ]
@@ -113,25 +113,25 @@
   {
     "SKU": 8,
     "Nombre": "Silla giratoria de oficina",
-    "Cantidad": 5,
-    "NumeroCliente": 8,
+    "Cantidad": 50,
+    "NumeroCliente": 5,
     "Posiciones": [
       {
         "Codigo": "08-05-1",
-        "Stock": 5,
-        "CodigoDeposito": "D01"
+        "Stock": 50,
+        "CodigoDeposito": "D04"
       }
     ]
   },
   {
     "SKU": 9,
     "Nombre": "Caja de herramientas 50 piezas",
-    "Cantidad": 6,
+    "Cantidad": 40,
     "NumeroCliente": 9,
     "Posiciones": [
       {
         "Codigo": "09-13-1",
-        "Stock": 6,
+        "Stock": 40,
         "CodigoDeposito": "D03"
       }
     ]
@@ -139,17 +139,17 @@
   {
     "SKU": 10,
     "Nombre": "Rack para TV con estantes",
-    "Cantidad": 3,
+    "Cantidad": 35,
     "NumeroCliente": 10,
     "Posiciones": [
       {
         "Codigo": "10-18-1",
-        "Stock": 2,
+        "Stock": 25,
         "CodigoDeposito": "D01"
       },
       {
         "Codigo": "10-18-2",
-        "Stock": 1,
+        "Stock": 10,
         "CodigoDeposito": "D02"
       }
     ]
@@ -157,30 +157,30 @@
   {
     "SKU": 11,
     "Nombre": "Notebook HP 15.6\" Ryzen 5",
-    "Cantidad": 2,
+    "Cantidad": 30,
     "NumeroCliente": 11,
     "Posiciones": [
       {
         "Codigo": "11-01-1",
-        "Stock": 2,
+        "Stock": 30,
         "CodigoDeposito": "D04"
       }
     ]
   },
   {
     "SKU": 12,
-    "Nombre": "Pack 12 sillas apilables",
-    "Cantidad": 12,
+    "Nombre": "Pack de 6 sillas apilables",
+    "Cantidad": 20,
     "NumeroCliente": 12,
     "Posiciones": [
       {
         "Codigo": "12-24-1",
-        "Stock": 6,
-        "CodigoDeposito": "D02"
+        "Stock": 10,
+        "CodigoDeposito": "D01"
       },
       {
         "Codigo": "12-24-2",
-        "Stock": 6,
+        "Stock": 10,
         "CodigoDeposito": "D03"
       }
     ]
@@ -188,12 +188,12 @@
   {
     "SKU": 13,
     "Nombre": "Aire acondicionado split 3000W",
-    "Cantidad": 2,
+    "Cantidad": 15,
     "NumeroCliente": 13,
     "Posiciones": [
       {
         "Codigo": "13-30-1",
-        "Stock": 2,
+        "Stock": 15,
         "CodigoDeposito": "D03"
       }
     ]
@@ -201,12 +201,12 @@
   {
     "SKU": 14,
     "Nombre": "Archivador metálico 3 cajones",
-    "Cantidad": 4,
+    "Cantidad": 60,
     "NumeroCliente": 14,
     "Posiciones": [
       {
         "Codigo": "14-40-2",
-        "Stock": 4,
+        "Stock": 60,
         "CodigoDeposito": "D04"
       }
     ]
@@ -214,12 +214,12 @@
   {
     "SKU": 15,
     "Nombre": "Escritorio en L melamina",
-    "Cantidad": 2,
+    "Cantidad": 30,
     "NumeroCliente": 15,
     "Posiciones": [
       {
         "Codigo": "15-15-1",
-        "Stock": 2,
+        "Stock": 30,
         "CodigoDeposito": "D01"
       }
     ]
@@ -227,56 +227,56 @@
   {
     "SKU": 16,
     "Nombre": "Pack 6 tubos LED 18W",
-    "Cantidad": 6,
-    "NumeroCliente": 16,
+    "Cantidad": 30,
+    "NumeroCliente": 14,
     "Posiciones": [
       {
         "Codigo": "16-17-3",
-        "Stock": 6,
-        "CodigoDeposito": "D01"
+        "Stock": 30,
+        "CodigoDeposito": "D02"
       }
     ]
   },
   {
     "SKU": 17,
     "Nombre": "Monitor Samsung 24\" LED",
-    "Cantidad": 1,
+    "Cantidad": 20,
     "NumeroCliente": 17,
     "Posiciones": [
       {
         "Codigo": "17-20-2",
-        "Stock": 1,
-        "CodigoDeposito": "D04"
+        "Stock": 20,
+        "CodigoDeposito": "D03"
       }
     ]
   },
   {
     "SKU": 18,
     "Nombre": "Silla gamer ergonómica",
-    "Cantidad": 3,
-    "NumeroCliente": 18,
+    "Cantidad": 40,
+    "NumeroCliente": 3,
     "Posiciones": [
       {
         "Codigo": "18-07-1",
-        "Stock": 1,
+        "Stock": 20,
         "CodigoDeposito": "D02"
       },
       {
         "Codigo": "18-08-1",
-        "Stock": 2,
-        "CodigoDeposito": "D02"
+        "Stock": 20,
+        "CodigoDeposito": "D01"
       }
     ]
   },
   {
     "SKU": 19,
     "Nombre": "Carretilla metálica 180kg",
-    "Cantidad": 4,
-    "NumeroCliente": 19,
+    "Cantidad": 30,
+    "NumeroCliente": 20,
     "Posiciones": [
       {
         "Codigo": "19-25-2",
-        "Stock": 4,
+        "Stock": 30,
         "CodigoDeposito": "D03"
       }
     ]
@@ -284,12 +284,12 @@
   {
     "SKU": 20,
     "Nombre": "Hidrolavadora eléctrica 1400W",
-    "Cantidad": 1,
-    "NumeroCliente": 2,
+    "Cantidad": 20,
+    "NumeroCliente": 5,
     "Posiciones": [
       {
         "Codigo": "20-31-1",
-        "Stock": 1,
+        "Stock": 20,
         "CodigoDeposito": "D01"
       }
     ]
