@@ -1,16 +1,15 @@
 ﻿Plan de Prueba: GenerarOrdenEntrega-ConfirmacionExitosa.txt
 
 (Empieza con el Menú Principal)
-
-1- Botón							 "Generar Orden de Entrega"
-2- Orden de preparacion				  #2
-3- Verificar que listViewProductos muestra los productos correspondientes a la orden.							"Buscar órdenes"
-5- Razón Social Cliente				 "FullOffice S.A."
-6- Fecha Entrega                     "11/06/2025"
-7- DNI Transportista                 "42242093"
-8- Razón Social Transportista        "Luis Navarro"
-9- Botón							 "Confirmar Orden de Entrega"
-10- Mensaje							 "Éxito: La orden seleccionada ha sido confirmado."
+1- Depósito							  Depósito Rosario
+1- Botón							  "Generar Orden de Entrega"
+2- Orden de preparacion				  #10
+5- Razón Social Cliente				 "MundoFOX S.A"
+6- Fecha Entrega                     "17/06/2025"
+7- DNI Transportista                 "41242092"
+8- Razón Social Transportista        "Silvia Castro"
+9- Botón							 "Generar orden de Entrega"
+10- Mensaje							 "La orden seleccionada ha sido generada correctamente"
 11- Botón							 "Aceptar"
 12- Volver al menú principal
 
@@ -18,28 +17,29 @@ Verificaciones:
 13- Archivo Archivo OrdenDeEntrega.json -  Última entrada agregada debe ser similar a:
 
  {
-    "Numero": 6,
-    "OrdenesPreparacion": [ 2 ],
-    "FechaGeneracion": "2025-06-28T15:00:00",
+    "Numero": 5,
+    "OrdenesPreparacion": [ 10 ],
+    "FechaGeneracion": "2025-06-17 T15:00:00",
     "EstadoOrdenDeEntrega": 0
   }
 
-14- Archivo ordenDePreparacion.json – la orden de preparacion numero 2 deberia aparecer con el estado actualizado ("Estado"" = 4):
-  {
-    "Numero": 2,
-    "Pallet": true,
-    "CodigoDeposito": "D04",
+14- Archivo ordenDePreparacion.json – la orden de preparacion numero 10 deberia aparecer con el estado actualizado ("Estado"" = 4):
+ 
+ {
+    "Numero": 10,
+    "Pallet": false,
+    "CodigoDeposito": "D02",
     "Detalle": [
       {
-        "SKU": 17,
-        "Cantidad": 2
+        "SKU": 18,
+        "Cantidad": 5
       }
     ],
-    "FechaRetirar": "2025-06-11T00:00:00",
-    "Prioridad": 2,
-    "NumeroCliente": 17,
-    "DNITransportista": 42242093,
+    "FechaRetirar": "2025-06-17T00:00:00-03:00",
+    "Prioridad": 0,
+    "NumeroCliente": 3,
+    "DNITransportista": 41242092,
     "Estado": 4
-  },
+  }
 
 (Termino cerrando el programa)

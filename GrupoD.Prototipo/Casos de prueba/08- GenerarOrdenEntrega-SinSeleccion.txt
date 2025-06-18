@@ -7,7 +7,7 @@
 4- Fecha de entrega                      ""
 5- Prioridad                             ""
 6- Botón                                 "Confirmar Orden de Entrega"
-7- Mensaje							     "Error: Debe seleccionar al menos una orden para continuar."
+7- Mensaje							     "Debe seleccionar al menos una orden para continuar."
 8- Botón							     "Aceptar"
 7- Volver al menú principal
 8- Cerrar el sistema
@@ -16,9 +16,9 @@ Verificaciones
 11- AArchivo Archivo OrdenDeEntrega.json -  Última entrada agregada debe ser similar a:
 
   {
-    "Numero": 5,
-    "OrdenesPreparacion": [ 2, 10, 18 ],
-    "FechaGeneracion": "2025-06-05T14:00:00",
+    "Numero": 4,
+    "OrdenesPreparacion": [15],
+    "FechaGeneracion": "2025-06-18T16:04:29.649084-03:00",
     "EstadoOrdenDeEntrega": 0
   }
 
