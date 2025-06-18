@@ -161,7 +161,7 @@
     "Prioridad": 0,
     "NumeroCliente": 3,
     "DNITransportista": 41242092,
-    "Estado": 2
+    "Estado": 3
   },
   {
     "Numero": 11,
@@ -209,7 +209,7 @@
     "Prioridad": 1,
     "NumeroCliente": 14,
     "DNITransportista": 37242096,
-    "Estado": 3
+    "Estado": 2
   },
   {
     "Numero": 14,
