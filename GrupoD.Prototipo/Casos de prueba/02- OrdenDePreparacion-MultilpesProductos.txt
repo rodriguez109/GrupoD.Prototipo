@@ -6,32 +6,32 @@
 1- Botón						"Generar orden de preparación"
 2- Razón Social Cliente			"MaxiLuz Iluminación SRL"
 3- Botón						"Buscar Productos"
-4- Producto						"Hidrolavadora eléctrica 1400W"
-5- Cantidad Seleccionada		"1"
+4- Producto						"Lámpara colgante LED"
+5- Cantidad Seleccionada		"200"
 6- Botón						"Agregar Producto a la Orden"
-7- Producto						"Lámpara colgante LED"
+7- Producto						"Smart TV 42 pulgadas"
 8- Cantidad Seleccionada		"5"
 9- Botón						"Agregar Producto a la Orden"
 11- Fecha a Retirar				"18/07/2025"
 12- Priodad						"Baja"
-13- DNI Transportista			"27242093"
+13- DNI Transportista			"20242095"
 14- Botón						"Generar Orden de Preparación"
 15- Cerrar el sistema
 
 Verificaciones:
 16- Archivo OrdenDePreparacion.json - Nueva entrada: 
 {
-    "Numero": 1,
+    "Numero": 14,
     "Pallet": false,
     "CodigoDeposito": "D01",
     "Detalle": [
       {
-        "SKU": 20,
-        "Cantidad": 1
+        "SKU": 2,
+        "Cantidad": 200
       },
       {
-        "SKU": 2,
-        "Cantidad": 4
+        "SKU": 3,
+        "Cantidad": 5
       }
     ],
     "FechaRetirar": "2025-07-18T09:20:00",
@@ -39,6 +39,41 @@ Verificaciones:
     "NumeroCliente": 2,
     "DNITransportista": 27242093,
     "Estado": 0
+}
+17- Archivo Producto.json:
+{
+    "SKU": 2,
+    "Nombre": "L\u00E1mpara colgante LED",
+    "Posiciones": [
+      {
+        "Codigo": "02-12-2",
+        "Stock": 250,
+        "CodigoDeposito": "D01"
+      }
+    ],
+    "NumeroCliente": 2
+},
+{
+    "SKU": 3,
+    "Nombre": "Smart TV 43 pulgadas",
+    "Posiciones": [
+      {
+        "Codigo": "03-14-1",
+        "Stock": 20,
+        "CodigoDeposito": "D01"
+      },
+      {
+        "Codigo": "03-14-2",
+        "Stock": 30,
+        "CodigoDeposito": "D02"
+      }
+    ],
+    "NumeroCliente": 2
+ },
+
+
+
+
 }
 
 (Termino cerrando el programa)

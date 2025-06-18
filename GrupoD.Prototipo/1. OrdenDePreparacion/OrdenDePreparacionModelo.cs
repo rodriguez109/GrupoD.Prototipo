@@ -82,18 +82,47 @@ internal class OrdenDePreparacionModelo
                 throw new Exception($"Producto no encontrado (SKU: {sku}).");
             }
 
-            var cantidadEnDepositoActual = productoStock.CantidadEnDeposito(DepositoAlmacen.CodigoDepositoActual);
-            if (cantidadEnDepositoActual < cantidad)
+            //var cantidadEnDepositoActual = productoStock.CantidadEnDeposito(DepositoAlmacen.CodigoDepositoActual);
+            //if (cantidadEnDepositoActual < cantidad)
+            //{
+            //    throw new Exception($"Stock insuficiente para el producto {productoStock.Nombre}. Stock disponible: {cantidadEnDepositoActual}");
+            //}
+
+            //var codigoDeposito = string.Empty;
+            //if (productoStock.Posiciones != null && productoStock.Posiciones.Any())
+            //{
+            //    codigoDeposito = productoStock.Posiciones.First().CodigoDeposito;
+            //}
+            //else
+            //{
+            //    throw new Exception($"No se encontró una posición para el producto {productoStock.Nombre}.");
+            //}
+
+            // Cálculo del stock base en el depósito seleccionado
+            int cantidadBase = productoStock.CantidadEnDeposito(DepositoAlmacen.CodigoDepositoActual);
+
+            // Cálculo de la cantidad reservada en órdenes en estado Pendiente o en Procesamiento
+            int cantidadReservada = OrdenDePreparacionAlmacen.OrdenesDePreparacion
+                .Where(o => o.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual &&
+                            (o.Estado == EstadoOrdenDePreparacionEnum.Pendiente ||
+                             o.Estado == EstadoOrdenDePreparacionEnum.Procesamiento))
+                .SelectMany(o => o.Detalle)
+                .Where(det => det.SKU == sku)
+                .Sum(det => det.Cantidad);
+
+            // La cantidad disponible es la cantidad base menos la cantidad reservada
+            int cantidadDisponible = cantidadBase - cantidadReservada;
+
+            if (cantidadDisponible < cantidad)
             {
-                throw new Exception($"Stock insuficiente para el producto {productoStock.Nombre}. Stock disponible: {cantidadEnDepositoActual}");
+                throw new Exception($"Stock insuficiente para el producto {productoStock.Nombre}. " +
+                                    $"Stock base: {cantidadBase}, Reservado: {cantidadReservada}, " +
+                                    $"Disponible: {cantidadDisponible}");
             }
 
-            var codigoDeposito = string.Empty;
-            if (productoStock.Posiciones != null && productoStock.Posiciones.Any())
-            {
-                codigoDeposito = productoStock.Posiciones.First().CodigoDeposito;
-            }
-            else
+            // Se asume que el código del depósito se toma de DepositoAlmacen.CodigoDepositoActual,
+            // por lo que la validación del código de depósito de las posiciones no es la fuente principal de error.
+            if (productoStock.Posiciones == null || !productoStock.Posiciones.Any())
             {
                 throw new Exception($"No se encontró una posición para el producto {productoStock.Nombre}.");
             }

@@ -1,5 +1,6 @@
 ﻿using GrupoD.Prototipo._2._GenerarOrdenSeleccion;
 using GrupoD.Prototipo._4._EmpaquetarProductos;
+using GrupoD.Prototipo.Almacenes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -153,9 +154,27 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
             foreach (var producto in productosCliente)
             {
+                //var item = new ListViewItem(producto.SKUProducto.ToString()); 
+                //item.SubItems.Add(producto.NombreProducto); 
+                //item.SubItems.Add(producto.Cantidad.ToString());
+
+                int cantidadBase = producto.Cantidad;
+
+                // Busca todas las órdenes de preparación en el depósito actual que estén en estado Pendiente o Procesamiento
+                int cantidadReservada = OrdenDePreparacionAlmacen.OrdenesDePreparacion
+                    .Where(o => o.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual &&
+                                (o.Estado == EstadoOrdenDePreparacionEnum.Pendiente ||
+                                 o.Estado == EstadoOrdenDePreparacionEnum.Procesamiento))
+                    .SelectMany(o => o.Detalle)
+                    .Where(det => det.SKU == producto.SKUProducto)
+                    .Sum(det => det.Cantidad);
+
+                int cantidadDisponible = cantidadBase - cantidadReservada;
+
+                // Ahora creamos el ítem del ListView con la cantidadDisponible en lugar de la cantidad base.
                 var item = new ListViewItem(producto.SKUProducto.ToString());
                 item.SubItems.Add(producto.NombreProducto);
-                item.SubItems.Add(producto.Cantidad.ToString());
+                item.SubItems.Add(cantidadDisponible.ToString());
 
 
                 productosClienteLST.Items.Add(item);
