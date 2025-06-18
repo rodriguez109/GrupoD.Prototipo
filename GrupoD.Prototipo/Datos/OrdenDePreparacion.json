@@ -1,1 +1,214 @@
-[]
+[
+  {
+    "Numero": 1,
+    "Pallet": false,
+    "CodigoDeposito": "D01",
+    "Detalle": [
+      {
+        "SKU": 2,
+        "Cantidad": 10
+      }
+    ],
+    "FechaRetirar": "2025-06-17T00:00:00-03:00",
+    "Prioridad": 1,
+    "NumeroCliente": 2,
+    "DNITransportista": 20242095,
+    "Estado": 5
+  },
+  {
+    "Numero": 2,
+    "Pallet": false,
+    "CodigoDeposito": "D02",
+    "Detalle": [
+      {
+        "SKU": 3,
+        "Cantidad": 5
+      }
+    ],
+    "FechaRetirar": "2025-06-17T00:00:00-03:00",
+    "Prioridad": 0,
+    "NumeroCliente": 2,
+    "DNITransportista": 27242090,
+    "Estado": 5
+  },
+  {
+    "Numero": 3,
+    "Pallet": true,
+    "CodigoDeposito": "D03",
+    "Detalle": [
+      {
+        "SKU": 4,
+        "Cantidad": 10
+      }
+    ],
+    "FechaRetirar": "2025-06-17T00:00:00-03:00",
+    "Prioridad": 2,
+    "NumeroCliente": 4,
+    "DNITransportista": 30242193,
+    "Estado": 0
+  },
+  {
+    "Numero": 4,
+    "Pallet": false,
+    "CodigoDeposito": "D04",
+    "Detalle": [
+      {
+        "SKU": 7,
+        "Cantidad": 2
+      }
+    ],
+    "FechaRetirar": "2025-06-17T00:00:00-03:00",
+    "Prioridad": 1,
+    "NumeroCliente": 7,
+    "DNITransportista": 31242193,
+    "Estado": 0
+  },
+  {
+    "Numero": 5,
+    "Pallet": true,
+    "CodigoDeposito": "D01",
+    "Detalle": [
+      {
+        "SKU": 6,
+        "Cantidad": 5
+      }
+    ],
+    "FechaRetirar": "2025-06-17T00:00:00-03:00",
+    "Prioridad": 2,
+    "NumeroCliente": 6,
+    "DNITransportista": 36242293,
+    "Estado": 1
+  },
+  {
+    "Numero": 6,
+    "Pallet": false,
+    "CodigoDeposito": "D02",
+    "Detalle": [
+      {
+        "SKU": 7,
+        "Cantidad": 2
+      }
+    ],
+    "FechaRetirar": "2025-06-17T00:00:00-03:00",
+    "Prioridad": 0,
+    "NumeroCliente": 7,
+    "DNITransportista": 37242593,
+    "Estado": 4
+  },
+  {
+    "Numero": 7,
+    "Pallet": false,
+    "CodigoDeposito": "D03",
+    "Detalle": [
+      {
+        "SKU": 9,
+        "Cantidad": 10
+      }
+    ],
+    "FechaRetirar": "2025-06-17T00:00:00-03:00",
+    "Prioridad": 1,
+    "NumeroCliente": 9,
+    "DNITransportista": 38242693,
+    "Estado": 0
+  },
+  {
+    "Numero": 8,
+    "Pallet": false,
+    "CodigoDeposito": "D04",
+    "Detalle": [
+      {
+        "SKU": 11,
+        "Cantidad": 5
+      }
+    ],
+    "FechaRetirar": "2025-06-17T00:00:00-03:00",
+    "Prioridad": 0,
+    "NumeroCliente": 11,
+    "DNITransportista": 39242095,
+    "Estado": 0
+  },
+  {
+    "Numero": 9,
+    "Pallet": false,
+    "CodigoDeposito": "D01",
+    "Detalle": [
+      {
+        "SKU": 2,
+        "Cantidad": 50
+      },
+      {
+        "SKU": 3,
+        "Cantidad": 5
+      }
+    ],
+    "FechaRetirar": "2025-06-17T00:00:00-03:00",
+    "Prioridad": 1,
+    "NumeroCliente": 2,
+    "DNITransportista": 40242091,
+    "Estado": 0
+  },
+  {
+    "Numero": 10,
+    "Pallet": false,
+    "CodigoDeposito": "D02",
+    "Detalle": [
+      {
+        "SKU": 18,
+        "Cantidad": 5
+      }
+    ],
+    "FechaRetirar": "2025-06-17T00:00:00-03:00",
+    "Prioridad": 0,
+    "NumeroCliente": 3,
+    "DNITransportista": 41242092,
+    "Estado": 3
+  },
+  {
+    "Numero": 11,
+    "Pallet": true,
+    "CodigoDeposito": "D02",
+    "Detalle": [
+      {
+        "SKU": 16,
+        "Cantidad": 5
+      }
+    ],
+    "FechaRetirar": "2025-06-17T00:00:00-03:00",
+    "Prioridad": 1,
+    "NumeroCliente": 14,
+    "DNITransportista": 42242094,
+    "Estado": 1
+  },
+  {
+    "Numero": 12,
+    "Pallet": false,
+    "CodigoDeposito": "D02",
+    "Detalle": [
+      {
+        "SKU": 18,
+        "Cantidad": 5
+      }
+    ],
+    "FechaRetirar": "2025-06-17T00:00:00-03:00",
+    "Prioridad": 1,
+    "NumeroCliente": 3,
+    "DNITransportista": 43242096,
+    "Estado": 0
+  },
+  {
+    "Numero": 13,
+    "Pallet": false,
+    "CodigoDeposito": "D02",
+    "Detalle": [
+      {
+        "SKU": 16,
+        "Cantidad": 5
+      }
+    ],
+    "FechaRetirar": "2025-06-17T00:00:00-03:00",
+    "Prioridad": 1,
+    "NumeroCliente": 14,
+    "DNITransportista": 37242096,
+    "Estado": 2
+  }
+]

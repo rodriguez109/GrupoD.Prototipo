@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "Numero": 1,
+    "OrdenesPreparacion": [
+      1
+    ],
+    "FechaGeneracion": "2025-06-17T21:24:48.2142227-03:00",
+    "EstadoOrdenDeEntrega": 1
+  },
+  {
+    "Numero": 2,
+    "OrdenesPreparacion": [
+      2
+    ],
+    "FechaGeneracion": "2025-06-17T21:25:55.5886801-03:00",
+    "EstadoOrdenDeEntrega": 1
+  },
+  {
+    "Numero": 3,
+    "OrdenesPreparacion": [
+      6
+    ],
+    "FechaGeneracion": "2025-06-17T21:43:14.2519415-03:00",
+    "EstadoOrdenDeEntrega": 0
+  }
+]

@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "Numero": 1,
+    "DNITransportista": 20242095,
+    "FechaEmision": "2025-06-17T00:00:00-03:00",
+    "OrdenesPreparacion": [
+      1
+    ]
+  },
+  {
+    "Numero": 2,
+    "DNITransportista": 27242090,
+    "FechaEmision": "2025-06-17T00:00:00-03:00",
+    "OrdenesPreparacion": [
+      2
+    ]
+  }
+]

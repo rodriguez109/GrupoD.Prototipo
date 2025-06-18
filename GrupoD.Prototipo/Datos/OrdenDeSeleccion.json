@@ -1,1 +1,58 @@
-[]
+[
+  {
+    "Numero": 1,
+    "FechaGeneracion": "2025-06-17T21:20:59.2365674-03:00",
+    "EstadoOrdenDeSeleccion": 1,
+    "OrdenesPreparacion": [
+      1
+    ]
+  },
+  {
+    "Numero": 2,
+    "FechaGeneracion": "2025-06-17T21:22:15.7587103-03:00",
+    "EstadoOrdenDeSeleccion": 1,
+    "OrdenesPreparacion": [
+      2
+    ]
+  },
+  {
+    "Numero": 3,
+    "FechaGeneracion": "2025-06-17T21:35:59.6480487-03:00",
+    "EstadoOrdenDeSeleccion": 0,
+    "OrdenesPreparacion": [
+      5
+    ]
+  },
+  {
+    "Numero": 4,
+    "FechaGeneracion": "2025-06-17T21:37:22.877878-03:00",
+    "EstadoOrdenDeSeleccion": 1,
+    "OrdenesPreparacion": [
+      6
+    ]
+  },
+  {
+    "Numero": 5,
+    "FechaGeneracion": "2025-06-17T21:37:37.2289536-03:00",
+    "EstadoOrdenDeSeleccion": 0,
+    "OrdenesPreparacion": [
+      11
+    ]
+  },
+  {
+    "Numero": 6,
+    "FechaGeneracion": "2025-06-17T21:39:10.5522909-03:00",
+    "EstadoOrdenDeSeleccion": 1,
+    "OrdenesPreparacion": [
+      10
+    ]
+  },
+  {
+    "Numero": 7,
+    "FechaGeneracion": "2025-06-17T21:42:39.5290498-03:00",
+    "EstadoOrdenDeSeleccion": 1,
+    "OrdenesPreparacion": [
+      13
+    ]
+  }
+]
