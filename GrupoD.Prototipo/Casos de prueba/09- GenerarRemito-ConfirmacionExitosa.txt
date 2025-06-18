@@ -1,48 +1,79 @@
 ﻿Plan de Prueba: Generar Remito - Confirmación Exitosa
 
 (Empieza con el Menú Principal)
-1- Depósito                         "Deposito Córdoba"
+1- Depósito                         "Deposito Rosario"
 2_ Botón							"Generar remito"
-3- DNI Transportista			    "20242093" 
+3- DNI Transportista			    "37242593" 
 4- Botón							"Buscar órdenes"
-5- Seleccionar Nro de orden			"3"
+5- Seleccionar Nro de orden			"15"
 6- Botón				            "Agregar al remito"
-7- Botón 						    "Generar remito"
-8- Cerrar el sistema
+7- Seleccionar Nro de orden			"6"
+8- Botón				            "Agregar al remito"
+9- Botón 						    "Generar remito"
+10- Cerrar el sistema
 
 Verificaciones:
-9- Archivo Remito.json - Ultima linea: 
+9- Archivo Remito.json - remito nro 3: 
 {
-    "Numero": 4,
-    "DNITransportista": 20242093 ,
-    "FechaEmision": ""2025-06-02T09:45:00"",
-    "OrdenesPreparacion": [ 3
-      
-    ]
- }
-10-  Archivo OrdenPreparacion.json - Tercer registro??: 
-  {
     "Numero": 3,
-    "Pallet": true,
-    "CodigoDeposito": "D04",
+    "DNITransportista": 37242593,
+    "FechaEmision": "2025-06-18T00:00:00-03:00",
+    "OrdenesPreparacion": [
+      15,
+      6
+    ]
+  }
+
+10-  Archivo OrdenPreparacion.json, ordenes nro 6 y nro 15:
+{
+    "Numero": 6,
+    "Pallet": false,
+    "CodigoDeposito": "D02",
     "Detalle": [
       {
-        "SKU": 11,
+        "SKU": 7,
+        "Cantidad": 2
+      }
+    ],
+    "FechaRetirar": "2025-06-17T00:00:00-03:00",
+    "Prioridad": 0,
+    "NumeroCliente": 7,
+    "DNITransportista": 37242593,
+    "Estado": 5
+  },
+
+  {
+    "Numero": 15,
+    "Pallet": false,
+    "CodigoDeposito": "D02",
+    "Detalle": [
+      {
+        "SKU": 21,
         "Cantidad": 3
       }
     ],
-    "FechaRetirar": "2025-06-11T00:00:00",
-    "Prioridad": 0,
-    "NumeroCliente": 11,
-    "DNITransportista": 20242093,
+    "FechaRetirar": "2025-06-18T00:00:00-03:00",
+    "Prioridad": 1,
+    "NumeroCliente": 7,
+    "DNITransportista": 37242593,
     "Estado": 5
   }
 
-11- Archivo OrdenDeEntrega.json - segundo registro??: 
+11- Archivo OrdenDeEntrega.json - ordenes nro 3 y nro 4: 
+ {
+    "Numero": 3,
+    "OrdenesPreparacion": [
+      6
+    ],
+    "FechaGeneracion": "2025-06-17T21:43:14.2519415-03:00",
+    "EstadoOrdenDeEntrega": 1
+  },
   {
-    "Numero": 2,
-    "OrdenesPreparacion": [ 3, 9 ],
-    "FechaGeneracion": "2025-06-02T12:00:00",
+    "Numero": 4,
+    "OrdenesPreparacion": [
+      15
+    ],
+    "FechaGeneracion": "2025-06-18T16:04:29.649084-03:00",
     "EstadoOrdenDeEntrega": 1
   }
   
