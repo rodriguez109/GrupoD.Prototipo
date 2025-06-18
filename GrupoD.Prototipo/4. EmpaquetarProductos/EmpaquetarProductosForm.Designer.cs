@@ -40,11 +40,11 @@ partial class EmpaquetarProductosForm
         // 
         // ordenEmpaquetadaBTN
         // 
-        ordenEmpaquetadaBTN.Location = new Point(486, 405);
+        ordenEmpaquetadaBTN.Location = new Point(572, 405);
         ordenEmpaquetadaBTN.Name = "ordenEmpaquetadaBTN";
-        ordenEmpaquetadaBTN.Size = new Size(199, 29);
+        ordenEmpaquetadaBTN.Size = new Size(113, 29);
         ordenEmpaquetadaBTN.TabIndex = 11;
-        ordenEmpaquetadaBTN.Text = "Orden Empaquetada";
+        ordenEmpaquetadaBTN.Text = "Empaquetar";
         ordenEmpaquetadaBTN.UseVisualStyleBackColor = true;
         // 
         // cancelarBTN

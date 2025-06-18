@@ -13,68 +13,58 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
 {
     internal class EmpaquetarProductosModelo
     {
-         public List<OrdenPreparacion> OrdenesEnPreparacionDisponibles
-    => OrdenDePreparacionAlmacen.OrdenesDePreparacion
-       .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.EnPreparacion)
-       .Select(op => new OrdenPreparacion(
-           op.Numero, // Cambio de `Numero` a `NumeroOP`
-           op.Estado,
-           op.Prioridad,
-           op.FechaRetirar,
-           op.Detalle.Select(detallep =>
-           {
-               var productoEntidad = ProductoAlmacen.Productos.FirstOrDefault(p => p.SKU == detallep.SKU);
-               return new ProductoOP
-               {
-                   SKU = detallep.SKU,
-                   Nombre = productoEntidad?.Nombre ?? "Desconocido",
-                   CantidadSolicitada = detallep.Cantidad
-               };
-           }).ToList()
-       )).ToList();
+        //devuelve una lista actualizada de órdenes en preparación que pertenecen al depósito actual y no están en pallet.
+        public List<OrdenPreparacion> OrdenesEnPreparacionDisponibles =>
+    OrdenDePreparacionAlmacen.OrdenesDePreparacion
+        .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.EnPreparacion
+            && op.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual
+            && op.Pallet == false) // Solo los que NO están en pallet
+        .Select(op => new OrdenPreparacion(
+            op.Numero,
+            op.Estado,
+            op.Prioridad,
+            op.FechaRetirar,
+            op.Detalle.Select(detallep =>
+            {
+                var productoEntidad = ProductoAlmacen.Productos.FirstOrDefault(p => p.SKU == detallep.SKU);
+                return new ProductoOP
+                {
+                    SKU = detallep.SKU,
+                    Nombre = productoEntidad?.Nombre ?? "Desconocido",
+                    CantidadSolicitada = detallep.Cantidad
+                };
+            }).ToList(),
+            op.Pallet 
+        )).ToList();
 
+        //constructor de la clase que actualmente no realiza lógica, pero permite crear una instancia del modelo.
         public EmpaquetarProductosModelo()
         {
-            //ActualizarOrdenesDisponibles();  ahora se calcula arriba automaticamente
-            // Llena la lista interna con órdenes en preparación
         }
 
-
-        /*Cuando usar ObtenerOrdenesDisponibles()?
-            - Devuelve una lista completa de órdenes en preparación, permitiendo visualizar todas. 
-            - Útil si necesitas mostrar varias órdenes en una vista, como un listado en el formulario. 
-            - Ideal para reportes o para elegir manualmente qué orden procesar, en lugar de que el sistema seleccione automáticamente.*/
-        public List<OrdenPreparacion> ObtenerOrdenesDisponibles()
+        //recorre todas las órdenes y marca como preparadas aquellas que están en pallet y aún en preparación.
+        public void CambiarEstadoOPsConPallet()
         {
-            return OrdenDePreparacionAlmacen.OrdenesDePreparacion
-                .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.EnPreparacion)
-                .Select(op => new OrdenPreparacion(
-                    op.Numero,
-                    op.Estado,
-                    op.Prioridad,
-                    op.FechaRetirar,
-                    op.Detalle.Select(dp =>
-                    {
-                        var productoEntidad = ProductoAlmacen.Productos.FirstOrDefault(p => p.SKU == dp.SKU);
-                        return new ProductoOP
-                        {
-                            SKU = dp.SKU,
-                            Nombre = productoEntidad?.Nombre ?? "Desconocido",
-                            CantidadSolicitada = dp.Cantidad
-                        };
-                    }).ToList()
-                )).ToList();
+            foreach (var orden in OrdenDePreparacionAlmacen.OrdenesDePreparacion)
+            {
+                if (orden.Pallet && orden.Estado == EstadoOrdenDePreparacionEnum.EnPreparacion)
+                {
+                    orden.Estado = EstadoOrdenDePreparacionEnum.Preparada;
+                }
+            }
         }
 
-        public OrdenPreparacion BusquedaOrdenDisponible() //primer ordend e preparacion mas prox a retirar
-            //falta que tenga en cuenta la prioridad
+        //devuelve la orden en preparación más próxima a retirar, teniendo en cuenta la prioridad y fecha de retiro
+        public OrdenPreparacion BusquedaOrdenDisponible()
         {
             return OrdenesEnPreparacionDisponibles
                 .Where(op => op.EstadoOP == EstadoOrdenDePreparacionEnum.EnPreparacion)
-                .OrderBy(op => op.FechaRetirar)
+                .OrderBy(op => op.Prioridad) // prioridad (menor = más urgente)
+                .ThenBy(op => op.FechaRetirar) // fecha de retiro más próxima
                 .FirstOrDefault()!;
         }
 
+        //cambia el estado de una orden específica a "Preparada" en la lista del almacén.
         public void CambioEstadoOP(OrdenPreparacion ordenActual)
         {
             // Buscar la orden original en OrdenDePreparacionAlmacen y actualizar su estado
@@ -85,21 +75,12 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
             {
                 ordenEnAlmacen.Estado = EstadoOrdenDePreparacionEnum.Preparada;
             }
-
-            //ActualizarOrdenesDisponibles();
         }
 
-        //public void ActualizarOrdenesDisponibles()      // se calcula automaticamente ahora
-        //{
-        //    OrdenesEnPreparacionDisponibles.Clear();
-        //    OrdenesEnPreparacionDisponibles.AddRange(OrdenDePreparacionAlmacen.OrdenesDePreparacion
-        //        .Where(op => op.Estado == EstadoOrdenDePreparacionEnum.EnPreparacion && op.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual)
-        //        .OrderBy(o => o.FechaRetirar));
-        //}
-
+        //busca un producto por su SKU y devuelve un objeto con sus datos y la cantidad solicitada.
         public ProductoOP ObtenerProductoPorSKU(int sku, int cantidadSolicitada)
         {
-            var productoEntidad = ProductoAlmacen.Productos.FirstOrDefault(p => p.SKU == sku); //devuelve solo el primer producto???
+            var productoEntidad = ProductoAlmacen.Productos.FirstOrDefault(p => p.SKU == sku); //devuelve solo el primer producto?
 
             if (productoEntidad == null) return null;
 

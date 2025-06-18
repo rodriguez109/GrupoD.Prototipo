@@ -12,16 +12,18 @@ namespace GrupoD.Prototipo._4._EmpaquetarProductos
         public int NumeroOP { get; set; }
         public EstadoOrdenDePreparacionEnum EstadoOP { get; set; }
         public PrioridadEnum Prioridad { get; set; }
-        public DateTime FechaRetirar { get; set; } // Nueva propiedad
+        public DateTime FechaRetirar { get; set; }
         public List<ProductoOP> Productos { get; set; } = new List<ProductoOP>();
+        public bool Pallet { get; set; }
 
-        public OrdenPreparacion(int numeroOrden, EstadoOrdenDePreparacionEnum estadoOP, PrioridadEnum prioridad, DateTime fechaRetirar, List<ProductoOP> productos)
+        public OrdenPreparacion(int numeroOrden, EstadoOrdenDePreparacionEnum estadoOP, PrioridadEnum prioridad, DateTime fechaRetirar, List<ProductoOP> productos, bool pallet)
         {
             NumeroOP = numeroOrden;
             EstadoOP = estadoOP;
             Prioridad = prioridad;
-            FechaRetirar = fechaRetirar; // Asignación correcta
+            FechaRetirar = fechaRetirar; 
             Productos = productos ?? new List<ProductoOP>();
+            Pallet = pallet;
         }
     }
 

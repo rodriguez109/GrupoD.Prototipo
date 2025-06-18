@@ -1,18 +1,18 @@
 [
     {
         "Codigo": "D01",
-        "Nombre": "Deposito Buenos Aires"
+        "Nombre": "Depósito Buenos Aires"
     },
     {
         "Codigo": "D02",
-        "Nombre": "Deposito Rosario"
+        "Nombre": "Depósito Rosario"
     },
     {
         "Codigo": "D03",
-        "Nombre": "Deposito Tucumán"
+        "Nombre": "Depósito Tucumán"
     },
     {
         "Codigo": "D04",
-        "Nombre": "Deposito Córdoba"
+        "Nombre": "Depósito Córdoba"
     }
 ]

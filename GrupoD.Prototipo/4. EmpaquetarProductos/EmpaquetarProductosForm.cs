@@ -4,18 +4,19 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GrupoD.Prototipo.Almacenes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace GrupoD.Prototipo._4._EmpaquetarProductos;
 public partial class EmpaquetarProductosForm : Form
 {
     private EmpaquetarProductosModelo modelo;
-    //public OrdenPreparacion ordenActual;
 
-
+    //inicializa el formulario, crea el modelo y muestra la primera orden disponible.
     public EmpaquetarProductosForm()
     {
         InitializeComponent();
@@ -25,11 +26,11 @@ public partial class EmpaquetarProductosForm : Form
         ordenEmpaquetadaBTN.Click += ordenEmpaquetadaBTN_Click;
         cancelarBTN.Click += cancelarBTN_Click;
 
-
+        modelo.CambiarEstadoOPsConPallet();
         MostrarOrdenPantalla();
-
     }
 
+    //busca la próxima orden en preparación y la carga visualmente o avisa si ya no hay más.
     internal void MostrarOrdenPantalla() 
     {
         var ordenActual = modelo.BusquedaOrdenDisponible();
@@ -49,6 +50,7 @@ public partial class EmpaquetarProductosForm : Form
         }    
     }
 
+    //llena el ListView con los productos de la orden actual usando sus datos reales del almacén.
     internal void CargarProductosEnListView(List<ProductoOP> productos)
     {
         listViewProductos.Items.Clear();
@@ -59,9 +61,9 @@ public partial class EmpaquetarProductosForm : Form
 
             if (productoConsultar == null)
             {
-                MessageBox.Show($"El producto con SKU {producto.SKU} no existe en el almacén."); //ELSE 2 DDS
-                //CASO DE PRUEBA DE ORDEN SIN PRODUCTOS###########################
-                continue; // Evita añadir productos no encontrados
+                // Evita añadir productos no encontrados
+                MessageBox.Show($"El producto con SKU {producto.SKU} no existe en el almacén."); 
+                continue; 
             }
 
             var item = new ListViewItem(producto.SKU.ToString());
@@ -72,6 +74,7 @@ public partial class EmpaquetarProductosForm : Form
         }
     }
 
+    //marca la orden como preparada y muestra la siguiente orden pendiente.
     private void ordenEmpaquetadaBTN_Click(object sender, EventArgs e)
     {
         var ordenActual = modelo.BusquedaOrdenDisponible();
@@ -85,6 +88,7 @@ public partial class EmpaquetarProductosForm : Form
         }
     }
 
+    //cierra el formulario cuando se cancela o finaliza el flujo.
     private void cancelarBTN_Click(object sender, EventArgs e)
     {
         this.Close();

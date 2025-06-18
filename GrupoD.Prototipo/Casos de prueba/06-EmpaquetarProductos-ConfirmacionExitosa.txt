@@ -1,36 +1,38 @@
 Plan de Prueba: EmpaquetarProductos-ConfirmacionExitosa.txt
 
 (Empieza con el menú principal)
-1- Botón										"Empaquetar los productos"
-2- Orden de preparacion							#11
-3- SKU								   			7
+1- Depósito										Depósito Rosario
+2- Botón										"Empaquetar los productos"
+3- Orden de preparacion							#13
+4- SKU								   			16
 Verificar que listViewProductos muestra los productos correspondientes a la orden.
-4- Nombre										Estantería metálica 4 estantes
-5- Cantidad										5
-6- Botón										"Orden Empaquetada"
-7- Mensaje										"La orden fue marcada como 'Preparada'.".
-8- Revisar que la siguiente orden de preparación se muestra en pantalla. 
-9- Mensaje (si no hay más órdenes disponibles) "No hay más órdenes en estado 'En Preparacion' para empaquetar." 
-10- Se deshabilitar el botón "Orden empaquetada". 
-11- Botón										"Cerrar"
-12- Vuelve al menú principal
+5- Nombre										Pack 6 tubos LED 18W
+6- Cantidad										5
+7- Botón										"Empaquetar"
+8- Mensaje										"La orden fue marcada como 'Preparada'.".
+9- Revisar que la siguiente orden de preparación se muestra en pantalla. 
+10- Mensaje (si no hay más órdenes disponibles) "No hay más órdenes en estado 'En Preparacion' para empaquetar." 
+11- Se deshabilitar el botón "Empaquetar". 
+12- Botón										"Cerrar"
+13- Vuelve al menú principal
 
 Verificaciones
-13- Archivo ordenDePreparacion.json – la orden de preparacion numero 11 deberia aparecer con el estado actualizado ("Estado"" = 3):
+14- Archivo ordenDePreparacion.json – la orden de preparacion numero 13 deberia aparecer con el estado actualizado ("Estado" = 3):
 
 {
-    "Numero": 11,
-    "Pallet": false,
-    "CodigoDeposito": "D04",
-    "Detalle": [
-        {
-            "SKU": 7,
-            "Cantidad": 5
-        }
-    ],
-    "FechaRetirar": "2025-06-07T00:00:00",
-    "Prioridad": 2,
-    "NumeroCliente": 7,
-    "DNITransportista": 40242093,
-    "Estado": 2
-},
+"Numero": 13,
+"Pallet": false,
+"CodigoDeposito": "D02",
+"Detalle": 
+[
+    {
+    "SKU": 16,
+    "Cantidad": 5
+    }
+],
+"FechaRetirar": "2025-06-17T00:00:00-03:00",
+"Prioridad": 1,
+"NumeroCliente": 14,
+"DNITransportista": 37242096,
+"Estado": 3
+}
