@@ -42,6 +42,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             fechaRetirarDTP.MinDate = DateTime.Today;
 
             ConfigurarAutoCompletar();
+            ConfigurarAutoCompletarDNITransportista();
 
 
             prioridadCMB.Items.Clear(); 

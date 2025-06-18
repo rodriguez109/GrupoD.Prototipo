@@ -76,14 +76,14 @@
             // 
             numeroClienteTXT.Location = new Point(13, 29);
             numeroClienteTXT.Name = "numeroClienteTXT";
-            numeroClienteTXT.Size = new Size(321, 27);
+            numeroClienteTXT.Size = new Size(389, 27);
             numeroClienteTXT.TabIndex = 2;
             // 
             // razonSocialClienteTXT
             // 
             razonSocialClienteTXT.Location = new Point(408, 29);
             razonSocialClienteTXT.Name = "razonSocialClienteTXT";
-            razonSocialClienteTXT.Size = new Size(329, 27);
+            razonSocialClienteTXT.Size = new Size(363, 27);
             razonSocialClienteTXT.TabIndex = 4;
             // 
             // label3
@@ -97,9 +97,9 @@
             // 
             // limpiarFiltrosBTN
             // 
-            limpiarFiltrosBTN.Location = new Point(601, 62);
+            limpiarFiltrosBTN.Location = new Point(408, 62);
             limpiarFiltrosBTN.Name = "limpiarFiltrosBTN";
-            limpiarFiltrosBTN.Size = new Size(136, 29);
+            limpiarFiltrosBTN.Size = new Size(363, 29);
             limpiarFiltrosBTN.TabIndex = 6;
             limpiarFiltrosBTN.Text = "Limpiar Filtros";
             limpiarFiltrosBTN.UseVisualStyleBackColor = true;
@@ -120,7 +120,7 @@
             productosClienteLST.FullRowSelect = true;
             productosClienteLST.Location = new Point(13, 137);
             productosClienteLST.Name = "productosClienteLST";
-            productosClienteLST.Size = new Size(441, 192);
+            productosClienteLST.Size = new Size(472, 192);
             productosClienteLST.TabIndex = 11;
             productosClienteLST.UseCompatibleStateImageBehavior = false;
             productosClienteLST.View = View.Details;
@@ -133,12 +133,12 @@
             // nombreProductoCLM
             // 
             nombreProductoCLM.Text = "Nombre Producto";
-            nombreProductoCLM.Width = 150;
+            nombreProductoCLM.Width = 170;
             // 
             // cantidadProductoCLM
             // 
-            cantidadProductoCLM.Text = "Cantidad";
-            cantidadProductoCLM.Width = 80;
+            cantidadProductoCLM.Text = "Cantidad Disponible";
+            cantidadProductoCLM.Width = 180;
             // 
             // productoSeleccionadoLBL
             // 
@@ -160,9 +160,9 @@
             // 
             // cantidadSeleccionadaTXT
             // 
-            cantidadSeleccionadaTXT.Location = new Point(491, 284);
+            cantidadSeleccionadaTXT.Location = new Point(491, 293);
             cantidadSeleccionadaTXT.Name = "cantidadSeleccionadaTXT";
-            cantidadSeleccionadaTXT.Size = new Size(246, 27);
+            cantidadSeleccionadaTXT.Size = new Size(280, 27);
             cantidadSeleccionadaTXT.TabIndex = 17;
             // 
             // cantidadSeleccionadaLBL
@@ -176,9 +176,9 @@
             // 
             // agregarProductoBTN
             // 
-            agregarProductoBTN.Location = new Point(491, 335);
+            agregarProductoBTN.Location = new Point(13, 335);
             agregarProductoBTN.Name = "agregarProductoBTN";
-            agregarProductoBTN.Size = new Size(246, 29);
+            agregarProductoBTN.Size = new Size(758, 29);
             agregarProductoBTN.TabIndex = 18;
             agregarProductoBTN.Text = "Agregar Producto a la Orden";
             agregarProductoBTN.UseVisualStyleBackColor = true;
@@ -197,9 +197,9 @@
             // 
             ordenPreparacionLST.Columns.AddRange(new ColumnHeader[] { skuProductoLBL, nombreProductoLBL, cantidadSeleccionadaCLM });
             ordenPreparacionLST.FullRowSelect = true;
-            ordenPreparacionLST.Location = new Point(13, 420);
+            ordenPreparacionLST.Location = new Point(12, 420);
             ordenPreparacionLST.Name = "ordenPreparacionLST";
-            ordenPreparacionLST.Size = new Size(472, 161);
+            ordenPreparacionLST.Size = new Size(472, 185);
             ordenPreparacionLST.TabIndex = 23;
             ordenPreparacionLST.UseCompatibleStateImageBehavior = false;
             ordenPreparacionLST.View = View.Details;
@@ -207,7 +207,7 @@
             // skuProductoLBL
             // 
             skuProductoLBL.Text = "SKU Producto";
-            skuProductoLBL.Width = 150;
+            skuProductoLBL.Width = 120;
             // 
             // nombreProductoLBL
             // 
@@ -222,7 +222,7 @@
             // fechaRetirarLBL
             // 
             fechaRetirarLBL.AutoSize = true;
-            fechaRetirarLBL.Location = new Point(598, 420);
+            fechaRetirarLBL.Location = new Point(601, 420);
             fechaRetirarLBL.Name = "fechaRetirarLBL";
             fechaRetirarLBL.Size = new Size(107, 20);
             fechaRetirarLBL.TabIndex = 26;
@@ -231,7 +231,7 @@
             // prioridadLBL
             // 
             prioridadLBL.AutoSize = true;
-            prioridadLBL.Location = new Point(491, 481);
+            prioridadLBL.Location = new Point(491, 466);
             prioridadLBL.Name = "prioridadLBL";
             prioridadLBL.Size = new Size(70, 20);
             prioridadLBL.TabIndex = 30;
@@ -241,15 +241,15 @@
             // 
             prioridadCMB.DropDownStyle = ComboBoxStyle.DropDownList;
             prioridadCMB.FormattingEnabled = true;
-            prioridadCMB.Location = new Point(491, 504);
+            prioridadCMB.Location = new Point(491, 489);
             prioridadCMB.Name = "prioridadCMB";
-            prioridadCMB.Size = new Size(246, 28);
+            prioridadCMB.Size = new Size(280, 28);
             prioridadCMB.TabIndex = 31;
             // 
             // dniTransportistaLBL
             // 
             dniTransportistaLBL.AutoSize = true;
-            dniTransportistaLBL.Location = new Point(491, 554);
+            dniTransportistaLBL.Location = new Point(490, 531);
             dniTransportistaLBL.Name = "dniTransportistaLBL";
             dniTransportistaLBL.Size = new Size(124, 20);
             dniTransportistaLBL.TabIndex = 32;
@@ -257,9 +257,9 @@
             // 
             // cancelarBTN
             // 
-            cancelarBTN.Location = new Point(615, 658);
+            cancelarBTN.Location = new Point(649, 673);
             cancelarBTN.Name = "cancelarBTN";
-            cancelarBTN.Size = new Size(122, 29);
+            cancelarBTN.Size = new Size(122, 52);
             cancelarBTN.TabIndex = 36;
             cancelarBTN.Text = "Cancelar";
             cancelarBTN.UseVisualStyleBackColor = true;
@@ -267,7 +267,7 @@
             // 
             // generarOPBTN
             // 
-            generarOPBTN.Location = new Point(375, 635);
+            generarOPBTN.Location = new Point(409, 673);
             generarOPBTN.Name = "generarOPBTN";
             generarOPBTN.Size = new Size(223, 52);
             generarOPBTN.TabIndex = 37;
@@ -277,16 +277,16 @@
             // 
             // dniTransportistaTXT
             // 
-            dniTransportistaTXT.Location = new Point(491, 577);
+            dniTransportistaTXT.Location = new Point(491, 554);
             dniTransportistaTXT.Name = "dniTransportistaTXT";
-            dniTransportistaTXT.Size = new Size(246, 27);
+            dniTransportistaTXT.Size = new Size(280, 27);
             dniTransportistaTXT.TabIndex = 38;
             // 
             // quitarProductoBTN
             // 
-            quitarProductoBTN.Location = new Point(12, 587);
+            quitarProductoBTN.Location = new Point(12, 611);
             quitarProductoBTN.Name = "quitarProductoBTN";
-            quitarProductoBTN.Size = new Size(130, 29);
+            quitarProductoBTN.Size = new Size(759, 29);
             quitarProductoBTN.TabIndex = 39;
             quitarProductoBTN.Text = "Quitar Producto";
             quitarProductoBTN.UseVisualStyleBackColor = true;
@@ -298,7 +298,7 @@
             fechaRetirarDTP.Location = new Point(601, 443);
             fechaRetirarDTP.MinDate = new DateTime(2025, 6, 3, 0, 0, 0, 0);
             fechaRetirarDTP.Name = "fechaRetirarDTP";
-            fechaRetirarDTP.Size = new Size(140, 27);
+            fechaRetirarDTP.Size = new Size(170, 27);
             fechaRetirarDTP.TabIndex = 40;
             fechaRetirarDTP.Value = new DateTime(2025, 6, 3, 0, 0, 0, 0);
             // 
@@ -322,9 +322,9 @@
             // 
             // buscarProductosBTN
             // 
-            buscarProductosBTN.Location = new Point(444, 62);
+            buscarProductosBTN.Location = new Point(12, 62);
             buscarProductosBTN.Name = "buscarProductosBTN";
-            buscarProductosBTN.Size = new Size(141, 29);
+            buscarProductosBTN.Size = new Size(390, 29);
             buscarProductosBTN.TabIndex = 43;
             buscarProductosBTN.Text = "Buscar Productos";
             buscarProductosBTN.UseVisualStyleBackColor = true;
@@ -333,7 +333,7 @@
             // palletCBX
             // 
             palletCBX.AutoSize = true;
-            palletCBX.Location = new Point(494, 433);
+            palletCBX.Location = new Point(494, 420);
             palletCBX.Name = "palletCBX";
             palletCBX.Size = new Size(67, 24);
             palletCBX.TabIndex = 44;
@@ -344,7 +344,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(781, 712);
+            ClientSize = new Size(791, 728);
             Controls.Add(palletCBX);
             Controls.Add(buscarProductosBTN);
             Controls.Add(cantidadDisponibleLABEL);
