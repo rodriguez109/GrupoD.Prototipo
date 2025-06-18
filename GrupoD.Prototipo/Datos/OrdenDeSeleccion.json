@@ -54,5 +54,13 @@
     "OrdenesPreparacion": [
       13
     ]
+  },
+  {
+    "Numero": 8,
+    "FechaGeneracion": "2025-06-18T16:03:40.8611641-03:00",
+    "EstadoOrdenDeSeleccion": 1,
+    "OrdenesPreparacion": [
+      15
+    ]
   }
 ]

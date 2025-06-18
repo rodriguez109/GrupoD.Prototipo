@@ -293,5 +293,24 @@
         "CodigoDeposito": "D01"
       }
     ]
+  },
+  {
+    "SKU": 21,
+    "Nombre": "Estantería de madera",
+    "Cantidad": 30,
+    "NumeroCliente": 7,
+    "Posiciones": [
+      {
+        "Codigo": "07-28-2",
+        "Stock": 15,
+        "CodigoDeposito": "D02"
+      },
+      {
+        "Codigo": "07-29-2",
+        "Stock": 15,
+        "CodigoDeposito": "D04"
+      
+      }
+    ]
   }
 ]
