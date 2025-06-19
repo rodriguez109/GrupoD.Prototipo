@@ -1,29 +1,32 @@
 Plan de Prueba : PrepararProductos-ConfirmacionExitosaDescuentoStock.txt
 
-(Empieza con el menu principal) 
+(Empieza con el Menú Principal)
+1- Depósito							 Depósito Rosario
+1- Botón							 "Preparar los productos"
+2- Orden de preparacion				 #11
+5- Posicion							 16-17-3
+6- SKU producto                      16
+7- Cantidad							 5
+9- Botón							 "Confirmar orden de selección"
+10- Mensaje							 "¡Orden de selección #11 CONFIRMADA!"
+11- Botón							 "Aceptar"
+12- Mensaje							 "Ya no hay ordenes para seleccionar."
+13- Botón							 "Aceptar"
+14- Volver al menú principal
 
-1- Botón Preparar los productos
-2- Seleccionar orden en listado "Orden de seleccion"
+15- Verificaciones: Archivo Producto.json 
 
-3- La pantalla mostrará los datos de la Orden de Selección:
+  {
+    "SKU": 16,
+    "Nombre": "Pack 6 tubos LED 18W",
+    "Posiciones": [
+      {
+        "Codigo": "16-17-3",
+        "Stock": 25,
+        "CodigoDeposito": "D02"
+      }
+    ],
+    "NumeroCliente": 14
+  }
 
-	Orden de seleccion: 1
-
-	Posicion - sku - Cantidad 
-			    15      1
-				4       5
-
-
-4- Botón: “Confirmar orden de selección”
-
-5- Mensaje: ¡Orden de selección # xx CONFIRMADA!
-
-6- Botón: "Cancelar"
-
-7- Cerrar el sistema
-
-Verificaciones: 
-
-8- Archivo xxxx.Json - Ultima linea:
-
-(Termina cerrando el programa) 
+  - (Termino cerrando el programa)

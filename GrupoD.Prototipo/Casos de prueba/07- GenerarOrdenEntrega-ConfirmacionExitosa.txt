@@ -1,9 +1,9 @@
 ﻿Plan de Prueba: GenerarOrdenEntrega-ConfirmacionExitosa.txt
 
 (Empieza con el Menú Principal)
-1- Depósito							  Depósito Rosario
-1- Botón							  "Generar Orden de Entrega"
-2- Orden de preparacion				  #10
+1- Depósito							 Depósito Rosario
+1- Botón							 "Generar Orden de Entrega"
+2- Orden de preparacion				 #10
 5- Razón Social Cliente				 "MundoFOX S.A"
 6- Fecha Entrega                     "17/06/2025"
 7- DNI Transportista                 "41242092"
@@ -14,7 +14,7 @@
 12- Volver al menú principal
 
 Verificaciones:
-13- Archivo Archivo OrdenDeEntrega.json -  Última entrada agregada debe ser similar a:
+13- Archivo OrdenDeEntrega.json -  Última entrada agregada debe ser similar a:
 
  {
     "Numero": 5,
