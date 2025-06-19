@@ -13,11 +13,9 @@ namespace GrupoD.Prototipo.Almacenes
         private static List<DepositoEntidad> depositos = new List<DepositoEntidad>();
         //Es una lista privada donde se guardan todos los depositos que cargues. Solo la clase DepositoAlmacen puede modificarla directamente.        
 
-        //Asignando correctamente el código del depósito desde el ComboBox.
         public static string CodigoDepositoActual { get; set; }
 
         public static IReadOnlyCollection<DepositoEntidad> Depositos => depositos.AsReadOnly();
-        // versión pública de la lista, pero solo de lectura.
         // Sirve para que otras partes del sistema puedan consultar los Depositos, pero no puedan modificarlos.
 
         public static void Grabar()
@@ -25,15 +23,11 @@ namespace GrupoD.Prototipo.Almacenes
             var datos = JsonSerializer.Serialize(depositos, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(@"Datos\Deposito.json", datos);
         }
-        //Guarda la lista de depositos en un archivo JSON.
         //Convierte la lista depositos en un texto con formato JSON(Serialize).
-        //Guarda ese texto en Datos\Depositos.json.
 
-
-        static DepositoAlmacen() //Lee el archivo Depositos.json y recupera la lista de depositos.
+        //Lee el archivo Depositos.json y recupera la lista de depositos.
+        static DepositoAlmacen() 
         {
-            // Si el archivo NO existe, sale del método.
-            //Si existe, lo lee, lo convierte desde JSON a lista(Deserialize) y lo carga en productos.
             if (!File.Exists(@"Datos\Deposito.json"))
             {
                 return;
@@ -41,12 +35,11 @@ namespace GrupoD.Prototipo.Almacenes
 
             var datos = File.ReadAllText(@"Datos\Deposito.json");
             depositos = JsonSerializer.Deserialize<List<DepositoEntidad>>(datos)!;
-
         }
         public static void Agregar(DepositoEntidad deposito)
         {
-            depositos.Add(deposito); //Agrega un producto a la lista.
-            Grabar(); //Luego llama a Grabar() para guardar la lista actualizada.
+            depositos.Add(deposito); 
+            Grabar(); //guarda la lista actualizada
         }
     }
 }

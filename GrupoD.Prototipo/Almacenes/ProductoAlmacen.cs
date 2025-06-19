@@ -18,7 +18,6 @@ namespace GrupoD.Prototipo.Almacenes
         //Es una lista privada donde se guardan todos los productos que cargues. Solo la clase ProductoAlmacen puede modificarla directamente.
 
         public static IReadOnlyCollection<ProductoEntidad> Productos => productos.AsReadOnly();
-        // versión pública de la lista, pero solo de lectura.
         // Sirve para que otras partes del sistema puedan consultar los productos, pero no puedan modificarlos.
         
         public static void Grabar()
@@ -26,31 +25,7 @@ namespace GrupoD.Prototipo.Almacenes
             var datos = JsonSerializer.Serialize(productos, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(@"Datos\Producto.json", datos);
         }
-        //Guarda la lista de productos en un archivo JSON.
-        //Convierte la lista productos en un texto con formato JSON(Serialize).
-        //Guarda ese texto en Datos\Productos.json.
-        //public static void RestarStock(int sku, int cantidad, string posicion)
-        //{
-        //    var producto = productos.FirstOrDefault(p => p.SKU == sku);
-        //    if (producto == null)
-        //        throw new InvalidOperationException($"No existe producto con SKU '{sku}'.");
-
-        //    if (producto.Stock < cantidad)
-        //        throw new InvalidOperationException(
-        //            $"Stock insuficiente para SKU '{sku}'. Disponible: {producto.Stock}, requerido: {cantidad}.");
-
-        //    producto.Stock -= cantidad;
-
-        //    var enPosicion = producto.Posiciones.FirstOrDefault(p => p.Codigo == posicion && p.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual);
-        //    if(enPosicion == null)
-        //        throw new InvalidOperationException($"No existe la posición '{posicion}' para el producto con SKU '{sku}'.");
-
-        //    if(enPosicion.Stock< cantidad)
-        //        throw new InvalidOperationException(
-        //            $"Stock insuficiente en la posición '{posicion}' para SKU '{sku}'. Disponible: {enPosicion.Stock}, requerido: {cantidad}.");
-
-        //    enPosicion.Stock -= cantidad;
-        //}
+        
         public static void RestarStock(int sku, int cantidad, string posicion)
         {
             var producto = productos.FirstOrDefault(p => p.SKU == sku);
@@ -91,8 +66,8 @@ namespace GrupoD.Prototipo.Almacenes
         }
         public static void Agregar(ProductoEntidad producto)
         {
-            productos.Add(producto); //Agrega un producto a la lista.
-            Grabar(); //Luego llama a Grabar() para guardar la lista actualizada.
+            productos.Add(producto); 
+            Grabar(); //guardar la lista actualizada.
         }
     }
 }

@@ -10,11 +10,6 @@ namespace GrupoD.Prototipo.Almacenes
     {
         public string Codigo { get; set; }
         public string Nombre { get; set; }
-        /*
-        public DepositoEntidad(string codigo, string nombre)
-        {
-            Codigo = codigo;
-            Nombre = nombre;
-        }*/
+
     }
 }

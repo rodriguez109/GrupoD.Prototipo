@@ -46,7 +46,6 @@ namespace GrupoD.Prototipo.Almacenes
         }
 
         //public static void cambiarEstadoOS
-
         public static void cambiarEstadoOS(int IdOP, EstadoOrdenDeSeleccionEnum estado)
         {
             foreach (var ordEnt in ordenesDeSeleccion)
