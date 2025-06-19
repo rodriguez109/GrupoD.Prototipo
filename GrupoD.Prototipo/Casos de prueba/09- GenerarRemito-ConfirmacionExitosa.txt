@@ -13,7 +13,7 @@
 10- Cerrar el sistema
 
 Verificaciones:
-9- Archivo Remito.json - remito nro 3: 
+9- Archivo Remito.json - última entrada agregada debe ser similar a: 
 {
     "Numero": 3,
     "DNITransportista": 37242593,
@@ -24,7 +24,7 @@ Verificaciones:
     ]
   }
 
-10-  Archivo OrdenPreparacion.json, ordenes nro 6 y nro 15:
+10-  Archivo OrdenPreparacion.json, ordenes nro 6 y nro 15 con modificación de estado:
 {
     "Numero": 6,
     "Pallet": false,
@@ -59,7 +59,7 @@ Verificaciones:
     "Estado": 5
   }
 
-11- Archivo OrdenDeEntrega.json - ordenes nro 3 y nro 4: 
+11- Archivo OrdenDeEntrega.json - ordenes nro 3 y nro 4 con modificación de estado: 
  {
     "Numero": 3,
     "OrdenesPreparacion": [

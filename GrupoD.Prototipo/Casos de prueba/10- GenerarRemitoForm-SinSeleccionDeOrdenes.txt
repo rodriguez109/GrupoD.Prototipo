@@ -1,16 +1,23 @@
 ﻿Plan de Prueba: Generar Remito - Sin Selección de ordenes
 
 (Empieza con el Menú Principal)
-1- Depósito                         "Deposito Córdoba"
+1- Depósito                         "Depósito Buenos Aires"
 2- Botón							"Generar remito"
-3- DNI Transportista			    "37242593"
-4- Botón							"Buscar ordenes"
-5- Botón                            "Generar remito"
-6- 	Cerrar el sistema					    
+3- DNI Transportista			    ""
+4- Botón                            "Generar remito"
+5- Cerrar el sistema					    
 
 
 Verificaciones:
+6- Archivo Remito.json - última entrada agregada debe ser similar a: 
+{
+    "Numero": 2,
+    "DNITransportista": 27242090,
+    "FechaEmision": "2025-06-17T00:00:00-03:00",
+    "OrdenesPreparacion": [
+      2
+    ]
+  }
 
-  
   
 (Termino cerrando el programa)
