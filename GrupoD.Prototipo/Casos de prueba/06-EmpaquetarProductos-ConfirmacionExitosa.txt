@@ -1,4 +1,4 @@
-Plan de Prueba: EmpaquetarProductos-ConfirmacionExitosa.txt
+Plan de Prueba 1: EmpaquetarProductos-ConfirmacionExitosa.txt
 
 (Empieza con el menú principal)
 1- Depósito										Depósito Rosario
@@ -17,7 +17,7 @@ Verificar que listViewProductos muestra los productos correspondientes a la orde
 13- Vuelve al menú principal
 
 Verificaciones
-14- Archivo ordenDePreparacion.json – la orden de preparacion numero 13 deberia aparecer con el estado actualizado ("Estado" = 3):
+14- Archivo ordenDePreparacion.json – La orden de preparación número 13 debería aparecer con el estado actualizado ("Estado" = 3):
 
 {
 "Numero": 13,
@@ -36,3 +36,20 @@ Verificaciones
 "DNITransportista": 37242096,
 "Estado": 3
 }
+
+
+
+Plan de Prueba 2: EmpaquetarProductos-SinOrdenDisponible
+
+(Empieza con el menú principal)
+1- Depósito                              Depósito Buenos Aires
+2- Botón                                 "Empaquetar los productos"
+3- No hay órdenes en estado "En Preparación" y sin pallet
+4- Mensaje                               "No hay más órdenes en estado 'En Preparación' para empaquetar."
+5- Se abre la pantalla EmpaquetarProductosForm con el botón "Empaquetar" desactivado            
+6- Botón                                 "Cerrar"
+7- Vuelve al menú principal
+
+Verificaciones
+8- Archivo ordenDePreparacion.json – Todas las órdenes deberían tener: "Estado" distinto de 2, o "Pallet": true, o pertenecer a otro depósito.
+   Una orden no se muestra en la pantalla si ya está en otro estado que no sea “En Preparación”, si ya tiene un pallet asignado, o si pertenece a un depósito distinto del que se seleccionó.

@@ -30,7 +30,7 @@ partial class EmpaquetarProductosForm
     {
         ordenEmpaquetadaBTN = new Button();
         cancelarBTN = new Button();
-        listViewProductos = new ListView();
+        productosPorOrdenLST = new ListView();
         skuProductoCLM = new ColumnHeader();
         nombreProductoCLM = new ColumnHeader();
         cantidadProductoCLM = new ColumnHeader();
@@ -56,32 +56,32 @@ partial class EmpaquetarProductosForm
         cancelarBTN.Text = "Cancelar";
         cancelarBTN.UseVisualStyleBackColor = true;
         // 
-        // listViewProductos
+        // productosPorOrdenLST
         // 
-        listViewProductos.Columns.AddRange(new ColumnHeader[] { skuProductoCLM, nombreProductoCLM, cantidadProductoCLM });
-        listViewProductos.HideSelection = true;
-        listViewProductos.Location = new Point(14, 75);
-        listViewProductos.Name = "listViewProductos";
-        listViewProductos.Size = new Size(777, 280);
-        listViewProductos.TabIndex = 9;
-        listViewProductos.UseCompatibleStateImageBehavior = false;
-        listViewProductos.View = View.Details;
-        listViewProductos.SelectedIndexChanged += listView2_SelectedIndexChanged;
+        productosPorOrdenLST.Columns.AddRange(new ColumnHeader[] { skuProductoCLM, nombreProductoCLM, cantidadProductoCLM });
+        productosPorOrdenLST.HideSelection = true;
+        productosPorOrdenLST.Location = new Point(14, 75);
+        productosPorOrdenLST.Name = "productosPorOrdenLST";
+        productosPorOrdenLST.Size = new Size(777, 280);
+        productosPorOrdenLST.TabIndex = 9;
+        productosPorOrdenLST.UseCompatibleStateImageBehavior = false;
+        productosPorOrdenLST.View = View.Details;
+        productosPorOrdenLST.SelectedIndexChanged += listView2_SelectedIndexChanged;
         // 
         // skuProductoCLM
         // 
         skuProductoCLM.Text = "SKU Producto";
-        skuProductoCLM.Width = 200;
+        skuProductoCLM.Width = 255;
         // 
         // nombreProductoCLM
         // 
         nombreProductoCLM.Text = "Nombre Producto";
-        nombreProductoCLM.Width = 200;
+        nombreProductoCLM.Width = 270;
         // 
         // cantidadProductoCLM
         // 
         cantidadProductoCLM.Text = "Cantidad";
-        cantidadProductoCLM.Width = 200;
+        cantidadProductoCLM.Width = 250;
         // 
         // label2
         // 
@@ -109,7 +109,7 @@ partial class EmpaquetarProductosForm
         Controls.Add(labelNumeroOrden);
         Controls.Add(ordenEmpaquetadaBTN);
         Controls.Add(cancelarBTN);
-        Controls.Add(listViewProductos);
+        Controls.Add(productosPorOrdenLST);
         Controls.Add(label2);
         Margin = new Padding(3, 4, 3, 4);
         Name = "EmpaquetarProductosForm";
@@ -122,7 +122,7 @@ partial class EmpaquetarProductosForm
 
     private Button ordenEmpaquetadaBTN;
     private Button cancelarBTN;
-    private ListView listViewProductos;
+    private ListView productosPorOrdenLST;
     private ColumnHeader skuProductoCLM;
     private ColumnHeader nombreProductoCLM;
     private ColumnHeader cantidadProductoCLM;

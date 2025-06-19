@@ -38,7 +38,7 @@ public partial class EmpaquetarProductosForm : Form
         if (ordenActual == null)
         {
             MessageBox.Show("No hay más órdenes en estado 'En Preparacion' para empaquetar.");
-            listViewProductos.Items.Clear();
+            productosPorOrdenLST.Items.Clear();
             labelNumeroOrden.Text = "Sin órdenes pendientes";
             ordenEmpaquetadaBTN.Enabled = false;
             cancelarBTN.Text = "Cerrar";
@@ -53,7 +53,7 @@ public partial class EmpaquetarProductosForm : Form
     //llena el ListView con los productos de la orden actual usando sus datos reales del almacén.
     internal void CargarProductosEnListView(List<ProductoOP> productos)
     {
-        listViewProductos.Items.Clear();
+        productosPorOrdenLST.Items.Clear();
 
         foreach (var producto in productos) // se repite por cada producto en la lista productos
         {
@@ -70,7 +70,7 @@ public partial class EmpaquetarProductosForm : Form
             item.SubItems.Add(productoConsultar.Nombre);
             item.SubItems.Add(producto.CantidadSolicitada.ToString());
 
-            listViewProductos.Items.Add(item);
+            productosPorOrdenLST.Items.Add(item);
         }
     }
 
