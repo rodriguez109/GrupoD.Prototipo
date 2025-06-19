@@ -77,7 +77,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
 
         private void AgregarAlRemitoBTN_Click(object sender, EventArgs e)
         {
-            if (OrdenesDePreparacionLST.SelectedItems.Count == 0)  // Verificar si no hay ítems seleccionados
+            if (OrdenesDePreparacionLST.SelectedItems.Count == 0)  
             {
                 MessageBox.Show("Debe seleccionar al menos una orden de preparación para agregar al remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -89,13 +89,13 @@ namespace GrupoD.Prototipo._6._GenerarRemito
                 var nuevoItem = new ListViewItem(orden.NumeroOrden.ToString());
                 nuevoItem.Tag = orden;
                 OrdenesAgregadasLST.Items.Add(nuevoItem);
-                OrdenesDePreparacionLST.Items.Remove(item);  // Eliminar de la lista de entrega
+                OrdenesDePreparacionLST.Items.Remove(item);  
             }
         }
 
         private void QuitarDelRemitoBTN_Click(object sender, EventArgs e)
         {
-            if (OrdenesAgregadasLST.SelectedItems.Count == 0)  // Verificar si no hay ítems seleccionados
+            if (OrdenesAgregadasLST.SelectedItems.Count == 0)  
             {
                 MessageBox.Show("Debe seleccionar al menos una orden para quitar del remito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -106,14 +106,14 @@ namespace GrupoD.Prototipo._6._GenerarRemito
                 OrdenPreparacion orden = (OrdenPreparacion)item.Tag;
                 var nuevoItem = new ListViewItem(orden.NumeroOrden.ToString());
                 nuevoItem.Tag = orden;
-                OrdenesDePreparacionLST.Items.Add(nuevoItem);  // Mover ítems de vuelta a la lista 
-                OrdenesAgregadasLST.Items.Remove(item);  // Eliminar de la lista agregada
+                OrdenesDePreparacionLST.Items.Add(nuevoItem);   
+                OrdenesAgregadasLST.Items.Remove(item);  
             }
         }
 
         private void GenerarRemitoBTN_Click(object sender, EventArgs e)
         {
-            if (OrdenesAgregadasLST.Items.Count == 0)  // Verificar si no hay ítems agregados al remito
+            if (OrdenesAgregadasLST.Items.Count == 0)  
             {
                 MessageBox.Show("Debe agregar al menos una orden al remito antes de generarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;

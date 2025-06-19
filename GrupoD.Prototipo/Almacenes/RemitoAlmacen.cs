@@ -28,7 +28,7 @@ namespace GrupoD.Prototipo.Almacenes
         public static void Grabar()
         {
             var datos = JsonSerializer.Serialize(remitos, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(@"Datos\Remito.json", datos); // Escribe los datos al archivo
+            File.WriteAllText(@"Datos\Remito.json", datos); 
         }
 
         public static int NumeroRemito()
@@ -48,7 +48,6 @@ namespace GrupoD.Prototipo.Almacenes
         public static void Agregar(RemitoEntidad remito)
         {
             remitos.Add(remito);
-            //Grabar(); va o no va???????
 
         }
 

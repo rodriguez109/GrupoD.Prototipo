@@ -28,7 +28,7 @@ namespace GrupoD.Prototipo._6._GenerarRemito
         {
             if (!int.TryParse(dni, out int dniNumerico))
             {
-                return new List<OrdenPreparacion>(); //acá iría otro mensaje de error??
+                return new List<OrdenPreparacion>(); 
             }
 
             var ordenes = OrdenesPreparacion.Where(o => o.DNITransportista == dniNumerico && o.Estado == EstadoOrdenDePreparacionEnum.EnDespacho).ToList();
