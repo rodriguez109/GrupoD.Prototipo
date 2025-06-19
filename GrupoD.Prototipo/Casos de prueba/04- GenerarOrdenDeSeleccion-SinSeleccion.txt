@@ -13,12 +13,12 @@
 8- Cerrar el sistema
 
 Verificaciones
-11- Archivo ordenesSeleccion.json – Última entrada agregada debe ser similar a:
-{
-  "Numero": 6,
-  "FechaGeneracion": "2025-06-06T14:30:00",
-  "EstadoOrdenDeSeleccion": 0,
-  "OrdenesPreparacion": [ 5, 7, 8 ]
-}
+9- Archivo ordenesSeleccion.json – Última entrada agregada debe ser similar a:
+  {
+    "Numero": 9,
+    "FechaGeneracion": "2025-06-18T21:16:27.3784449-03:00",
+    "EstadoOrdenDeSeleccion": 0,
+    "OrdenesPreparacion": [ 9 ]
+  }
 
 (Termino cerrando el programa)

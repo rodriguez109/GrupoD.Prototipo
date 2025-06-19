@@ -4,69 +4,41 @@
 
 1- Depósito						         "Depósito Buenos Aires"
 1- Botón                                 "Generar Orden de Selección"
-2- Nombre de cliente                     "DecoCentro S.A."
+2- Nombre de cliente                     "MaxiLuz Iluminación SRL"
 3- Botón                                 "Buscar órdenes pendientes"
-4- Ordenes pendientes seleccionadas      "5,7,8"
-7- Botón                                 "Agregar órdenes seleccionadas"
-8- Botón                                 "Generar orden de selección"
-9- Volver al menú principal
-10- Cerrar el sistema
+4- Ordenes pendientes seleccionadas      "9"
+5- Botón                                 "Agregar órdenes seleccionadas"
+6- Botón                                 "Generar orden de selección"
+7- Volver al menú principal
+8- Cerrar el sistema
 
 Verificaciones
-11- Archivo OrdenDeSeleccion.json – Última entrada agregada debe ser similar a:
-{
-  "Numero": 6,
-  "FechaGeneracion": "2025-06-06T14:30:00",
-  "EstadoOrdenDeSeleccion": 0,
-  "OrdenesPreparacion": [ 5, 7, 8 ]
-}
-12- Archivo OrdenDePreparacion.json – Modificación debe ser similar a:
-{
-    "Numero": 5,
-    "Pallet": true,
-    "CodigoDeposito": "D01",
-    "Detalle": [
-      {
-        "SKU": 15,
-        "Cantidad": 1
-      }
-    ],
-    "FechaRetirar": "2025-06-19T00:00:00",
-    "Prioridad": 1,
-    "NumeroCliente": 15,
-    "DNITransportista": 43242093,
-    "Estado": 1
-  },
+9- Archivo OrdenDeSeleccion.json – Última entrada agregada debe ser similar a:
   {
-    "Numero": 7,
+    "Numero": 9,
+    "FechaGeneracion": "2025-06-18T21:16:27.3784449-03:00",
+    "EstadoOrdenDeSeleccion": 0,
+    "OrdenesPreparacion": [ 9 ]
+  }
+10- Archivo OrdenDePreparacion.json – Modificación debe ser similar a:
+  {
+    "Numero": 9,
     "Pallet": false,
     "CodigoDeposito": "D01",
     "Detalle": [
       {
-        "SKU": 15,
-        "Cantidad": 2
-      }
-    ],
-    "FechaRetirar": "2025-06-10T00:00:00",
-    "Prioridad": 0,
-    "NumeroCliente": 15,
-    "DNITransportista": 43242093,
-    "Estado": 1
-  },
-  {
-    "Numero": 8,
-    "Pallet": true,
-    "CodigoDeposito": "D01",
-    "Detalle": [
+        "SKU": 2,
+        "Cantidad": 50
+      },
       {
-        "SKU": 15,
+        "SKU": 3,
         "Cantidad": 5
       }
     ],
-    "FechaRetirar": "2025-06-19T00:00:00",
-    "Prioridad": 0,
-    "NumeroCliente": 15,
-    "DNITransportista": 41242093,
+    "FechaRetirar": "2025-06-17T00:00:00-03:00",
+    "Prioridad": 1,
+    "NumeroCliente": 2,
+    "DNITransportista": 40242091,
     "Estado": 1
   },
 
