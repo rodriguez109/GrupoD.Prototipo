@@ -36,10 +36,10 @@
             groupBox1.ForeColor = SystemColors.ActiveCaptionText;
             groupBox1.Location = new Point(18, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1069, 470);
+            groupBox1.Size = new Size(976, 470);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Ordenes Preparadas hacia Despacho";
+            groupBox1.Text = " Ordenes Preparadas hacia Despacho";
             // 
             // OrdenesPreparacionEstadoPreparadasLST
             // 
@@ -47,7 +47,7 @@
             OrdenesPreparacionEstadoPreparadasLST.FullRowSelect = true;
             OrdenesPreparacionEstadoPreparadasLST.Location = new Point(10, 25);
             OrdenesPreparacionEstadoPreparadasLST.Name = "OrdenesPreparacionEstadoPreparadasLST";
-            OrdenesPreparacionEstadoPreparadasLST.Size = new Size(1048, 426);
+            OrdenesPreparacionEstadoPreparadasLST.Size = new Size(958, 426);
             OrdenesPreparacionEstadoPreparadasLST.TabIndex = 1;
             OrdenesPreparacionEstadoPreparadasLST.UseCompatibleStateImageBehavior = false;
             OrdenesPreparacionEstadoPreparadasLST.View = View.Details;
@@ -60,7 +60,7 @@
             // columnHeader1
             // 
             columnHeader1.Text = "Razón Social Cliente";
-            columnHeader1.Width = 230;
+            columnHeader1.Width = 200;
             // 
             // columnHeader2
             // 
@@ -70,18 +70,18 @@
             // columnHeader3
             // 
             columnHeader3.Text = "DNI transportista";
-            columnHeader3.Width = 230;
+            columnHeader3.Width = 200;
             // 
             // columnHeader4
             // 
             columnHeader4.Text = "Razón Social Transportista";
-            columnHeader4.Width = 230;
+            columnHeader4.Width = 200;
             // 
             // GenerarOrdenEntregaBTN
             // 
-            GenerarOrdenEntregaBTN.Location = new Point(727, 488);
+            GenerarOrdenEntregaBTN.Location = new Point(521, 482);
             GenerarOrdenEntregaBTN.Name = "GenerarOrdenEntregaBTN";
-            GenerarOrdenEntregaBTN.Size = new Size(232, 29);
+            GenerarOrdenEntregaBTN.Size = new Size(241, 30);
             GenerarOrdenEntregaBTN.TabIndex = 2;
             GenerarOrdenEntregaBTN.Text = "Generar orden de Entrega";
             GenerarOrdenEntregaBTN.UseVisualStyleBackColor = true;
@@ -89,9 +89,9 @@
             // 
             // CancelarOrdenEntregaBTN
             // 
-            CancelarOrdenEntregaBTN.Location = new Point(965, 488);
+            CancelarOrdenEntregaBTN.Location = new Point(768, 482);
             CancelarOrdenEntregaBTN.Name = "CancelarOrdenEntregaBTN";
-            CancelarOrdenEntregaBTN.Size = new Size(111, 29);
+            CancelarOrdenEntregaBTN.Size = new Size(220, 30);
             CancelarOrdenEntregaBTN.TabIndex = 3;
             CancelarOrdenEntregaBTN.Text = "Cancelar";
             CancelarOrdenEntregaBTN.UseVisualStyleBackColor = true;
@@ -101,7 +101,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1101, 554);
+            ClientSize = new Size(1009, 533);
             Controls.Add(CancelarOrdenEntregaBTN);
             Controls.Add(GenerarOrdenEntregaBTN);
             Controls.Add(groupBox1);
