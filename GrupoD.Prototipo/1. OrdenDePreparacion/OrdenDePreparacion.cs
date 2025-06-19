@@ -94,19 +94,19 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
         }
 
 
-        //DNI Transportista: búsqueda por primeros números
+        
         private void ConfigurarAutoCompletarDNITransportista()
         {
-            // Se crea la colección de cadenas para el autocompletado
+            
             AutoCompleteStringCollection listaAutocompletar = new AutoCompleteStringCollection();
 
-            // Agregar todos los DNIs (convertidos a string) de los transportistas
+            
             foreach (var transportista in modelo.Transportistas)
             {
                 listaAutocompletar.Add(transportista.DNITransportista.ToString());
             }
 
-            // Configurar el TextBox para usar el autocompletado con la lista personalizada
+            
             dniTransportistaTXT.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             dniTransportistaTXT.AutoCompleteSource = AutoCompleteSource.CustomSource;
             dniTransportistaTXT.AutoCompleteCustomSource = listaAutocompletar;
@@ -155,13 +155,11 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
             foreach (var producto in productosCliente)
             {
-                //var item = new ListViewItem(producto.SKUProducto.ToString()); 
-                //item.SubItems.Add(producto.NombreProducto); 
-                //item.SubItems.Add(producto.Cantidad.ToString());
+                
 
                 int cantidadBase = producto.Cantidad;
 
-                // Busca todas las órdenes de preparación en el depósito actual que estén en estado Pendiente o Procesamiento
+               
                 int cantidadReservada = OrdenDePreparacionAlmacen.OrdenesDePreparacion
                     .Where(o => o.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual &&
                                 (o.Estado == EstadoOrdenDePreparacionEnum.Pendiente ||
@@ -172,7 +170,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
                 int cantidadDisponible = cantidadBase - cantidadReservada;
 
-                // Ahora creamos el ítem del ListView con la cantidadDisponible en lugar de la cantidad base.
+                
                 var item = new ListViewItem(producto.SKUProducto.ToString());
                 item.SubItems.Add(producto.NombreProducto);
                 item.SubItems.Add(cantidadDisponible.ToString());
@@ -254,7 +252,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
             }
         }
 
-        private int clienteFijo = -1; //Variable para almacenar el cliente seleccionado 
+        private int clienteFijo = -1;  
        
         private void agregarProductoBTN_Click(object sender, EventArgs e)
         {
@@ -351,7 +349,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
 
        
-        private static int numeroOrden = 0; 
+
         
         
 
@@ -513,11 +511,7 @@ namespace GrupoD.Prototipo.CDU1_GenerarOrdenDePreparacion.sln.OrdenDePreparacion
 
        
 
-        private bool ValidarDNITransportista(int dni)
-        {
-            return modelo.Transportistas.Any(t => t.DNITransportista == dni);
-        }
-
+      
 
 
 

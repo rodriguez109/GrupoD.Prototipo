@@ -24,10 +24,10 @@ internal class OrdenDePreparacionModelo
         }
         else
         {
-            return 1; // Si no hay órdenes, el próximo número es 1
+            return 1; 
         }
     }
-    //public int ObtenerProximoNumero() => OrdenDePreparacionAlmacen.OrdenesDePreparacion.Select(o => o.Numero).DefaultIfEmpty().Max() + 1;
+    
 
     
                          
@@ -82,27 +82,10 @@ internal class OrdenDePreparacionModelo
                 throw new Exception($"Producto no encontrado (SKU: {sku}).");
             }
 
-            //var cantidadEnDepositoActual = productoStock.CantidadEnDeposito(DepositoAlmacen.CodigoDepositoActual);
-            //if (cantidadEnDepositoActual < cantidad)
-            //{
-            //    throw new Exception($"Stock insuficiente para el producto {productoStock.Nombre}. Stock disponible: {cantidadEnDepositoActual}");
-            //}
-
-            //var codigoDeposito = string.Empty;
-            //if (productoStock.Posiciones != null && productoStock.Posiciones.Any())
-            //{
-            //    codigoDeposito = productoStock.Posiciones.First().CodigoDeposito;
-            //}
-            //else
-            //{
-            //    throw new Exception($"No se encontró una posición para el producto {productoStock.Nombre}.");
-            //}
-
-            // Cálculo del stock base en el depósito seleccionado
+           
             int cantidadBase = productoStock.CantidadEnDeposito(DepositoAlmacen.CodigoDepositoActual);
 
-            // Cálculo de la cantidad reservada en órdenes en estado Pendiente o en Procesamiento
-            int cantidadReservada = OrdenDePreparacionAlmacen.OrdenesDePreparacion
+                        int cantidadReservada = OrdenDePreparacionAlmacen.OrdenesDePreparacion
                 .Where(o => o.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual &&
                             (o.Estado == EstadoOrdenDePreparacionEnum.Pendiente ||
                              o.Estado == EstadoOrdenDePreparacionEnum.Procesamiento))
@@ -110,7 +93,7 @@ internal class OrdenDePreparacionModelo
                 .Where(det => det.SKU == sku)
                 .Sum(det => det.Cantidad);
 
-            // La cantidad disponible es la cantidad base menos la cantidad reservada
+            
             int cantidadDisponible = cantidadBase - cantidadReservada;
 
             if (cantidadDisponible < cantidad)
@@ -120,8 +103,7 @@ internal class OrdenDePreparacionModelo
                                     $"Disponible: {cantidadDisponible}");
             }
 
-            // Se asume que el código del depósito se toma de DepositoAlmacen.CodigoDepositoActual,
-            // por lo que la validación del código de depósito de las posiciones no es la fuente principal de error.
+           
             if (productoStock.Posiciones == null || !productoStock.Posiciones.Any())
             {
                 throw new Exception($"No se encontró una posición para el producto {productoStock.Nombre}.");
@@ -149,15 +131,6 @@ internal class OrdenDePreparacionModelo
                         p.NumeroCliente))
                     .ToList() ?? [];
 
-        //foreach (var producto in Productos)
-        //{
-        //    producto.Cantidad -= OrdenDePreparacionAlmacen.OrdenesDePreparacion
-        //                                                  .Where(o => o.CodigoDeposito == DepositoAlmacen.CodigoDepositoActual)
-        //                                                  .Where(o => o.Estado is EstadoOrdenDePreparacionEnum.EnPreparacion)
-        //                                                  .SelectMany(o => o.Detalle)
-        //                                                  .Where(o => o.SKU == producto.SKUProducto)
-        //                                                  .Sum(o => o.Cantidad);
-        //}
     }
 
     private string ConvertirPosicionesAString(List<PosicionesPorProducto> posiciones)
